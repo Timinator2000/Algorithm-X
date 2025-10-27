@@ -18,23 +18,23 @@ nav:
     - Your Solver Subclass: 03-AlgorithmXSolver/02-your-solver.md
     - Finding Solutions: 03-AlgorithmXSolver/03-finding-solutions.md
     - Troubleshooting: 03-AlgorithmXSolver/04-troubleshooting.md
-  - Your Turn:
-    - Mrs. Knuth - Part I: 04-your-turn/01-mrs-knuth-part-I.md
-    - Sudoku Solver: 04-your-turn/02-9x9-sudoku.md
-    - Sudoku (cont.): 04-your-turn/03-sudoku-cont.md
-    - Sudoku Challenge: 04-your-turn/04-sudoku-challenge.md
-    - 16x16 Sudoku: 04-your-turn/05-16x16-sudoku.md
-    - 25x25 Sudoku: 04-your-turn/06-25x25-sudoku.md
-    - Mini Sudoku Solver: 04-your-turn/07-mini-sudoku-solver.md
-    - Constrained Latin Squares: 04-your-turn/08-constrained-latin-squares.md
-    - Literary Alfabet Soupe: 04-your-turn/09-literary-alfabet-soupe.md
+    - Your Turn:
+      - Mrs. Knuth - Part I: 04-your-turn/01-mrs-knuth-part-I.md
+      - Sudoku Solver: 04-your-turn/02-9x9-sudoku.md
+      - Sudoku (cont.): 04-your-turn/03-sudoku-cont.md
+      - Sudoku Challenge: 04-your-turn/04-sudoku-challenge.md
+      - 16x16 Sudoku: 04-your-turn/05-16x16-sudoku.md
+      - 25x25 Sudoku: 04-your-turn/06-25x25-sudoku.md
+      - Mini Sudoku Solver: 04-your-turn/07-mini-sudoku-solver.md
+      - Constrained Latin Squares: 04-your-turn/08-constrained-latin-squares.md
+      - Literary Alfabet Soupe: 04-your-turn/09-literary-alfabet-soupe.md
   - Skill Building - Generating Actions:
     - Finding ALL Possibile Actions: 05-generating-actions/01-finding-all.md
     - Shikaku Skill Builder: 05-generating-actions/02-shikaku-skill-builder.md
-  - Your Turn:
-    - Shikaku Solver: 06-your-turn/01-shikaku-solver.md
-    - Dominoes Solver: 06-your-turn/02-dominoes-solver.md
-    - Paving with Bricks: 06-your-turn/03-paving-with-bricks.md
+    - Your Turn:
+      - Shikaku Solver: 06-your-turn/01-shikaku-solver.md
+      - Dominoes Solver: 06-your-turn/02-dominoes-solver.md
+      - Paving with Bricks: 06-your-turn/03-paving-with-bricks.md
   - Generalized Exact Cover:
     - Generalized Exact Cover Definition: 07-generalized-exact-cover/01-generalized-exact-cover.md
     - Eight Queens: 07-generalized-exact-cover/02-eight-queens.md
@@ -44,17 +44,17 @@ nav:
     - Mrs. Knuth - Part II - Actions: 07-generalized-exact-cover/06-mrs-knuth-actions.md
     - Mrs. Knuth - Part II - Matrix: 07-generalized-exact-cover/07-mrs-knuth-matrix.md
     - Your Solver Subclass: 07-generalized-exact-cover/08-your-solver.md
-  - Your Turn:
-    - Mrs. Knuth - Part II: 08-your-turn/01-mrs-knuth-part-II.md
-    - n Queens: 08-your-turn/02-n-queens.md
-    - Finish the Eight Queens: 08-your-turn/03-finish-eight-queens.md
-    - Optimized Coloring: 08-your-turn/04-optimized-coloring.md
-    - Einstein's Riddle Solver: 08-your-turn/05-einstein-riddle.md
-    - Winamax Sponsored Contest: 08-your-turn/06-winamax.md
-    - Three Little Piggies: 08-your-turn/07-three-little-piggies.md
-    - Breaking Bifid: 08-your-turn/08-breaking-bifid.md
-    - Futoshiki Solver: 08-your-turn/09-futoshiki-solver.md
-    - Suguru Solver: 08-your-turn/10-suguru-solver.md
+    - Your Turn:
+      - Mrs. Knuth - Part II: 08-your-turn/01-mrs-knuth-part-II.md
+      - n Queens: 08-your-turn/02-n-queens.md
+      - Finish the Eight Queens: 08-your-turn/03-finish-eight-queens.md
+      - Optimized Coloring: 08-your-turn/04-optimized-coloring.md
+      - Einstein's Riddle Solver: 08-your-turn/05-einstein-riddle.md
+      - Winamax Sponsored Contest: 08-your-turn/06-winamax.md
+      - Three Little Piggies: 08-your-turn/07-three-little-piggies.md
+      - Breaking Bifid: 08-your-turn/08-breaking-bifid.md
+      - Futoshiki Solver: 08-your-turn/09-futoshiki-solver.md
+      - Suguru Solver: 08-your-turn/10-suguru-solver.md
   - Multiplicity:
     - Ella Wants More Lessons!: 09-multiplicity/01-multiplicity.md
     - Multiplicity with Algorithm X: 09-multiplicity/02-multiplicity-with-algorithm-x.md
@@ -62,61 +62,61 @@ nav:
     - The Multiplicity Challenge: 09-multiplicity/04-the-challenge.md
     - Adding Memory to Algorithm X: 09-multiplicity/05-memory.md
     - Solution with Memory: 09-multiplicity/06-solution-with-memory.md
-  - Your Turn:
-    - Mrs. Knuth - Part III: 10-your-turn/01-mrs-knuth-part-III.md
-    - Dumbbells Solver: 10-your-turn/02-dumbbells-solver.md
-    - Equation Search: 10-your-turn/03-equation-search.md
-    - Hitori Solver: 10-your-turn/04-hitori-solver.md
-    - There is No Spoon - Episode 2: 10-your-turn/05-no-spoon-2.md
-    - There is No Spoon - Episode 2 (cont.): 10-your-turn/06-no-spoon-2-cont.md
-    - There is No Spoon - Episode 2 Wrap-Up: 10-your-turn/07-no-spoon-2-matrix.md
+    - Your Turn:
+      - Mrs. Knuth - Part III: 10-your-turn/01-mrs-knuth-part-III.md
+      - Dumbbells Solver: 10-your-turn/02-dumbbells-solver.md
+      - Equation Search: 10-your-turn/03-equation-search.md
+      - Hitori Solver: 10-your-turn/04-hitori-solver.md
+      - There is No Spoon - Episode 2: 10-your-turn/05-no-spoon-2.md
+      - There is No Spoon - Episode 2 (cont.): 10-your-turn/06-no-spoon-2-cont.md
+      - There is No Spoon - Episode 2 Wrap-Up: 10-your-turn/07-no-spoon-2-matrix.md
   - Problem-Space Reduction:
     - Problem-Space Reduction: 11-problem-space-reduction/01-problem-space-reduction.md
     - Sudoku Problem-Space Reduction: 11-problem-space-reduction/02-sudoku-problem-space-reduction.md
     - Python Variables: 11-problem-space-reduction/03-variables-are-pointers.md
     - Setting Up Sudoku: 11-problem-space-reduction/04-setting-up-sudoku.md
     - Sudoku Challenge: 11-problem-space-reduction/05-sudoku-challenge.md
-  - Your Turn:
-    - Literary Alfabet Soupe (Revisited): 12-your-turn/01-literary-alfabet-soupe.md
-    - 25x25 Sudoku (Revisited): 12-your-turn/02-25x25-sudoku.md
-    - Futoshiki Solver (Revisited): 12-your-turn/03-futoshiki-solver.md
-    - There is No Spoon - Episode 2 (Revisited): 12-your-turn/04-no-spoon-2.md
-    - Takuzu Solver: 12-your-turn/05-takuzu-solver.md
-    - Suguru Solver (Revisited): 12-your-turn/06-suguru-solver.md
+    - Your Turn:
+      - Literary Alfabet Soupe (Revisited): 12-your-turn/01-literary-alfabet-soupe.md
+      - 25x25 Sudoku (Revisited): 12-your-turn/02-25x25-sudoku.md
+      - Futoshiki Solver (Revisited): 12-your-turn/03-futoshiki-solver.md
+      - There is No Spoon - Episode 2 (Revisited): 12-your-turn/04-no-spoon-2.md
+      - Takuzu Solver: 12-your-turn/05-takuzu-solver.md
+      - Suguru Solver (Revisited): 12-your-turn/06-suguru-solver.md
   - Steering Algorithm X:
     - Backseat Driving: 13-steering-algorithm-x/01-backseat-driving.md
     - High Rise Buildings: 13-steering-algorithm-x/02-high-rise-buildings.md
     - High Rise Buildings (cont.): 13-steering-algorithm-x/03-high-rise-buildings-cont.md
-  - Your Turn:
-    - Killer Sudoku Solver: 14-your-turn/01-killer-sudoku.md
-    - Kakuro Solver: 14-your-turn/02-kakuro-solver.md
-    - Killer Sudoku Extreme Challenge: 14-your-turn/03-killer-sudoku-extreme.md
-    - Tetris Floor: 14-your-turn/04-tetris-floor.md
+    - Your Turn:
+      - Killer Sudoku Solver: 14-your-turn/01-killer-sudoku.md
+      - Kakuro Solver: 14-your-turn/02-kakuro-solver.md
+      - Killer Sudoku Extreme Challenge: 14-your-turn/03-killer-sudoku-extreme.md
+      - Tetris Floor: 14-your-turn/04-tetris-floor.md
   - Coloring Your Requirements:
     - What is Coloring?: 15-coloring-your-requirements/01-coloring-your-requirements.md
     - Coloring with Your Solver: 15-coloring-your-requirements/02-constructing-a-word-search.md
-  - Your Turn:
-    - Ye_ An_th_r W_rd Se_rch: 16-your-turn/01-yet-another-word-search.md
-    - Agent X, Mission 2: 16-your-turn/02-agent-x-mission-2.md
-    - Agent X, Mission 2 (cont.): 16-your-turn/03-agent-x-mission-2-cont.md
+    - Your Turn:
+      - Ye_ An_th_r W_rd Se_rch: 16-your-turn/01-yet-another-word-search.md
+      - Agent X, Mission 2: 16-your-turn/02-agent-x-mission-2.md
+      - Agent X, Mission 2 (cont.): 16-your-turn/03-agent-x-mission-2-cont.md
   - Enforcing "Sameness":
     - All-or-None Sets of Events: 17-enforcing-sameness/01-all-or-none.md
     - All-or-None with Colors: 17-enforcing-sameness/02-all-or-none-with-colors.md
     - Complex Actions: 17-enforcing-sameness/03-all-or-none-with-complex-actions.md
     - Reducing Sets of Events: 17-enforcing-sameness/04-test-your-skills.md
-  - Your Turn:
-    - Einstein's Riddle Solver (Revisited): 18-your-turn/01-einstein-revisited.md
-    - Breaking Bifid (Revisited): 18-your-turn/02-breaking-bifid-revisited.md
+    - Your Turn:
+      - Einstein's Riddle Solver (Revisited): 18-your-turn/01-einstein-revisited.md
+      - Breaking Bifid (Revisited): 18-your-turn/02-breaking-bifid-revisited.md
   - Customizing Your Solver:
     - How Does Algorithm X Work?: 19-customizing-your-solver/01-algorithm-x.md
     - Dancing Links (DLX): 19-customizing-your-solver/02-dancing-links.md
     - Customizing Column Selection: 19-customizing-your-solver/03-column-selection.md
     - Customizing Row Selection: 19-customizing-your-solver/04-row-selection.md
-  - Your Turn:
-    - Harmless Rooks: 20-your-turn/01-harmless-rooks.md
-    - Harmless Rooks - Algorithm X: 20-your-turn/02-harmless-rooks-cont.md
-    - Harmless Rooks - Problem-Space Reduction: 20-your-turn/03-harmless-rooks-cont.md
-    - Assorted Rectangular Pieces: 20-your-turn/04-assorted-rectangular-pieces.md
+    - Your Turn:
+      - Harmless Rooks: 20-your-turn/01-harmless-rooks.md
+      - Harmless Rooks - Algorithm X: 20-your-turn/02-harmless-rooks-cont.md
+      - Harmless Rooks - Problem-Space Reduction: 20-your-turn/03-harmless-rooks-cont.md
+      - Assorted Rectangular Pieces: 20-your-turn/04-assorted-rectangular-pieces.md
   - Final Exam:
     - Explanation: 21-final-exam/01-explanation.md
     - Periodic Table Spelling: 21-final-exam/02-periodic-table-spelling.md
