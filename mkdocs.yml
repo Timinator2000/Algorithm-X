@@ -1,7 +1,7 @@
 site_name: Algorithm X
 nav:
   - Welcome:
-    - Introduction: 01-introduction/welcome.md
+    - Introduction: index.md
   - Exact Cover:
     - Exact Cover Definition: 02-exact-cover/01-exact-cover.md
     - Mrs. Knuth: 02-exact-cover/02-mrs-knuth.md
