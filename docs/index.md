@@ -1,6 +1,6 @@
 # Background
 
-In August, 2022, I attempted to solve [Constrained Latin Squares](04-your-turn/08-constrained-latin-squares.md), a recently published puzzle by [@darkhorse64](https://www.codingame.com/profile/c9ebe76a83b33730956eda0534d6cad86053292) on [CodinGame](https://www.codingame.com/home). I noticed [@5DN1L]( https://www.codingame.com/profile/bbb8f47ea4601179303c20acdbf5fb6c1904782) had, a week earlier, posted a link to [Puzzles solvable by Algorithm X / Dancing Links](https://www.codingame.com/forum/t/puzzles-solvable-by-algorithm-x-dancing-links/196871), a post where he had compiled a list of puzzles on CodinGame he had solved with Algorithm X. I love processes that are repeatable and the idea of using a single algorithm to solve a long list of medium/hard puzzles intrigued me.
+In August, 2022, I attempted to solve [Constrained Latin Squares](./04-your-turn/08-constrained-latin-squares.md), a recently published puzzle by [@darkhorse64](https://www.codingame.com/profile/c9ebe76a83b33730956eda0534d6cad86053292) on [CodinGame](https://www.codingame.com/home). I noticed [@5DN1L]( https://www.codingame.com/profile/bbb8f47ea4601179303c20acdbf5fb6c1904782) had, a week earlier, posted a link to [Puzzles solvable by Algorithm X / Dancing Links](https://www.codingame.com/forum/t/puzzles-solvable-by-algorithm-x-dancing-links/196871), a post where he had compiled a list of puzzles on CodinGame he had solved with Algorithm X. I love processes that are repeatable and the idea of using a single algorithm to solve a long list of medium/hard puzzles intrigued me.
 
 For the next 18 months, I worked on @5DN1L’s list, reaching out to him over and over again with questions and ideas. I saw tremendous opportunity for not only a reusable software architecture, but also a repeatable engineering process for solving [Exact Cover](https://en.wikipedia.org/wiki/Exact_cover) problems. Eventually, he suggested I build an Algorithm X playground, and here we are!
 
@@ -19,11 +19,11 @@ I can’t thank @5DN1L enough for all of his guidance, support, ideas, encourage
 A quick Google search will surely bring you to countless implementations of [Algorithm X](https://en.wikipedia.org/wiki/Knuth%27s_Algorithm_X), usually solving a 9x9 Sudoku grid using the famous [Dancing Links (DLX)](https://en.wikipedia.org/wiki/Dancing_Links) technique proposed by the brilliant [Donald Knuth](https://www-cs-faculty.stanford.edu/~knuth/). This playground is NOT just another Sudoku demonstration. By the time you finish working your way through this material, you should feel confident solving any [Exact Cover](https://en.wikipedia.org/wiki/Exact_cover) problem you run across, including…
 
 __Exact Cover (Algorithm X Candidate) Puzzles Created for this Playground:__
-<BR>[Mrs. Knuth – Part I](04-your-turn/01-mrs-knuth-part-I.md) (+50 XP)
-<BR>[Mrs. Knuth – Part II](08-your-turn/01-mrs-knuth-part-II.md) (+50 XP)
-<BR>[Mrs. Knuth – Part III](10-your-turn/01-mrs-knuth-part-III.md) (+50 XP)
-<BR>[Equation Search](10-your-turn/03-equation-search.md) (+50 XP)
-<BR>[Ye_ An_th_r W_rd Se_rch](16-your-turn/01-yet-another-word-search.md) (+50 XP)
+<BR>[Mrs. Knuth – Part I](./04-your-turn/01-mrs-knuth-part-I.md) (+50 XP)
+<BR>[Mrs. Knuth – Part II](./08-your-turn/01-mrs-knuth-part-II.md) (+50 XP)
+<BR>[Mrs. Knuth – Part III](./10-your-turn/01-mrs-knuth-part-III.md) (+50 XP)
+<BR>[Equation Search](./10-your-turn/03-equation-search.md) (+50 XP)
+<BR>[Ye_ An_th_r W_rd Se_rch](./16-your-turn/01-yet-another-word-search.md) (+50 XP)
 
 __Support Puzzles Covered in this Playground__
 <BR>[Shikaku Skill Builder](05-generating-actions/02-shikaku-skill-builder.md) (+50 XP)
