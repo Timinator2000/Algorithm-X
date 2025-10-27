@@ -2,7 +2,6 @@
 
 |Date|Details|
 |:--------:|:----------------|
-| **Coming Soon** | New Location! |
 | **Coming Soon** | 🎮 [Connect the Colours - Part 1](../22-2025-and-beyond/12-connect-the-colours-part-1.md) |
 | **Coming Soon** | 🎮 [Connect the Colours - Part 2](../22-2025-and-beyond/13-connect-the-colours-part-2.md) |
 | **Coming Soon** | 🎮 [Battleship Solitaire](../22-2025-and-beyond/15-battleship-solitaire.md) |
