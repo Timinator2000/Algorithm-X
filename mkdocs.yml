@@ -2,6 +2,8 @@ site_name: Algorithm X
 
 site_url: https://timinator2000.github.io/Algorithm-X/
 
+use_directory_urls: true
+
 nav:
   - Welcome:
     - Introduction: index.md
