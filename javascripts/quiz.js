@@ -69,32 +69,61 @@ function renderQuizzes() {
 
 
 function checkQuiz(id) {
-  const q = quizzes[id];
+  // find the quiz container (we render into <div class="quiz" data-id="...">)
   const div = document.querySelector(`[data-id="${id}"]`);
+  if (!div) return console.warn(`checkQuiz: quiz container for "${id}" not found.`);
+
   const result = div.querySelector('.quiz-result');
+  const button = div.querySelector('button');
+
+  if (!button) return console.warn(`checkQuiz: button for "${id}" not found.`);
+
+  // ---- Anti-spam: disable + UI feedback ----
+  const originalText = button.textContent;
+  button.disabled = true;
+  button.textContent = 'Checking…';
+  button.style.opacity = '0.6';
+  button.style.cursor = 'not-allowed';
+
+  // Re-enable after cooldown
+  setTimeout(() => {
+    button.disabled = false;
+    button.textContent = originalText;
+    button.style.opacity = '';
+    button.style.cursor = '';
+  }, 1500);
+
+  // ---- Collect selected inputs ----
   const selected = Array.from(div.querySelectorAll('input:checked')).map(i => i.value);
 
   if (selected.length === 0) {
-    result.innerHTML = "⚠️ Please select at least one option.";
+    result.textContent = "⚠️ Please select at least one option.";
     result.style.color = "gray";
     return;
   }
 
-  let isCorrect = false;
+  // ---- Lookup quiz definition ----
+  const q = quizzes[id];
+  if (!q) {
+    result.textContent = "Quiz data not found.";
+    result.style.color = "gray";
+    return;
+  }
 
+  // ---- Check correctness ----
+  let isCorrect = false;
   if (q.type === "multi") {
-    // Compare as sets (order doesn’t matter)
-    const correct = q.answers.map(a => a.toString().toUpperCase()).sort();
-    const chosen = selected.map(a => a.toString().toUpperCase()).sort();
-    isCorrect =
-      correct.length === chosen.length &&
-      correct.every((v, i) => v === chosen[i]);
-  } else {
+    // compare as case-insensitive sets (order-insensitive)
+    const correct = (q.answers || []).map(a => String(a).toUpperCase()).sort();
+    const chosen = selected.map(a => String(a).toUpperCase()).sort();
+    isCorrect = correct.length === chosen.length && correct.every((v, i) => v === chosen[i]);
+  } else { // single
     isCorrect = selected[0] === q.answer;
   }
 
+  // ---- Show result ----
   if (isCorrect) {
-    result.innerHTML = "✅ Correct! " + q.explanation;
+    result.innerHTML = "✅ Correct! " + (q.explanation || "");
     result.style.color = "green";
   } else {
     result.innerHTML = "❌ Not quite. Try again!";
