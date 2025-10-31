@@ -102,7 +102,7 @@ function checkQuiz(id) {
       if (q.type === "multi") {
         result.textContent = "⚠️ Please select at least one option.";
       } else {
-        result.textContent = "⚠️ Please select the best answer.";
+        result.textContent = "⚠️ Please select one option.";
       }
       result.style.color = "gray";
       return;
