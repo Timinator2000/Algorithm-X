@@ -81,40 +81,54 @@ function checkQuiz(id) {
   button.style.opacity = "0.6";
   button.style.cursor = "not-allowed";
 
+  const selected = Array.from(div.querySelectorAll("input:checked")).map(i => i.value);
+  const q = quizzes[id];
+
   setTimeout(() => {
+    // Re-enable button
     button.disabled = false;
     button.textContent = originalText;
     button.style.opacity = "";
     button.style.cursor = "";
+
+    // --- Show result only after delay ---
+    if (!q) {
+      result.textContent = "Quiz data not found.";
+      result.style.color = "gray";
+      return;
+    }
+
+    if (selected.length === 0) {
+      if (q.type === "multi") {
+        result.textContent = "⚠️ Please select at least one option.";
+      } else {
+        result.textContent = "⚠️ Please select the best answer.";
+      }
+      result.style.color = "gray";
+      return;
+    }
+
+    // --- Check correctness ---
+    let isCorrect = false;
+    if (q.type === "multi") {
+      const correct = q.answers.map(a => a.toUpperCase()).sort();
+      const chosen = selected.map(a => a.toUpperCase()).sort();
+      isCorrect = correct.length === chosen.length && correct.every((v, i) => v === chosen[i]);
+    } else {
+      isCorrect = selected[0] === q.answer;
+    }
+
+    // --- Display result ---
+    if (isCorrect) {
+      result.innerHTML = "✅ Correct! " + (q.explanation || "");
+      result.style.color = "green";
+    } else {
+      result.innerHTML = "❌ Not quite. Try again!";
+      result.style.color = "red";
+    }
   }, 1000);
-
-  const selected = Array.from(div.querySelectorAll("input:checked")).map(i => i.value);
-  if (selected.length === 0) {
-    result.textContent = "⚠️ Please select at least one option.";
-    result.style.color = "gray";
-    return;
-  }
-
-  const q = quizzes[id];
-  if (!q) return;
-
-  let isCorrect = false;
-  if (q.type === "multi") {
-    const correct = q.answers.map(a => a.toUpperCase()).sort();
-    const chosen = selected.map(a => a.toUpperCase()).sort();
-    isCorrect = correct.length === chosen.length && correct.every((v, i) => v === chosen[i]);
-  } else {
-    isCorrect = selected[0] === q.answer;
-  }
-
-  if (isCorrect) {
-    result.innerHTML = "✅ Correct! " + (q.explanation || "");
-    result.style.color = "green";
-  } else {
-    result.innerHTML = "❌ Not quite. Try again!";
-    result.style.color = "red";
-  }
 }
+
 
 // --- Initialize quizzes ---
 function initQuizzes() {
