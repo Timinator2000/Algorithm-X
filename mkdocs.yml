@@ -169,7 +169,6 @@ theme:
   highlightsjs: true
   features:
     - navigation.footer
-    - navigation.instant  # optional, for instant page loading
 
 markdown_extensions:
   - admonition

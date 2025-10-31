@@ -28,21 +28,17 @@ const quizzes = {
   }
 };
 
-// --- Rendering ---
-function renderQuizzes() {
+// --- Render quizzes ---
+function renderQuizzesOnPage() {
   document.querySelectorAll('.quiz').forEach(div => {
     const id = div.dataset.id;
     const q = quizzes[id];
-
     if (!q) {
       div.innerHTML = `<p style="color:red;">Quiz "${id}" not found.</p>`;
       return;
     }
 
-    const instruction = q.type === "multi"
-      ? "Select all that apply."
-      : "Select the best answer.";
-
+    const instruction = q.type === "multi" ? "Select all that apply." : "Select the best answer.";
     let html = `<p style="font-style: italic; color: gray;">${instruction}</p>`;
     html += `<p><strong>${q.question}</strong></p>`;
 
@@ -54,41 +50,45 @@ function renderQuizzes() {
       `;
     }
 
-    html += `
-      <br>
-      <button type="button" onclick="checkQuiz('${id}')">Check answer</button>
-      <p class="quiz-result"></p>
-    `;
+    html += `<br><button type="button" class="quiz-check-btn" data-quiz="${id}">Check answer</button>`;
+    html += `<p class="quiz-result"></p>`;
 
     div.innerHTML = html;
   });
 }
 
-// --- Check answers ---
+// --- Event delegation for all quiz buttons ---
+document.body.addEventListener("click", function(event) {
+  const btn = event.target.closest(".quiz-check-btn");
+  if (!btn) return;
+
+  const id = btn.dataset.quiz;
+  checkQuiz(id);
+});
+
+// --- Check quiz answers ---
 function checkQuiz(id) {
   const div = document.querySelector(`[data-id="${id}"]`);
   if (!div) return;
-
-  const result = div.querySelector('.quiz-result');
-  const button = div.querySelector('button');
+  const result = div.querySelector(".quiz-result");
+  const button = div.querySelector(".quiz-check-btn");
   if (!button) return;
 
-  // --- Disable button for 1.5s ---
+  // --- 1-second disable delay ---
   const originalText = button.textContent;
   button.disabled = true;
-  button.textContent = 'Checking…';
-  button.style.opacity = '0.6';
-  button.style.cursor = 'not-allowed';
+  button.textContent = "Checking…";
+  button.style.opacity = "0.6";
+  button.style.cursor = "not-allowed";
 
   setTimeout(() => {
     button.disabled = false;
     button.textContent = originalText;
-    button.style.opacity = '';
-    button.style.cursor = '';
+    button.style.opacity = "";
+    button.style.cursor = "";
   }, 1000);
 
-  // --- Collect selected answers ---
-  const selected = Array.from(div.querySelectorAll('input:checked')).map(i => i.value);
+  const selected = Array.from(div.querySelectorAll("input:checked")).map(i => i.value);
   if (selected.length === 0) {
     result.textContent = "⚠️ Please select at least one option.";
     result.style.color = "gray";
@@ -96,22 +96,17 @@ function checkQuiz(id) {
   }
 
   const q = quizzes[id];
-  if (!q) {
-    result.textContent = "Quiz data not found.";
-    result.style.color = "gray";
-    return;
-  }
+  if (!q) return;
 
   let isCorrect = false;
   if (q.type === "multi") {
-    const correct = (q.answers || []).map(a => String(a).toUpperCase()).sort();
-    const chosen = selected.map(a => String(a).toUpperCase()).sort();
+    const correct = q.answers.map(a => a.toUpperCase()).sort();
+    const chosen = selected.map(a => a.toUpperCase()).sort();
     isCorrect = correct.length === chosen.length && correct.every((v, i) => v === chosen[i]);
-  } else { // single choice
+  } else {
     isCorrect = selected[0] === q.answer;
   }
 
-  // --- Show result ---
   if (isCorrect) {
     result.innerHTML = "✅ Correct! " + (q.explanation || "");
     result.style.color = "green";
@@ -121,18 +116,19 @@ function checkQuiz(id) {
   }
 }
 
-// --- Initialize quizzes on page load & instant navigation ---
+// --- Initialize quizzes ---
 function initQuizzes() {
   if (document.querySelectorAll('.quiz').length > 0) {
-    renderQuizzes();
+    renderQuizzesOnPage();
   }
 }
 
+// Initial render on page load
 if (document.readyState !== "loading") {
   initQuizzes();
 } else {
   document.addEventListener("DOMContentLoaded", initQuizzes);
 }
 
-// Material Instant Navigation support
+// Re-render on Material instant navigation
 document.addEventListener("DOMContentSwitch", initQuizzes);
