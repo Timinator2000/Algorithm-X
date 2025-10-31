@@ -1,0 +1,26 @@
+.quiz button {
+  background-color: var(--md-primary-fg-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.quiz button:hover {
+  background-color: var(--md-primary-fg-color--dark);
+  transform: translateY(-1px);
+}
+
+.quiz button:active {
+  background-color: var(--md-primary-fg-color--darker, var(--md-primary-fg-color));
+  transform: translateY(0);
+}
+
+.quiz button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
