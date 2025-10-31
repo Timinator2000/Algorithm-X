@@ -42,7 +42,7 @@ Very interesting! What if `b` already had a value in the box? That would make it
 
 Ultimately, an inequality identifies what must be true, and from that, it is easy to determine what cannot happen. If `a` < `b`, then making `a = 3` and `b = 2` is not allowed. 
 
-??? question ": How do we tell Algorithm X certain things are not allowed?"
+??? question "How do we tell Algorithm X certain things are not allowed?"
     <div class="quiz" data-id="futoshiki_quiz2"></div>
 
 It looks like you will need some requirements to handle the mutual exclusivity created by each inequality.
