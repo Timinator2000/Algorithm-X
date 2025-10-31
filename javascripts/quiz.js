@@ -132,5 +132,11 @@ function checkQuiz(id) {
 }
 
 
-document.addEventListener("DOMContentLoaded", renderQuizzes);
+if (document.readyState !== "loading") {
+  renderQuizzes();
+} else {
+  document.addEventListener("DOMContentLoaded", renderQuizzes);
+}
 
+// Re-render when Material swaps pages (if using navigation.instant)
+document.addEventListener("DOMContentSwitch", renderQuizzes);
