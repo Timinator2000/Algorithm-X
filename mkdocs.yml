@@ -157,6 +157,9 @@ plugins:
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/quiz.js
+
 # theme: readthedocs
 
 theme: 
@@ -175,6 +178,7 @@ markdown_extensions:
   - attr_list
   - fenced_code
   - codehilite
+  - md_in_html
 
 
 copyright: >

@@ -35,24 +35,15 @@ Possible values for a = 1, 2, 3, 4, 5, 6
 Possible values for b = 1, 2, 3, 4, 5, 6
 ```
 
-**What is wrong with the above statements?**
-
-??? success "Check your answer."
-
-    There are two things wrong:
-    
-    * b cannot be 1 since there are no values for a that allow a < b to be true.
-    * a cannot be 6 since there are no values for b that allow a < b to be true. 
+??? question "Quiz 1: What is wrong with the above statements?"
+    <div class="quiz" data-id="futoshiki_quiz1"></div>
 
 Very interesting! What if `b` already had a value in the box? That would make it easy to reduce the possible values for `a`.
 
 Ultimately, an inequality identifies what must be true, and from that, it is easy to determine what cannot happen. If `a` < `b`, then making `a = 3` and `b = 2` is not allowed. 
 
-**How do we tell Algorithm X certain things are not allowed?**
-
-??? success "Check your answer."
-
-    Create requirements to handle mutual exclusivity.
+??? question "Quiz 2: How do we tell Algorithm X certain things are not allowed?"
+    <div class="quiz" data-id="futoshiki_quiz2"></div>
 
 It looks like you will need some requirements to handle the mutual exclusivity created by each inequality.
 
