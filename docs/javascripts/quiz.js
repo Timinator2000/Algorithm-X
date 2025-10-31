@@ -1,3 +1,4 @@
+// --- Quiz definitions ---
 const quizzes = {
   futoshiki_quiz1: {
     type: "multi",
@@ -27,27 +28,24 @@ const quizzes = {
   }
 };
 
-
-// --- Rendering and checking logic ---
-
+// --- Rendering ---
 function renderQuizzes() {
   document.querySelectorAll('.quiz').forEach(div => {
     const id = div.dataset.id;
     const q = quizzes[id];
+
     if (!q) {
       div.innerHTML = `<p style="color:red;">Quiz "${id}" not found.</p>`;
       return;
     }
 
-    // Instruction text based on quiz type
     const instruction = q.type === "multi"
       ? "Select all that apply."
       : "Select the best answer.";
 
-    // Start HTML with instruction only
     let html = `<p style="font-style: italic; color: gray;">${instruction}</p>`;
+    html += `<p><strong>${q.question}</strong></p>`;
 
-    // Add inputs
     const inputType = q.type === "multi" ? "checkbox" : "radio";
     for (const [key, text] of Object.entries(q.options)) {
       html += `
@@ -56,7 +54,6 @@ function renderQuizzes() {
       `;
     }
 
-    // Add button and result placeholder
     html += `
       <br>
       <button type="button" onclick="checkQuiz('${id}')">Check answer</button>
@@ -67,42 +64,37 @@ function renderQuizzes() {
   });
 }
 
-
+// --- Check answers ---
 function checkQuiz(id) {
-  // find the quiz container (we render into <div class="quiz" data-id="...">)
   const div = document.querySelector(`[data-id="${id}"]`);
-  if (!div) return console.warn(`checkQuiz: quiz container for "${id}" not found.`);
+  if (!div) return;
 
   const result = div.querySelector('.quiz-result');
   const button = div.querySelector('button');
+  if (!button) return;
 
-  if (!button) return console.warn(`checkQuiz: button for "${id}" not found.`);
-
-  // ---- Anti-spam: disable + UI feedback ----
+  // --- Disable button for 1.5s ---
   const originalText = button.textContent;
   button.disabled = true;
   button.textContent = 'Checking…';
   button.style.opacity = '0.6';
   button.style.cursor = 'not-allowed';
 
-  // Re-enable after cooldown
   setTimeout(() => {
     button.disabled = false;
     button.textContent = originalText;
     button.style.opacity = '';
     button.style.cursor = '';
-  }, 1500);
+  }, 1000);
 
-  // ---- Collect selected inputs ----
+  // --- Collect selected answers ---
   const selected = Array.from(div.querySelectorAll('input:checked')).map(i => i.value);
-
   if (selected.length === 0) {
     result.textContent = "⚠️ Please select at least one option.";
     result.style.color = "gray";
     return;
   }
 
-  // ---- Lookup quiz definition ----
   const q = quizzes[id];
   if (!q) {
     result.textContent = "Quiz data not found.";
@@ -110,18 +102,16 @@ function checkQuiz(id) {
     return;
   }
 
-  // ---- Check correctness ----
   let isCorrect = false;
   if (q.type === "multi") {
-    // compare as case-insensitive sets (order-insensitive)
     const correct = (q.answers || []).map(a => String(a).toUpperCase()).sort();
     const chosen = selected.map(a => String(a).toUpperCase()).sort();
     isCorrect = correct.length === chosen.length && correct.every((v, i) => v === chosen[i]);
-  } else { // single
+  } else { // single choice
     isCorrect = selected[0] === q.answer;
   }
 
-  // ---- Show result ----
+  // --- Show result ---
   if (isCorrect) {
     result.innerHTML = "✅ Correct! " + (q.explanation || "");
     result.style.color = "green";
@@ -131,12 +121,18 @@ function checkQuiz(id) {
   }
 }
 
-
-if (document.readyState !== "loading") {
-  renderQuizzes();
-} else {
-  document.addEventListener("DOMContentLoaded", renderQuizzes);
+// --- Initialize quizzes on page load & instant navigation ---
+function initQuizzes() {
+  if (document.querySelectorAll('.quiz').length > 0) {
+    renderQuizzes();
+  }
 }
 
-// Re-render when Material swaps pages (if using navigation.instant)
-document.addEventListener("DOMContentSwitch", renderQuizzes);
+if (document.readyState !== "loading") {
+  initQuizzes();
+} else {
+  document.addEventListener("DOMContentLoaded", initQuizzes);
+}
+
+// Material Instant Navigation support
+document.addEventListener("DOMContentSwitch", initQuizzes);
