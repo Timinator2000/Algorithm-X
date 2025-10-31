@@ -2,7 +2,7 @@
 const quizzes = {
   futoshiki_quiz1: {
     type: "multi",
-    question: "What is wrong with the above statements? (Select all that apply)",
+    question: "What is wrong with the above statements?",
     options: {
       A: "Nothing is wrong. In the absence of hints, either cell could take any of those values.",
       B: "b cannot be 1 since there are no values for a that allow a < b to be true.",
