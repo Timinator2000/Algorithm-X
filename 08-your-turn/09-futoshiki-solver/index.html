@@ -4111,21 +4111,15 @@
 <div class="highlight"><pre><span></span><code>Possible values for a = 1, 2, 3, 4, 5, 6
 Possible values for b = 1, 2, 3, 4, 5, 6
 </code></pre></div>
-<p><strong>What is wrong with the above statements?</strong></p>
-<details class="success">
-<summary>Check your answer.</summary>
-<p>There are two things wrong:</p>
-<ul>
-<li>b cannot be 1 since there are no values for a that allow a &lt; b to be true.</li>
-<li>a cannot be 6 since there are no values for b that allow a &lt; b to be true. </li>
-</ul>
+<details class="question">
+<summary>Quiz 1: What is wrong with the above statements?</summary>
+<p><div class="quiz" data-id="futoshiki_quiz1"></div></p>
 </details>
 <p>Very interesting! What if <code>b</code> already had a value in the box? That would make it easy to reduce the possible values for <code>a</code>.</p>
 <p>Ultimately, an inequality identifies what must be true, and from that, it is easy to determine what cannot happen. If <code>a</code> &lt; <code>b</code>, then making <code>a = 3</code> and <code>b = 2</code> is not allowed. </p>
-<p><strong>How do we tell Algorithm X certain things are not allowed?</strong></p>
-<details class="success">
-<summary>Check your answer.</summary>
-<p>Create requirements to handle mutual exclusivity.</p>
+<details class="question">
+<summary>Quiz 2: How do we tell Algorithm X certain things are not allowed?</summary>
+<p><div class="quiz" data-id="futoshiki_quiz2"></div></p>
 </details>
 <p>It looks like you will need some requirements to handle the mutual exclusivity created by each inequality.</p>
 <hr />
@@ -4189,6 +4183,8 @@ Possible values for b = 1, 2, 3, 4, 5, 6
     
     
       <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../javascripts/quiz.js"></script>
       
         <script src="../../js/open_in_new_tab.js"></script>
       
