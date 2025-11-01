@@ -24,8 +24,8 @@ This puzzle is based on [**Magnets**](https://www.chiark.greenend.org.uk/~sgtath
 
 ---
 
-# Solving Logic Puzzles Logically 💯
+# Solving Logic Puzzles Logically
 
-All **Magnets** test cases and validators can be solved *purely by logic*, without a single guess. Click [here](../24-odds-and-ends/01-solving-with-logic-only.md) to see my ongoing progress toward solving as many logic puzzles as possible—strictly with logic, no guessing, no backtracking.
+Many **Magnets** test cases and validators can be solved *purely by logic*, without a single guess. Click [here](../24-odds-and-ends/01-solving-with-logic-only.md) to see my ongoing progress toward solving as many logic puzzles as possible—strictly with logic, no guessing, no backtracking.
 
 <BR>

@@ -1,5 +1,40 @@
+.error {
+  color: red;
+}
+ 
+.quiz-instruction {
+  font-style: italic;
+  color: gray;
+}
+ 
+.quiz-question {
+  font-weight: bold;
+}
+ 
+.quiz-result {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-top: 0.5em;
+}
+ 
+.quiz-result.visible {
+  opacity: 1;
+}
+ 
+.quiz-result.correct {
+  color: green;
+}
+ 
+.quiz-result.incorrect {
+  color: red;
+}
+ 
+.quiz-result.neutral {
+  color: gray;
+}
+ 
 .quiz button {
-  background-color: var(--md-primary-fg-color);
+  background-color: #4051b5;
   color: white;
   border: none;
   border-radius: 6px;
@@ -8,17 +43,17 @@
   font-size: 0.9em;
   transition: background-color 0.2s, transform 0.1s;
 }
-
-.quiz button:hover {
-  background-color: var(--md-primary-fg-color--dark);
+ 
+.quiz button:not(:disabled):hover {
+  background-color: #303fa1;
   transform: translateY(-1px);
 }
-
+ 
 .quiz button:active {
-  background-color: var(--md-primary-fg-color--darker, var(--md-primary-fg-color));
+  background-color: #202d8d;
   transform: translateY(0);
 }
-
+ 
 .quiz button:disabled {
   opacity: 0.6;
   cursor: not-allowed;

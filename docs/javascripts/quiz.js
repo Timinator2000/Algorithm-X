@@ -12,7 +12,6 @@ const quizzes = {
     answers: ["B", "D"],
     explanation: ""
   },
-
   futoshiki_quiz2: {
     type: "single",
     question: "How do we tell Algorithm X certain things are not allowed?",
@@ -28,114 +27,111 @@ const quizzes = {
   }
 };
 
+// 🆕 --- Helper function: enable/disable Check button based on selections ---
+function updateQuizButtonState(div) {
+  const anySelected = div.querySelectorAll("input:checked").length > 0;
+  const button = div.querySelector(".quiz-check-btn");
+  if (button) button.disabled = !anySelected;
+}
+
 // --- Render quizzes ---
 function renderQuizzesOnPage() {
-  document.querySelectorAll('.quiz').forEach(div => {
+  document.querySelectorAll(".quiz").forEach(div => {
     const id = div.dataset.id;
     const q = quizzes[id];
     if (!q) {
-      div.innerHTML = `<p style="color:red;">Quiz "${id}" not found.</p>`;
+      div.innerHTML = `<p class="error">Quiz "${id}" not found.</p>`;
       return;
     }
 
     const instruction = q.type === "multi" ? "Select all that apply." : "Select the best answer.";
-    let html = `<p style="font-style: italic; color: gray;">${instruction}</p>`;
-    html += `<p><strong>${q.question}</strong></p>`;
-
     const inputType = q.type === "multi" ? "checkbox" : "radio";
-    for (const [key, text] of Object.entries(q.options)) {
-      html += `
-        <input type="${inputType}" id="${id}${key}" name="${id}" value="${key}">
-        <label for="${id}${key}">${text}</label><br>
-      `;
-    }
+    const options = Object.entries(q.options)
+      .map(([key, text]) => `
+        <input type="${inputType}" name="${id}" value="${key}">
+        ${text}
+      `)
+      .join("<br>");
 
-    html += `<br><button type="button" class="quiz-check-btn" data-quiz="${id}">Check answer</button>`;
-    html += `<p class="quiz-result"></p>`;
+    div.innerHTML = `
+      <p class="quiz-instruction">${instruction}</p>
+      <p class="quiz-question">${q.question}</p>
+      ${options}
+      <br><br>
+      <button class="quiz-check-btn" data-quiz="${id}" disabled>Check answer</button>
+      <p class="quiz-result"></p>
+    `;
 
-    div.innerHTML = html;
+    // 🆕 Added: update button state initially and on every change
+    updateQuizButtonState(div);
+    div.addEventListener("change", () => updateQuizButtonState(div));
   });
 }
 
-// --- Event delegation for all quiz buttons ---
-document.body.addEventListener("click", function(event) {
-  const btn = event.target.closest(".quiz-check-btn");
-  if (!btn) return;
+// --- Check quiz answers ---
+function checkQuiz(id) {
+  const q = quizzes[id];
+  const div = document.querySelector(`[data-id="${id}"]`);
+  const button = div.querySelector(".quiz-check-btn");
+  const result = div.querySelector(".quiz-result");
+  const selected = Array.from(div.querySelectorAll("input:checked")).map(i => i.value);
 
+  if (selected.length === 0) {
+    result.textContent = q.type === "multi"
+      ? "⚠️ Please select at least one option."
+      : "⚠️ Please select one option.";
+    result.className = "quiz-result neutral visible";
+    return;
+  }
+
+  // Disable button until learner changes an answer
+  button.disabled = true;
+  let isCorrect = false;
+  if (q.type === "multi") {
+    const correct = q.answers.map(a => a.toUpperCase()).sort();
+    const chosen = selected.map(a => a.toUpperCase()).sort();
+    isCorrect = correct.length === chosen.length && correct.every((v, i) => v === chosen[i]);
+  } else {
+    isCorrect = selected[0] === q.answer;
+  }
+
+  result.textContent = isCorrect
+    ? `✅ Correct! ${q.explanation || ""}`
+    : "❌ Not quite. Try again!";
+  result.className = `quiz-result ${isCorrect ? "correct" : "incorrect"} visible`;
+}
+
+// --- Initialize quizzes ---
+function initQuizzes() {
+  if (document.querySelectorAll(".quiz").length > 0) {
+    renderQuizzesOnPage();
+  }
+}
+
+// --- Event handlers ---
+document.body.addEventListener("click", e => {
+  const btn = e.target.closest(".quiz-check-btn");
+  if (!btn || btn.disabled) return;
   const id = btn.dataset.quiz;
   checkQuiz(id);
 });
 
-// --- Check quiz answers ---
-function checkQuiz(id) {
-  const div = document.querySelector(`[data-id="${id}"]`);
-  if (!div) return;
-  const result = div.querySelector(".quiz-result");
-  const button = div.querySelector(".quiz-check-btn");
-  if (!button) return;
+document.body.addEventListener("change", e => {
+  if (e.target.matches(".quiz input")) {
+    const div = e.target.closest(".quiz");
+    const button = div.querySelector(".quiz-check-btn");
+    const result = div.querySelector(".quiz-result");
 
-  // --- 1-second disable delay ---
-  const originalText = button.textContent;
-  button.disabled = true;
-  button.textContent = "Checking…";
-  button.style.opacity = "0.6";
-  button.style.cursor = "not-allowed";
-
-  const selected = Array.from(div.querySelectorAll("input:checked")).map(i => i.value);
-  const q = quizzes[id];
-
-  setTimeout(() => {
-    // Re-enable button
-    button.disabled = false;
-    button.textContent = originalText;
-    button.style.opacity = "";
-    button.style.cursor = "";
-
-    // --- Show result only after delay ---
-    if (!q) {
-      result.textContent = "Quiz data not found.";
-      result.style.color = "gray";
-      return;
+    // Re-enable the button and hide previous result when learner changes the answer
+    if (button) {
+      button.disabled = false;
+      result.classList.remove("visible");
     }
 
-    if (selected.length === 0) {
-      if (q.type === "multi") {
-        result.textContent = "⚠️ Please select at least one option.";
-      } else {
-        result.textContent = "⚠️ Please select one option.";
-      }
-      result.style.color = "gray";
-      return;
-    }
-
-    // --- Check correctness ---
-    let isCorrect = false;
-    if (q.type === "multi") {
-      const correct = q.answers.map(a => a.toUpperCase()).sort();
-      const chosen = selected.map(a => a.toUpperCase()).sort();
-      isCorrect = correct.length === chosen.length && correct.every((v, i) => v === chosen[i]);
-    } else {
-      isCorrect = selected[0] === q.answer;
-    }
-
-    // --- Display result ---
-    if (isCorrect) {
-      result.innerHTML = "✅ Correct! " + (q.explanation || "");
-      result.style.color = "green";
-    } else {
-      result.innerHTML = "❌ Not quite. Try again!";
-      result.style.color = "red";
-    }
-  }, 1000);
-}
-
-
-// --- Initialize quizzes ---
-function initQuizzes() {
-  if (document.querySelectorAll('.quiz').length > 0) {
-    renderQuizzesOnPage();
+    // 🆕 Added to keep button disabled if all answers were unchecked
+    updateQuizButtonState(div);
   }
-}
+});
 
 // Initial render on page load
 if (document.readyState !== "loading") {
