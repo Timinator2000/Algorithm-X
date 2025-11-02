@@ -72,6 +72,9 @@ __Great Candidates for Algorithm X:__
 <BR>[Completed Mahjong Hands](22-2025-and-beyond/09-completed-mahjong-hands.md) (+50 XP)
 <BR>[Crossword](22-2025-and-beyond/10-crossword.md) (+50 XP)
 <BR>[🎮 Pips](22-2025-and-beyond/11-pips.md) (+50 XP)
+<BR>[Nurikabe](22-2025-and-beyond/17-nurikabe.md) (+50 XP)
+
+**AWAITING APPROVAL on the [CodinGame Contribution Page](https://www.codingame.com/contribute/community)**
 <BR>[🎮 Battleship Solitaire](22-2025-and-beyond/15-battleship-solitaire.md) (+50 XP)
 <BR>[🎮 Magnets](22-2025-and-beyond/16-magnets.md) (+50 XP)
 <BR>[🎮 Connect the Colours - Part I](22-2025-and-beyond/12-connect-the-colours-part-1.md) (+50 XP)
@@ -89,7 +92,7 @@ I wholeheartedly believe that working through this playground and the accompanyi
 * You will experience the compelling nature of reusable software architectures.
 * You will find every puzzle listed above significantly easier than it would have been otherwise. I’m not saying they’ll all be easy, but they will indeed be easier.
 * You will have a lot of fun.
-* You will earn up to __3050 [CodinGame](https://www.codingame.com) XP!__
+* You will earn up to __3100 [CodinGame](https://www.codingame.com) XP!__
 
 ---
 

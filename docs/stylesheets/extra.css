@@ -55,3 +55,42 @@ form[id^="quiz"] {
   background-color: var(--md-code-bg-color);
   border-radius: 6px;
 }
+
+
+/* === Page content links (unchanged from previous unified style) --- */
+.md-typeset a {
+  color: var(--md-accent-fg-color);
+  font-weight: 500;
+  text-decoration-line: underline;
+  text-decoration-color: transparent;   /* invisible by default */
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.25s ease, color 0.25s ease, opacity 0.25s ease;
+}
+
+.md-typeset a:hover,
+.md-typeset a:focus {
+  text-decoration-color: currentColor;  /* fade-in underline */
+  opacity: 0.9;
+}
+
+.md-typeset a:visited {
+  color: var(--md-accent-fg-color);
+  opacity: 0.85;
+}
+
+/* === Sidebar / menu links: keep original colors, just add faded underline === */
+.md-nav__link {
+  position: relative;
+  text-decoration-line: underline;
+  text-decoration-color: transparent;   /* hidden by default */
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.25s ease, opacity 0.25s ease;
+}
+
+.md-nav__link:hover,
+.md-nav__link:focus {
+  text-decoration-color: currentColor;  /* fade-in underline */
+  opacity: 0.9;
+}

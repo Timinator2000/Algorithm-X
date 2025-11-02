@@ -135,6 +135,7 @@ nav:
     - Completed Mahjong Hands: 22-2025-and-beyond/09-completed-mahjong-hands.md
     - Crossword: 22-2025-and-beyond/10-crossword.md
     - Pips: 22-2025-and-beyond/11-pips.md
+    - Nurikabe: 22-2025-and-beyond/17-nurikabe.md
     - Connect the Colours - Part 1: 22-2025-and-beyond/12-connect-the-colours-part-1.md
     - Connect the Colours - Part 2: 22-2025-and-beyond/13-connect-the-colours-part-2.md
     - Connect the Colours - Part 2 (cont.): 22-2025-and-beyond/14-connect-the-colours-part-2-(cont.).md
@@ -169,6 +170,22 @@ theme:
   highlightsjs: true
   features:
     - navigation.footer
+
+  palette:
+    - scheme: default        # Light mode
+      primary: '#0D47A1'   # Dark blue hex
+      # primary: blue
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate          # Dark mode
+      primary: blue
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
 
 markdown_extensions:
   - admonition
