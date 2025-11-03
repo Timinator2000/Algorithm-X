@@ -27,13 +27,6 @@ const quizzes = {
   }
 };
 
-// 🆕 --- Helper function: enable/disable Check button based on selections ---
-function updateQuizButtonState(div) {
-  const anySelected = div.querySelectorAll("input:checked").length > 0;
-  const button = div.querySelector(".quiz-check-btn");
-  if (button) button.disabled = !anySelected;
-}
-
 // --- Render quizzes ---
 function renderQuizzesOnPage() {
   document.querySelectorAll(".quiz").forEach(div => {
@@ -43,7 +36,7 @@ function renderQuizzesOnPage() {
       div.innerHTML = `<p class="error">Quiz "${id}" not found.</p>`;
       return;
     }
-
+ 
     const instruction = q.type === "multi" ? "Select all that apply." : "Select the best answer.";
     const inputType = q.type === "multi" ? "checkbox" : "radio";
     const options = Object.entries(q.options)
@@ -52,22 +45,40 @@ function renderQuizzesOnPage() {
         ${text}
       `)
       .join("<br>");
-
+ 
     div.innerHTML = `
       <p class="quiz-instruction">${instruction}</p>
       <p class="quiz-question">${q.question}</p>
-      ${options}
-      <br><br>
+    ${options}
+      <br>
+      <br>
       <button class="quiz-check-btn" data-quiz="${id}" disabled>Check answer</button>
       <p class="quiz-result"></p>
     `;
-
-    // 🆕 Added: update button state initially and on every change
-    updateQuizButtonState(div);
-    div.addEventListener("change", () => updateQuizButtonState(div));
+ 
+    // Direct per-quiz event listeners
+    div.addEventListener("click", e => {
+      const btn = div.querySelector(".quiz-check-btn");
+      if (!btn || btn.disabled) return;
+      const id = btn.dataset.quiz;
+      checkQuiz(id);
+    });
+ 
+    div.addEventListener("change", e => {
+      if (!e.target.matches("input")) return;
+      const button = div.querySelector(".quiz-check-btn");
+      const result = div.querySelector(".quiz-result");
+ 
+      // Re-enable the button and hide previous result when learner changes the answer
+      if (button) {
+        const anySelected = div.querySelectorAll("input:checked").length > 0;
+        button.disabled = !anySelected;
+        result.classList.remove("visible");
+      }
+    });
   });
 }
-
+ 
 // --- Check quiz answers ---
 function checkQuiz(id) {
   const q = quizzes[id];
@@ -75,7 +86,7 @@ function checkQuiz(id) {
   const button = div.querySelector(".quiz-check-btn");
   const result = div.querySelector(".quiz-result");
   const selected = Array.from(div.querySelectorAll("input:checked")).map(i => i.value);
-
+  
   if (selected.length === 0) {
     result.textContent = q.type === "multi"
       ? "⚠️ Please select at least one option."
@@ -83,7 +94,7 @@ function checkQuiz(id) {
     result.className = "quiz-result neutral visible";
     return;
   }
-
+  
   // Disable button until learner changes an answer
   button.disabled = true;
   let isCorrect = false;
@@ -94,51 +105,26 @@ function checkQuiz(id) {
   } else {
     isCorrect = selected[0] === q.answer;
   }
-
+    
   result.textContent = isCorrect
     ? `✅ Correct! ${q.explanation || ""}`
     : "❌ Not quite. Try again!";
   result.className = `quiz-result ${isCorrect ? "correct" : "incorrect"} visible`;
 }
-
+ 
 // --- Initialize quizzes ---
 function initQuizzes() {
   if (document.querySelectorAll(".quiz").length > 0) {
     renderQuizzesOnPage();
   }
 }
-
-// --- Event handlers ---
-document.body.addEventListener("click", e => {
-  const btn = e.target.closest(".quiz-check-btn");
-  if (!btn || btn.disabled) return;
-  const id = btn.dataset.quiz;
-  checkQuiz(id);
-});
-
-document.body.addEventListener("change", e => {
-  if (e.target.matches(".quiz input")) {
-    const div = e.target.closest(".quiz");
-    const button = div.querySelector(".quiz-check-btn");
-    const result = div.querySelector(".quiz-result");
-
-    // Re-enable the button and hide previous result when learner changes the answer
-    if (button) {
-      button.disabled = false;
-      result.classList.remove("visible");
-    }
-
-    // 🆕 Added to keep button disabled if all answers were unchecked
-    updateQuizButtonState(div);
-  }
-});
-
+ 
 // Initial render on page load
 if (document.readyState !== "loading") {
   initQuizzes();
 } else {
   document.addEventListener("DOMContentLoaded", initQuizzes);
 }
-
+ 
 // Re-render on Material instant navigation
 document.addEventListener("DOMContentSwitch", initQuizzes);

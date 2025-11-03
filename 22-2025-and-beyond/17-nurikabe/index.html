@@ -69,7 +69,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#0D47A1" data-md-color-accent="indigo">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -127,7 +127,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="#0D47A1" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
@@ -4153,8 +4153,442 @@
 <p><strong>Published Difficulty:</strong> Very Hard</p>
 <p><strong>Algorithm X Complexity:</strong> Problem-Space Reduction is Another Zombie Apocalypse</p>
 <hr />
-<h1 id="strategy">Strategy</h1>
-<p>Coming Soon...</p>
+<p>This is a hard puzzle. No matter how much I explain below, it will remain a tough challenge. The problem-space reduction required to solve larger grids is intense — and that’s exactly what makes Nurikabe so satisfying.</p>
+<hr />
+<h1 id="overview">Overview</h1>
+<p>Consider this paragraph from the problem statement:</p>
+<blockquote>
+<p>You start with a grid representing an island group seen from above. Your goal is to identify the shape of each island and fill the remaining cells with water. Clues are provided as numbers, each representing the size of a distinct island. Diagonal connections do not count in Nurikabe, so each island must occupy the exact number of contiguous cells. Additional rules for water apply (see formal rules below).</p>
+</blockquote>
+<p>Each number must correspond to an island of that exact size. This is similar to <a href="../../06-your-turn/01-shikaku-solver/">Shikaku</a>, except islands can take any shape, not just rectangles. Additionally:</p>
+<blockquote>
+<p>All islands are isolated from each other horizontally and vertically.</p>
+</blockquote>
+<p>This is reminiscent of <a href="../15-battleship-solitaire/">Battleship Solitaire</a>, where ships cannot touch. The difference is that in Nurikabe, islands <em>can</em> touch diagonally.</p>
+<p>If you haven’t already, consider finishing <a href="../../06-your-turn/01-shikaku-solver/">Shikaku Solver</a> and <a href="../15-battleship-solitaire/">Battleship Solitaire</a> first. Both require key concepts you’ll need for Nurikabe, particularly in handling island placements.</p>
+<hr />
+<h1 id="setting-up-algorithm-x">Setting Up Algorithm X</h1>
+<p>Like Shikaku, you need an exhaustive list of possible configurations for each island. Unlike Shikaku’s rectangles, island shapes can vary, which makes this slightly more challenging but manageable. Like Battleship Solitaire, you must consider all combinations of island placements and enforce mutual exclusivity — islands cannot touch horizontally or vertically.</p>
+<p>Requirements for Algorithm X are straightforward:</p>
+<ul>
+<li>
+<p>Each island must be placed somewhere on the grid.</p>
+</li>
+<li>
+<p>Each cell can belong to at most one island.</p>
+</li>
+</ul>
+<p>I recommend <strong>getting Algorithm X started without any problem-space reduction</strong>. Don’t overthink the grid yet — just enumerate all possible island configurations and identify mutually exclusive configurations.</p>
+<p>Two additional puzzle rules must also be enforced:</p>
+<blockquote>
+<ul>
+<li>There cannot be any 2x2 (or larger) blocks of water.</li>
+<li>All water cells must form a [contiguous] shape (diagonals do not count).</li>
+</ul>
+</blockquote>
+<p>These rules can be enforced by overriding the <code>AlgorithmXSolver</code>’s <code>_process_solution</code> method. </p>
+<p>For the data below, I configured Algorithm X to perform an <strong>exhaustive search</strong> instead of stopping at the first solution. At this stage, collecting comprehensive data is more important than gaining a small speed boost. For each candidate solution, I check <strong>both 2x2 water violations and contiguous water violations</strong>, rather than halting on the first rule broken. This approach ensures that all potential issues are captured across every possible solution.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Test Case</th>
+<th style="text-align: center;">Actions</th>
+<th style="text-align: center;"><code>me_reqs</code></th>
+<th style="text-align: center;">Solutions Checked</th>
+<th style="text-align: center;">❌ 2x2</th>
+<th style="text-align: center;">❌ Water</th>
+<th style="text-align: center;">Time (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Test 1</td>
+<td style="text-align: center;">53</td>
+<td style="text-align: center;">334</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 2</td>
+<td style="text-align: center;">190</td>
+<td style="text-align: center;">503</td>
+<td style="text-align: center;">183</td>
+<td style="text-align: center;">155</td>
+<td style="text-align: center;">172</td>
+<td style="text-align: center;">13</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 3</td>
+<td style="text-align: center;">185</td>
+<td style="text-align: center;">3,291</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">23</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 4</td>
+<td style="text-align: center;">2,047</td>
+<td style="text-align: center;">848,621</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 5</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 6</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 7</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 8</td>
+<td style="text-align: center;">1,685</td>
+<td style="text-align: center;">53,103</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 9</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 10</td>
+<td style="text-align: center;">5,576</td>
+<td style="text-align: center;">1,032,414</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 11</td>
+<td style="text-align: center;">1,497</td>
+<td style="text-align: center;">59,519</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="initial-logic">Initial Logic</h1>
+<p>The website <a href="https://www.conceptispuzzles.com/index.aspx?uri=puzzle/nurikabe/techniques">Conceptis Puzzles</a> organizes Nurikabe solving techniques into three categories: <strong>starting techniques</strong>, <strong>basic techniques</strong>, and <strong>advanced techniques</strong>.</p>
+<p>Initially, we will use only the three <em>starting techniques</em> to perform a small amount of problem-space reduction:</p>
+<ol>
+<li>
+<p><strong>Single-cell islands:</strong> Any island of size 1 must be completely surrounded by water.</p>
+</li>
+<li>
+<p><strong>Separating islands:</strong> Any cell that separates two numbered island clues must be water, since islands cannot touch horizontally or vertically.</p>
+</li>
+<li>
+<p><strong>Diagonal neighbors:</strong> For any two island clues that touch diagonally, their shared neighboring cells must be water.</p>
+</li>
+</ol>
+<p>These simple deductions already shrink the problem space noticeably. The table below summarizes their impact on each test case:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Test Case</th>
+<th style="text-align: center;">Actions</th>
+<th style="text-align: center;"><code>me_reqs</code></th>
+<th style="text-align: center;">Solutions Checked</th>
+<th style="text-align: center;">❌ 2x2</th>
+<th style="text-align: center;">❌ Water</th>
+<th style="text-align: center;">Time (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Test 1</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 2</td>
+<td style="text-align: center;">127</td>
+<td style="text-align: center;">364</td>
+<td style="text-align: center;">183</td>
+<td style="text-align: center;">155</td>
+<td style="text-align: center;">172</td>
+<td style="text-align: center;">6</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 3</td>
+<td style="text-align: center;">139</td>
+<td style="text-align: center;">1,177</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">11</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 4</td>
+<td style="text-align: center;">990</td>
+<td style="text-align: center;">154,341</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 5</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 6</td>
+<td style="text-align: center;">780</td>
+<td style="text-align: center;">44,028</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 7</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 8</td>
+<td style="text-align: center;">406</td>
+<td style="text-align: center;">2,410</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 9</td>
+<td style="text-align: center;">2,820</td>
+<td style="text-align: center;">110,041</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 10</td>
+<td style="text-align: center;">803</td>
+<td style="text-align: center;">8,617</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 11</td>
+<td style="text-align: center;">614</td>
+<td style="text-align: center;">11,794</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>As the table shows, even applying just these three starting techniques can significantly reduce the problem space for smaller puzzles. For example, Tests 1 - 3 require far fewer actions and 'me_requirement's compared to the exhaustive search without any logic applied. However, as the grid size and complexity increase, these simple deductions alone are not enough — many larger puzzles still time out. This demonstrates that <strong>early logical pruning is useful but must be combined with more advanced techniques</strong> to make larger Nurikabe puzzles tractable with Algorithm X.</p>
+<hr />
+<h1 id="contiguous-bodies-of-land-and-water">Contiguous Bodies of Land and Water</h1>
+<p>Contiguous bodies of land and water are a prevalent theme in Nurikabe. As your logic identifies cells that must be water or must belong to certain islands, these cells might <strong>not yet be fully connected</strong> to other cells of the same type. This is easiest to visualize with water: you could have several disconnected groups of water cells that will eventually need to form a single contiguous body.</p>
+<p>Conceptually, a <code>ContiguousBody</code> (representing either land or water) is made up of one or more <code>CellGroup</code>s. Over time, these groups may grow or new groups may be added to the overall <code>ContiguousBody</code>. The question then becomes: <strong>when should groups be merged?</strong></p>
+<p>Managing <code>ContiguousBody</code>s is a perfect application of the <a href="../../17-enforcing-sameness/04-test-your-skills/"><strong>set-reduction algorithm</strong></a> discussed earlier. In this approach, any two <code>CellGroup</code>s that are adjacent are merged until no more merges are possible. Here’s an example implementation:</p>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">new_groups</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">group_1</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cell_groups</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">group_2</span> <span class="ow">in</span> <span class="n">new_groups</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">group_1</span><span class="o">.</span><span class="n">adjacent</span><span class="p">(</span><span class="n">group_2</span><span class="p">):</span>
+                <span class="n">group_2</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">group_1</span><span class="p">)</span>
+                <span class="n">changes_made</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">new_groups</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">group_1</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">new_groups</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cell_groups</span><span class="p">):</span>
+        <span class="k">break</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">cell_groups</span> <span class="o">=</span> <span class="n">new_groups</span>
+</code></pre></div>
+<p>This code should look <strong>familiar</strong> if you completed the <a href="../../17-enforcing-sameness/04-test-your-skills/#test-your-skills">“Test Your Skills” exercise</a> or the solution you used for <a href="../../17-enforcing-sameness/04-test-your-skills/#a-few-xp-for-your-efforts">Networking</a>. Essentially, it keeps merging adjacent groups until none of the remaining groups are adjacent.</p>
+<hr />
+<h1 id="one-last-piece-of-logic">One Last Piece of Logic</h1>
+<p>Let’s add one final logical deduction and see how much it can further reduce the problem space. Building on the <code>CellGroup</code>s discussed in the previous section, we can implement a simple but effective rule:</p>
+<ul>
+<li><strong>Single-option expansion:</strong> If a <code>CellGroup</code> has <strong>no matching neighbors</strong> and only <strong>one unidentified neighboring cell</strong>, that neighbor must be added to the group.</li>
+</ul>
+<p>The reasoning is straightforward: the only way to maintain contiguity is to include that single unknown neighbor.</p>
+<p>In the final table below, this rule has been incorporated into the problem-space reduction logic. Keep in mind that this rule is most effective when combined with proper <strong>behind-the-scenes <code>CellGroup</code> management</strong>, including merging groups that share borders. Without such group management, the impact of this rule would be limited.</p>
+<p>Additionally, all neighbors for any completed island will be labeled as water and completed islands are removed from the problem-space given to Algorithm X.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Test Case</th>
+<th style="text-align: center;">Actions</th>
+<th style="text-align: center;"><code>me_reqs</code></th>
+<th style="text-align: center;">Solutions Checked</th>
+<th style="text-align: center;">❌ 2x2</th>
+<th style="text-align: center;">❌ Water</th>
+<th style="text-align: center;">Time (ms)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Test 1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">Solved Logically</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 2</td>
+<td style="text-align: center;">43</td>
+<td style="text-align: center;">89</td>
+<td style="text-align: center;">115</td>
+<td style="text-align: center;">92</td>
+<td style="text-align: center;">104</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 3</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">96</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 4</td>
+<td style="text-align: center;">214</td>
+<td style="text-align: center;">9,213</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 5</td>
+<td style="text-align: center;">536</td>
+<td style="text-align: center;">17,198</td>
+<td style="text-align: center;">144</td>
+<td style="text-align: center;">143</td>
+<td style="text-align: center;">139</td>
+<td style="text-align: center;">2000</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 6</td>
+<td style="text-align: center;">294</td>
+<td style="text-align: center;">9,559</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 7</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;">16</td>
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">27</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 8</td>
+<td style="text-align: center;">280</td>
+<td style="text-align: center;">1,104</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 9</td>
+<td style="text-align: center;">726</td>
+<td style="text-align: center;">10,198</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 10</td>
+<td style="text-align: center;">306</td>
+<td style="text-align: center;">1,188</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+<tr>
+<td style="text-align: center;">Test 11</td>
+<td style="text-align: center;">236</td>
+<td style="text-align: center;">1,866</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">Timeout</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Note: Stopping the search after finding the first solution does not prevent timing out on any of the 6 unsolved test cases above.</p>
+</blockquote>
+<hr />
+<h1 id="final-words">Final Words</h1>
+<p>It may feel like a lot of information has been shared, but there’s still plenty of work ahead. More than any other puzzle in this playground, <strong>Nurikabe requires careful and well-optimized problem-space reduction</strong> to make the grids solvable by Algorithm X within the time limit. Focus on combining logical deductions with efficient <code>CellGroup</code> management, and you’ll see much better performance. Good luck!</p>
+<hr />
+<h1 id="solving-logic-puzzles-logically">Solving Logic Puzzles Logically</h1>
+<p>All Nurikabe tests and validators can be solved without making any guesses. Click <a href="../../24-odds-and-ends/01-solving-with-logic-only/">here</a> to see my ongoing progress toward solving as many logic puzzles as possible — strictly with reasoning, no guessing, and no backtracking.</p>
+<p><BR></p>
 
 
 
