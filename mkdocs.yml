@@ -173,9 +173,7 @@ theme:
 
   palette:
     - scheme: default        # Light mode
-      primary: '#0D47A1'   # Dark blue hex
-      # primary: blue
-      accent: indigo
+      primary: blue         # used for accents and nav highlights      accent: indigo
       toggle:
         icon: material/weather-night
         name: Switch to dark mode

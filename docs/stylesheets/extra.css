@@ -94,3 +94,19 @@ form[id^="quiz"] {
   text-decoration-color: currentColor;  /* fade-in underline */
   opacity: 0.9;
 }
+
+
+/* docs/styles/extra.css */
+
+/* Force a darker blue for the top header bar */
+.md-header {
+  background-color: #0D47A1 !important;
+}
+
+/* Optional: ensure text/icons contrast well */
+.md-header, 
+.md-header a, 
+.md-header__button,
+.md-header__title {
+  color: #ffffff !important;
+}

@@ -6,7 +6,7 @@
 | **Coming Soon** | 🎮 [Connect the Colours - Part 2](../22-2025-and-beyond/13-connect-the-colours-part-2.md) |
 | **Coming Soon** | 🎮 [Battleship Solitaire](../22-2025-and-beyond/15-battleship-solitaire.md) |
 | **Coming Soon** | 🎮 [Magnets](../22-2025-and-beyond/16-magnets.md) |
-| TBD | [Nurikabe](../22-2025-and-beyond/17-nurikabe.md) added. |
+| November 2, 2025 | [Nurikabe](../22-2025-and-beyond/17-nurikabe.md) added. |
 | October 5, 2025 | [🎮 Pips](../22-2025-and-beyond/11-pips.md) added. |
 | May 17, 2025 | `AlgorithmXSolver` ➡️ [PHP](../23-solver-translations/04-php.md) translation added. |
 | April 5, 2025 | [Crossword](../22-2025-and-beyond/10-crossword.md) added. |

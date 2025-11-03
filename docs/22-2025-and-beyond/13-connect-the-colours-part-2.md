@@ -28,6 +28,8 @@ Consider a simple 2x2 grid with one pair of endpoints, the bottom-left corner an
 
 1. Movement is restricted to horizontal and vertical steps, mimicking a rook’s moves in chess (up, down, left, or right).
 
+>Note: For simplicity, the examples in this section place the endpoints in the bottom-left and upper-right corners of the grid. In the actual puzzle, the endpoints may appear anywhere.
+
 ---
 
 # Scaling to a 3x3 Grid
@@ -66,7 +68,7 @@ In 1981, pioneering English electronic band Depeche Mode released their debut al
 
 <BR>
 
-Seventeen years earlier, in 1964 — long before synthesizers were filling dance floors — mathematician Neil J. A. Sloane began compiling collections of these integer sequences. His work eventually grew into two printed books (1973 and 1995) and later evolved into an email service and, in 1996, a public website. Today, the Online Encyclopedia of Integer Sequences ([OEIS](https://oeis.org/wiki/Main_Page)) is home to 386,574 sequences (as of August 2025) — more than enough to ensure that even a synth-pop mathematician just can’t get enough.
+Seventeen years earlier, in 1964 — long before synthesizers were filling dance floors — mathematician Neil J. A. Sloane began compiling collections of integer sequences. His work eventually grew into two printed books (1973 and 1995) and later evolved into an email service and, in 1996, a public website. Today, the Online Encyclopedia of Integer Sequences ([OEIS](https://oeis.org/wiki/Main_Page)) is home to 386,574 sequences (as of August 2025) — more than enough to ensure that even a synth-pop mathematician just can’t get enough.
 
 [Topic A007764](https://oeis.org/A007764) on the OEIS has all the information you need if you'd like to search for the next number in the sequence of non-intersecting rook paths. The topic was originally authored by David Radcliffe and Donald Knuth. In the next table, I have included the number of rook paths for `n=1` to `n=14`.
 
@@ -100,6 +102,8 @@ This leaves me with two research questions on my to-do list:
 1. How do I calculate something that big? 🤯
 
 2. How do I prove to my friends my calculation is accurate? 😎
+
+>Note: Fortunately for us, none of the grids in @Harry.B.'s puzzle are anywhere close to 27x27!
 
 ---
 
