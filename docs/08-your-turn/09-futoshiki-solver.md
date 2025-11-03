@@ -53,4 +53,10 @@ It looks like you will need some requirements to handle the mutual exclusivity c
 
 All test cases except __Test Case 5: 7x7__ can be solved with nothing more than requirements, actions and optional requirements. To solve __Test Case 5: 7x7__, you might need a very small amount of problem-space reduction. I have already discussed one option using the inequalities to limit the realm of possibility for the cells on either side. Later in the playground, I will discuss other techniques for problem-space reduction.
 
+---
+
+# Solving Logic Puzzles Logically
+
+Many Futoshiki puzzles can be solved without making any guesses. Click [here](../24-odds-and-ends/01-solving-with-logic-only.md) to see my ongoing progress toward solving as many logic puzzles as possible — strictly with reasoning, no guessing, and no backtracking.
+
 <BR>

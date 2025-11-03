@@ -49,7 +49,7 @@ Two additional puzzle rules must also be enforced:
 
 These rules can be enforced by overriding the `AlgorithmXSolver`’s `_process_solution` method. 
 
-For the data below, I configured Algorithm X to perform an **exhaustive search** instead of stopping at the first solution. At this stage, collecting comprehensive data is more important than gaining a small speed boost. For each candidate solution, I check **both 2x2 water violations and contiguous water violations**, rather than halting on the first rule broken. This approach ensures that all potential issues are captured across every possible solution.
+For the data below, I configured Algorithm X to perform an **exhaustive search** instead of stopping at the first solution. At this stage, collecting comprehensive data is more important than gaining a small speed boost. For each candidate solution, I check for **both 2x2 water violations and contiguous water violations**, rather than halting on the first rule broken. This approach ensures that all potential issues are captured across every possible solution.
 
 | Test Case | Actions | `me_reqs` | Solutions Checked | ❌ 2x2 | ❌ Water | Time (ms) |
 | :-------: | :-----: | :---------------: | :---------------: | :---: | :----------------: | :-------: |
@@ -97,7 +97,7 @@ These simple deductions already shrink the problem space noticeably. The table b
 
 ---
 
-As the table shows, even applying just these three starting techniques can significantly reduce the problem space for smaller puzzles. For example, Tests 1 - 3 require far fewer actions and 'me_requirement's compared to the exhaustive search without any logic applied. However, as the grid size and complexity increase, these simple deductions alone are not enough — many larger puzzles still time out. This demonstrates that **early logical pruning is useful but must be combined with more advanced techniques** to make larger Nurikabe puzzles tractable with Algorithm X.
+As the table shows, even applying just these three starting techniques can significantly reduce the problem space for smaller puzzles. Every test case that didn't time out requires far fewer actions and `me_requirement`s compared to the exhaustive search without any logic applied. However, as the grid size and complexity increase, these simple deductions alone are not enough — many larger puzzles still time out. This demonstrates that **early logical pruning is useful but must be combined with more advanced techniques** to make larger Nurikabe puzzles tractable with Algorithm X.
 
 ---
 
@@ -116,7 +116,6 @@ while True:
         for group_2 in new_groups:
             if group_1.adjacent(group_2):
                 group_2.merge(group_1)
-                changes_made = True
                 break
         else:
             new_groups.append(group_1)
@@ -127,7 +126,7 @@ while True:
     self.cell_groups = new_groups
 ```
 
-This code should look **familiar** if you completed the [“Test Your Skills” exercise](../17-enforcing-sameness/04-test-your-skills.md#test-your-skills) or the solution you used for [Networking](../17-enforcing-sameness/04-test-your-skills.md#a-few-xp-for-your-efforts). Essentially, it keeps merging adjacent groups until none of the remaining groups are adjacent.
+This code should look **familiar** if you completed either the [“Test Your Skills” exercise](../17-enforcing-sameness/04-test-your-skills.md#test-your-skills) or [Networking](../17-enforcing-sameness/04-test-your-skills.md#a-few-xp-for-your-efforts). The algorithm keeps merging adjacent groups until none of the remaining groups are adjacent.
 
 ---
 
@@ -163,12 +162,12 @@ Additionally, all neighbors for any completed island will be labeled as water an
 
 # Final Words
 
-It may feel like a lot of information has been shared, but there’s still plenty of work ahead. More than any other puzzle in this playground, **Nurikabe requires careful and well-optimized problem-space reduction** to make the grids solvable by Algorithm X within the time limit. Focus on combining logical deductions with efficient `CellGroup` management, and you’ll see much better performance. Good luck!
+It may feel like a lot of information has been shared, but there’s still plenty of work ahead. More than any other puzzle in this playground, **Nurikabe requires thorough problem-space reduction** to make the grids solvable by Algorithm X within the time limit. Focus on combining logical deductions with efficient `CellGroup` management, and you’ll see much better performance. Good luck!
 
 ---
 
 # Solving Logic Puzzles Logically
 
-All Nurikabe tests and validators can be solved without making any guesses. Click [here](../24-odds-and-ends/01-solving-with-logic-only.md) to see my ongoing progress toward solving as many logic puzzles as possible — strictly with reasoning, no guessing, and no backtracking.
+Many Nurikabe puzzles can be solved without making any guesses. Click [here](../24-odds-and-ends/01-solving-with-logic-only.md) to see my ongoing progress toward solving as many logic puzzles as possible — strictly with reasoning, no guessing, and no backtracking.
 
 <BR>

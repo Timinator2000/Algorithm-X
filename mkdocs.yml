@@ -158,9 +158,12 @@ plugins:
 extra_css:
   - stylesheets/extra.css
   - stylesheets/quiz.css
+  # - stylesheets/dark-mode-images.css
 
 extra_javascript:
   - javascripts/quiz.js
+  # - javascripts/dark-mode-images.js
+  # - javascripts/dark-mode-images-debug.js
 
 # theme: readthedocs
 

@@ -28,4 +28,10 @@ The second significant difference in Suguru is the puzzle requirement to make su
 
 Parsing the grid and setting up Algorithm X will take more effort than Sudoku required, but all test cases and validators can be passed, well within the time limit, with just what you know from the Mrs. Knuth puzzles and the earlier section on Sudoku. Later in the playground, I will revisit Suguru and discuss a few ideas you might use to make your solver significantly faster.
 
+---
+
+# Solving Logic Puzzles Logically
+
+Many Suguru puzzles can be solved without making any guesses. Click [here](../24-odds-and-ends/01-solving-with-logic-only.md) to see my ongoing progress toward solving as many logic puzzles as possible — strictly with reasoning, no guessing, and no backtracking.
+
 <BR>
