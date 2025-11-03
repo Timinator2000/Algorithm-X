@@ -1,0 +1,13 @@
+/* Base: light images visible, dark images hidden */
+.light-img { display: inline !important; }
+.dark-img { display: none !important; }
+
+/* Dark mode: show dark images, hide light images */
+html[data-md-color-scheme="slate"] .light-img { display: none !important; }
+html[data-md-color-scheme="slate"] .dark-img { display: inline !important; }
+
+/* Optional: center images */
+.dark-mode-image {
+  text-align: center;
+  margin: 1em 0;
+}
