@@ -148,9 +148,9 @@ Additionally, all neighbors for any completed island will be labeled as water an
 |   Test 2  |   43    |        89         |        115        |  92   |         104        |     <span style="color:green">3</span>     |
 |   Test 3  |   32    |        96         |         5         |   3   |          4         |     <span style="color:green">3</span>    |
 |   Test 4  |   214   |      9,213        |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|   Test 5  |    536  |    17,198         |         144       |   143 |        139         |  2000  |
+|   Test 5  |    536  |    17,198         |         144       |   143 |        139         |  <span style="color:green">2000</span>  |
 |   Test 6  |   294   |       9,559       |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|   Test 7  |    23    |        14        |         17        |   16   |          15         |  27  |
+|   Test 7  |    23    |        14        |         17        |   16   |          15         |  <span style="color:green">27</span>  |
 |   Test 8  |   280   |       1,104       |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
 |   Test 9  |   726  |      10,198      |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
 |  Test 10  |   306   |       1,188       |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
