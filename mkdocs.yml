@@ -161,6 +161,7 @@ extra_css:
 
 extra_javascript:
   - javascripts/quiz.js
+  - javascripts/counter.js
 
 # theme: readthedocs
 
