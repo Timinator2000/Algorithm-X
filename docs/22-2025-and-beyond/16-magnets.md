@@ -20,7 +20,7 @@ __Algorithm X Complexity:__
 
 A basic **Algorithm X** setup will get you most of the way there, but the toughest test cases require a bit of extra optimization — something you can approach in several ways. As you might expect by now, I chose a round of logical **problem-space reduction** that trimmed the hardest grids down to smaller, solvable cores that Algorithm X could finish effortlessly.
 
-This puzzle is based on [**Magnets**](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/js/magnets.html) from Simon Tatham’s *Portable Puzzle Collection*. Logical deduction feels a bit more elusive here than in many other puzzles, but playing a few rounds by hand is a great way to uncover useful strategies and develop a stronger intuition for the puzzle’s magnetic dynamics.
+This puzzle is based on [Magnets from Simon Tatham’s *Portable Puzzle Collection*](https://www.chiark.greenend.org.uk/~sgtatham/puzzles/js/magnets.html). Logical deduction feels a bit more elusive here than in many other puzzles, but playing a few rounds by hand is a great way to uncover useful strategies and develop a stronger intuition for the puzzle’s magnetic dynamics.
 
 ---
 
