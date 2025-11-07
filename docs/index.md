@@ -74,6 +74,7 @@ __Great Candidates for Algorithm X:__
 <BR>[🎮 Pips](22-2025-and-beyond/11-pips.md) (+50 XP)
 <BR>[🎮 Battleship Solitaire](22-2025-and-beyond/15-battleship-solitaire.md) (+50 XP)
 <BR>[Nurikabe](22-2025-and-beyond/17-nurikabe.md) (+50 XP)
+<BR>[The L-Game: Counting Board States](22-2025-and-beyond/18-the-l-game-counting-board-states.md) (+50 XP)
 
 **AWAITING APPROVAL on the [CodinGame Contribution Page](https://www.codingame.com/contribute/community)**
 <BR>[🎮 Magnets](22-2025-and-beyond/16-magnets.md) (+50 XP)
@@ -92,7 +93,7 @@ I wholeheartedly believe that working through this playground and the accompanyi
 * You will experience the compelling nature of reusable software architectures.
 * You will find every puzzle listed above significantly easier than it would have been otherwise. I’m not saying they’ll all be easy, but they will indeed be easier.
 * You will have a lot of fun.
-* You will earn up to __3100 [CodinGame](https://www.codingame.com) XP!__
+* You will earn up to __3150 [CodinGame](https://www.codingame.com) XP!__
 
 ---
 

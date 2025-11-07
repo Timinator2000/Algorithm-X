@@ -5,6 +5,7 @@
 | **Coming Soon** | 🎮 [Connect the Colours - Part 1](../22-2025-and-beyond/12-connect-the-colours-part-1.md) |
 | **Coming Soon** | 🎮 [Connect the Colours - Part 2](../22-2025-and-beyond/13-connect-the-colours-part-2.md) |
 | **Coming Soon** | 🎮 [Magnets](../22-2025-and-beyond/16-magnets.md) |
+| November 7, 2025 | [The L-Game: Counting Board States](../22-2025-and-beyond/18-the-l-game-counting-board-states.md) added. |
 | November 6, 2025 | [Nurikabe](../22-2025-and-beyond/17-nurikabe.md) added. |
 | November 6, 2025 | 🎮 [Battleship Solitaire](../22-2025-and-beyond/15-battleship-solitaire.md) added. |
 | October 5, 2025 | [🎮 Pips](../22-2025-and-beyond/11-pips.md) added. |

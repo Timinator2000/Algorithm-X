@@ -141,6 +141,7 @@ nav:
     - Battleship Solitaire: 22-2025-and-beyond/15-battleship-solitaire.md
     - Magnets: 22-2025-and-beyond/16-magnets.md
     - Nurikabe: 22-2025-and-beyond/17-nurikabe.md
+    - The L-Game - Counting Board States: 22-2025-and-beyond/18-the-l-game-counting-board-states.md
   - Solver Translations:
     - Translations Overview: 23-solver-translations/01-overview.md
     - Ruby: 23-solver-translations/02-ruby.md
