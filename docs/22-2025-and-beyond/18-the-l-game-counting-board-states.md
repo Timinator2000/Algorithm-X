@@ -28,11 +28,8 @@ It sounds simple — and it is, at first. Algorithm X is a perfect fit for count
 
 # Combinatorics to the Rescue
 
-**Combinatorics** is the math of counting possibilities — figuring out *how many ways* something can happen without listing every option. Once you’ve set up Algorithm X, the trick is to use combinatorial reasoning to lighten its workload. For example, when both Ls are placed, the remaining N blockers can occupy any combination of the empty cells, which can be counted with the familiar **n choose k** formula.
-
-To solve all test cases within the time limit, you’ll need some well-designed combinatorics to bridge the gap between brute-force enumeration and pure math.
+**Combinatorics** is the math of counting possibilities — figuring out *how many ways* something can happen without listing every option. Once you’ve set up Algorithm X, the trick is to use combinatorial reasoning to lighten its workload. To solve all test cases within the time limit, you’ll need some well-designed combinatorics to bridge the gap between brute-force enumeration and pure math.
 
 Good luck!
-
 
 <BR>
