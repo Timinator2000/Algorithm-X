@@ -74,12 +74,16 @@ I have not solved this puzzle yet. There are 60 random tests and I am only getti
 
 >I highly recommend not to try and use a brute force solution as some of the grids are very big. Also, you may not be able to solve all the grids by deduction alone so may have to guess one or two squares. :P
 
-As for a better algorithm, Donald Knuth has something to say about that! (credit again goes to @5DN1L for finding this material). Are Binary Decision Diagrams (BDDs and ZDDs) possibly what we need? I don't know the answer to that, but here are a couple of links that might lead you to some answers:
+As for a better algorithm, Donald Knuth has something to say about that! (credit again goes to @5DN1L for finding this material). Are Binary Decision Diagrams (BDDs and ZDDs) possibly what we need? I don't know the answer to that, but here are a few links that might lead you to some answers:
 
-- <a href="https://www.youtube.com/watch?v=SQE21efsf7Y">Stanford Lecture: Donald Knuth - "Fun With Binary Decision Diagrams (BDDs)" (June 5, 2008)</a>
+[Ben Lynn - BDDs, ZDDs, Nonograms, etc.](https://crypto.stanford.edu/pbc/notes/zdd/)
 
-- <a href="https://www.youtube.com/watch?v=-HzQYeqS9Wc">Stanford Lecture: Donald Knuth—"Fun With Zero-Suppressed Binary Decision Diagrams (ZDDs)" (2008)</a>
+<BR>
 
-- [Ben Lynn - BDDs, ZDDs, Nonograms, etc.](https://crypto.stanford.edu/pbc/notes/zdd/)
+{{ youtube("SQE21efsf7Y", "Fun With Binary Decision Diagrams (BDDs) (June 5, 2008)") }}
+
+<BR>
+
+{{ youtube("-HzQYeqS9Wc", "Fun With Zero-Suppressed Binary Decision Diagrams (ZDDs) (2008)") }}
 
 <BR>

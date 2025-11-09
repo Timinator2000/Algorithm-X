@@ -22,6 +22,8 @@ On the next page, I'll share some ideas for optimizing your search for possible 
 
 ![Connect the Colours 2x2](ConnectColoursPaths2x2.png){ class="center-image" }
 
+<BR>
+
 Consider a simple 2x2 grid with one pair of endpoints, the bottom-left corner and the top-right corner. There are exactly two distinct paths connecting these points. These are known as __nonintersecting (self-avoiding) rook paths__, adhering to two key rules:
 
 1. A path cannot intersect itself.
@@ -36,11 +38,15 @@ Consider a simple 2x2 grid with one pair of endpoints, the bottom-left corner an
 
 Now, let’s examine a 3x3 grid. To simplify, consider the possible paths after the first two moves from the bottom-left to the top-right corner. There are four possible combinations of initial moves as shown below.
 
+<BR>
+
 ![Connect the Colours 3x3 (1 of 2)](ConnectColoursPaths1.png){ class="center-image" }
 
 <BR>
 
 ![Connect the Colours 3x3 (2 of 2)](ConnectColoursPaths2.png){ class="center-image" }
+
+<BR>
 
 After the initial two steps, each path branches into three additional options. This results in __12 possible paths__ for a 3x3 grid.
 
@@ -109,6 +115,6 @@ This leaves me with two research questions on my to-do list:
 
 # h/t Depeche Mode
 
-[Depeche Mode - Just Can't Get Enough (TOTP 1981)](https://www.youtube.com/watch?v=5WHcjGFihck)
+{{ youtube("_6FBfAQ-NDE", "Depeche Mode - Just Can't Get Enough") }}
 
 <BR>

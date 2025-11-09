@@ -24,17 +24,29 @@ A powerful object model can get you started in a good direction, and I invite yo
 
 The same model appears to work for Haunted Manor. Let’s call the groups `Sightline`s and say that each `Sightline` groups together many `Cell`s, while each `Cell` can be a member of many `Sightline`s. Just as was done in High-Rise Buildings, it is tempting to create the following object model.
 
+<BR>
+
 ![Haunted Manor Classes](HauntedManor1.png){ class="center-image" }
+
+<BR>
 
 Anytime we encounter a many-to-many relationship, it can be beneficial to step back and consider what the relational database folks might do. Since relational databases don’t directly support many-to-many relationships, they are implemented using a _junction table_ (aka _bridge table_ or _associative table_). The _junction table_ contains foreign keys referencing both tables, and breaks the many-to-many relationship into two one-to-many relationships. In the next diagram, I have inserted a class called a `Visual` to act similar to a _junction table_ between the `Sightline` class and the `Cell` class. 
 
+<BR>
+
 ![Haunted Manor Junction Class](HauntedManor2.png){ class="center-image" }
+
+<BR>
 
 In coding, we can often move forward without this third class, but not always. Adding this _junction_ class makes sense when each instance has its own interesting attributes. Each `Visual` represents an instance of one `Cell` showing up in one `Sightline`. Are there any important attributes associated with an instance of one `Cell` in a particular`Sightline`? Yes, there is!
 
 For each `Visual`, it is important to know if that `Visual` exists due to normal line of sight or due to reflected line of sight. The concept of a normal, line-of-sight `Visual` vs. a reflection only exists inside the relationship between one particular `Cell` and one particular `Sightline`. In the following diagram, I have added a single Boolean attribute called `reflection`.
 
+<BR>
+
 ![Haunted Manor Final](HauntedManor3.png){ class="center-image" }
+
+<BR>
 
 Our class diagram tells a different story now. Each `Cell` has a relationship with many `Visual`s, each `Sightline` has a relationship with many `Visual`s, and each `Visual` has a relationship with exactly one `Cell` and exactly one `Sightline`. And the best part is that each `Visual` knows if it exists due to normal line of sight or reflected line of sight.
 
@@ -58,6 +70,8 @@ I love everything about this puzzle. Creating an abstract object model is challe
 
 I’m no fan of scary movies, but some of us grew up with various television shows about ghosts and goblins and hopefully this puzzle brings back fond memories. If you get stuck solving this puzzle, take a break and look for inspiration in this classic 1984 subject-matter video:
 
-[Ray Parker Jr. - Ghostbusters (Official Video)](https://www.youtube.com/watch?v=Fe93CLbHjxQ)
+<BR>
+
+{{ youtube("Fe93CLbHjxQ", "Ray Parker Jr. - Ghostbusters (Official Video)") }}
 
 <BR>

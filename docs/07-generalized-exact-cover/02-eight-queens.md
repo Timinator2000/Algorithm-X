@@ -24,7 +24,11 @@ Obviously, the first requirement is that 8 queens be placed somewhere on the che
 
 But, what about the diagonals? Take a look at the following image I found on [math.stackexchange.com]( https://math.stackexchange.com/questions/2811398/how-do-i-calculate-how-many-ways-14-non-attacking-bishops-can-be-placed-on-a-che)
 
-![Chess Diagonals](chessdiagonals.png)
+<BR>
+
+![Chess Diagonals](chessdiagonals.png){ class="center-image" }
+
+<BR>
 
 There are 15 diagonals in the image and those are just the up-and-to-the-right diagonals. That doesn’t include another 15 down-and-to-the-right diagonals. We only have 8 queens, making it impossible to fully cover either set of 15 diagonals. However, if a diagonal is occupied by a queen, it is critical that no other queen be in that same diagonal.
 
