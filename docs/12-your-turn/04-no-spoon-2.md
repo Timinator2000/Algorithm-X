@@ -12,7 +12,11 @@ __Algorithm X Complexity:__ Strap in and hold on tight!
 
 When [we last discussed There is No Spoon – Episode 2](../10-your-turn/05-no-spoon-2.md), I left you with the following class diagram:
 
+<BR>
+
 ![No Spoon 2 - OOD](NoSpoon2ClassesWithLists.png){ class="center-image" }
+
+<BR>
 
 To do some problem-space reduction, it seems reasonable we will add a `reduce_()` method to one or more of the classes, but which ones? Distributing behavior to classes can be difficult and sometimes easy to argue one way or another. Let’s look at each class individually.
 
@@ -32,11 +36,19 @@ To do some problem-space reduction, it seems reasonable we will add a `reduce_()
 
 Based on everything said above, the following methods might be useful in each of the classes:
 
+<BR>
+
 ![No Spoon 2 - Classes with Methods](NoSpoonClassMethods.png){ class="center-image" }
+
+<BR>
 
 The next diagram captures one sequence of events that could result after a call to `reduce_()` on a particular `Node`. 
 
+<BR>
+
 ![No Spoon 2 - Sequence Diagram](NoSpoonSequenceDiagram.png){ class="center-image" }
+
+<BR>
 
 A `Node` determines that a link can be placed in a `Channel`. The `Node` asks the `Channel` to place a link. The `Channel` sends an event to every `Intersection` it passes through telling each `Intersection` to make the path one-way. Any `Intersection` that has a second `Channel` sends a message to the second `Channel` to have that `Channel` disabled. Finally, the original `Channel` needs to tell the `Node`s on either end to lower their needed link counts appropriately. Any `Node` that has all its links fully satisfied makes sure its connected `Channel`s are all disabled.
 

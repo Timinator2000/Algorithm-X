@@ -20,7 +20,11 @@ The [first time Futoshiki was discussed](../08-your-turn/09-futoshiki-solver.md)
 
 I think we all like to reuse code wherever possible. Here are a couple of conceptual ideas we know to be true:
 
+<BR>
+
 ![Futoshiki Classes](FutoshikiClasses.png){ class="center-image" }
+
+<BR>
 
 In the final Sudoku Challenge, I suggested each cell having pointers to the groups to which it belongs. In Futoshki, each cell only belongs to a row and a column. There are no boxes. Rather than addressing this difference between a `SudokuCell` and `FutoshikiCell`, I suggest going back to the basic version of a `SudokuCell` that did not know about its groups. The basic version is plenty to completely solve all Futoshiki test cases.
 
@@ -28,7 +32,11 @@ The Futoshiki input is somewhat tougher to parse, but you can use your exact sam
 
 What I am about to say should not be a surprise and I hope I have not made a mistake by not issuing a spoiler alert, but… the inequalities are <u>really</u> important. They are so important; I suggest you add another class to your object model.
 
+<BR>
+
 ![Futoshiki Classes Including Inequality](FutoshikiWithInequality.png){ class="center-image" }
+
+<BR>
 
 Every `Inequality` needs two pointers. The first points to the `SudokuCell` that must be less than the other side. The second pointer points to the `SudokuCell` that must be greater than the other side. The only critical `Inequality` method is `reduce_()`.
 

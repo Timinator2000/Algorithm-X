@@ -6,6 +6,8 @@ Once you understand that all variables in Python are pointers to objects, your P
 
 On the website [Python Morsels](https://www.pythonmorsels.com/variables-are-pointers/), Trey Hunner does a great job explaining how variables work in Python.
 
+<BR>
+
 <div class="youtube-video">
   <iframe
     src="https://www.youtube-nocookie.com/embed/g-iNz91YyGw"
@@ -13,6 +15,8 @@ On the website [Python Morsels](https://www.pythonmorsels.com/variables-are-poin
     allowfullscreen>
   </iframe>
 </div>
+
+<BR>
 
 For even more detail, check out this write-up on [LaunchSchool.com](https://launchschool.com/books/python/read/variables_pointers).
 

@@ -1,6 +1,6 @@
 # Using Memory to Make Algorithm X Smarter
 
-The following code block is identical to the last code block except for 3 lines added to override the `_process_row_selection(self, row)` method and give Algorithm X the necessary memory to avoid duplicates. Copy this code into your coding environment and run it to see Algorithm X eliminate the duplicates!
+The following code block is identical to the last code block except for 3 lines added to override the `_process_row_selection(self, row)` method and give Algorithm X the necessary memory to avoid duplicates. **Copy the following code into your coding environment and run it to see Algorithm X eliminate the duplicates!**
 
 ```python
 # Unless your coding environment will let you create an AlgorithmX package,

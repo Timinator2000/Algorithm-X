@@ -2,7 +2,11 @@
 
 Let's take another look at the Object-Oriented Design model. Everything Algorithm X needs is right here:
 
+<BR>
+
 ![No Spoon 2 - OOD](ClassesWithLists.png){ class="center-image" }
+
+<BR>
 
 This is one of the toughest Algorithm X puzzles on [CodinGame](https://www.codingame.com) due to the amount of multiplicity. The requirements are straightforward. Just like Ella needed some number of lessons for Mrs. Knuth – Part III, each Node needs some number of links.
 

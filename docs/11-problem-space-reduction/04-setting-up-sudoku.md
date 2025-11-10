@@ -4,7 +4,11 @@ A few pages ago, I intentionally drew the original Sudoku grid as 81 disconnecte
 
 Conceptually, I create two classes, one for a `SudokuCell` and another for a `SudokuGroup`. The `SudokuGroup` will have an attribute that is a list of pointers to the 9 `SudokuCell`s that are part of that group.
 
+<BR>
+
 ![Sudoku Data Structure](SudokuDataStructure.png){ class="center-image" }
+
+<BR>
 
 In the interest of code reuse across all Sudoku puzzles, my SudokuSolver will require the following:
 

@@ -34,7 +34,11 @@ Going back to [Learn-Sudoku.com](https://learn-sudoku.com), let's add another fa
 
 [Learn-Sudoku.com](https://learn-sudoku.com) has several more reduction strategies. Can you implement enough to solve __every__ traditional Sudoku puzzle with logic alone? I will keep my own progress updated in a table at the end of this playground. If you take on this challenge, I do have one suggestion for your data structure. I have found it helpful if each cell has pointers to the groups to which it belongs. Conceptually, the object model has one small addition shown below.
 
+<BR>
+
 ![Sudoku Data Structure](SudokuDataStructure2.png){ class="center-image" }
+
+<BR>
 
 As the `SudokuGroup`s are being filled with `SudokuCell`s, it is easy enough to give each cell 3 pointers, one to each of the groups where it is a member. I have used a named tuple to hold these three pointers. In the constructor, the new `groups` attribute is initialized to `None`.
 

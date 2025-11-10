@@ -16,7 +16,11 @@ Suguru is full of wonderful opportunities for problem-space reduction. Just a co
 
 The cages make Suguru a bit tougher to get organized at first, but a `SuguruCell` is very similar to a `SudokuCell` and a `SuguruGroup` is very similar to a `SudokuGroup`. The key differences are the number of groups to which a cell belongs and the range of candidates for each cell. 
 
+<BR>
+
 ![Suguru Classes](SuguruClasses.png){ class="center-image" }
+
+<BR>
 
 Unless you are trying to build a generic logic puzzle structure, I see no need to inherit from a common class at this time, but you should be able to reuse some code. Ultimately, you will want to parse the input and end up with the following two attributes in your `SuguruSolver` class:
 

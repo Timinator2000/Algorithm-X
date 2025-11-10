@@ -18,7 +18,11 @@ There are many ways to approach problem-space reduction. You will need to choose
 
 Consider __Test Case 1: Very Easy__ from [Sudoku Solver](../04-your-turn/02-9x9-sudoku.md) on [CodinGame](https://www.codingame.com). In the test cases, a `0` represents an unknown cell. The following diagram leaves the unknown cells empty.
 
+<BR>
+
 ![Sudoku Test Case 1](sudoku01.png){ class="center-image" }
+
+<BR>
 
 From the problem statement:
 
@@ -26,7 +30,11 @@ From the problem statement:
 
 In the following diagram, I have assigned numbers to each row, column and box (sub-grid square). Because Python is 0-indexed, I have started numbering at zero.
 
+<BR>
+
 ![Rows, Columns and Boxes](sudoku02.png){ class="center-image" }
+
+<BR>
 
 It is time to use logic to find more numbers in the Sudoku before starting any backtracking.
 

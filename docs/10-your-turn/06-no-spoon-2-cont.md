@@ -2,7 +2,11 @@
 
 We just finished building the following detailed gameboard and a link can be placed on any dashed line.
 
+<BR>
+
 ![Full Gameboard](FullGameboard.png){ class="center-image" }
+
+<BR>
 
 ---
 
@@ -10,7 +14,11 @@ We just finished building the following detailed gameboard and a link can be pla
 
 Before we identify requirements and actions for Algorithm X, let’s take an inventory of what we see on our gameboard. We see a bunch of Nodes, a bunch of Intersections and a bunch of channels. Let’s create a class for each of these.
 
+<BR>
+
 ![No Spoon 2 - Classes](Classes.png){ class="center-image" }
+
+<BR>
 
 How will the relationships among instances of these three classes be managed? What information is needed to recreate the gameboard from scratch? Consider the following:
 
@@ -30,11 +38,19 @@ How will the relationships among instances of these three classes be managed? Wh
  
 These observations lead us to create the following object-oriented model of our problem space. 
 
+<BR>
+
 ![No Spoon 2 - OOA](ClassesWithRelationships.png){ class="center-image" }
+
+<BR>
 
 I am streamlining the process a bit, but if we add a few attributes to the classes, we can make our model a bit more concrete. Some might call these features the difference between the object-oriented analysis model of the problem space and an object-oriented design model that guides us to an implementation.
 
+<BR>
+
 ![No Spoon 2 - OOD](ClassesWithLists.png){ class="center-image" }
+
+<BR>
 
 Looking at the problem space this way is probably not the first thought most people have. It is likely more common to think each Node will need to know about its neighbor Nodes. In the model created here, Nodes do not know anything about other Nodes on the gameboard. Much of the information a Node needs access to is found in its Channels. A Node is interested in how many Channels it is connected to and how much link capacity those Channels provide. A Channel becomes the manager of the relationship between 2 Nodes. Without the Channel, those 2 Nodes really don't have any relationship at all. It is important to remember where this perspective originated. It came from thinking of the problem as a gameboard and a number of tiles that need to be placed on the gameboard.
 

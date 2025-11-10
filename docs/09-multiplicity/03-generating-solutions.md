@@ -16,7 +16,7 @@ Because Drew and Ella are a troublesome pair and Drew’s only availability is o
 
 In the following code block, I have hard-coded the setup for the example test case. At this point, the schedule options are not scored. I am simply printing all the options returned by Algorithm X. There should be two possible solutions from which we will need to determine the schedule with the best score. Both solutions will have Ella on Monday at 8 and Tuesday at 8, while Lola will be Friday at 1. The only difference between the two options will be Drew’s location, either Friday at 10 or Friday at 11.
 
-Copy the code into your coding environment and run it. There is a quiz at the bottom of this page!
+**Copy the following code into your coding environment and run it. There is a quiz at the bottom of this page!**
 
 ```python
 # Unless your coding environment will let you create an AlgorithmX package,
@@ -153,9 +153,9 @@ Understanding the multiplicity can be challenging. Keep in mind that scheduling 
 
 # Quiz Time!
 
-How many solutions did Algorithm X find?
+??? question "How many solutions did Algorithm X find?"
+    <div class="quiz" data-id="multiplicity_quiz1"></div>
 
-??? success "Show answer"
-    The correct answer is 4. In the next two sections, I will dig deeper into what is happening and discuss how to teach Algorithm X to do better.
+Did you get the result you expected? Either way, don’t worry. In the next two sections, I will dig deeper into what is happening and discuss how to teach Algorithm X to do better.
 
 <BR>

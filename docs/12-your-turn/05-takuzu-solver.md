@@ -20,10 +20,13 @@ Unlike many logic puzzles, Takuzu has very limited options. Each cell can be a `
 
 Let's start with an excerpt from the goal statement for the puzzle:
 
->The objective is to fill the grid with 1s and 0s, constraints are :
-> - an equal number of 1s and 0s in each row and column
-> - no more than two of either number adjacent to each other
-> - no identical rows and no identical columns
+>The objective is to fill the grid with 1s and 0s, constraints are:
+>
+>* an equal number of 1s and 0s in each row and column
+>
+>* no more than two of either number adjacent to each other
+>
+>* no identical rows and no identical columns
 
 The basic Algorithm X requirements and actions seem straightforward. Every cell must be covered with a `0` or a `1`, while the actions are all putting a `0` or a `1` into some cell. Is everything truly as straightforward as it appears? Were you able to see the multiplicity in this puzzle?
 
@@ -58,7 +61,11 @@ This puzzle is a great example of the power of mutual exclusivity. With decent p
 
 To solve all test cases and validators, you will need to do some problem-space reduction. Takuzu has a very similar structure to Sudoku. There are cells and those cells are grouped into rows and columns, but because the cells can only contain zeros and ones, I found little code I could reuse, other than the overall structure.
 
+<BR>
+
 ![Takuzu Classes](TakuzuClasses.png){ class="center-image" }
+
+<BR>
 
 If you use this structure, setting up the grid, the rows and the columns is extremely similar to setting up a Sudoku.
 
