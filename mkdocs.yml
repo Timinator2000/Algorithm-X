@@ -206,6 +206,7 @@ extra_css:
 extra_javascript:
   - javascripts/quiz.js
   - javascripts/counter.js
+  - javascripts/page-numbers.js
 
 
 markdown_extensions:
