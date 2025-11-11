@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       Object.assign(counter.style, {
         position: "fixed",
-        top: "0.6rem",
+        top: "0.8rem",
         left: "50%",
         transform: "translateX(-50%)",
         background: "var(--md-default-bg-color)",
