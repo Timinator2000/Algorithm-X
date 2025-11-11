@@ -4,7 +4,11 @@ To have a conversation about customizing Algorithm X, it is necessary to first u
 
 In the next graphic, I have copied Knuth's algorithm as written on Wikipedia. I strongly recommend you work your way through the step-by-step Algorithm X example provided on Wikipedia to gain an understanding of how Algorithm X processes the matrix rows and columns to find solutions.
 
+<BR>
+
 ![Algorithm X](AlgorithmX.png){ class="center-image" }
+
+<BR>
 
 ---
 

@@ -14,7 +14,11 @@ __Algorithm X Complexity:__ Uniqueness Provides a Challenge
 
 Given two horizontal words and two vertical words, this puzzle challenges us to determine whether a valid crossword puzzle can be constructed such that all four words intersect pairwise. In the diagram below, each word's letters have been omitted, but it is easy to imagine how a properly constructed grid might appear.
 
+<BR>
+
 ![Crossword](Crossword1.png){ class="center-image" }
+
+<BR>
 
 To make things slightly more challenging, the author adds an extra twist: we are required to print the solved crossword grid when there is exactly one valid solution. Whether or not you use Algorithm X, constructing the grid is no easy feat — even when you already know where the four words must go!
 
@@ -24,7 +28,11 @@ I found it particularly interesting to frame this puzzle as an exact cover probl
 
     The first thing to notice about this puzzle is that all valid solutions form a __"box"__, as illustrated in the diagram below. Each box can be as small as 3×3, or as large as `min(h1 length, h2 length) × min(v1 length, v2 length)`. Regardless of its size, the box always plays a central role.
 
+    <BR>
+
     ![Crossword - Box](Crossword2.png){ class="center-image" }
+
+    <BR>
 
     From the perspective of tiles on a gameboard, each solution consists of just four actions: placing one word across the top, a second across the bottom, a third down the left side, and a fourth down the right. Simple, right? But is it enough to just match four words to four sides? No, it is not.
 
@@ -49,7 +57,11 @@ I found it particularly interesting to frame this puzzle as an exact cover probl
 
     Although only six requirements need to be colored, [maintaining consistency across those colors](../15-coloring-your-requirements/01-coloring-your-requirements.md) is what guarantees valid solutions.
 
+    <BR>
+
     ![Crossword (Coloring)](Crossword3.png){ class="center-image" }
+
+    <BR>
 
     Each of these six requirements is colored exactly twice, creating a structure that is highly conducive to using mutual exclusivity.
 
@@ -63,7 +75,11 @@ I found it particularly interesting to frame this puzzle as an exact cover probl
 
     This technique also applies to the box sides. For instance, the `Top` having a length of `3` is mutually exclusive with the `Bottom` having a length of `4`.
 
+    <BR>
+
     ![Crossword Mutual Exclusivity](Crossword4.png){ class="center-image" }
+
+    <BR>
 
     There is a fair amount of optimization that can be done when identifying requirements for mutual exclusivity. Only certain letters are valid for each corner in each direction, and only certain lengths are legitimate for each side. Keeping your list of `me_requirements` as small and focused as possible is crucial if you want to maximize speed and efficiency.
 

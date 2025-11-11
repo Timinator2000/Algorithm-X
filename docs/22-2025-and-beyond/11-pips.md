@@ -10,7 +10,11 @@ __Algorithm X Complexity:__ Nice Exact Cover / Object-Oriented Design Opportunit
 
 ---
 
+<BR>
+
 ![Pips](Pips.png){ class="center-image" }
+
+<BR>
 
 ---
 

@@ -10,7 +10,11 @@ __Algorithm X Complexity:__ A Bit of Everything
 
 ---
 
+<BR>
+
 ![Battleship Solitaire](BattleshipSolitaire.png){ class="center-image" }
+
+<BR>
 
 ---
 

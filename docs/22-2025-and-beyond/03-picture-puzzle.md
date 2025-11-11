@@ -24,15 +24,27 @@ Because I found the problem-space reduction for this puzzle so enjoyable, I am g
   
     Is this Picture Puzzle really much different than a [Sudoku](../11-problem-space-reduction/01-problem-space-reduction.md)? The pieces need to be properly placed on a grid of locations I call `PuzzleCell`s. Let’s assume we have a 5x5 puzzle to solve. The basic puzzle grid is shown in the next figure. Just like in Sudoku, I put space between each `PuzzleCell`. My reasons for doing this will be revealed shortly.
 
+    <BR>
+
     ![Picture Puzzle Grid](PicturePuzzleGrid.png){ class="center-image" }
+
+    <BR>
 
     Before digging deeper into the gameboard, consider the pieces for a moment. When doing a picture puzzle on your kitchen table, you might first sort the pieces into the three groups shown below.
 
+    <BR>
+
     ![Picture Puzzle Piece Types](PicturePuzzlePieceTypes.png){ class="center-image" }
+
+    <BR>
 
     Corner pieces have 2 puzzle borders, non-corner edge pieces have a single puzzle border and middle pieces have no puzzle borders. This initial sorting already limits the candidates for each cell. In the following diagram, the color of each cell corresponds to the group of pieces that make up the cell’s initial candidates.
 
+    <BR>
+
     ![Picture Puzzle Cell Candidates](PicturePuzzleCellCandidates.png){ class="center-image" }
+
+    <BR>
 
     Does this mean there are only 4 candidates for each corner piece? Yes, it does, but that is a bit misleading. A puzzle piece alone is not enough to properly distinguish one candidate from another in the middle of the puzzle. On the corners and edges, the puzzle border limits each puzzle piece to a single possible rotation. Middle pieces are different. 
 
@@ -40,11 +52,19 @@ Because I found the problem-space reduction for this puzzle so enjoyable, I am g
 
     In the next figure, the blue rectangles represent the puzzle border.
 
+    <BR>
+
     ![Picture Puzzle Border](PicturePuzzleBorder.png){ class="center-image" }
+
+    <BR>
 
     These borders are interesting because they too have candidates. I have intentionally spaced out the blue rectangles to make them align with their adjacent pieces. The middle pieces also have interesting borders. Adding all the piece borders to the diagram results in:
 
+    <BR>
+
     ![Picture Puzzle Piece Borders](PicturePuzzlePieceBorders.png){ class="center-image" }
+
+    <BR>
 
     Why are these borders interesting? Each border has a set of possible values. Look at the edge pieces first. Each edge piece border, adjacent to the puzzle border, only has a single possible value. Keeping track of possible values for every blue border is critical to reducing the candidates for each cell.
 
@@ -62,7 +82,11 @@ Because I found the problem-space reduction for this puzzle so enjoyable, I am g
 
     In the next diagram, I have greyed out either the horizontal borders or the vertical borders.
 
+    <BR>
+
     ![Picture Puzzle Horizontal vs Vertical Borders](PicturePuzzleHorizontalVertical.png){ class="center-image" }
+
+    <BR>
 
     These figures make it easier to see a 6 x 5 array of horizontal borders and a 5 x 6 array of vertical borders. Ultimately every cell needs to know about 4 borders, the top, bottom, left and right. The perspective demonstrated in the figure above nicely facilitates assigning borders to a cell based on that cell’s row and column.
 

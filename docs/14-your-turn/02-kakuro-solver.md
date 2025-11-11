@@ -16,11 +16,19 @@ To solve Kakuro Solver, you need to do more problem space reduction than you hav
 
 Consider __Example 1__ from the puzzle goal. The Kakuro grid is a 3x3 grid, but only 4 of the 9 cells need to be determined. The other 5 cells are either unused or informational. The important part of a Kakuro is how the cells are grouped together and what the sum of each group needs to be.
 
+<BR>
+
 ![Kakuro Example 1](Kakuro1.png){ class="center-image" }
+
+<BR>
 
 The next graphic summarizes all important information on the Kakuro grid in a way that resembles the cell and group approach we have used many times before.
 
+<BR>
+
 ![Kakuro Example 1 Summary](Kakuro2.png){ class="center-image" }
+
+<BR>
 
 It might be helpful to keep a copy of the original Kakuro 3x3 grid considering the output needs all elements of the 3x3 grid, including proper values for the 4 empty cells.
 
@@ -43,10 +51,12 @@ This puzzle validates the choice of a dictionary for the grid over any type of 2
 Unlike many of the puzzles covered so far, the goal statement does not give a name to the groups of cells. The puzzle statement tells us:
 
 >Rules:
+>
 >- All empty cells need to be filled in with digits, in such a way that all the given sums are respected.
 >- You are not allowed to use the same digit more than once to obtain a given sum.
 
->- Cell with backslash : the required sum of the corresponding cells.
+>Cell with backslash : the required sum of the corresponding cells.
+>
 >- X\ : the vertical sum X of the cells downwards,
 >- \X : the horizontal sum X of the cells to the right,
 >- X\Y : the vertical sum X of the cells downwards, and the horizontal sum Y of the cells to the right.
@@ -85,7 +95,7 @@ Start by setting up Algorithm X with no problem-space reduction. A basic Algorit
 
 ??? note "Spoiler Alert: What is meant by a "hardcore" Algorithm X setup?"
   
-    Cages present significant opportunity for optional requirements to handle mutual exclusivity. Adding these me_requirements will add significant speed to Algorithm X. Is there a way to determine that placing a number in a cell makes it impossible to place another number in another cell? Remember, you are looking for knowledge that is not already captured by existing requirements, such as no duplicate numbers allowed in a cage.
+    Cages present significant opportunity for optional requirements to handle mutual exclusivity. Adding these `me_requirements` will add significant speed to Algorithm X. Is there a way to determine that placing a number in a cell makes it impossible to place another number in another cell? Remember, you are looking for knowledge that is not already captured by existing requirements, such as no duplicate numbers allowed in a cage.
 
 ---
 

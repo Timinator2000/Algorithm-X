@@ -60,8 +60,22 @@ const quizzes = {
     },
     answer: "B",
     explanation: ""
+  },
+  all_or_none_quiz1: {
+    type: "single",
+    question: "",
+    options: {
+      A: "1 - Please make the next question harder.",
+      B: "2 - I'm just guessing.",
+      C: "3 - I've always liked the number 3.",
+      D: "4 - I'm excluding x and y as they should only be used in math equations.",
+      E: "5 - Don't insult me, I know how to count!"
+    },
+    answer: "C",
+    explanation: "The answer is 3, but why?"
   }
 };
+
 
 // --- Render quizzes ---
 function renderQuizzesOnPage() {

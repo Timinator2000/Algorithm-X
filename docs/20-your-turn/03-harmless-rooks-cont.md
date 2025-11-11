@@ -2,7 +2,11 @@
 
 Harmless Rooks fits the same cells and groups model used on many of the previous puzzles. Each open `Square` on the board has a relationship with exactly 2  `AttackLine`s and each `AttackLine` has a relationship with 1 or more `Square`s.
 
+<BR>
+
 ![Harmless Rooks Classes](HarmlessRooksClasses.png){ class="center-image" }
+
+<BR>
 
 A `Square` is uniquely identified by its `row` and `col`, but it is a bit more challenging to uniquely identify an `AttackLine`. In the class diagram above, I have added an integer `id` for each `AttackLine`. Each class also has a `reduce_()` method as seen in many puzzles before.
 
@@ -12,11 +16,19 @@ A `Square` is uniquely identified by its `row` and `col`, but it is a bit more c
 
 What does it mean to reduce a `Square` or an `AttackLine`? Somehow, we need to shrink the size of the larger boards by placing rooks logically. Consider the following diagram where three `X` locations isolate a single `Square`:
 
+<BR>
+
 ![Rook Placement](RookPlacement.png){ class="center-image" }
+
+<BR>
 
 Obviously, a rook can be placed on the isolated `Square`. Placing a rook in that location does not change what is possible with the rest of the board. Now, consider the following diagram where four `X` locations isolate a group of two `Squares`:
 
+<BR>
+
 ![Rook Placement - 2 Isolated Squares](RookPlacement2.png){ class="center-image" }
+
+<BR>
 
 Placing a rook on either `Square` in the isolated area will eliminate 3 `AttackLine`s from the game, the two covered by the rook and the second `AttackLine` covered by the other location that is now ineligible for a rook. In this case, placing a rook on each `Square` does the same amount of _damage_ to the board. Because these two `Square`s are isolated and neither causes more damage than the other, a rook can be placed on either `Square`, eliminating the other `Square` from consideration.
 

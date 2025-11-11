@@ -20,6 +20,8 @@ On the next page, I'll share some ideas for optimizing your search for possible 
 
 # Understanding Paths in a 2x2 Grid
 
+<BR>
+
 ![Connect the Colours 2x2](ConnectColoursPaths2x2.png){ class="center-image" }
 
 <BR>

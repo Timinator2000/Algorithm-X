@@ -16,21 +16,20 @@ Consider a slightly more interesting scenario with the following all-or-none set
 1. `x` and `y`
 1. `a` and `h`
 
-**How many all-or-none sets of events are present in this scenario?**
+??? question "How many all-or-none sets of events are present in this scenario?"
+    <div class="quiz" data-id="all_or_none_quiz1"></div>
 
-??? success "Show answer"
+Any sets that intersect in any way must be joined together. Let’s rewrite the sets from 1, 3 and 5 above:
 
-    The correct answer is 3, but why? Any sets that intersect in any way must be joined together. Let’s rewrite the sets from 1, 3 and 5 above:
+`b` and `a` . . . . . . `a` and `h` . . . . . . `h` and `g`
 
-    `b` and `a` . . . . . . `a` and `h` . . . . . . `h` and `g`
+Any solution that has `b` must also have `a` and then must also have `h` and then must also have `g`. The same logic applies starting with `a`, `h` or `g`. Since these sets must be combined, the final 3 all-or-none sets of events are:
 
-    Any solution that has `b` must also have `a` and then must also have `h` and then must also have `g`. The same logic applies starting with `a`, `h` or `g`. Since these sets must be combined, the final 3 all-or-none sets of events are:
+1. `a` and `b` and `g` and `h`
+1. `c` and `d`
+1. `x` and `y`
 
-    1. `a` and `b` and `g` and `h`
-    1. `c` and `d`
-    1. `x` and `y`
-
-    For each of the three sets above, either all members of the set must be part of a solution or none of the members must be part of a solution. For some problems, building these all-or-none sets of events can be challenging, but before we progress down that path, let’s take a look at implementation.
+For each of the three sets above, either all members of the set must be part of a solution or none of the members must be part of a solution. For some problems, building these all-or-none sets of events can be challenging, but before we progress down that path, let’s take a look at implementation.
 
 ---
 

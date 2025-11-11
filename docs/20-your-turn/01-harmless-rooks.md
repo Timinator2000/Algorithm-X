@@ -64,7 +64,11 @@ Harmless Rooks has some large boards with many spaces already occupied. Since ro
 
 On a board with no occupied spaces, the maximum number of rooks is always `N`. Each rook placed covers one column and one row. Said another way, each rook covers exactly two `AttackLine`s and __all__ `AttackLine`s are covered. As soon as occupied spaces show up on a board, it can get much more difficult to cover every `AttackLine`. The following diagrams shows all `AttackLine`s on a 5 x 5 board with a single edge square occupied.
 
+<BR>
+
 ![Attack Lines](AttackLines.png){ class="center-image" }
+
+<BR>
 
 The board now has 11 `AttackLine`s. Each rook placed covers exactly 2 `AttackLine`s, making it impossible to cover every `AttackLine`. However, we might consider asking Algorithm X to attempt the following:
 

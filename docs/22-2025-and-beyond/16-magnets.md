@@ -10,7 +10,11 @@ __Algorithm X Complexity:__
 
 ---
 
+<BR>
+
 ![Magnets](Magnets.png){ class="center-image" }
+
+<BR>
 
 ---
 

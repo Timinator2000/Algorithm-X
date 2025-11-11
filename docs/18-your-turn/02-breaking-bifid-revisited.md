@@ -14,7 +14,11 @@ __Algorithm X Complexity:__ Imagine Untangling the World's Largest Pile of Holid
 
 Breaking Bifid is a complex puzzle and I encourage you to revisit the [original discussion](../08-your-turn/08-breaking-bifid.md) that ended with the following graphic:
 
+<BR>
+
 ![Breaking Bifid Toy Example - Conclusion](Toy4.png){ class="center-image" }
+
+<BR>
 
 Drawing two more purple boxes around the `M` and the `E` produces the following:
 
@@ -60,7 +64,11 @@ I highly recommend you go down this route on your own. Once you remove all overl
 
     For a message of reasonable length, all 25 letters are probably part of the key. If that is the case, for each number from 1 to 5, there are exactly 9 letters where either the letter’s row or column or both is equal to that number. In the graphic below, every location where row = 3 or column = 3 has been highlighted.
 
+    <BR>
+
     ![One Set of All-or-None Events](BifidAllOrNone.png){ class="center-image" }
+
+    <BR>
 
     When this puzzle was originally discussed, I wrote the following:
 

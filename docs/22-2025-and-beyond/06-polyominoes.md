@@ -10,7 +10,11 @@ __Algorithm X Complexity:__ Textbook Exact Cover
 
 ---
 
+<BR>
+
 ![Polyominoes](Polyominoes.png){ class="center-image" }
+
+<BR>
 
 ---
 # Strategy
