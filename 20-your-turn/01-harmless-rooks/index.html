@@ -4249,7 +4249,9 @@
 <h1 id="handling-occupied-spaces">Handling Occupied Spaces</h1>
 <p>Harmless Rooks has some large boards with many spaces already occupied. Since rooks cannot cross occupied squares, each occupied square either shortens an <code>AttackLine</code> or divides an <code>AttackLine</code> into two separate lines. Even a single location, bordered on all sides by occupied spaces, forms two <code>AttackLine</code>s, one horizontal and one vertical. Placing a rook on that isolated space occupies both <code>AttackLine</code>s.</p>
 <p>On a board with no occupied spaces, the maximum number of rooks is always <code>N</code>. Each rook placed covers one column and one row. Said another way, each rook covers exactly two <code>AttackLine</code>s and <strong>all</strong> <code>AttackLine</code>s are covered. As soon as occupied spaces show up on a board, it can get much more difficult to cover every <code>AttackLine</code>. The following diagrams shows all <code>AttackLine</code>s on a 5 x 5 board with a single edge square occupied.</p>
+<p><BR></p>
 <p><img alt="Attack Lines" class="center-image" src="../AttackLines.png" /></p>
+<p><BR></p>
 <p>The board now has 11 <code>AttackLine</code>s. Each rook placed covers exactly 2 <code>AttackLine</code>s, making it impossible to cover every <code>AttackLine</code>. However, we might consider asking Algorithm X to attempt the following:</p>
 <blockquote>
 <p>Try to cover every <code>AttackLine</code> by placing rooks on open squares. If no solution exists that covers all <code>AttackLine</code>s, return the length of the partial solution that gets the closest.</p>

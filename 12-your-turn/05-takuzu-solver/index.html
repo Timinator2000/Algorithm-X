@@ -4184,10 +4184,18 @@
 <h1 id="algorithm-x-setup">Algorithm X Setup</h1>
 <p>Let's start with an excerpt from the goal statement for the puzzle:</p>
 <blockquote>
-<p>The objective is to fill the grid with 1s and 0s, constraints are :
-- an equal number of 1s and 0s in each row and column
-- no more than two of either number adjacent to each other
-- no identical rows and no identical columns</p>
+<p>The objective is to fill the grid with 1s and 0s, constraints are:</p>
+<ul>
+<li>
+<p>an equal number of 1s and 0s in each row and column</p>
+</li>
+<li>
+<p>no more than two of either number adjacent to each other</p>
+</li>
+<li>
+<p>no identical rows and no identical columns</p>
+</li>
+</ul>
 </blockquote>
 <p>The basic Algorithm X requirements and actions seem straightforward. Every cell must be covered with a <code>0</code> or a <code>1</code>, while the actions are all putting a <code>0</code> or a <code>1</code> into some cell. Is everything truly as straightforward as it appears? Were you able to see the multiplicity in this puzzle?</p>
 <blockquote>
@@ -4218,7 +4226,9 @@
 <hr />
 <h1 id="problem-space-setup">Problem-Space Setup</h1>
 <p>To solve all test cases and validators, you will need to do some problem-space reduction. Takuzu has a very similar structure to Sudoku. There are cells and those cells are grouped into rows and columns, but because the cells can only contain zeros and ones, I found little code I could reuse, other than the overall structure.</p>
+<p><BR></p>
 <p><img alt="Takuzu Classes" class="center-image" src="../TakuzuClasses.png" /></p>
+<p><BR></p>
 <p>If you use this structure, setting up the grid, the rows and the columns is extremely similar to setting up a Sudoku.</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">TakuzuSolver</span><span class="p">(</span><span class="n">AlgorithmXSolver</span><span class="p">):</span>
 

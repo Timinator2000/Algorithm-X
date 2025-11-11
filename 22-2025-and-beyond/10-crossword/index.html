@@ -4178,13 +4178,17 @@
 <hr />
 <h1 id="overview">Overview</h1>
 <p>Given two horizontal words and two vertical words, this puzzle challenges us to determine whether a valid crossword puzzle can be constructed such that all four words intersect pairwise. In the diagram below, each word's letters have been omitted, but it is easy to imagine how a properly constructed grid might appear.</p>
+<p><BR></p>
 <p><img alt="Crossword" class="center-image" src="../Crossword1.png" /></p>
+<p><BR></p>
 <p>To make things slightly more challenging, the author adds an extra twist: we are required to print the solved crossword grid when there is exactly one valid solution. Whether or not you use Algorithm X, constructing the grid is no easy feat — even when you already know where the four words must go!</p>
 <p>I found it particularly interesting to frame this puzzle as an exact cover problem. This unique perspective opens the door to some elegant strategies, which I’ll explore in more detail below. But before diving into those details, I strongly encourage you to try solving the puzzle on your own. There are several compelling ways to approach it as an exact cover, and I believe you will find the experience both rewarding and enjoyable.</p>
 <details class="note">
 <summary>Spoiler Alert: There is no way to go back.</summary>
 <p>The first thing to notice about this puzzle is that all valid solutions form a <strong>"box"</strong>, as illustrated in the diagram below. Each box can be as small as 3×3, or as large as <code>min(h1 length, h2 length) × min(v1 length, v2 length)</code>. Regardless of its size, the box always plays a central role.</p>
+<p><BR></p>
 <p><img alt="Crossword - Box" class="center-image" src="../Crossword2.png" /></p>
+<p><BR></p>
 <p>From the perspective of tiles on a gameboard, each solution consists of just four actions: placing one word across the top, a second across the bottom, a third down the left side, and a fourth down the right. Simple, right? But is it enough to just match four words to four sides? No, it is not.</p>
 <p>Although the exact size of the box is not known upfront, placing a word on the gameboard must also specify which letters of the word go on the corners of the box. The box is part of the gameboard, but its size is determined by how words are placed—specifically, which letters are used at the corners.</p>
 <p>In every exact cover problem we have seen so far, a solution was built from a list of actions. To build a solution for this puzzle, each action must now include four key pieces of information: the word being placed, the side it is being placed on, and the indexes of the two letters that land on the box’s corners. An action might look like this:</p>
@@ -4199,14 +4203,18 @@
 <h1 id="enforcing-sameness-with-coloring">Enforcing Sameness with Coloring</h1>
 <p>In the diagram below, each corner is labeled with a unique integer ID, and two key dimensions are highlighted: the <strong>box width</strong> and <strong>box height</strong>. Each action specifies letters that occupy two corners, and those corners, in turn, define either the width or the height of the box.</p>
 <p>Although only six requirements need to be colored, <a href="../../15-coloring-your-requirements/01-coloring-your-requirements/">maintaining consistency across those colors</a> is what guarantees valid solutions.</p>
+<p><BR></p>
 <p><img alt="Crossword (Coloring)" class="center-image" src="../Crossword3.png" /></p>
+<p><BR></p>
 <p>Each of these six requirements is colored exactly twice, creating a structure that is highly conducive to using mutual exclusivity.</p>
 <hr />
 <h1 id="enforcing-sameness-with-mutual-exclusivity">Enforcing Sameness with Mutual Exclusivity</h1>
 <p>Whenever possible, I prefer <a href="../../07-generalized-exact-cover/03-mutually-exclusive-actions/">mutual exclusivity</a> over <a href="../../15-coloring-your-requirements/01-coloring-your-requirements/">coloring</a>. Mutual exclusivity is a natural fit within Algorithm X, while my coloring approach is a custom adaptation that adds useful power — but at a cost.</p>
 <p>In the next diagram, I’ve split each corner into two types of coverage: vertical and horizontal. I’ve also labeled the lengths of all four sides of the box. Because each corner must be covered consistently, a set of <code>me_requirements</code> can be created to enforce that consistency. For example, corner <code>1</code> being covered <code>horizontally</code> with an <code>s</code> is mutually exclusive with the same corner being covered <code>vertically</code> with a <code>g</code>.</p>
 <p>This technique also applies to the box sides. For instance, the <code>Top</code> having a length of <code>3</code> is mutually exclusive with the <code>Bottom</code> having a length of <code>4</code>.</p>
+<p><BR></p>
 <p><img alt="Crossword Mutual Exclusivity" class="center-image" src="../Crossword4.png" /></p>
+<p><BR></p>
 <p>There is a fair amount of optimization that can be done when identifying requirements for mutual exclusivity. Only certain letters are valid for each corner in each direction, and only certain lengths are legitimate for each side. Keeping your list of <code>me_requirements</code> as small and focused as possible is crucial if you want to maximize speed and efficiency.</p>
 </details>
 <p><BR></p>

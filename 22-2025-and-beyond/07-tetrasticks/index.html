@@ -4176,7 +4176,9 @@
 <p><strong>Published Difficulty:</strong> Medium</p>
 <p><strong>Algorithm X Complexity:</strong> Textbook <em>Generalized</em> Exact Cover</p>
 <hr />
+<p><BR></p>
 <p><img alt="TetraSticks" class="center-image" src="../TetraSticks.png" /></p>
+<p><BR></p>
 <hr />
 <h1 id="strategy">Strategy</h1>
 <p>In the previous <a href="../06-polyominoes/">polyominoes</a> discussion, I mentioned Donald Knuth’s Dancing Links paper on <a href="https://arxiv.org/abs/cs/0011047">arXiv.org</a>. In that paper, Knuth also covers tetrasticks and I highly recommend studying his approach. Tetrasticks exist on the edges of cells and distinguishing horizontal edges from vertical edges requires great attention to detail, especially when considering various rotations of the game pieces.</p>
@@ -4184,19 +4186,31 @@
 <hr />
 <h1 id="hey-google-translate-my-puzzle">Hey Google, Translate My Puzzle</h1>
 <p>Tetrasticks are made of connected edges of a grid. Polyominoes are made of connected cells of a grid. To represent tetrasticks as polyominoes, we need a finer grid resolution that captures every original edge as a cell unit. Consider the following 5x5 tetrasticks gameboard.</p>
+<p><BR></p>
 <p><img alt="Tetrasticks Grid" class="center-image" src="../Tetrasticks1-Grid.png" /></p>
+<p><BR></p>
 <p>Each edge of the grid is important. In the next diagram, I have placed an orange dot on every edge, overlapping the 6x5 grid of horizontal edges and the 5x6 grid of vertical edges.</p>
+<p><BR></p>
 <p><img alt="Tetrasticks Grid Edges" class="center-image" src="../Tetrasticks2-GridEdges.png" /></p>
+<p><BR></p>
 <p>Edge intersections are sometimes important because no two tetrasticks can cross each other. In the following diagram, I have added blue dots on <em>all</em> edge intersections, many of which could be an integral part of a proper solution.</p>
+<p><BR></p>
 <p><img alt="Tetrasticks Edges and Intersections" class="center-image" src="../Tetrasticks3-GridEdgesIntersections.png" /></p>
+<p><BR></p>
 <p>The cells themselves are not important to a tetrasticks solution, but adding a dot on each cell perfectly fills in the 2-dimensional matrix. In the next diagram, I have covered each cell with a grey dot.</p>
+<p><BR></p>
 <p><img alt="Tetrasticks Edges, Cells and Intersections " class="center-image" src="../Tetrasticks4-11x11.png" /></p>
+<p><BR></p>
 <p>This 11x11 matrix provides the <strong>resolution</strong> necessary to capture all the interesting features of a tetrasticks puzzle. Cell edges are no longer important. The edges and every edge intersection of the original puzzle are now represented by cells.</p>
 <p>In the next diagram, I have replaced each dot with a cell in a 2-dimensional grid. Each white cell is an edge from the original puzzle. Each grey cell is either an edge intersection from the original puzzle or one of the cells in the original puzzle. For clarity, I have added a white <code>X</code> to the 25 cells that made up the original 5x5 tetrasticks puzzle.</p>
+<p><BR></p>
 <p><img alt="Tetrasticks Full Translation " class="center-image" src="../Tetrasticks5-FullTranslation.png" /></p>
+<p><BR></p>
 <p>Each cell with an <code>X</code> has 4 empty neighbors, the cell’s original 4 edges that need to be covered by a tetrastick. With this new resolution, the puzzle transforms into finding a way to exactly cover the white cells, but what do the translated tetrasticks look like now?</p>
 <p>In this final diagram, I have put an <code>F</code> in the upper left corner, a <code>T</code>in the upper right corner, a <code>U</code> in the bottom left corner and a <code>P</code> in the bottom right corner. Each tetrastick is now a group of cells in the translated grid.</p>
+<p><BR></p>
 <p><img alt="Tetrasticks Translation with Placed Pieces" class="center-image" src="../Tetrasticks6-PlacedPieces.png" /></p>
+<p><BR></p>
 <hr />
 <h1 id="final-steps">Final Steps</h1>
 <p>The grid translation has taken shape, but you still need to translate the tetrasticks. In the problem statement, @VizGhar uses the words <em>bounding box</em>, referring to the smallest rectangle that completely contains each tetrastick. Translating each bounding box is the key to properly translating each tetrastick to an equivalent polyomino. Of course, you also need to create a way to identify the tetrastick joints that could be problematic.</p>

@@ -4180,22 +4180,29 @@
 <hr />
 <h1 id="strategy">Strategy</h1>
 <p>An important part to creating an Algorithm X solution for Equation Search is coming up with a gameboard/tiles analogy. What does the gameboard look like? It is tempting to make every operand and every operator a tile. The gameboard would be made up of several equations, each equation having 3 spots for 2 operands and 1 operator. Given right sides of 5, 7 and 10, the gameboard might look like:</p>
+<p><BR></p>
 <p><img alt="Initial Gameboard" class="center-image" src="../Gameboard1.png" /></p>
+<p><BR></p>
 <p>As tiles are put on the gameboard, some sort of validation is needed to see if there is a way to put the operands and the operator together to come up with the right-side value. This feels a bit like making tiles in <a href="../../08-your-turn/06-winamax/">Winamax</a> correspond to every cell in the grid. With Winamax, it ultimately was better to build routes and consider each possible route a tile that could be placed on the gameboard as a whole. A similar approach will work better here.</p>
 <p>Let’s make the gameboard nothing more than a list of right-side values.</p>
+<p><BR></p>
 <p><img alt="Simplified Gameboard" class="center-image" src="../Gameboard2.png" /></p>
+<p><BR></p>
 <p>Using the strategy we know worked for Winamax, we can make each tile here a full equation, including the right-side value. The goal becomes to place the appropriate equation tiles on the matching right-side values found on the gameboard.</p>
-<p><strong>Quiz: How many requirements are satisfied every time you put an equation on the gameboard?</strong></p>
-<details class="success">
-<summary>Show explanation</summary>
-<p>The correct answer is 3. Putting a single equation tile on the gameboard covers one of the right-side numbers and it covers one of the necessary occurrences for each operand. Of course, if the operands are the same, it covers two of the necessary occurrences for that operand. Let’s look at an example. </p>
+<details class="question">
+<summary>How many requirements are satisfied every time you put an equation on the gameboard?</summary>
+<p><div class="quiz" data-id="equation_search_quiz1"></div></p>
 </details>
-<p><strong>Quiz: Given operand counts of one 2 and three 5s, how many different ways are there to create an equation that equals 10?</strong></p>
-<details class="success">
-<summary>Show explanation</summary>
-<p>The correct answer is 6! Remember, because of the multiplicity, you can use the first 5, the second 5 or the third 5. The possible equations, depicted as tiles to put on the gameboard, look like this:</p>
+<p>Putting a single equation tile on the gameboard covers one of the right-side numbers and it covers one of the necessary occurrences for each operand. Of course, if the operands are the same, it covers two of the necessary occurrences for that operand. Let’s look at an example.</p>
+<p><strong>Assume you have operand counts of one 2 and three 5s:</strong></p>
+<details class="question">
+<summary>How many different ways are there to create an equation that equals 10?</summary>
+<p><div class="quiz" data-id="equation_search_quiz2"></div></p>
+</details>
+<p>Remember, because of the multiplicity, you can use the first 5, the second 5 or the third 5. The possible equations, depicted as tiles to put on the gameboard, look like this:</p>
+<p><BR></p>
 <p><img alt="Ways to Make 10" class="center-image" src="../WaysToMake10.png" /></p>
-</details>
+<p><BR></p>
 <p>There is a fair amount of multiplicity in this puzzle and to solve the bigger test cases, you will need to properly use <code>AlgorithmXSolver</code>’s memory. Without proper use of memory, you will generate a lot more solutions than necessary.</p>
 <table>
 <thead>

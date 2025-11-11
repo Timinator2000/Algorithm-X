@@ -4184,17 +4184,27 @@
 <details class="note">
 <summary>Spoiler Alert: Do not click unless you have tried it yourself!</summary>
 <p>Is this Picture Puzzle really much different than a <a href="../../11-problem-space-reduction/01-problem-space-reduction/">Sudoku</a>? The pieces need to be properly placed on a grid of locations I call <code>PuzzleCell</code>s. Let’s assume we have a 5x5 puzzle to solve. The basic puzzle grid is shown in the next figure. Just like in Sudoku, I put space between each <code>PuzzleCell</code>. My reasons for doing this will be revealed shortly.</p>
+<p><BR></p>
 <p><img alt="Picture Puzzle Grid" class="center-image" src="../PicturePuzzleGrid.png" /></p>
+<p><BR></p>
 <p>Before digging deeper into the gameboard, consider the pieces for a moment. When doing a picture puzzle on your kitchen table, you might first sort the pieces into the three groups shown below.</p>
+<p><BR></p>
 <p><img alt="Picture Puzzle Piece Types" class="center-image" src="../PicturePuzzlePieceTypes.png" /></p>
+<p><BR></p>
 <p>Corner pieces have 2 puzzle borders, non-corner edge pieces have a single puzzle border and middle pieces have no puzzle borders. This initial sorting already limits the candidates for each cell. In the following diagram, the color of each cell corresponds to the group of pieces that make up the cell’s initial candidates.</p>
+<p><BR></p>
 <p><img alt="Picture Puzzle Cell Candidates" class="center-image" src="../PicturePuzzleCellCandidates.png" /></p>
+<p><BR></p>
 <p>Does this mean there are only 4 candidates for each corner piece? Yes, it does, but that is a bit misleading. A puzzle piece alone is not enough to properly distinguish one candidate from another in the middle of the puzzle. On the corners and edges, the puzzle border limits each puzzle piece to a single possible rotation. Middle pieces are different. </p>
 <p>In the middle of the puzzle, each piece might look different when rotated. Each unique rotation is a distinct candidate. In the 5x5 puzzle above, there are 9 middle pieces, meaning each location has up to 36 possible candidates. (Exercise for the reader: Why did I say “up to”?)</p>
 <p>In the next figure, the blue rectangles represent the puzzle border.</p>
+<p><BR></p>
 <p><img alt="Picture Puzzle Border" class="center-image" src="../PicturePuzzleBorder.png" /></p>
+<p><BR></p>
 <p>These borders are interesting because they too have candidates. I have intentionally spaced out the blue rectangles to make them align with their adjacent pieces. The middle pieces also have interesting borders. Adding all the piece borders to the diagram results in:</p>
+<p><BR></p>
 <p><img alt="Picture Puzzle Piece Borders" class="center-image" src="../PicturePuzzlePieceBorders.png" /></p>
+<p><BR></p>
 <p>Why are these borders interesting? Each border has a set of possible values. Look at the edge pieces first. Each edge piece border, adjacent to the puzzle border, only has a single possible value. Keeping track of possible values for every blue border is critical to reducing the candidates for each cell.</p>
 <p>Consider the corner cell in the top left corner. At most, that cell has only 4 candidates: each of the four corner pieces, properly rotated to align the borders to match the left and top borders that only have one possible value. Using these four candidates, the possible values of the bottom and right borders (of cell <code>(0, 0)</code>) can be determined.</p>
 <p>Now move to the cell in <code>(row 0, column 1)</code>. The top border is limited to the puzzle border. The left border has limited possibilities that were just determined. It is now easy to loop through the candidates for this cell <code>(0, 1)</code> and eliminate candidates that violate the border possibilities. From the remaining candidates, the possibilities for the 4 borders of cell <code>(0, 1)</code> may be updated appropriately.</p>
@@ -4203,7 +4213,9 @@
 <hr />
 <h1 id="a-bit-about-solution-design">A Bit About Solution Design</h1>
 <p>In the next diagram, I have greyed out either the horizontal borders or the vertical borders.</p>
+<p><BR></p>
 <p><img alt="Picture Puzzle Horizontal vs Vertical Borders" class="center-image" src="../PicturePuzzleHorizontalVertical.png" /></p>
+<p><BR></p>
 <p>These figures make it easier to see a 6 x 5 array of horizontal borders and a 5 x 6 array of vertical borders. Ultimately every cell needs to know about 4 borders, the top, bottom, left and right. The perspective demonstrated in the figure above nicely facilitates assigning borders to a cell based on that cell’s row and column.</p>
 <hr />
 <h1 id="observations">Observations</h1>

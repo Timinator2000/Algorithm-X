@@ -4189,7 +4189,9 @@
 (&#39;queen in col&#39;, 8)
 </code></pre></div>
 <p>But, what about the diagonals? Take a look at the following image I found on <a href="https://math.stackexchange.com/questions/2811398/how-do-i-calculate-how-many-ways-14-non-attacking-bishops-can-be-placed-on-a-che">math.stackexchange.com</a></p>
-<p><img alt="Chess Diagonals" src="../chessdiagonals.png" /></p>
+<p><BR></p>
+<p><img alt="Chess Diagonals" class="center-image" src="../chessdiagonals.png" /></p>
+<p><BR></p>
 <p>There are 15 diagonals in the image and those are just the up-and-to-the-right diagonals. That doesn’t include another 15 down-and-to-the-right diagonals. We only have 8 queens, making it impossible to fully cover either set of 15 diagonals. However, if a diagonal is occupied by a queen, it is critical that no other queen be in that same diagonal.</p>
 <p>These diagonals perfectly fit the definition of an optional requirement. While rows and columns on the board <strong>must</strong> have exactly one queen, the diagonals <strong>may or may not</strong> have a queen, but if a diagonal is covered by a queen, it <strong>must not</strong> be covered by more than one queen.</p>
 <p>The picture above assigns a unique integer to each of the up-and-to-the-right diagonals. For completeness, let’s assign the numbers 16 to 30 to the down-and-to-the-right diagonals, starting in the bottom-left corner. This results in the following 30 distinct <em>optional requirements</em>:</p>

@@ -4172,11 +4172,17 @@
 
 <h1 id="visualizing-the-model-mrs-knuth-part-ii">Visualizing the Model - Mrs Knuth Part II</h1>
 <p>The matrix below shows which requirements are satisfied by each action. Mrs. Knuth - Part II does not add an overwhelming amount of complexity, yet the matrix has grown enough, even on the tiny example exercise, that it is no longer trivial to identify an exact cover just by looking at it.</p>
-<p><img alt="Mrs. Knuth Part II Model" src="../KnuthPartIIModel.png" /></p>
+<p><BR></p>
+<p><img alt="Mrs. Knuth Part II Model" class="center-image" src="../KnuthPartIIModel.png" /></p>
+<p><BR></p>
 <p>In the next matrix, the rows that make up the only solution are highlighted. It is very easy to see columns that are not necessary since they are not covered by any rows. Eventually, it may be important to optimize your matrix where possible, but you can trust me for now, Algorithm X quickly handles <em>all</em> Mrs. Knuth test cases without any effort to make sure empty columns have been eliminated.</p>
-<p><img alt="Mrs. Knuth Part II Solution" src="../KnuthPartIISolution1.png" /></p>
+<p><BR></p>
+<p><img alt="Mrs. Knuth Part II Solution" class="center-image" src="../KnuthPartIISolution1.png" /></p>
+<p><BR></p>
 <p>Like we have done before, let's hide the unused rows to highlight the <em>exact cover</em>.</p>
-<p><img alt="Mrs. Knuth Part II Solution Rows" src="../KnuthPartIISolution2.png" /></p>
+<p><BR></p>
+<p><img alt="Mrs. Knuth Part II Solution Rows" class="center-image" src="../KnuthPartIISolution2.png" /></p>
+<p><BR></p>
 <p>In the next section, I’ll discuss how to add optional requirements to your <code>AlogrithmXSolver</code> subclass.</p>
 <p><BR></p>
 

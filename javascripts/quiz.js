@@ -2,7 +2,7 @@
 const quizzes = {
   futoshiki_quiz1: {
     type: "multi",
-    question: "What is wrong with the above statements?",
+    question: "",
     options: {
       A: "Nothing is wrong. In the absence of hints, either cell could take any of those values.",
       B: "b cannot be 1 since there are no values for a that allow a < b to be true.",
@@ -14,7 +14,7 @@ const quizzes = {
   },
   futoshiki_quiz2: {
     type: "single",
-    question: "How do we tell Algorithm X certain things are not allowed?",
+    question: "",
     options: {
       A: "Send an email.",
       B: "Post a message in the CodinGame Forum.",
@@ -24,8 +24,58 @@ const quizzes = {
     },
     answer: "C",
     explanation: "Mutually exclusive items cannot both be part of the same solution."
+  },
+  multiplicity_quiz1: {
+    type: "single",
+    question: "",
+    options: {
+      A: "None - Cutting and pasting into my coding environment takes too much time.",
+      B: "2 - Exactly what I expected!",
+      C: "4 - Is Algorithm X broken?",
+      D: "37 - Ella just stopped by and bumped her request to 5 lessons per week."
+    },
+    answer: "C",
+    explanation: 'The bigger question is now, "Why did Algorithm X find 4 solutions???'
+  },
+  equation_search_quiz1: {
+    type: "single",
+    question: "",
+    options: {
+      A: "1",
+      B: "2",
+      C: "3",
+      D: "4"
+    },
+    answer: "C",
+    explanation: ""
+  },
+  equation_search_quiz2: {
+    type: "single",
+    question: "",
+    options: {
+      A: "4",
+      B: "6",
+      C: "8",
+      D: "13"
+    },
+    answer: "B",
+    explanation: ""
+  },
+  all_or_none_quiz1: {
+    type: "single",
+    question: "",
+    options: {
+      A: "1 - Please make the next question harder.",
+      B: "2 - I'm just guessing.",
+      C: "3 - I've always liked the number 3.",
+      D: "4 - I'm excluding x and y as they should only be used in math equations.",
+      E: "5 - Don't insult me, I know how to count!"
+    },
+    answer: "C",
+    explanation: "The answer is 3, but why?"
   }
 };
+
 
 // --- Render quizzes ---
 function renderQuizzesOnPage() {

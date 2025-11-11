@@ -4183,10 +4183,11 @@
 <li><code>x</code> and <code>y</code></li>
 <li><code>a</code> and <code>h</code></li>
 </ol>
-<p><strong>How many all-or-none sets of events are present in this scenario?</strong></p>
-<details class="success">
-<summary>Show answer</summary>
-<p>The correct answer is 3, but why? Any sets that intersect in any way must be joined together. Let’s rewrite the sets from 1, 3 and 5 above:</p>
+<details class="question">
+<summary>How many all-or-none sets of events are present in this scenario?</summary>
+<p><div class="quiz" data-id="all_or_none_quiz1"></div></p>
+</details>
+<p>Any sets that intersect in any way must be joined together. Let’s rewrite the sets from 1, 3 and 5 above:</p>
 <p><code>b</code> and <code>a</code> . . . . . . <code>a</code> and <code>h</code> . . . . . . <code>h</code> and <code>g</code></p>
 <p>Any solution that has <code>b</code> must also have <code>a</code> and then must also have <code>h</code> and then must also have <code>g</code>. The same logic applies starting with <code>a</code>, <code>h</code> or <code>g</code>. Since these sets must be combined, the final 3 all-or-none sets of events are:</p>
 <ol>
@@ -4195,7 +4196,6 @@
 <li><code>x</code> and <code>y</code></li>
 </ol>
 <p>For each of the three sets above, either all members of the set must be part of a solution or none of the members must be part of a solution. For some problems, building these all-or-none sets of events can be challenging, but before we progress down that path, let’s take a look at implementation.</p>
-</details>
 <hr />
 <h1 id="the-school-scavenger-hunt">The School Scavenger Hunt</h1>
 <p>To explore implementation options for all-or-none sets of events, consider the following scenario. You must divide a group of 18 children into 3 teams of 6 for the elementary school scavenger hunt. To make things fair for the younger kids, each team will have one child from each grade. Fortunately, you have a very accommodating distribution of ages:</p>

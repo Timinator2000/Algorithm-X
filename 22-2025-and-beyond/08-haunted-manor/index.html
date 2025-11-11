@@ -4183,12 +4183,18 @@
 <h1 id="object-model">Object Model</h1>
 <p>A powerful object model can get you started in a good direction, and I invite you to compare this puzzle’s grid to the grid found in <a href="../../13-steering-algorithm-x/02-high-rise-buildings/">High-Rise Buildings</a>. In the latter, I proposed that each <code>CityView</code> has a relationship with <code>N</code> <code>Building</code>s and each <code>Building</code> has a relationship with 4 <code>CityView</code>s. More generically, the relationship could have been characterized as a many-to-many relationship. Each <code>CityView</code> groups together many <code>Building</code>s and each <code>Building</code> is part of many <code>CityView</code>s.</p>
 <p>The same model appears to work for Haunted Manor. Let’s call the groups <code>Sightline</code>s and say that each <code>Sightline</code> groups together many <code>Cell</code>s, while each <code>Cell</code> can be a member of many <code>Sightline</code>s. Just as was done in High-Rise Buildings, it is tempting to create the following object model.</p>
+<p><BR></p>
 <p><img alt="Haunted Manor Classes" class="center-image" src="../HauntedManor1.png" /></p>
+<p><BR></p>
 <p>Anytime we encounter a many-to-many relationship, it can be beneficial to step back and consider what the relational database folks might do. Since relational databases don’t directly support many-to-many relationships, they are implemented using a <em>junction table</em> (aka <em>bridge table</em> or <em>associative table</em>). The <em>junction table</em> contains foreign keys referencing both tables, and breaks the many-to-many relationship into two one-to-many relationships. In the next diagram, I have inserted a class called a <code>Visual</code> to act similar to a <em>junction table</em> between the <code>Sightline</code> class and the <code>Cell</code> class. </p>
+<p><BR></p>
 <p><img alt="Haunted Manor Junction Class" class="center-image" src="../HauntedManor2.png" /></p>
+<p><BR></p>
 <p>In coding, we can often move forward without this third class, but not always. Adding this <em>junction</em> class makes sense when each instance has its own interesting attributes. Each <code>Visual</code> represents an instance of one <code>Cell</code> showing up in one <code>Sightline</code>. Are there any important attributes associated with an instance of one <code>Cell</code> in a particular<code>Sightline</code>? Yes, there is!</p>
 <p>For each <code>Visual</code>, it is important to know if that <code>Visual</code> exists due to normal line of sight or due to reflected line of sight. The concept of a normal, line-of-sight <code>Visual</code> vs. a reflection only exists inside the relationship between one particular <code>Cell</code> and one particular <code>Sightline</code>. In the following diagram, I have added a single Boolean attribute called <code>reflection</code>.</p>
+<p><BR></p>
 <p><img alt="Haunted Manor Final" class="center-image" src="../HauntedManor3.png" /></p>
+<p><BR></p>
 <p>Our class diagram tells a different story now. Each <code>Cell</code> has a relationship with many <code>Visual</code>s, each <code>Sightline</code> has a relationship with many <code>Visual</code>s, and each <code>Visual</code> has a relationship with exactly one <code>Cell</code> and exactly one <code>Sightline</code>. And the best part is that each <code>Visual</code> knows if it exists due to normal line of sight or reflected line of sight.</p>
 <p>Consider what is possible with this new model. I can try putting a Vampire in an empty <code>Cell</code>. For each <code>Visual</code> associated with that <code>Cell</code>, I need to know if that <code>Visual</code> exists due to normal line of sight or reflected line of sight. If the <code>reflection</code> attribute is <code>True</code>, the Vampire does not count as being seen in the <code>Sightline</code> because Vampires do not have reflections. However, if the <code>reflection</code> attribute is <code>False</code>, the Vampire does count as being seen in the <code>Sightline</code>.</p>
 <p>For this puzzle, having a third class to act as a <em>junction</em> is powerful. The <code>reflection</code> attribute does not belong in the <code>Cell</code> class, nor does it belong in a <code>Sightline</code> class. The <code>reflection</code> attribute only makes sense when it describes a single <code>Cell</code> showing up in a <code>Sightline</code>.</p>
@@ -4200,7 +4206,20 @@
 <h1 id="i-aint-afraid-of-no-ghosts">I Ain’t Afraid of No Ghosts</h1>
 <p>I love everything about this puzzle. Creating an abstract object model is challenging. The problem-space reduction is challenging. Creating a solid Algorithm X setup is challenging. If you enjoy a challenge, this puzzle is for you!</p>
 <p>I’m no fan of scary movies, but some of us grew up with various television shows about ghosts and goblins and hopefully this puzzle brings back fond memories. If you get stuck solving this puzzle, take a break and look for inspiration in this classic 1984 subject-matter video:</p>
-<p><a href="https://www.youtube.com/watch?v=Fe93CLbHjxQ">Ray Parker Jr. - Ghostbusters (Official Video)</a></p>
+<p><BR></p>
+<div class="youtube-thumb" style="text-align:center;">
+  <a href="https://www.youtube.com/watch?v=Fe93CLbHjxQ" target="_blank" style="position:relative; display:inline-block; text-decoration:none;">
+    <img src="https://img.youtube.com/vi/Fe93CLbHjxQ/hqdefault.jpg" alt="Ray Parker Jr. - Ghostbusters (Official Video)" style="width:100%; max-width:560px; height:auto;">
+    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">
+      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 68 48">
+        <path d="M66.52,7.74a8,8,0,0,0-11.27-2.83L2.43,25.68A8,8,0,0,0,2.43,38.3L55.25,61.09A8,8,0,0,0,66.52,58.26Z" fill="white" transform="translate(-2.43 -4)"/>
+        <path d="M45,24 27,14 27,34Z" fill="red"/>
+      </svg>
+    </div>
+  </a>
+  <p><em>Ray Parker Jr. - Ghostbusters (Official Video)</em></p>
+</div>
+
 <p><BR></p>
 
 

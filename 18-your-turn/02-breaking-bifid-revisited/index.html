@@ -4180,7 +4180,9 @@
 <hr />
 <h1 id="all-or-none-sets-of-events">All-or-None Sets of Events</h1>
 <p>Breaking Bifid is a complex puzzle and I encourage you to revisit the <a href="../../08-your-turn/08-breaking-bifid/">original discussion</a> that ended with the following graphic:</p>
+<p><BR></p>
 <p><img alt="Breaking Bifid Toy Example - Conclusion" class="center-image" src="../Toy4.png" /></p>
+<p><BR></p>
 <p>Drawing two more purple boxes around the <code>M</code> and the <code>E</code> produces the following:</p>
 <div class="highlight"><pre><span></span><code><span class="p">(</span><span class="s1">&#39;row&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">)</span> <span class="n">must</span> <span class="n">be</span> <span class="n">the</span> <span class="n">same</span> <span class="k">as</span> <span class="p">(</span><span class="s1">&#39;row&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">)</span>
 <span class="p">(</span><span class="s1">&#39;row&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">)</span> <span class="n">must</span> <span class="n">be</span> <span class="n">the</span> <span class="n">same</span> <span class="k">as</span> <span class="p">(</span><span class="s1">&#39;col&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">)</span>
@@ -4207,7 +4209,9 @@
 <summary>Spoiler Alert: I am serious. I did not see this coming.</summary>
 <p>After reducing the all-or-none sets of events, how many distinct sets remain? For <strong>Test Case 1: Long test</strong>, only 5 sets remain. More importantly, each set has 5 <code>('row', letter)</code> elements and 5 <code>('col', letter)</code> elements. That means the row assignment of 5 letters and the col assignments of 5 letters all need to be the same. And, this is exactly what is expected.</p>
 <p>For a message of reasonable length, all 25 letters are probably part of the key. If that is the case, for each number from 1 to 5, there are exactly 9 letters where either the letter’s row or column or both is equal to that number. In the graphic below, every location where row = 3 or column = 3 has been highlighted.</p>
+<p><BR></p>
 <p><img alt="One Set of All-or-None Events" class="center-image" src="../BifidAllOrNone.png" /></p>
+<p><BR></p>
 <p>When this puzzle was originally discussed, I wrote the following:</p>
 <blockquote>
 <p>The action steps I can take to build a solution are pretty simple. One at a time, a letter of the alphabet (J is excluded) can be placed in one of the 25 squares. As for requirements, the only obvious requirements are that every letter be used and every square be covered.</p>

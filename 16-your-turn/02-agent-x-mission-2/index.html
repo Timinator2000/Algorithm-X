@@ -4211,11 +4211,17 @@ Not every word in the register is in the message, but all words in the message a
 <hr />
 <h1 id="tiles-on-a-gameboard">Tiles on a Gameboard</h1>
 <p>Consider the following gameboard visual for the <strong>Example Test Case</strong>, which shows a group of cipher words and a group of register words. Each action takes a register word and tries matching it to a cipher word of equal length.</p>
+<p><BR></p>
 <p><img alt="Agent X - Gameboard" class="center-image" src="../AgentX-PlacingWord1.png" /></p>
+<p><BR></p>
 <p>It appears everything needed is on the gameboard, but with these types of problems, it is often necessary to look at the gameboard from a different perspective. The next diagram contains a second view of the gameboard. A set of letters found across the cipher words and a set of letters found across the register words has been added.</p>
+<p><BR></p>
 <p><img alt="Agent X - Extended Gameboard" class="center-image" src="../AgentX-PlacingWord2.png" /></p>
+<p><BR></p>
 <p>The next diagram shows the full effect of matching one register word to one cipher word. Each time a word pair is created, the letters of each word need to be dropped on their counterparts in the bottom right. The next cipher-word-register-word pair can drop letters on letters that have not been colored with a counterpart letter, but if the counterpart already has a tile present, the new letter tile must match.</p>
+<p><BR></p>
 <p><img alt="Agent X - Placing a Tile" class="center-image" src="../AgentX-PlacingWord3.png" /></p>
+<p><BR></p>
 <hr />
 <h1 id="consistency-is-key">Consistency Is Key</h1>
 <p>It can be challenging to visualize an Exact Cover problem that requires coloring. In the previous diagrams, think of the two sets of letters in the bottom right as the <strong>Color Police</strong>. When the gameboard is first considered, these groups are often not obvious, but at some point in the gameboard exploration, a need for consistency arises. This need is a telltale sign, it is time to consider adding the Color Police to your gameboard.</p>

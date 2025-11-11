@@ -4181,7 +4181,9 @@
 <p>On the next page, I'll share some ideas for optimizing your search for possible paths between endpoints. Before I do that, let’s dive into what fuels the "volcanic eruption" of paths in this challenge.</p>
 <hr />
 <h1 id="understanding-paths-in-a-2x2-grid">Understanding Paths in a 2x2 Grid</h1>
+<p><BR></p>
 <p><img alt="Connect the Colours 2x2" class="center-image" src="../ConnectColoursPaths2x2.png" /></p>
+<p><BR></p>
 <p>Consider a simple 2x2 grid with one pair of endpoints, the bottom-left corner and the top-right corner. There are exactly two distinct paths connecting these points. These are known as <strong>nonintersecting (self-avoiding) rook paths</strong>, adhering to two key rules:</p>
 <ol>
 <li>
@@ -4197,9 +4199,11 @@
 <hr />
 <h1 id="scaling-to-a-3x3-grid">Scaling to a 3x3 Grid</h1>
 <p>Now, let’s examine a 3x3 grid. To simplify, consider the possible paths after the first two moves from the bottom-left to the top-right corner. There are four possible combinations of initial moves as shown below.</p>
+<p><BR></p>
 <p><img alt="Connect the Colours 3x3 (1 of 2)" class="center-image" src="../ConnectColoursPaths1.png" /></p>
 <p><BR></p>
 <p><img alt="Connect the Colours 3x3 (2 of 2)" class="center-image" src="../ConnectColoursPaths2.png" /></p>
+<p><BR></p>
 <p>After the initial two steps, each path branches into three additional options. This results in <strong>12 possible paths</strong> for a 3x3 grid.</p>
 <p>This number may seem manageable, but the complexity escalates quickly with larger grids. Using a depth-first search in Python, I calculated the number of possible self-avoiding rook paths for larger grids:</p>
 <ul>
@@ -4309,7 +4313,19 @@
 </blockquote>
 <hr />
 <h1 id="ht-depeche-mode">h/t Depeche Mode</h1>
-<p><a href="https://www.youtube.com/watch?v=5WHcjGFihck">Depeche Mode - Just Can't Get Enough (TOTP 1981)</a></p>
+<div class="youtube-thumb" style="text-align:center;">
+  <a href="https://www.youtube.com/watch?v=_6FBfAQ-NDE" target="_blank" style="position:relative; display:inline-block; text-decoration:none;">
+    <img src="https://img.youtube.com/vi/_6FBfAQ-NDE/hqdefault.jpg" alt="Depeche Mode - Just Can't Get Enough" style="width:100%; max-width:560px; height:auto;">
+    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">
+      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 68 48">
+        <path d="M66.52,7.74a8,8,0,0,0-11.27-2.83L2.43,25.68A8,8,0,0,0,2.43,38.3L55.25,61.09A8,8,0,0,0,66.52,58.26Z" fill="white" transform="translate(-2.43 -4)"/>
+        <path d="M45,24 27,14 27,34Z" fill="red"/>
+      </svg>
+    </div>
+  </a>
+  <p><em>Depeche Mode - Just Can't Get Enough</em></p>
+</div>
+
 <p><BR></p>
 
 

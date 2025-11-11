@@ -4174,7 +4174,9 @@
 
 <h1 id="there-is-no-spoon-episode-2-setting-up-algorithm-x">There Is No Spoon - Episode 2 - Setting Up Algorithm X</h1>
 <p>Let's take another look at the Object-Oriented Design model. Everything Algorithm X needs is right here:</p>
+<p><BR></p>
 <p><img alt="No Spoon 2 - OOD" class="center-image" src="../ClassesWithLists.png" /></p>
+<p><BR></p>
 <p>This is one of the toughest Algorithm X puzzles on <a href="https://www.codingame.com">CodinGame</a> due to the amount of multiplicity. The requirements are straightforward. Just like Ella needed some number of lessons for Mrs. Knuth – Part III, each Node needs some number of links.</p>
 <p><strong>Step 1:</strong> Loop through all <code>Node</code>s and create the appropriate requirements.</p>
 <p>Let’s dig a bit deeper into the actions. As mentioned earlier, all actions involve putting some link between two <code>Node</code>s, but what does that actually look like? Looking at the gameboard, the link must be placed in a specific slot and it needs to be tied to one of the link requirements for each <code>Node</code>. That looks like triple multiplicity, doesn’t it!</p>

@@ -4173,7 +4173,9 @@
 <h1 id="a-sudoku-data-structure">A Sudoku Data Structure</h1>
 <p>A few pages ago, I intentionally drew the original Sudoku grid as 81 disconnected cells to create the perception of each cell being a standalone entity, or object. Since each cell is a standalone object, I can put a pointer to that cell into each group to which it belongs. I will demonstrate how to do this with Sudoku, and later I will give an overview of how this same general structure can be used on several other puzzles.</p>
 <p>Conceptually, I create two classes, one for a <code>SudokuCell</code> and another for a <code>SudokuGroup</code>. The <code>SudokuGroup</code> will have an attribute that is a list of pointers to the 9 <code>SudokuCell</code>s that are part of that group.</p>
+<p><BR></p>
 <p><img alt="Sudoku Data Structure" class="center-image" src="../SudokuDataStructure.png" /></p>
+<p><BR></p>
 <p>In the interest of code reuse across all Sudoku puzzles, my SudokuSolver will require the following:</p>
 <ol>
 <li>

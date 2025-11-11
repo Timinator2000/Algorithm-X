@@ -4179,7 +4179,9 @@
 <hr />
 <h1 id="reducing-the-problem-space">Reducing the Problem Space</h1>
 <p>When <a href="../../10-your-turn/05-no-spoon-2/">we last discussed There is No Spoon – Episode 2</a>, I left you with the following class diagram:</p>
+<p><BR></p>
 <p><img alt="No Spoon 2 - OOD" class="center-image" src="../NoSpoon2ClassesWithLists.png" /></p>
+<p><BR></p>
 <p>To do some problem-space reduction, it seems reasonable we will add a <code>reduce_()</code> method to one or more of the classes, but which ones? Distributing behavior to classes can be difficult and sometimes easy to argue one way or another. Let’s look at each class individually.</p>
 <p><code>Intersection</code> - this seems like the least likely location for a <code>reduce_()</code> method. <code>Intersection</code>s have very little intelligence. They must be able to react to a single event sent by a <code>Channel</code> letting the <code>Intersection</code> know that a link has been placed and if there is another <code>Channel</code> in the intersection, it should be disabled.</p>
 <p><code>Channel</code> - this again seems like an unlikely location for a <code>reduce_()</code> method. What would it even mean to reduce a <code>Channel</code>? Sure, the <code>Channel</code> knows about the <code>Nodes</code> on either side, but that is not enough to know whether or not a link must be placed in the <code>Channel</code>. I see a <code>Channel</code> needing to be able to react to two events:</p>
@@ -4195,9 +4197,13 @@
 <hr />
 <h1 id="one-potential-sequence-of-events">One Potential Sequence of Events</h1>
 <p>Based on everything said above, the following methods might be useful in each of the classes:</p>
+<p><BR></p>
 <p><img alt="No Spoon 2 - Classes with Methods" class="center-image" src="../NoSpoonClassMethods.png" /></p>
+<p><BR></p>
 <p>The next diagram captures one sequence of events that could result after a call to <code>reduce_()</code> on a particular <code>Node</code>. </p>
+<p><BR></p>
 <p><img alt="No Spoon 2 - Sequence Diagram" class="center-image" src="../NoSpoonSequenceDiagram.png" /></p>
+<p><BR></p>
 <p>A <code>Node</code> determines that a link can be placed in a <code>Channel</code>. The <code>Node</code> asks the <code>Channel</code> to place a link. The <code>Channel</code> sends an event to every <code>Intersection</code> it passes through telling each <code>Intersection</code> to make the path one-way. Any <code>Intersection</code> that has a second <code>Channel</code> sends a message to the second <code>Channel</code> to have that <code>Channel</code> disabled. Finally, the original <code>Channel</code> needs to tell the <code>Node</code>s on either end to lower their needed link counts appropriately. Any <code>Node</code> that has all its links fully satisfied makes sure its connected <code>Channel</code>s are all disabled.</p>
 <p>It might be tempting to think I made this harder than it needs to be. I invite you to play around with it. If you choose to create an object-oriented structure for this puzzle, you can easily run into issues caused by less than optimum allocation of behavior to your classes.</p>
 <hr />

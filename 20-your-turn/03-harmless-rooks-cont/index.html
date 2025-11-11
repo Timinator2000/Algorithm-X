@@ -4174,14 +4174,20 @@
 
 <h1 id="harmless-rooks-cont">Harmless Rooks (cont.)</h1>
 <p>Harmless Rooks fits the same cells and groups model used on many of the previous puzzles. Each open <code>Square</code> on the board has a relationship with exactly 2  <code>AttackLine</code>s and each <code>AttackLine</code> has a relationship with 1 or more <code>Square</code>s.</p>
+<p><BR></p>
 <p><img alt="Harmless Rooks Classes" class="center-image" src="../HarmlessRooksClasses.png" /></p>
+<p><BR></p>
 <p>A <code>Square</code> is uniquely identified by its <code>row</code> and <code>col</code>, but it is a bit more challenging to uniquely identify an <code>AttackLine</code>. In the class diagram above, I have added an integer <code>id</code> for each <code>AttackLine</code>. Each class also has a <code>reduce_()</code> method as seen in many puzzles before.</p>
 <hr />
 <h1 id="problem-space-reduction">Problem-Space Reduction</h1>
 <p>What does it mean to reduce a <code>Square</code> or an <code>AttackLine</code>? Somehow, we need to shrink the size of the larger boards by placing rooks logically. Consider the following diagram where three <code>X</code> locations isolate a single <code>Square</code>:</p>
+<p><BR></p>
 <p><img alt="Rook Placement" class="center-image" src="../RookPlacement.png" /></p>
+<p><BR></p>
 <p>Obviously, a rook can be placed on the isolated <code>Square</code>. Placing a rook in that location does not change what is possible with the rest of the board. Now, consider the following diagram where four <code>X</code> locations isolate a group of two <code>Squares</code>:</p>
+<p><BR></p>
 <p><img alt="Rook Placement - 2 Isolated Squares" class="center-image" src="../RookPlacement2.png" /></p>
+<p><BR></p>
 <p>Placing a rook on either <code>Square</code> in the isolated area will eliminate 3 <code>AttackLine</code>s from the game, the two covered by the rook and the second <code>AttackLine</code> covered by the other location that is now ineligible for a rook. In this case, placing a rook on each <code>Square</code> does the same amount of <em>damage</em> to the board. Because these two <code>Square</code>s are isolated and neither causes more damage than the other, a rook can be placed on either <code>Square</code>, eliminating the other <code>Square</code> from consideration.</p>
 <p>Every time you find a location where a rook can be placed logically, <code>AttackLine</code>s and <code>Square</code>s are eliminated from future consideration. This process shrinks the size of the problem since Algorithm X only needs to know about <code>AttackLine</code>s and <code>Square</code>s that must be considered to determine the maximum rook placements going forward.</p>
 <hr />

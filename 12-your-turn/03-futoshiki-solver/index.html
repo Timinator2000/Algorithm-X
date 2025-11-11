@@ -4189,11 +4189,15 @@
 </li>
 </ul>
 <p>I think we all like to reuse code wherever possible. Here are a couple of conceptual ideas we know to be true:</p>
+<p><BR></p>
 <p><img alt="Futoshiki Classes" class="center-image" src="../FutoshikiClasses.png" /></p>
+<p><BR></p>
 <p>In the final Sudoku Challenge, I suggested each cell having pointers to the groups to which it belongs. In Futoshki, each cell only belongs to a row and a column. There are no boxes. Rather than addressing this difference between a <code>SudokuCell</code> and <code>FutoshikiCell</code>, I suggest going back to the basic version of a <code>SudokuCell</code> that did not know about its groups. The basic version is plenty to completely solve all Futoshiki test cases.</p>
 <p>The Futoshiki input is somewhat tougher to parse, but you can use your exact same Sudoku code to create  <code>n * n</code> instances of the <code>SudokuCell</code> class. You can even use your previous code to create <code>SudokuGroup</code>s for each row and each column of the Futoshiki grid. Keep in mind, Futoshiki does not have boxes (sub-grids) like Sudoku. These groups will be important if you hope to solve all the Futoshiki test cases completely with logic, but they are not necessary if you plan to do backtracking with Algorithm X.</p>
 <p>What I am about to say should not be a surprise and I hope I have not made a mistake by not issuing a spoiler alert, but… the inequalities are <u>really</u> important. They are so important; I suggest you add another class to your object model.</p>
+<p><BR></p>
 <p><img alt="Futoshiki Classes Including Inequality" class="center-image" src="../FutoshikiWithInequality.png" /></p>
+<p><BR></p>
 <p>Every <code>Inequality</code> needs two pointers. The first points to the <code>SudokuCell</code> that must be less than the other side. The second pointer points to the <code>SudokuCell</code> that must be greater than the other side. The only critical <code>Inequality</code> method is <code>reduce_()</code>.</p>
 <p>You will need to fill in the details of what it means to <strong>reduce</strong> an inequality. As you know, reduction in this type of puzzle is all about eliminating candidates from cells. What candidates can be eliminated from the cells on either side of the inequality based on the rules that govern how inequalities work?</p>
 <p>Finally, I will copy the exact reduction code structure from the earlier Sudoku discussion into the FutoshikiSolver class constructor.</p>

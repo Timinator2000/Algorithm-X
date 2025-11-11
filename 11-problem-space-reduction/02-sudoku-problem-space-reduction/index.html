@@ -4173,21 +4173,37 @@
 <h1 id="sudoku-problem-space-reduction">Sudoku Problem-Space Reduction</h1>
 <p>To reduce the problem space, it is helpful to consider how you might go about solving the problem by hand. With a Sudoku, you might start by looking at each row, column and box separately. You could consider what you know about each group of cells and how that knowledge allows you to reduce the possible values of other cells.</p>
 <p>Using the Sudoku identified on the previous page, first create a list of all possible numbers, or <em>candidate values</em>, for each cell. If the cell is already known, that list contains a single number. If the cell is unknown, the initial list of candidates contains all the numbers from <code>1</code> to <code>9</code>. The more known numbers in a group, the easier it might be to identify numbers that belong in other cells. Row 1 already has 6 known numbers, making it a good place to start.</p>
+<p><BR></p>
 <p><img alt="Sudoku Test Case 1" class="center-image" src="../sudoku03.png" /></p>
+<p><BR></p>
 <p>The next diagram shows the candidates for each cell in row 1.</p>
+<p><BR></p>
 <p><img alt="Sudoku Test Case 1" class="center-image" src="../sudoku04.png" /></p>
+<p><BR></p>
 <p>Because numbers cannot be duplicated in a row, the numbers in the known cells can be removed from each unknown cells' candidates.</p>
+<p><BR></p>
 <p><img alt="Sudoku Test Case 1" class="center-image" src="../sudoku05.png" /></p>
+<p><BR></p>
 <p>Each of the unknown cells is also in a column where, again, numbers cannot repeat. Column 1 already has a <code>1</code>, column 6 already has a <code>4</code> and column 8 already has a <code>1</code>.</p>
+<p><BR></p>
 <p><img alt="Sudoku Test Case 1" class="center-image" src="../sudoku06.png" /></p>
+<p><BR></p>
 <p>Based on the known numbers found in the other cells of each of the three columns, the candidates can be reduced even further. The three unknown cells in row 1 now have only 2 possibilities each.</p>
+<p><BR></p>
 <p><img alt="Sudoku Test Case 1" class="center-image" src="../sudoku07.png" /></p>
+<p><BR></p>
 <p>Lastly, each of the unknown cells in row 1 is also part of a box and that box must not have duplicates. </p>
+<p><BR></p>
 <p><img alt="Sudoku Test Case 1" class="center-image" src="../sudoku08.png" /></p>
+<p><BR></p>
 <p>Box 0 does not help at this time, but box 2 already has a <code>6</code> and that <code>6</code> can be removed from the candidates for each cell in box 2.</p>
+<p><BR></p>
 <p><img alt="Sudoku Test Case 1" class="center-image" src="../sudoku09.png" /></p>
+<p><BR></p>
 <p>We have come full circle, and it is again time to look at row 1 where we now see 8 of the 9 cells with a single possibility, making it very easy to reduce the last cell to a single possibility. The Sudoku grid now has 3 more known numbers:</p>
+<p><BR></p>
 <p><img alt="Sudoku Test Case 1" class="center-image" src="../sudoku10.png" /></p>
+<p><BR></p>
 <hr />
 <h1 id="putting-it-all-together">Putting It All Together</h1>
 <p>A traditional Sudoku has 9 rows, 9 columns and 9 boxes. All rows, columns and boxes behave exactly the same. Rather than using the terms rows, columns and boxes, I will call them all <em>Sudoku cell groups</em>. The problem can be generalized to 27 Sudoku cell groups. Each group has 9 cells, and each group must contain all the numbers from <code>1</code> to <code>9</code>.</p>

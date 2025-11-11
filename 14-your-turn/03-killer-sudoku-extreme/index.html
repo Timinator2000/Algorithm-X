@@ -4183,13 +4183,15 @@
 <hr />
 <h1 id="solving-every-grid-logically">Solving Every Grid Logically 💯</h1>
 <p>Backtracking involves making a guess and then backing up if that guess leads to a dead end or the path has been fully explored. It is possible to solve every Killer Sudoku grid in the puzzle without making a single guess. In the original puzzle, did you use a class structure similar to this?</p>
+<p><BR></p>
 <p><img alt="Killer Sudoku Classes" class="center-image" src="../KillerSudokuClasses.png" /></p>
+<p><BR></p>
 <p>A <code>SudokuGroup</code> could be a row, a column or a box. All <code>SudokuGroup</code>s behave identically. <code>Cage</code>s are another way to group cells and these groups have significantly different behavior which calls for a separate class. If you study how cells behave on a Killer Sudoku grid, you will find even more interesting behavior that can help you find the values of more unknown cells. For an example, click below.</p>
 <details class="note">
 <summary>Spoiler Alert: Creating Even More Groups for Killer Sudoku</summary>
 <p>A Cage is a group of cells that must add up to a certain amount. There are other groups of cells that also must add to a certain amount. For instance, all rows, all columns and all boxes add up to 45 since they each must contain the numbers 1 to 9. That is not all that interesting, nor helpful. However, there are more interesting groups of cells that must add up to certain amounts. Can you find those groups?</p>
 </details>
-<p>All <strong>Killer Sudoku</strong> grid in each test case can be solved without making any guesses. Click <a href="../../24-odds-and-ends/01-solving-with-logic-only/">here</a> to see my progress toward solving as many logic puzzles as possible, strictly with logic, no guessing.</p>
+<p>All <strong>Killer Sudoku</strong> grids in each test case can be solved without making any guesses. Click <a href="../../24-odds-and-ends/01-solving-with-logic-only/">here</a> to see my progress toward solving as many logic puzzles as possible, strictly with logic, no guessing.</p>
 <p><BR></p>
 
 
