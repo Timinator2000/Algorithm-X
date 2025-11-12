@@ -1,5 +1,41 @@
 // --- Quiz definitions ---
 const quizzes = {
+  shikaku_quiz1: {
+    type: "single",
+    question: "",
+    options: {
+      A: "I have no idea.",
+      B: "4",
+      C: "3",
+      D: "1"
+    },
+    answer: "D",
+    explanation: ""
+  },
+  shikaku_quiz2: {
+    type: "single",
+    question: "",
+    options: {
+      A: "I have no idea.",
+      B: "4",
+      C: "3",
+      D: "1"
+    },
+    answer: "C",
+    explanation: ""
+  },
+  shikaku_quiz3: {
+    type: "single",
+    question: "",
+    options: {
+      A: "I have no idea.",
+      B: "4",
+      C: "3",
+      D: "1"
+    },
+    answer: "B",
+    explanation: ""
+  },
   futoshiki_quiz1: {
     type: "multi",
     question: "",
