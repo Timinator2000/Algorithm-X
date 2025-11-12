@@ -24,10 +24,10 @@ __This import statement will not work in your coding environment unless you have
 #  This solution uses Knuth's Algorithm X and his Dancing Links (DLX):
 #  (DLX-Based Algorithm X Solver Last Revised 01 December 2024)
 #
-#  For a detailed explanation and tutorial, please see the Algorithm X
-#  playground on Tech.io by following the link in @Timinator's CodinGame profile:
+#  For a detailed explanation and tutorial on this Algorithm X Solver, 
+#  please visit:
 #
-#  https://www.codingame.com/profile/2df7157da821f39bbf6b36efae1568142907334/playgrounds
+#  https://www.algorithm-x.com
 #
 
 #  DLXCell is one cell in the Algorithm X matrix. This implementation was mostly

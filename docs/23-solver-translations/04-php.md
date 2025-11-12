@@ -267,7 +267,7 @@ The Python `AlgorithmXSolver` uses memory to avoid redundant searches by adding 
  * Last edit: 2025-05-15 by @TBali
  *
  * Port to PHP of @Timinator's python implementation:
- * @see https://www.codingame.com/playgrounds/156252/algorithm-x/the-algorithmxsolver
+ * @see https://www.algorithm-x.com/03-AlgorithmXSolver/01-the-AlgorithmXSolver/
  *
  * @see https://en.wikipedia.org/wiki/Dancing_Links
  */

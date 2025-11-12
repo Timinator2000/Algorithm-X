@@ -185,6 +185,7 @@ theme:
   highlightsjs: true
   features:
     - navigation.footer
+    - content.code.copy
 
   palette:
     - scheme: default        # Light mode

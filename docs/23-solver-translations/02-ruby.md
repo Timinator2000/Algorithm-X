@@ -47,7 +47,7 @@ end
 # Last edit: 2025-01-15 by @Rafarafa
 #
 # Port to ruby of @Timinator's python implementation:
-# https://www.codingame.com/playgrounds/156252/algorithm-x/the-algorithmxsolver
+# https://www.algorithm-x.com/03-AlgorithmXSolver/01-the-AlgorithmXSolver/
 #
 # The comments have been preserved verbatim, except for the necessary
 # changes to match ruby's conventions (__init__ > initialize etc.)
@@ -60,10 +60,9 @@ require 'set'
 #  This solution uses Knuth's Algorithm X and his Dancing Links (DLX):
 #  (DLX-Based Algorithm X Solver Last Revised 01 December 2024)
 #
-#  For a detailed explanation and tutorial, please see the Algorithm X
-#  playground on Tech.io by following the link in @Timinator's CodinGame profile:
+#  For a detailed explanation and tutorial, please visit:
 #
-#  https://www.codingame.com/profile/2df7157da821f39bbf6b36efae1568142907334/playgrounds
+#  https://www.algorithm-x.com
 #
 
 #  DLXCell is one cell in the Algorithm X matrix. This implementation was mostly

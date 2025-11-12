@@ -6,7 +6,7 @@ Mrs. Knuth is moving up the ladder at school and she is once again requesting ch
 
 There seems to be a lot of new information in the puzzle, but only this key paragraph affects our Algorithm X approach:
 
-_Mrs. Knuth has received some wonderful news! This summer, she will only be working with a handful of honor students. Although she'll have fewer students, each student is now allowed to request multiple hours of instruction per week. This creates a situation where many potential schedules exist. Based on her preferences, Mrs. Knuth needs you to find the best schedule possible._
+>Mrs. Knuth has received some wonderful news! This summer, she will only be working with a handful of honor students. Although she'll have fewer students, each student is now allowed to request multiple hours of instruction per week. This creates a situation where many potential schedules exist. Based on her preferences, Mrs. Knuth needs you to find the best schedule possible.
 
 Let's jump right into the example:
 
