@@ -4178,10 +4178,6 @@
 <p><strong>Published Difficulty:</strong> Hard</p>
 <p><strong>Algorithm X Complexity:</strong> Algorithm X is the Easy Part</p>
 <hr />
-<h1 id="state-of-the-union">State of the Union</h1>
-<p><strong>I have not properly solved this puzzle. I have two solutions that pass all test cases and all validators. One solution uses a combination of logic and Algorithm X. The other places all rooks logically, leaving no need for Algorithm X. Both solutions will produce the wrong answer for other test cases not included in the puzzle.</strong></p>
-<p>The following pages outline my still-imperfect approach.</p>
-<hr />
 <h1 id="problem-statement">Problem Statement</h1>
 <p>Harmless Rooks is a hard puzzle, but a very short Algorithm X setup can easily solve the first two test cases and get you moving in a powerful direction. Although the Algorithm X setup is not terribly complex, some background is helpful. For convenience, I have copied the entire goal statement here:</p>
 <blockquote>
@@ -4196,7 +4192,7 @@
 <blockquote>
 <p>Given an <code>N x N</code> chessboard with all free squares, how many different ways can <code>N</code> rooks be placed on the board, such that no rook threatens any other rook?</p>
 </blockquote>
-<p>How could Algorithm X be set up to solve this problem? What are the requirements? Every one of the <code>N * N</code> <code>AttackLine</code>s must be covered by a rook. What are the actions? Each action is simply placing a rook at location <code>(r, c)</code> and each action coves two requirements, one for each <code>AttackLine</code> coved by the rook placement.</p>
+<p>How could Algorithm X be set up to solve this problem? What are the requirements? Every one of the <code>N * N</code> <code>AttackLine</code>s must be covered by a rook. What are the actions? Each action is simply placing a rook at location <code>(r, c)</code> and each action covers two requirements, one for each <code>AttackLine</code> coved by the rook placement.</p>
 <p>Asking Algorithm X to find the number of possible configurations for values of <code>N</code> between 2 and 10 results in the following:</p>
 <table>
 <thead>
