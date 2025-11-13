@@ -38,14 +38,8 @@ Every time you find a location where a rook can be placed logically, `AttackLine
 
 # On to the Puzzle
 
-To solve this puzzle with the Algorithm X implementation discussed in the previous pages, you must figure out ways to place many more rooks logically. We already handicapped Algorithm X by customizing it to be inefficient. The boards it can solve need to be a lot smaller than the large test cases.
+To solve this puzzle with the Algorithm X implementation discussed in the previous pages, you must figure out ways to place many more rooks logically. We already handicapped Algorithm X by customizing it to be inefficient, so the boards it can solve must be much smaller than the large test cases.
 
----
-
-# Repeat Disclaimer
-
-__I have not properly solved this puzzle. I have two solutions that pass all test cases and all validators. One solution uses a combination of logic and Algorithm X. The other places all rooks logically, leaving no need for Algorithm X. Both solutions will produce the wrong answer for other test cases not included in the puzzle.__
-
-The previous pages outline my still-flawed approach.
+My entire journey with Harmless Rooks relied on Algorithm X until the very end, when I finally discovered enough logic to determine every possible rook placement without backtracking. In the end, this puzzle may not be a perfect fit for Algorithm X — but it was a perfect companion. It guided the search, revealed patterns, and made the journey a bit more rewarding than relying purely on analytical reasoning.
 
 <BR>
