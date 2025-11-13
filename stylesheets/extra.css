@@ -23,11 +23,6 @@
   height: 100%;
 }
 
-.md-typeset table {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .youtube-video {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
@@ -121,4 +116,24 @@ form[id^="quiz"] {
 }
 .youtube-thumb svg path[fill="red"] {
   fill: var(--md-primary-fg-color);
+}
+
+
+/* Center markdown tables, including Material’s scroll wrapper */
+.md-typeset__table {
+  display: flex;
+  justify-content: center;
+}
+
+/* Ensure the inner table doesn't stretch full-width */
+.md-typeset__table table {
+  width: auto !important;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Optional: keep text inside table left-aligned */
+.md-typeset__table table th,
+.md-typeset__table table td {
+  text-align: left;
 }
