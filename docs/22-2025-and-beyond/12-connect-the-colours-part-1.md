@@ -10,6 +10,14 @@ __Algorithm X Complexity:__ Textbook Algorithm X
 
 ---
 
+<BR>
+
+![Connect The Colors Part 1](ConnectColoursPart1.png){ class="center-image" }
+
+<BR>
+
+---
+
 # Overview
 
 This puzzle, crafted by @Harry.B., is a stellar, visual exact-cover problem using the [CodinGame SDK](https://www.codingame.com/playgrounds/25775/codingame-sdk-documentation/introduction). It earns two thumbs up for its engaging design! To succeed, you’ll need sharp grid-navigation skills to generate possible paths between pairs of same-colored endpoints. Once you’ve mastered path generation, Algorithm X will efficiently find solutions for all test cases.

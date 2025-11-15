@@ -10,6 +10,14 @@ __Algorithm X Complexity:__ Textbook Algorithm X, Challenging Optimization
 
 ---
 
+<BR>
+
+![Connect The Colors Part 2](ConnectColoursPart2.png){ class="center-image" }
+
+<BR>
+
+---
+
 # Overview
 
 This 2nd puzzle in @Harry.B.'s Connect the Colours series is a beast! As the test cases get tougher, the space between endpoints grows, allowing for many possible paths. Completing all test cases demands careful optimization due to the explosive growth of possible paths.
