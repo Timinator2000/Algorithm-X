@@ -137,3 +137,11 @@ form[id^="quiz"] {
 .md-typeset__table table td {
   text-align: left;
 }
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
