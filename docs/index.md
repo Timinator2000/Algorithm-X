@@ -81,7 +81,7 @@ __Great Candidates for Algorithm X:__
 <BR>[🎮 Connect the Colours - Part I](22-2025-and-beyond/12-connect-the-colours-part-1.md) (+50 XP)
 <BR>[🎮 Connect the Colours - Part II](22-2025-and-beyond/13-connect-the-colours-part-2.md) (+50 XP)
 
-🎮 = Solo Game with special visual effects that nicely demonstrate the exact cover.
+🎮 = Solo Game with gameboard visualization that nicely demonstrate the exact cover.
 
 ---
 

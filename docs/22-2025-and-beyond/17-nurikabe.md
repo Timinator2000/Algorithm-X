@@ -53,17 +53,17 @@ For the data below, I configured Algorithm X to perform an **exhaustive search**
 
 | Test Case | Actions | `me_reqs` | Solutions Checked | ❌ 2x2 | ❌ Water | Time (ms) |
 | :-------: | :-----: | :---------------: | :---------------: | :---: | :----------------: | :-------: |
-|   Test 1  |    53   |        334        |         20        |   19  |         19         |     <span style="color:green">2</span>     |
-|   Test 2  |   190   |        503        |        183        |  155  |         172        |     <span style="color:green">13</span>    |
-|   Test 3  |   185   |       3,291       |         5         |   3   |          4         |     <span style="color:green">23</span>    |
-|   Test 4  |  2,047  |      848,621      |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|   Test 5  |  ?      |         ?         |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|   Test 6  |  ?      |         ?         |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|   Test 7  |  ?      |         ?         |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|   Test 8  |  1,685  |       53,103      |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|   Test 9  |  ?      |         ?         |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|  Test 10  |  5,576  |     1,032,414     |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|  Test 11  |  1,497  |       59,519      |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
+|   Test 1  |    53   |        334        |         20        |   19  |         19         |     <span class="green">2</span>     |
+|   Test 2  |   190   |        503        |        183        |  155  |         172        |     <span class="green">13</span>    |
+|   Test 3  |   185   |       3,291       |         5         |   3   |          4         |     <span class="green">23</span>    |
+|   Test 4  |  2,047  |      848,621      |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|   Test 5  |  ?      |         ?         |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|   Test 6  |  ?      |         ?         |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|   Test 7  |  ?      |         ?         |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|   Test 8  |  1,685  |       53,103      |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|   Test 9  |  ?      |         ?         |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|  Test 10  |  5,576  |     1,032,414     |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|  Test 11  |  1,497  |       59,519      |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
 
 ---
 
@@ -83,17 +83,17 @@ These simple deductions already shrink the problem space noticeably. The table b
 
 | Test Case | Actions | `me_reqs` | Solutions Checked | ❌ 2x2 | ❌ Water | Time (ms) |
 | :-------: | :-----: | :---------------: | :---------------: | :---: | :----------------: | :-------: |
-|   Test 1  |    20   |         20        |         20        |   19  |         19         |     <span style="color:green">1</span>     |
-|   Test 2  |   127   |        364        |        183        |  155  |         172        |     <span style="color:green">6</span>     |
-|   Test 3  |   139   |       1,177       |         5         |   3   |          4         |     <span style="color:green">11</span>    |
-|   Test 4  |   990   |      154,341      |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|   Test 5  |    ?    |         ?         |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|   Test 6  |   780   |       44,028      |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|   Test 7  |    ?    |         ?         |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|   Test 8  |   406   |       2,410       |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|   Test 9  |  2,820  |      110,041      |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|  Test 10  |   803   |       8,617       |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|  Test 11  |   614   |       11,794      |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
+|   Test 1  |    20   |         20        |         20        |   19  |         19         |     <span class="green">1</span>     |
+|   Test 2  |   127   |        364        |        183        |  155  |         172        |     <span class="green">6</span>     |
+|   Test 3  |   139   |       1,177       |         5         |   3   |          4         |     <span class="green">11</span>    |
+|   Test 4  |   990   |      154,341      |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|   Test 5  |    ?    |         ?         |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|   Test 6  |   780   |       44,028      |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|   Test 7  |    ?    |         ?         |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|   Test 8  |   406   |       2,410       |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|   Test 9  |  2,820  |      110,041      |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|  Test 10  |   803   |       8,617       |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|  Test 11  |   614   |       11,794      |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
 
 ---
 
@@ -144,17 +144,17 @@ Additionally, all neighbors for any completed island will be labeled as water an
 
 | Test Case | Actions | `me_reqs` | Solutions Checked | ❌ 2x2 | ❌ Water | Time (ms) |
 | :-------: | :-----: | :---------------: | :---------------: | :---: | :----------------: | :-------: |
-|   Test 1  |    0    |         0         | <span style="color:green">Solved Logically</span>  |   0   |         0          |     <span style="color:green">1</span>     |
-|   Test 2  |   43    |        89         |        115        |  92   |         104        |     <span style="color:green">3</span>     |
-|   Test 3  |   32    |        96         |         5         |   3   |          4         |     <span style="color:green">3</span>    |
-|   Test 4  |   214   |      9,213        |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|   Test 5  |    536  |    17,198         |         144       |   143 |        139         |  <span style="color:green">2000</span>  |
-|   Test 6  |   294   |       9,559       |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|   Test 7  |    23    |        14        |         17        |   16   |          15         |  <span style="color:green">27</span>  |
-|   Test 8  |   280   |       1,104       |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|   Test 9  |   726  |      10,198      |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|  Test 10  |   306   |       1,188       |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
-|  Test 11  |   236   |       1,866      |         ?         |   ?   |          ?         |  <span style="color:red">Timeout</span>  |
+|   Test 1  |    0    |         0         | <span class="green">Solved Logically</span>  |   0   |         0          |     <span class="green">1</span>     |
+|   Test 2  |   43    |        89         |        115        |  92   |         104        |     <span class="green">3</span>     |
+|   Test 3  |   32    |        96         |         5         |   3   |          4         |     <span class="green">3</span>    |
+|   Test 4  |   214   |      9,213        |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|   Test 5  |    536  |    17,198         |         144       |   143 |        139         |  <span class="green">2000</span>  |
+|   Test 6  |   294   |       9,559       |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|   Test 7  |    23    |        14        |         17        |   16   |          15         |  <span class="green">27</span>  |
+|   Test 8  |   280   |       1,104       |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|   Test 9  |   726  |      10,198      |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|  Test 10  |   306   |       1,188       |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
+|  Test 11  |   236   |       1,866      |         ?         |   ?   |          ?         |  <span class="red">Timeout</span>  |
 
 >Note: Stopping the search after finding the first solution does not prevent timing out on any of the 6 unsolved test cases above.
 

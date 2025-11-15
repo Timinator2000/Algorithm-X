@@ -10,10 +10,10 @@ My initial challenge is for you to implement the reduction technique covered in 
 
 | Puzzle | Results                                |
 |:--|:------------------------------------------------------------------|
-|[Sudoku Solver](https://www.codingame.com/training/medium/sudoku-solver)|<span style="color:green">✅ Test Case 1: Very Easy</span><BR><span style="color:red">❌ Test Case 2: Easy - Oh, so close!<BR>❌ Test Case 3: Intermediate/Hard - Minimal reduction.<BR>❌ Test Case 4: World's Hardest Sudoku - No reduction at all.</span>|
-|[16x16 Sudoku](https://www.codingame.com/training/medium/16x16-sudoku)|<span style="color:green">✅ Test Case 1: Test 1<BR>✅ Test Case 2: Test 2</span><BR><span style="color:red">❌ Test Case 3: Test 3 - Minimal reduction.<BR>❌ Test Case 4: Test 4 - Minimal reduction.<BR>❌ Test Case 5: Test 5 - Minimal reduction.<BR>❌ Test Case 6: Test 6 - Minimal reduction.</span>|
-|[25x25 Sudoku](https://www.codingame.com/training/expert/25x25-sudoku)|<span style="color:red">❌ Test Case 1: Test 1 - 77 more cells found.<BR>❌ Test Case 2: Test 2 - Minimal reduction.<BR>❌ Test Case 3: Test 3 - Minimal reduction.<BR>❌ Test Case 4: Test 4 - Minimal reduction.<BR>❌ Test Case 5: Test 5 - Minimal reduction.</span>|
-|[Mini Sudoku Solver](https://www.codingame.com/training/hard/mini-sudoku-solver)|<span style="color:green">✅ Test Case 1: Test 1<BR>✅ Test Case 2: Test 2<BR>✅ Test Case 3: Test 3<BR>✅ Test Case 4: Test 4</span>|
+|[Sudoku Solver](https://www.codingame.com/training/medium/sudoku-solver)|<span class="green">✅ Test Case 1: Very Easy</span><BR><span class="red">❌ Test Case 2: Easy - Oh, so close!<BR>❌ Test Case 3: Intermediate/Hard - Minimal reduction.<BR>❌ Test Case 4: World's Hardest Sudoku - No reduction at all.</span>|
+|[16x16 Sudoku](https://www.codingame.com/training/medium/16x16-sudoku)|<span class="green">✅ Test Case 1: Test 1<BR>✅ Test Case 2: Test 2</span><BR><span class="red">❌ Test Case 3: Test 3 - Minimal reduction.<BR>❌ Test Case 4: Test 4 - Minimal reduction.<BR>❌ Test Case 5: Test 5 - Minimal reduction.<BR>❌ Test Case 6: Test 6 - Minimal reduction.</span>|
+|[25x25 Sudoku](https://www.codingame.com/training/expert/25x25-sudoku)|<span class="red">❌ Test Case 1: Test 1 - 77 more cells found.<BR>❌ Test Case 2: Test 2 - Minimal reduction.<BR>❌ Test Case 3: Test 3 - Minimal reduction.<BR>❌ Test Case 4: Test 4 - Minimal reduction.<BR>❌ Test Case 5: Test 5 - Minimal reduction.</span>|
+|[Mini Sudoku Solver](https://www.codingame.com/training/hard/mini-sudoku-solver)|<span class="green">✅ Test Case 1: Test 1<BR>✅ Test Case 2: Test 2<BR>✅ Test Case 3: Test 3<BR>✅ Test Case 4: Test 4</span>|
 
 ---
 
@@ -23,10 +23,10 @@ Going back to [Learn-Sudoku.com](https://learn-sudoku.com), let's add another fa
 
 | Puzzle | Results                                |
 |:--|:------------------------------------------------------------------|
-|[Sudoku Solver](https://www.codingame.com/training/medium/sudoku-solver)|<span style="color:green">✅ Test Case 1: Very Easy<BR>✅ Test Case 2: Easy<BR></span><span style="color:red">❌ Test Case 3: Intermediate/Hard - 12 more cells found.<BR>❌ Test Case 4: World's Hardest Sudoku - No reduction at all.</span>|
-|[16x16 Sudoku](https://www.codingame.com/training/medium/16x16-sudoku)|<span style="color:green">✅ Test Case 1: Test 1<BR>✅ Test Case 2: Test 2</span><BR><span style="color:red">❌ Test Case 3: Test 3 - 49 more cells found.<BR>❌ Test Case 4: Test 4 - 14 more cells found.<BR>❌ Test Case 5: Test 5 - 41 more cells found.<BR>❌ Test Case 6: Test 6 - 56 more cells found.</span>|
-|[25x25 Sudoku](https://www.codingame.com/training/expert/25x25-sudoku)|<span style="color:green">✅ Test Case 1: Test 1</span><BR><span style="color:red">❌ Test Case 2: Test 2 - 56 more cells found.<BR>❌ Test Case 3: Test 3 - 68 more cells found.<BR>❌ Test Case 4: Test 4 - 58 more cells found.<BR>❌ Test Case 5: Test 5 - 66 more cells found.</span>|
-|[Mini Sudoku Solver](https://www.codingame.com/training/hard/mini-sudoku-solver)|<span style="color:green">✅ Test Case 1: Test 1<BR>✅ Test Case 2: Test 2<BR>✅ Test Case 3: Test 3<BR>✅ Test Case 4: Test 4</span>|
+|[Sudoku Solver](https://www.codingame.com/training/medium/sudoku-solver)|<span class="green">✅ Test Case 1: Very Easy<BR>✅ Test Case 2: Easy<BR></span><span class="red">❌ Test Case 3: Intermediate/Hard - 12 more cells found.<BR>❌ Test Case 4: World's Hardest Sudoku - No reduction at all.</span>|
+|[16x16 Sudoku](https://www.codingame.com/training/medium/16x16-sudoku)|<span class="green">✅ Test Case 1: Test 1<BR>✅ Test Case 2: Test 2</span><BR><span class="red">❌ Test Case 3: Test 3 - 49 more cells found.<BR>❌ Test Case 4: Test 4 - 14 more cells found.<BR>❌ Test Case 5: Test 5 - 41 more cells found.<BR>❌ Test Case 6: Test 6 - 56 more cells found.</span>|
+|[25x25 Sudoku](https://www.codingame.com/training/expert/25x25-sudoku)|<span class="green">✅ Test Case 1: Test 1</span><BR><span class="red">❌ Test Case 2: Test 2 - 56 more cells found.<BR>❌ Test Case 3: Test 3 - 68 more cells found.<BR>❌ Test Case 4: Test 4 - 58 more cells found.<BR>❌ Test Case 5: Test 5 - 66 more cells found.</span>|
+|[Mini Sudoku Solver](https://www.codingame.com/training/hard/mini-sudoku-solver)|<span class="green">✅ Test Case 1: Test 1<BR>✅ Test Case 2: Test 2<BR>✅ Test Case 3: Test 3<BR>✅ Test Case 4: Test 4</span>|
 
 ---
 
