@@ -72,7 +72,7 @@ In 1981, pioneering English electronic band Depeche Mode released their debut al
 
 <BR>
 
-![The On-Line Encyclopedia of Integer Sequences](OEISBanner.jpg)
+![The On-Line Encyclopedia of Integer Sequences](OEISBanner.jpg){ class="center-image" }
 
 <BR>
 

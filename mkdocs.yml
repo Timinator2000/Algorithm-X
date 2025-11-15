@@ -203,11 +203,13 @@ theme:
 extra_css:
   - stylesheets/extra.css
   - stylesheets/quiz.css
+  # - stylesheets/copy-text.css
 
 extra_javascript:
   - javascripts/quiz.js
   - javascripts/counter.js
   - javascripts/page-numbers.js
+  # - javascripts/copy-text.js
 
 
 markdown_extensions:
