@@ -1,6 +1,6 @@
 # Connect the Colours - Part 1
 
-__Puzzle:__ [Connect the Colours Part 1 - AWAITING APPROVAL](https://www.codingame.com/contribute/community)
+__Puzzle:__ [Connect the Colours Part 1](https://www.codingame.com/training/medium/connect-the-colours---part-1)
 
 __Author:__ [@Harry.B.](https://www.codingame.com/profile/d926a93cb394ded661b204822965c5fa7122915)
 
