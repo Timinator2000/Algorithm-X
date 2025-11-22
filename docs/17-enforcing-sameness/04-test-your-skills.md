@@ -6,9 +6,29 @@ In the realm of sameness, there are two fundamental building blocks. The first i
 
 <BR>
 
-![An Algorithm to Combine All-or-None Sets](CombiningSets.png){ class="center-image" }
+!!! example "Set-Merging Algorithm"
+    ```text
+    master_list = list of sets, each containing 1 or 2 distinct elements
+
+    repeat
+        new_list = empty list
+
+        for each set m in master_list
+            if m overlaps with any set n in new_list
+                replace n with the union of m and n (m ∪ n)
+            else
+                append m to new_list
+
+        master_list = new_list
+
+    until no more sets can be combined
+    ```
 
 <BR>
+
+This is a *naive repeated overlap-merge*: after each merge, the algorithm restarts scanning from the beginning until no overlaps remain. While simple to understand, it can be slow because every set is compared against every other set, and merges can trigger many repeated passes. In worst-case scenarios with heavily overlapping sets, the total work can grow to **O(n³)**.
+
+For the playground applications, this algorithm works wonderfully. For larger applications, however, it’s worth exploring more efficient approaches such as **Union–Find (Disjoint Set Union)**, **graph-based connected-component labeling**, or **interval/segment merging techniques** that avoid repeated global rescans.
 
 ---
 
@@ -28,6 +48,7 @@ def minimize_all_or_none_sets(all_or_none_sets: list[set[str]]):
     
     return all_or_none_sets
 
+
 TESTS = [
             [{'A', 'B'}, {'C', 'D'}, {'E', 'F'}],  
             [{'A', 'B'}, {'B', 'C'}],  
@@ -36,6 +57,7 @@ TESTS = [
             [{'A', 'B'}, {'A', 'C'}, {'A', 'D'}, {'A', 'F'}, {'X', 'Y'}, {'Z', 'Y'}, {'E', 'F'}, {'J', 'K'}, {'Z', 'P'}],
             [{'A'}, {'Z'}, {'Q'}, {'A', 'B'}, {'A', 'C'}, {'A', 'D'}, {'A', 'F'}, {'X', 'Y'}, {'Z', 'Y'}, {'E', 'F'}, {'J', 'K'}, {'Z', 'P'}]
         ]
+
 
 for test in TESTS:
     print(minimize_all_or_none_sets(test))

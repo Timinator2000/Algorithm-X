@@ -65,23 +65,26 @@ If that sounded like Penn Jillette delivering coded hints on [*Fool Us*](https:/
     Because the grid has 5 cells, we need **5 bits** to represent which ones are active. That means our bitmap will be a number between:
 
     * **0** (`00000` in binary, nothing selected)
+
+    and 
+
     * **31** (`11111` in binary, all selected)
 
     ## Assigning Cell Bitmasks
 
-    We assign powers of two from left to right:
+    We assign powers of two from **right to left**:
 
-    | Cell | Bit Position | Bitmask |
-    | ---- | ------------ | ------- |
-    | 0    | bit 0        | **1**   |
-    | 1    | bit 1        | **2**   |
-    | 2    | bit 2        | **4**   |
-    | 3    | bit 3        | **8**   |
-    | 4    | bit 4        | **16**  |
+    | Cell | Bit Position |Bitmask (Decimal) | Bitmask (Binary) |
+    |:----:|:------------:|:-------:|:-------:|
+    | 4    | bit 0        | 2<sup>0</sup> = 1   | `00001` |
+    | 3    | bit 1        | 2<sup>1</sup> = 2   | `00010` |
+    | 2    | bit 2        | 2<sup>2</sup> = 4   | `00100` |
+    | 1    | bit 3        | 2<sup>3</sup> = 8   | `01000` |
+    | 0    | bit 4        | 2<sup>4</sup> = 16  | `10000` |
 
     Each mask has exactly one bit set.
 
-    ## Forming the Bitmap (Adding Bitmasks)
+    ## Adding Cells to the Bitmask
 
     To represent a set of visited cells, simply **add** their bitmasks.
 
@@ -93,17 +96,15 @@ If that sounded like Penn Jillette delivering coded hints on [*Fool Us*](https:/
 
     The bitmap is **21**, which is binary `10101`, neatly showing which bits—and therefore which cells—are active.
 
-    ## Removing a Cell (Subtracting Bitmasks)
+    ## Removing Cells from the Bitmask
 
     If you backtrack or unmark a cell, **subtract** its mask.
 
     Example: remove cell 2 (mask 4) from `21`:
 
     ```
-    21 − 4 = 17
+    21 − 4 = 17    (10001 binary)
     ```
-
-    Binary `10001`.
 
     Now only cells 0 and 4 are active.
 
@@ -120,6 +121,86 @@ If that sounded like Penn Jillette delivering coded hints on [*Fool Us*](https:/
 
     This strategy gives each partial path a clean, compact signature, dramatically reducing redundancy and improving search performance. In Connect the Colours, the only additional ingredient you need is the path head’s coordinates — a crucial detail for distinguishing one partial path from another.
 
+    ---
+
+    # A Better Bitmap Strategy
+
+    The strategy described above is excellent for small grids, but once the grid becomes large, arithmetic updates stop being cheap. Adding or subtracting a bitmask forces Python to process a long multi-word integer and possibly propagate carries through large sections of it. On large boards, that can slow things down noticeably. For this reason, any high-performance bitboard implementation should rely on **bitwise** operations instead of arithmetic.
+
+    The improvement is straightforward: stop treating the bitmap as a number whose value you modify, and start treating it as a **bitset** whose bits you explicitly turn on and off. Operations like `OR`, `AND`, and `XOR` manipulate exactly the bits you specify, avoid carry propagation entirely, and scale cleanly even when your bitmap spans hundreds of thousands of bits.
+
+    The largest grids in *Connect the Colours - Part 2* are only 8×8, which fits comfortably inside a single 64-bit integer. Even so, switching from arithmetic to bitwise updates can **cut search times roughly in half** on some of the most time-consuming grids, simply because the operations are cheaper and more predictable.
+
+    ## Using Bitwise Operations
+
+    With this approach:
+
+    * **Add a cell** with a bitwise OR:  
+      ```python
+      bitmap |= mask
+      ```
+
+    * **Remove a cell** with a bitwise AND NOT:  
+      ```python
+      bitmap &= ~mask
+      ```
+
+    * **Toggle a cell** (rarely needed, but occasionally useful) with XOR:  
+      ```python
+      bitmap ^= mask
+      ```
+
+    These operations do not require Python to propagate carries across thousands of bits, which is where arithmetic begins to slow down. Instead, each update becomes a direct binary manipulation on the underlying array.
+
+    ## Why This Scales Better
+
+    Numeric addition has implicit rules — carries, borrow propagation, normalization — that grow in cost as the integer grows. Bitwise operations do none of this. They treat each bit independently, making them dramatically more efficient on large grids.
+
+    In practice, this means:
+
+    * Updating a 10×10 bitmap and a 300×300 bitmap takes roughly the **same amount of time**.
+    * The bitmap never “accidentally changes” outside the target bit, something that can happen if an arithmetic update is wrong.
+    * Operations like unions, intersections, and differences become trivial one-liners.
+
+    For example, to test whether two partial paths overlap, you don’t need loops or sets:
+
+    ```python
+    if bitmap_a & bitmap_b:
+        # They overlap
+    ```
+
+    Or to merge state from two branches:
+
+    ```python
+    merged = bitmap_a | bitmap_b
+    ```
+
+    These operations are both **faster** and **more expressive** than arithmetic.
+
+    ## A Useful Mental Model
+
+    Instead of thinking of the bitmap as a number whose value matters, think of it as a **row of light switches**:
+
+    * `OR` turns a switch on.
+    * `AND NOT` turns a switch off.
+    * `AND` checks whether two switches are on at the same time.
+    * `XOR` flips a switch.
+
+    The decimal value of the bitmap is no longer the important part — what matters is the pattern of the bits themselves.
+
+    ## When to Use the Arithmetic Approach
+
+    For teaching, visualizing, or very small grids, the arithmetic method is still perfectly fine. It’s intuitive, easy to explain, and makes the “bitmap as an integer” idea concrete.
+
+    But for any significant applicaiton — especially when bitmaps grow into the tens or hundreds of thousands of bits, but even on the larger boards seen in this puzzle — switching to pure bitwise operations provides:
+
+    * Better performance  
+    * Cleaner semantics  
+    * Safer state updates  
+    * A natural path to advanced bitboard techniques
+
+    With bitwise operations, the cost of updating or checking your bitmap stays nearly constant, even if your board has tens or hundreds of thousands of cells. Your algorithm’s performance now depends on the logic you’re implementing — not on how huge the bitmap happens to be.
+    
     ---
 
     # Leveling Up Your Bitboard Skills
