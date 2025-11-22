@@ -897,7 +897,7 @@
   
   
   <span class="md-ellipsis">
-    Finding ALL Possibile Actions
+    Finding All Possible Actions
     
   </span>
   
@@ -3770,7 +3770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../22-2025-and-beyond/14-connect-the-colours-part-2-%28cont.%29/" class="md-nav__link">
+      <a href="../../22-2025-and-beyond/14-connect-the-colours-part-2-cont/" class="md-nav__link">
         
   
   
@@ -4174,8 +4174,27 @@
 <p>The Scavenger Hunt made it easy to identify the all-or-none sets of events as the children were simply grouped by last name. It is more common to have many sets of events that contain only 2 elements and it is up to you to combine the sets where possible and build a minimum number of completely independent sets. Let’s explore a short algorithm for doing that.</p>
 <p>In the realm of sameness, there are two fundamental building blocks. The first is a single standalone item. The second is two items that need to be the same. For instance, <code>A</code> must be the same as <code>B</code>. Given a list of sets, where each set contains a single element or 2 elements that must be the same, the following pseudocode reduces that list to a minimum number of sets, where no 2 sets have any overlap.</p>
 <p><BR></p>
-<p><img alt="An Algorithm to Combine All-or-None Sets" class="center-image" src="../CombiningSets.png" /></p>
+<div class="admonition example">
+<p class="admonition-title">Set-Merging Algorithm</p>
+<div class="highlight"><pre><span></span><code>master_list = list of sets, each containing 1 or 2 distinct elements
+
+repeat
+    new_list = empty list
+
+    for each set m in master_list
+        if m overlaps with any set n in new_list
+            replace n with the union of m and n (m ∪ n)
+        else
+            append m to new_list
+
+    master_list = new_list
+
+until no more sets can be combined
+</code></pre></div>
+</div>
 <p><BR></p>
+<p>This is a <em>naive repeated overlap-merge</em>: after each merge, the algorithm restarts scanning from the beginning until no overlaps remain. While simple to understand, it can be slow because every set is compared against every other set, and merges can trigger many repeated passes. In worst-case scenarios with heavily overlapping sets, the total work can grow to <strong>O(n³)</strong>.</p>
+<p>For the playground applications, this algorithm works wonderfully. For larger applications, however, it’s worth exploring more efficient approaches such as <strong>Union–Find (Disjoint Set Union)</strong>, <strong>graph-based connected-component labeling</strong>, or <strong>interval/segment merging techniques</strong> that avoid repeated global rescans.</p>
 <hr />
 <h1 id="test-your-skills">Test Your Skills</h1>
 <p>The following exercise gives you a chance to practice reducing a list of sets that might have overlap to a list of sets where no two sets overlap with each other. The number of distinct elements does not change, but any two sets that have overlap must be combined, resulting in a shorter list of all-or-none sets. Each set in the final list contains a group of elements that all must be the same in some way.</p>
@@ -4188,6 +4207,7 @@
 
     <span class="k">return</span> <span class="n">all_or_none_sets</span>
 
+
 <span class="n">TESTS</span> <span class="o">=</span> <span class="p">[</span>
             <span class="p">[{</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">}],</span>  
             <span class="p">[{</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">}],</span>  
@@ -4196,6 +4216,7 @@
             <span class="p">[{</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">}],</span>
             <span class="p">[{</span><span class="s1">&#39;A&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;Z&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;Q&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">}]</span>
         <span class="p">]</span>
+
 
 <span class="k">for</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">TESTS</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">minimize_all_or_none_sets</span><span class="p">(</span><span class="n">test</span><span class="p">))</span>
