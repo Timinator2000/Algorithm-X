@@ -20,8 +20,6 @@ In the next graphic, I have copied Knuth's algorithm as written on Wikipedia. I 
     6. Repeat this algorithm recursively on the reduced matrix A.
     ```
 
-![Algorithm X](AlgorithmX.png){ class="center-image" }
-
 <BR>
 
 ---

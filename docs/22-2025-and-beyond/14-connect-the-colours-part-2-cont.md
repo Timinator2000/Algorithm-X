@@ -129,7 +129,7 @@ If that sounded like Penn Jillette delivering coded hints on [*Fool Us*](https:/
 
     The improvement is straightforward: stop treating the bitmap as a number whose value you modify, and start treating it as a **bitset** whose bits you explicitly turn on and off. Operations like `OR`, `AND`, and `XOR` manipulate exactly the bits you specify, avoid carry propagation entirely, and scale cleanly even when your bitmap spans more bits than you may have ever imagined.
 
-    The largest grids in *Connect the Colours - Part 2* are only 8×8, which fits comfortably inside a single 64-bit integer. Even so, switching from arithmetic to bitwise updates can **cut search times roughly in half** on some of the most time-consuming grids, simply because the operations are cheaper and more predictable.
+    The largest grids in *Connect the Colours - Part 2* are only 8×8, which fits comfortably inside a single 64-bit integer. Even so, switching from arithmetic to bitwise updates can **cut search times roughly in half** on some of the most time-consuming grids, simply because the operations are more efficient.
 
     ## Using Bitwise Operations
 
@@ -199,7 +199,7 @@ If that sounded like Penn Jillette delivering coded hints on [*Fool Us*](https:/
     * Safer state updates  
     * A natural path to advanced bitboard techniques
 
-    With bitwise operations, the cost of updating or checking your bitmap stays nearly constant. Your algorithm’s performance now depends on the logic you’re implementing — not on how huge the bitmap happens to be.
+    With bitwise operations, the cost of updating or checking your bitmap stays nearly constant. Your algorithm’s performance now depends on the logic you’re implementing — not on how big the bitmap happens to be.
     
     ---
 
