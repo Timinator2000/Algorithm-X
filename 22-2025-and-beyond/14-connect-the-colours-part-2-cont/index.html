@@ -4270,7 +4270,7 @@ Much faster. Bitmap updates are just bit operations, and hashing a single intege
 <h2 id="adding-cells-to-the-bitmask">Adding Cells to the Bitmask</h2>
 <p>To represent a set of visited cells, simply <strong>add</strong> their bitmasks.</p>
 <p>Suppose the active cells are 0, 2, and 4:</p>
-<div class="highlight"><pre><span></span><code>1 (cell 0) + 4 (cell 2) + 16 (cell 4) = 21
+<div class="highlight"><pre><span></span><code>16 (cell 0) + 4 (cell 2) + 1 (cell 4) = 21
 </code></pre></div>
 <p>The bitmap is <strong>21</strong>, which is binary <code>10101</code>, neatly showing which bits—and therefore which cells—are active.</p>
 <h2 id="removing-cells-from-the-bitmask">Removing Cells from the Bitmask</h2>
@@ -4295,7 +4295,7 @@ Much faster. Bitmap updates are just bit operations, and hashing a single intege
 <hr />
 <h1 id="a-better-bitmap-strategy">A Better Bitmap Strategy</h1>
 <p>The strategy described above is excellent for small grids, but once the grid becomes large, arithmetic updates stop being cheap. Adding or subtracting a bitmask forces Python to process a long multi-word integer and possibly propagate carries through large sections of it. On large boards, that can slow things down noticeably. For this reason, any high-performance bitboard implementation should rely on <strong>bitwise</strong> operations instead of arithmetic.</p>
-<p>The improvement is straightforward: stop treating the bitmap as a number whose value you modify, and start treating it as a <strong>bitset</strong> whose bits you explicitly turn on and off. Operations like <code>OR</code>, <code>AND</code>, and <code>XOR</code> manipulate exactly the bits you specify, avoid carry propagation entirely, and scale cleanly even when your bitmap spans hundreds of thousands of bits.</p>
+<p>The improvement is straightforward: stop treating the bitmap as a number whose value you modify, and start treating it as a <strong>bitset</strong> whose bits you explicitly turn on and off. Operations like <code>OR</code>, <code>AND</code>, and <code>XOR</code> manipulate exactly the bits you specify, avoid carry propagation entirely, and scale cleanly even when your bitmap spans more bits than you may have ever imagined.</p>
 <p>The largest grids in <em>Connect the Colours - Part 2</em> are only 8×8, which fits comfortably inside a single 64-bit integer. Even so, switching from arithmetic to bitwise updates can <strong>cut search times roughly in half</strong> on some of the most time-consuming grids, simply because the operations are cheaper and more predictable.</p>
 <h2 id="using-bitwise-operations">Using Bitwise Operations</h2>
 <p>With this approach:</p>
@@ -4311,12 +4311,12 @@ Much faster. Bitmap updates are just bit operations, and hashing a single intege
 </code></pre></div></p>
 </li>
 <li>
-<p><strong>Toggle a cell</strong> (rarely needed, but occasionally useful) with XOR:<br />
+<p><strong>Toggle a cell</strong> with bitwise XOR:<br />
   <div class="highlight"><pre><span></span><code><span class="n">bitmap</span> <span class="o">^=</span> <span class="n">mask</span>
 </code></pre></div></p>
 </li>
 </ul>
-<p>These operations do not require Python to propagate carries across thousands of bits, which is where arithmetic begins to slow down. Instead, each update becomes a direct binary manipulation on the underlying array.</p>
+<p>These operations do not require Python to propagate carries across significant numbers of bits, which is where arithmetic begins to slow down. Instead, each update becomes a direct binary manipulation on the underlying array.</p>
 <h2 id="why-this-scales-better">Why This Scales Better</h2>
 <p>Numeric addition has implicit rules — carries, borrow propagation, normalization — that grow in cost as the integer grows. Bitwise operations do none of this. They treat each bit independently, making them dramatically more efficient on large grids.</p>
 <p>In practice, this means:</p>
@@ -4344,14 +4344,14 @@ Much faster. Bitmap updates are just bit operations, and hashing a single intege
 <p>The decimal value of the bitmap is no longer the important part — what matters is the pattern of the bits themselves.</p>
 <h2 id="when-to-use-the-arithmetic-approach">When to Use the Arithmetic Approach</h2>
 <p>For teaching, visualizing, or very small grids, the arithmetic method is still perfectly fine. It’s intuitive, easy to explain, and makes the “bitmap as an integer” idea concrete.</p>
-<p>But for any significant applicaiton — especially when bitmaps grow into the tens or hundreds of thousands of bits, but even on the larger boards seen in this puzzle — switching to pure bitwise operations provides:</p>
+<p>But for any significant application — including the larger boards seen in this puzzle — switching to pure bitwise operations provides:</p>
 <ul>
 <li>Better performance  </li>
 <li>Cleaner semantics  </li>
 <li>Safer state updates  </li>
 <li>A natural path to advanced bitboard techniques</li>
 </ul>
-<p>With bitwise operations, the cost of updating or checking your bitmap stays nearly constant, even if your board has tens or hundreds of thousands of cells. Your algorithm’s performance now depends on the logic you’re implementing — not on how huge the bitmap happens to be.</p>
+<p>With bitwise operations, the cost of updating or checking your bitmap stays nearly constant. Your algorithm’s performance now depends on the logic you’re implementing — not on how huge the bitmap happens to be.</p>
 <hr />
 <h1 id="leveling-up-your-bitboard-skills">Leveling Up Your Bitboard Skills</h1>
 <p>CodinGame has many wonderful opportunities for practicing bitmaps, especially in multi-player games that feature grid-based gameboards. If you'd like to take your bitboarding to the next level, I recommend taking a look at <a href="https://www.codingame.com/profile/c9ebe76a83b33730956eda0534d6cad86053292">@darkhorse64</a>'s multi-player game <a href="https://www.codingame.com/multiplayer/bot-programming/mad-knights">Mad Knights</a>.</p>
