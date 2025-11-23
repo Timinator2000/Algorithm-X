@@ -209,7 +209,9 @@ extra_javascript:
   - javascripts/quiz.js
   - javascripts/counter.js
   - javascripts/page-numbers.js
-  # - javascripts/copy-text.js
+  # - https://polyfill.io/v3/polyfill.min.js?features=es6
+  # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    # - javascripts/copy-text.js
 
 
 markdown_extensions:
@@ -224,6 +226,9 @@ markdown_extensions:
   - fenced_code
   - codehilite
   - md_in_html
+  # - pymdownx.arithmatex:
+  #     inline_wrap: ["$", "$"]
+  #     generic: true
 
 
 copyright: >

@@ -91,7 +91,7 @@ If that sounded like Penn Jillette delivering coded hints on [*Fool Us*](https:/
     Suppose the active cells are 0, 2, and 4:
 
     ```
-    1 (cell 0) + 4 (cell 2) + 16 (cell 4) = 21
+    16 (cell 0) + 4 (cell 2) + 1 (cell 4) = 21
     ```
 
     The bitmap is **21**, which is binary `10101`, neatly showing which bits—and therefore which cells—are active.
@@ -127,7 +127,7 @@ If that sounded like Penn Jillette delivering coded hints on [*Fool Us*](https:/
 
     The strategy described above is excellent for small grids, but once the grid becomes large, arithmetic updates stop being cheap. Adding or subtracting a bitmask forces Python to process a long multi-word integer and possibly propagate carries through large sections of it. On large boards, that can slow things down noticeably. For this reason, any high-performance bitboard implementation should rely on **bitwise** operations instead of arithmetic.
 
-    The improvement is straightforward: stop treating the bitmap as a number whose value you modify, and start treating it as a **bitset** whose bits you explicitly turn on and off. Operations like `OR`, `AND`, and `XOR` manipulate exactly the bits you specify, avoid carry propagation entirely, and scale cleanly even when your bitmap spans hundreds of thousands of bits.
+    The improvement is straightforward: stop treating the bitmap as a number whose value you modify, and start treating it as a **bitset** whose bits you explicitly turn on and off. Operations like `OR`, `AND`, and `XOR` manipulate exactly the bits you specify, avoid carry propagation entirely, and scale cleanly even when your bitmap spans more bits than you may have ever imagined.
 
     The largest grids in *Connect the Colours - Part 2* are only 8×8, which fits comfortably inside a single 64-bit integer. Even so, switching from arithmetic to bitwise updates can **cut search times roughly in half** on some of the most time-consuming grids, simply because the operations are cheaper and more predictable.
 
@@ -145,12 +145,12 @@ If that sounded like Penn Jillette delivering coded hints on [*Fool Us*](https:/
       bitmap &= ~mask
       ```
 
-    * **Toggle a cell** (rarely needed, but occasionally useful) with XOR:  
+    * **Toggle a cell** with bitwise XOR:  
       ```python
       bitmap ^= mask
       ```
 
-    These operations do not require Python to propagate carries across thousands of bits, which is where arithmetic begins to slow down. Instead, each update becomes a direct binary manipulation on the underlying array.
+    These operations do not require Python to propagate carries across significant numbers of bits, which is where arithmetic begins to slow down. Instead, each update becomes a direct binary manipulation on the underlying array.
 
     ## Why This Scales Better
 
@@ -192,14 +192,14 @@ If that sounded like Penn Jillette delivering coded hints on [*Fool Us*](https:/
 
     For teaching, visualizing, or very small grids, the arithmetic method is still perfectly fine. It’s intuitive, easy to explain, and makes the “bitmap as an integer” idea concrete.
 
-    But for any significant applicaiton — especially when bitmaps grow into the tens or hundreds of thousands of bits, but even on the larger boards seen in this puzzle — switching to pure bitwise operations provides:
+    But for any significant application — including the larger boards seen in this puzzle — switching to pure bitwise operations provides:
 
     * Better performance  
     * Cleaner semantics  
     * Safer state updates  
     * A natural path to advanced bitboard techniques
 
-    With bitwise operations, the cost of updating or checking your bitmap stays nearly constant, even if your board has tens or hundreds of thousands of cells. Your algorithm’s performance now depends on the logic you’re implementing — not on how huge the bitmap happens to be.
+    With bitwise operations, the cost of updating or checking your bitmap stays nearly constant. Your algorithm’s performance now depends on the logic you’re implementing — not on how huge the bitmap happens to be.
     
     ---
 
