@@ -4296,7 +4296,7 @@ Much faster. Bitmap updates are just bit operations, and hashing a single intege
 <h1 id="a-better-bitmap-strategy">A Better Bitmap Strategy</h1>
 <p>The strategy described above is excellent for small grids, but once the grid becomes large, arithmetic updates stop being cheap. Adding or subtracting a bitmask forces Python to process a long multi-word integer and possibly propagate carries through large sections of it. On large boards, that can slow things down noticeably. For this reason, any high-performance bitboard implementation should rely on <strong>bitwise</strong> operations instead of arithmetic.</p>
 <p>The improvement is straightforward: stop treating the bitmap as a number whose value you modify, and start treating it as a <strong>bitset</strong> whose bits you explicitly turn on and off. Operations like <code>OR</code>, <code>AND</code>, and <code>XOR</code> manipulate exactly the bits you specify, avoid carry propagation entirely, and scale cleanly even when your bitmap spans more bits than you may have ever imagined.</p>
-<p>The largest grids in <em>Connect the Colours - Part 2</em> are only 8×8, which fits comfortably inside a single 64-bit integer. Even so, switching from arithmetic to bitwise updates can <strong>cut search times roughly in half</strong> on some of the most time-consuming grids, simply because the operations are cheaper and more predictable.</p>
+<p>The largest grids in <em>Connect the Colours - Part 2</em> are only 8×8, which fits comfortably inside a single 64-bit integer. Even so, switching from arithmetic to bitwise updates can <strong>cut search times roughly in half</strong> on some of the most time-consuming grids, simply because the operations are more efficient.</p>
 <h2 id="using-bitwise-operations">Using Bitwise Operations</h2>
 <p>With this approach:</p>
 <ul>
@@ -4351,7 +4351,7 @@ Much faster. Bitmap updates are just bit operations, and hashing a single intege
 <li>Safer state updates  </li>
 <li>A natural path to advanced bitboard techniques</li>
 </ul>
-<p>With bitwise operations, the cost of updating or checking your bitmap stays nearly constant. Your algorithm’s performance now depends on the logic you’re implementing — not on how huge the bitmap happens to be.</p>
+<p>With bitwise operations, the cost of updating or checking your bitmap stays nearly constant. Your algorithm’s performance now depends on the logic you’re implementing — not on how big the bitmap happens to be.</p>
 <hr />
 <h1 id="leveling-up-your-bitboard-skills">Leveling Up Your Bitboard Skills</h1>
 <p>CodinGame has many wonderful opportunities for practicing bitmaps, especially in multi-player games that feature grid-based gameboards. If you'd like to take your bitboarding to the next level, I recommend taking a look at <a href="https://www.codingame.com/profile/c9ebe76a83b33730956eda0534d6cad86053292">@darkhorse64</a>'s multi-player game <a href="https://www.codingame.com/multiplayer/bot-programming/mad-knights">Mad Knights</a>.</p>
