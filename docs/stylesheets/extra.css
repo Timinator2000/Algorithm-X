@@ -145,3 +145,8 @@ form[id^="quiz"] {
 .red {
   color: red;
 }
+
+.big-center {
+  text-align: center;
+  font-size: 150%;
+}

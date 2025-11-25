@@ -81,8 +81,7 @@ It can be challenging to visualize an Exact Cover problem that requires coloring
 
 If you love repeatability, take a break from your work right now. Get up, open a window and yell for all the world to hear, 
 
-| <span style="font-size: 250%">🔥🔥🔥  I LOVE REPEATABILITY!  🔥🔥🔥</span>|
-|:-------:|
+<div class="big-center">🔥🔥🔥 I LOVE REPEATABILITY! 🔥🔥🔥</div>
 
 To set up your solver, follow the exact instructions presented [just a few short pages ago](../15-coloring-your-requirements/02-constructing-a-word-search.md). Of course, you will need to handle two distinct sets of letters. You might choose to keep it simple and add two attributes to your solver or you might wish to be clever and implement the color police with a single `dictionary`.
 

@@ -22,11 +22,16 @@ Consider __Example 1__ from the puzzle goal. The Kakuro grid is a 3x3 grid, but 
 
 <BR>
 
-The next graphic summarizes all important information on the Kakuro grid in a way that resembles the cell and group approach we have used many times before.
+The next table summarizes all important information on the Kakuro grid in a way that resembles the cell and group approach we have used many times before.
 
 <BR>
 
-![Kakuro Example 1 Summary](Kakuro2.png){ class="center-image" }
+| Group # | Sum | Cells (row, col) |
+|:-------:|:---:|:----------------:|
+| 1 | 17 | (1, 1), (1, 2) |
+| 2 | 3 | (2, 1), (2, 2) |
+| 3 | 9 | (1, 1), (2, 1) |
+| 4 | 11 | (1, 2), (2, 2) |
 
 <BR>
 
