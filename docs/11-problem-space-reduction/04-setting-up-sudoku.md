@@ -6,7 +6,26 @@ Conceptually, I create two classes, one for a `SudokuCell` and another for a `Su
 
 <BR>
 
-![Sudoku Data Structure](SudokuDataStructure.png){ class="center-image" }
+<!-- Separate multiple attr/methods with a \ -->
+{% set sudoku_group = classbox(
+    "SudokuGroup",
+    attributes="cells: list",
+    methods="reduce_()"
+) %}
+
+{% set sudoku_cell = classbox(
+    "SudokuCell",
+    attributes="candidates: set",
+    methods="reduce_()"
+) %}
+
+<!-- Simple straight line connecting two classes -->
+{{ classrelation(sudoku_group, sudoku_cell) }}
+
+
+<style>
+/* ![Sudoku Data Structure](SudokuDataStructure.png){ class="center-image" } */
+</style>
 
 <BR>
 
