@@ -29,7 +29,26 @@ What I am about to say should not be a surprise and I hope I have not made a mis
 
 <BR>
 
-![Futoshiki Classes Including Inequality](FutoshikiWithInequality.png){ class="center-image" }
+{% set sudoku_group = classbox(
+    "SudokuGroup",
+    attributes="cells: list",
+    methods="reduce_()"
+) %}
+
+{% set sudoku_cell = classbox(
+    "SudokuCell",
+    attributes="candidates: set",
+    methods="reduce_()"
+) %}
+
+{% set inequality = classbox(
+    "Inequality",
+    attributes="lower: SudokuCell\nhigher: SudokuCell",
+    methods="reduce_()"
+) %}
+
+<!-- 3 classes, two connecting lines -->
+{{ classrow(sudoku_group, sudoku_cell, inequality, line_width=60) | safe }}
 
 <BR>
 

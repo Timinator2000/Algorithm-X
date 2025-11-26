@@ -22,35 +22,44 @@ def define_env(env):
     @env.macro
     def classbox(name, attributes="", methods=""):
         """
-        Render a UML-style class box with optional attributes and methods.
+        Returns HTML for a single class box.
+        attributes / methods: newline-separated strings (i.e. "a\nb\nc")
         """
-        attr_html = ""
-        if attributes.strip():
-            attr_lines = attributes.strip().split("\n")
-            attr_html = "".join(f"<div class='uml-attr'>{line}</div>" for line in attr_lines)
+        attrs_html = ""
+        if attributes and attributes.strip():
+            attrs_html = "<br>".join(line for line in attributes.strip().splitlines())
 
-        method_html = ""
-        if methods.strip():
-            method_lines = methods.strip().split("\n")
-            method_html = "".join(f"<div class='uml-method'>{line}</div>" for line in method_lines)
+        methods_html = ""
+        if methods and methods.strip():
+            methods_html = "<br>".join(line for line in methods.strip().splitlines())
 
-        return f"""
-<div class='uml-class'>
-  <div class='uml-class-name'>{name}</div>
-  {f"<div class='uml-class-section'>{attr_html}</div>" if attr_html else ""}
-  {f"<div class='uml-class-section'>{method_html}</div>" if method_html else ""}
-</div>
+        html = f"""<div class="uml-box">
+  <div class="uml-header">{name}</div>
 """
+        if attrs_html:
+            html += f'  <div class="uml-section">{attrs_html}</div>\n'
+        if methods_html:
+            html += f'  <div class="uml-section">{methods_html}</div>\n'
+        html += "</div>"
+        return html
 
     @env.macro
-    def classrelation(left, right):
+    def classrow(*boxes_html, line_width=60):
         """
-        Render a straight line connecting two classes.
+        Arrange one or more already-rendered classbox HTML strings horizontally.
+        Example:
+            classrow(box1_html, box2_html, box3_html, line_width=80)
+        Returns a single HTML string (remember to use | safe when rendering).
         """
-        return f"""
-<div class='uml-relation'>
-  <div class='uml-relation-left'>{left}</div>
-  <div class='uml-relation-line'></div>
-  <div class='uml-relation-right'>{right}</div>
-</div>
-"""
+        # sanitize/ensure inputs are strings
+        parts = []
+        n = len(boxes_html)
+        for i, b in enumerate(boxes_html):
+            # wrap each class in a .uml-cell
+            parts.append(f'<div class="uml-cell">{b}</div>')
+            # insert a line between cells (N-1 lines for N boxes)
+            if i < n - 1:
+                parts.append(f'<div class="uml-line" style="width:{int(line_width)}px;"></div>')
+
+        row_html = '<div class="uml-row">\n' + "\n".join(parts) + "\n</div>"
+        return row_html
