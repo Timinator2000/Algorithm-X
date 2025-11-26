@@ -20,7 +20,7 @@ Conceptually, I create two classes, one for a `SudokuCell` and another for a `Su
 ) %}
 
 <!-- Simple straight line connecting two classes -->
-{{ classrow(sudoku_group, sudoku_cell, line_width=80) | safe }}
+{{ classrow(sudoku_group, sudoku_cell) | safe }}
 
 <style>
 /* ![Sudoku Data Structure](SudokuDataStructure.png){ class="center-image" } */

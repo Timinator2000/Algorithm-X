@@ -48,7 +48,7 @@ What I am about to say should not be a surprise and I hope I have not made a mis
 ) %}
 
 <!-- 3 classes, two connecting lines -->
-{{ classrow(sudoku_group, sudoku_cell, inequality, line_width=60) | safe }}
+{{ classrow(sudoku_group, sudoku_cell, inequality) | safe }}
 
 <BR>
 

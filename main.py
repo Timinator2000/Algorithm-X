@@ -43,23 +43,38 @@ def define_env(env):
         html += "</div>"
         return html
 
+
     @env.macro
-    def classrow(*boxes_html, line_width=60):
+    def classrow(*boxes_html):
         """
-        Arrange one or more already-rendered classbox HTML strings horizontally.
-        Example:
-            classrow(box1_html, box2_html, box3_html, line_width=80)
-        Returns a single HTML string (remember to use | safe when rendering).
+        Arrange N class boxes with connecting lines that stretch between them.
         """
-        # sanitize/ensure inputs are strings
         parts = []
         n = len(boxes_html)
         for i, b in enumerate(boxes_html):
-            # wrap each class in a .uml-cell
             parts.append(f'<div class="uml-cell">{b}</div>')
-            # insert a line between cells (N-1 lines for N boxes)
             if i < n - 1:
-                parts.append(f'<div class="uml-line" style="width:{int(line_width)}px;"></div>')
+                parts.append('<div class="uml-connector"><div class="uml-line"></div></div>')
+        return '<div class="uml-row">\n' + "\n".join(parts) + '\n</div>'
 
-        row_html = '<div class="uml-row">\n' + "\n".join(parts) + "\n</div>"
-        return row_html
+
+    # @env.macro
+    # def classrow(*boxes_html, line_width=60):
+    #     """
+    #     Arrange one or more already-rendered classbox HTML strings horizontally.
+    #     Example:
+    #         classrow(box1_html, box2_html, box3_html, line_width=80)
+    #     Returns a single HTML string (remember to use | safe when rendering).
+    #     """
+    #     # sanitize/ensure inputs are strings
+    #     parts = []
+    #     n = len(boxes_html)
+    #     for i, b in enumerate(boxes_html):
+    #         # wrap each class in a .uml-cell
+    #         parts.append(f'<div class="uml-cell">{b}</div>')
+    #         # insert a line between cells (N-1 lines for N boxes)
+    #         if i < n - 1:
+    #             parts.append(f'<div class="uml-line" style="width:{int(line_width)}px;"></div>')
+
+    #     row_html = '<div class="uml-row">\n' + "\n".join(parts) + "\n</div>"
+    #     return row_html
