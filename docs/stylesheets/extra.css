@@ -173,7 +173,8 @@ form[id^="quiz"] {
   flex-wrap: nowrap;
   gap: 0;                /* gap handled by connector width */
   margin: 12px auto;     /* auto left/right for centering short rows */
-  width: max-content;    /* shrink to content width */
+  justify-content: center;
+  /* width: max-content;    shrink to content width */
 }
 
 /* ================================
@@ -282,4 +283,13 @@ form[id^="quiz"] {
   font-family: var(--md-code-font, monospace);
   font-size: 0.51rem;
   white-space: pre-line;
+}
+
+/* ================================
+   MEDIA QUERY — NARROW SCREENS
+   ================================ */
+@media (max-width: 800px) {
+  .uml-row {
+    justify-content: flex-start;
+  }
 }
