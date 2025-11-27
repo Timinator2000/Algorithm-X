@@ -4182,7 +4182,30 @@
 <p>Suguru is full of wonderful opportunities for problem-space reduction. Just a couple of strategies will be enough to make your <code>SuguruSolver</code> very fast. If you are so inclined, you can solve many of the test cases and validators completely with logic.</p>
 <p>The cages make Suguru a bit tougher to get organized at first, but a <code>SuguruCell</code> is very similar to a <code>SudokuCell</code> and a <code>SuguruGroup</code> is very similar to a <code>SudokuGroup</code>. The key differences are the number of groups to which a cell belongs and the range of candidates for each cell. </p>
 <p><BR></p>
-<p><img alt="Suguru Classes" class="center-image" src="../SuguruClasses.png" /></p>
+<!-- Class diagram with two classes. -->
+
+<div class="uml-row-outer">
+  <div class="uml-row">
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">SuguruGroup</div>
+      <div class="uml-section">cells: list[SuguruCell]</div>
+  <div class="uml-section">reduce_()</div>
+</div></div>
+
+                        <div class="uml-connector">
+
+
+                            <div class="uml-line"></div>
+                        </div>
+
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">SuguruCell</div>
+      <div class="uml-section">candidates: set<br>cage: SuguruGroup</div>
+  <div class="uml-section">reduce_()</div>
+</div></div>
+  </div>
+</div>
+
 <p><BR></p>
 <p>Unless you are trying to build a generic logic puzzle structure, I see no need to inherit from a common class at this time, but you should be able to reuse some code. Ultimately, you will want to parse the input and end up with the following two attributes in your <code>SuguruSolver</code> class:</p>
 <div class="highlight"><pre><span></span><code>self.grid = dictionary of SuguruCell instances with each key being a (row, col) tuple

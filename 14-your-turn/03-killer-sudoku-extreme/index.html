@@ -4184,7 +4184,42 @@
 <h1 id="solving-every-grid-logically">Solving Every Grid Logically 💯</h1>
 <p>Backtracking involves making a guess and then backing up if that guess leads to a dead end or the path has been fully explored. It is possible to solve every Killer Sudoku grid in the puzzle without making a single guess. In the original puzzle, did you use a class structure similar to this?</p>
 <p><BR></p>
-<p><img alt="Killer Sudoku Classes" class="center-image" src="../KillerSudokuClasses.png" /></p>
+<!-- Class diagram with three classes. -->
+
+<div class="uml-row-outer">
+  <div class="uml-row">
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">SudokuGroup</div>
+      <div class="uml-section">cells: list[Cell]</div>
+  <div class="uml-section">reduce_()</div>
+</div></div>
+
+                        <div class="uml-connector">
+
+
+                            <div class="uml-line"></div>
+                        </div>
+
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">Cell</div>
+      <div class="uml-section">candidates: set</div>
+  <div class="uml-section">reduce_()</div>
+</div></div>
+
+                        <div class="uml-connector">
+
+
+                            <div class="uml-line"></div>
+                        </div>
+
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">Cage</div>
+      <div class="uml-section">cells: list[Cell]</div>
+  <div class="uml-section">reduce_()</div>
+</div></div>
+  </div>
+</div>
+
 <p><BR></p>
 <p>A <code>SudokuGroup</code> could be a row, a column or a box. All <code>SudokuGroup</code>s behave identically. <code>Cage</code>s are another way to group cells and these groups have significantly different behavior which calls for a separate class. If you study how cells behave on a Killer Sudoku grid, you will find even more interesting behavior that can help you find the values of more unknown cells. For an example, click below.</p>
 <details class="note">

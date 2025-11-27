@@ -4234,7 +4234,30 @@
 <h1 id="ultimate-sudoku-logic-challenge">Ultimate Sudoku Logic Challenge</h1>
 <p><a href="https://learn-sudoku.com">Learn-Sudoku.com</a> has several more reduction strategies. Can you implement enough to solve <strong>every</strong> traditional Sudoku puzzle with logic alone? I will keep my own progress updated in a table at the end of this playground. If you take on this challenge, I do have one suggestion for your data structure. I have found it helpful if each cell has pointers to the groups to which it belongs. Conceptually, the object model has one small addition shown below.</p>
 <p><BR></p>
-<p><img alt="Sudoku Data Structure" class="center-image" src="../SudokuDataStructure2.png" /></p>
+<!-- Class diagram with two classes. -->
+
+<div class="uml-row-outer">
+  <div class="uml-row">
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">SudokuGroup</div>
+      <div class="uml-section">cells: list[SudokuCell]</div>
+  <div class="uml-section">reduce_()</div>
+</div></div>
+
+                        <div class="uml-connector">
+
+
+                            <div class="uml-line"></div>
+                        </div>
+
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">SudokuCell</div>
+      <div class="uml-section">candidates: set<br>groups: list[sudokuGroup]</div>
+  <div class="uml-section">reduce_()</div>
+</div></div>
+  </div>
+</div>
+
 <p><BR></p>
 <p>As the <code>SudokuGroup</code>s are being filled with <code>SudokuCell</code>s, it is easy enough to give each cell 3 pointers, one to each of the groups where it is a member. I have used a named tuple to hold these three pointers. In the constructor, the new <code>groups</code> attribute is initialized to <code>None</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">CellGroups</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;CellGroups&#39;</span><span class="p">,</span> <span class="s1">&#39;row col box&#39;</span><span class="p">)</span>

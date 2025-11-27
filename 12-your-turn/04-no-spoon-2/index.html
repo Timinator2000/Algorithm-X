@@ -4180,7 +4180,39 @@
 <h1 id="reducing-the-problem-space">Reducing the Problem Space</h1>
 <p>When <a href="../../10-your-turn/05-no-spoon-2/">we last discussed There is No Spoon – Episode 2</a>, I left you with the following class diagram:</p>
 <p><BR></p>
-<p><img alt="No Spoon 2 - OOD" class="center-image" src="../NoSpoon2ClassesWithLists.png" /></p>
+<!-- Class diagram with three classes. -->
+
+<div class="uml-row-outer">
+  <div class="uml-row">
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">Node</div>
+      <div class="uml-section">row: int<br>col: int<br>links needed: int<br>channels: list[Channel]</div>
+</div></div>
+
+                        <div class="uml-connector">
+
+
+                            <div class="uml-line"></div>
+                        </div>
+
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">Channel</div>
+      <div class="uml-section">capacity: int<br>nodes: list[Node]<br>intersections: list[Intersection]</div>
+</div></div>
+
+                        <div class="uml-connector">
+
+
+                            <div class="uml-line"></div>
+                        </div>
+
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">Intersection</div>
+      <div class="uml-section">row: int<br>col: int<br>channels: list[Channel]</div>
+</div></div>
+  </div>
+</div>
+
 <p><BR></p>
 <p>To do some problem-space reduction, it seems reasonable we will add a <code>reduce_()</code> method to one or more of the classes, but which ones? Distributing behavior to classes can be difficult and sometimes easy to argue one way or another. Let’s look at each class individually.</p>
 <p><code>Intersection</code> - this seems like the least likely location for a <code>reduce_()</code> method. <code>Intersection</code>s have very little intelligence. They must be able to react to a single event sent by a <code>Channel</code> letting the <code>Intersection</code> know that a link has been placed and if there is another <code>Channel</code> in the intersection, it should be disabled.</p>
@@ -4198,7 +4230,42 @@
 <h1 id="one-potential-sequence-of-events">One Potential Sequence of Events</h1>
 <p>Based on everything said above, the following methods might be useful in each of the classes:</p>
 <p><BR></p>
-<p><img alt="No Spoon 2 - Classes with Methods" class="center-image" src="../NoSpoonClassMethods.png" /></p>
+<!-- Class diagram with three classes. -->
+
+<div class="uml-row-outer">
+  <div class="uml-row">
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">Node</div>
+      <div class="uml-section">row: int<br>col: int<br>links needed: int<br>channels: list[Channel]</div>
+  <div class="uml-section">reduce_()<br>lower needs(num)</div>
+</div></div>
+
+                        <div class="uml-connector">
+
+
+                            <div class="uml-line"></div>
+                        </div>
+
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">Channel</div>
+      <div class="uml-section">capacity: int<br>nodes: list[Node]<br>intersections: list[Intersection]</div>
+  <div class="uml-section">place links(num)<br>disable()</div>
+</div></div>
+
+                        <div class="uml-connector">
+
+
+                            <div class="uml-line"></div>
+                        </div>
+
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">Intersection</div>
+      <div class="uml-section">row: int<br>col: int<br>channels: list[Channel]</div>
+  <div class="uml-section">make one way()</div>
+</div></div>
+  </div>
+</div>
+
 <p><BR></p>
 <p>The next diagram captures one sequence of events that could result after a call to <code>reduce_()</code> on a particular <code>Node</code>. </p>
 <p><BR></p>

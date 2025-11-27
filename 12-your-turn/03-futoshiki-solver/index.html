@@ -4196,27 +4196,40 @@
 <p>The Futoshiki input is somewhat tougher to parse, but you can use your exact same Sudoku code to create  <code>n * n</code> instances of the <code>SudokuCell</code> class. You can even use your previous code to create <code>SudokuGroup</code>s for each row and each column of the Futoshiki grid. Keep in mind, <strong>Futoshiki does not have boxes</strong> (sub-grids) like Sudoku. These row and column groups will be important if you hope to solve all the Futoshiki test cases <strong>completely with logic</strong>, but they are not necessary if you plan to do backtracking with Algorithm X.</p>
 <p>What I am about to say should not be a surprise and I hope I have not made a mistake by not issuing a spoiler alert, but… the inequalities are <u>really</u> important. They are so important; I suggest you add another class to your object model.</p>
 <p><BR></p>
-<!-- 3 classes, two connecting lines -->
+<!-- Class diagram with three classes. -->
+
 <div class="uml-row-outer">
-    <div class="uml-row">
+  <div class="uml-row">
 <div class="uml-cell"><div class="uml-box">
       <div class="uml-header">SudokuGroup</div>
-      <div class="uml-section">cells: list</div>
+      <div class="uml-section">cells: list[SudokuCell]</div>
   <div class="uml-section">reduce_()</div>
 </div></div>
-<div class="uml-connector"><div class="uml-line"></div></div>
+
+                        <div class="uml-connector">
+
+
+                            <div class="uml-line"></div>
+                        </div>
+
 <div class="uml-cell"><div class="uml-box">
       <div class="uml-header">SudokuCell</div>
       <div class="uml-section">candidates: set</div>
   <div class="uml-section">reduce_()</div>
 </div></div>
-<div class="uml-connector"><div class="uml-line"></div></div>
+
+                        <div class="uml-connector">
+
+
+                            <div class="uml-line"></div>
+                        </div>
+
 <div class="uml-cell"><div class="uml-box">
       <div class="uml-header">Inequality</div>
       <div class="uml-section">lower: SudokuCell<br>higher: SudokuCell</div>
   <div class="uml-section">reduce_()</div>
 </div></div>
-    </div>
+  </div>
 </div>
 
 <p><BR></p>

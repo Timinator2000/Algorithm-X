@@ -4175,7 +4175,30 @@
 <h1 id="harmless-rooks-cont">Harmless Rooks (cont.)</h1>
 <p>Harmless Rooks fits the same cells and groups model used on many of the previous puzzles. Each open <code>Square</code> on the board has a relationship with exactly 2  <code>AttackLine</code>s and each <code>AttackLine</code> has a relationship with 1 or more <code>Square</code>s.</p>
 <p><BR></p>
-<p><img alt="Harmless Rooks Classes" class="center-image" src="../HarmlessRooksClasses.png" /></p>
+<!-- Class diagram with two classes. -->
+
+<div class="uml-row-outer">
+  <div class="uml-row">
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">AttackLine</div>
+      <div class="uml-section">id: int<br>squares: list[Square]</div>
+  <div class="uml-section">reduce_()</div>
+</div></div>
+
+                        <div class="uml-connector">
+
+
+                            <div class="uml-line"></div>
+                        </div>
+
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">Square</div>
+      <div class="uml-section">row: int<br>col: int<br>attack lines: list[AttackLine]</div>
+  <div class="uml-section">reduce_()</div>
+</div></div>
+  </div>
+</div>
+
 <p><BR></p>
 <p>A <code>Square</code> is uniquely identified by its <code>row</code> and <code>col</code>, but it is a bit more challenging to uniquely identify an <code>AttackLine</code>. In the class diagram above, I have added an integer <code>id</code> for each <code>AttackLine</code>. Each class also has a <code>reduce_()</code> method as seen in many puzzles before.</p>
 <hr />

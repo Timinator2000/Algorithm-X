@@ -4175,7 +4175,39 @@
 <h1 id="there-is-no-spoon-episode-2-setting-up-algorithm-x">There Is No Spoon - Episode 2 - Setting Up Algorithm X</h1>
 <p>Let's take another look at the Object-Oriented Design model. Everything Algorithm X needs is right here:</p>
 <p><BR></p>
-<p><img alt="No Spoon 2 - OOD" class="center-image" src="../ClassesWithLists.png" /></p>
+<!-- Class diagram with three classes. -->
+
+<div class="uml-row-outer">
+  <div class="uml-row">
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">Node</div>
+      <div class="uml-section">row: int<br>col: int<br>links needed: int<br>channels: list[Channel]</div>
+</div></div>
+
+                        <div class="uml-connector">
+
+
+                            <div class="uml-line"></div>
+                        </div>
+
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">Channel</div>
+      <div class="uml-section">capacity: int<br>nodes: list[Node]<br>intersections: list[Intersection]</div>
+</div></div>
+
+                        <div class="uml-connector">
+
+
+                            <div class="uml-line"></div>
+                        </div>
+
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">Intersection</div>
+      <div class="uml-section">row: int<br>col: int<br>channels: list[Channel]</div>
+</div></div>
+  </div>
+</div>
+
 <p><BR></p>
 <p>This is one of the toughest Algorithm X puzzles on <a href="https://www.codingame.com">CodinGame</a> due to the amount of multiplicity. The requirements are straightforward. Just like Ella needed some number of lessons for Mrs. Knuth – Part III, each Node needs some number of links.</p>
 <p><strong>Step 1:</strong> Loop through all <code>Node</code>s and create the appropriate requirements.</p>

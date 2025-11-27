@@ -4227,7 +4227,29 @@
 <h1 id="problem-space-setup">Problem-Space Setup</h1>
 <p>To solve all test cases and validators, you will need to do some problem-space reduction. Takuzu has a very similar structure to Sudoku. There are cells and those cells are grouped into rows and columns, but because the cells can only contain zeros and ones, I found little code I could reuse, other than the overall structure.</p>
 <p><BR></p>
-<p><img alt="Takuzu Classes" class="center-image" src="../TakuzuClasses.png" /></p>
+<!-- Class diagram with two classes. -->
+
+<div class="uml-row-outer">
+  <div class="uml-row">
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">TakuzuGroup</div>
+      <div class="uml-section">cells: list[TakuzuCell]</div>
+  <div class="uml-section">reduce_()</div>
+</div></div>
+
+                        <div class="uml-connector">
+
+
+                            <div class="uml-line"></div>
+                        </div>
+
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">TakuzuCell</div>
+      <div class="uml-section">row: int<br>col: int<br>value: str</div>
+</div></div>
+  </div>
+</div>
+
 <p><BR></p>
 <p>If you use this structure, setting up the grid, the rows and the columns is extremely similar to setting up a Sudoku.</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">TakuzuSolver</span><span class="p">(</span><span class="n">AlgorithmXSolver</span><span class="p">):</span>

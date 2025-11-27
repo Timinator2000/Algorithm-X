@@ -4233,7 +4233,28 @@
 </ol>
 <p>I will call each of the <code>4 * N</code> viewing positions a <code>CityView</code>. If you think about it, the layout of this puzzle is incredibly similar to every grid-based logic puzzle we have already looked at. There is some number of <em>cells</em> and some number of <em>groupings</em> of those cells. Once again, I suggest you use the exact same code structure to create a dictionary of all cells and then create a list of all the cell groups. To honor the puzzle's storyline, I will use the class names <code>Building</code> and <code>CityView</code> instead of a variation of <code>Cell</code> and <code>Group</code> like what was done multiple times before.</p>
 <p><BR></p>
-<p><img alt="High Rise Buildings Classes" class="center-image" src="../HighRiseBuildingsClasses.png" /></p>
+<!-- Class diagram with two classes. -->
+
+<div class="uml-row-outer">
+  <div class="uml-row">
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">CityView</div>
+      <div class="uml-section">can be seen: int<br>buildings: list[Building]</div>
+</div></div>
+
+                        <div class="uml-connector">
+
+
+                            <div class="uml-line"></div>
+                        </div>
+
+<div class="uml-cell"><div class="uml-box">
+      <div class="uml-header">Building</div>
+      <div class="uml-section">candidate heights: set<br>city views: list[CityView]</div>
+</div></div>
+  </div>
+</div>
+
 <p><BR></p>
 <p>Finally, you could override your solver's <code>_process_solution()</code> method and make sure every <code>CityView</code> is valid. Using this approach, I am able to solve <strong>Test Case 2: Test 2</strong> well within the time limit, but I time out on the other test cases. Can you guess what we might do to increase speed?</p>
 <p><BR></p>

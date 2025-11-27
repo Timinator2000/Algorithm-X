@@ -4174,28 +4174,29 @@
 <p>A few pages ago, I intentionally drew the original Sudoku grid as 81 disconnected cells to create the perception of each cell being a standalone entity, or object. Since each cell is a standalone object, I can put a pointer to that cell into each group to which it belongs. I will demonstrate how to do this with Sudoku, and later I will give an overview of how this same general structure can be used on several other puzzles.</p>
 <p>Conceptually, I create two classes, one for a <code>SudokuCell</code> and another for a <code>SudokuGroup</code>. The <code>SudokuGroup</code> will have an attribute that is a list of pointers to the 9 <code>SudokuCell</code>s that are part of that group.</p>
 <p><BR></p>
-<!-- Separate multiple attr/methods with a \ -->
+<!-- Class diagram with two classes. -->
 
-<!-- Simple straight line connecting two classes -->
 <div class="uml-row-outer">
-    <div class="uml-row">
+  <div class="uml-row">
 <div class="uml-cell"><div class="uml-box">
       <div class="uml-header">SudokuGroup</div>
-      <div class="uml-section">cells: list</div>
+      <div class="uml-section">cells: list[SudokuCell]</div>
   <div class="uml-section">reduce_()</div>
 </div></div>
-<div class="uml-connector"><div class="uml-line"></div></div>
+
+                        <div class="uml-connector">
+
+
+                            <div class="uml-line"></div>
+                        </div>
+
 <div class="uml-cell"><div class="uml-box">
       <div class="uml-header">SudokuCell</div>
       <div class="uml-section">candidates: set</div>
   <div class="uml-section">reduce_()</div>
 </div></div>
-    </div>
+  </div>
 </div>
-
-<style>
-/* ![Sudoku Data Structure](SudokuDataStructure.png){ class="center-image" } */
-</style>
 
 <p><BR></p>
 <p>In the interest of code reuse across all Sudoku puzzles, my SudokuSolver will require the following:</p>
