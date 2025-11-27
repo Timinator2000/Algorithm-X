@@ -2,7 +2,7 @@
 
 |Date|Details|
 |:--------:|:----------------|
-| **Coming Soon** | 🎮 [Magnets](../22-2025-and-beyond/16-magnets.md) to be added. |
+| **Coming Soon** | 🎮 [Magnets](../22-2025-and-beyond/16-magnets.md) |
 | November 22, 2025 | 🎮 [Connect the Colours - Part 2](../22-2025-and-beyond/13-connect-the-colours-part-2.md) added. |
 | November 17, 2025 | 🎮 [Connect the Colours - Part 1](../22-2025-and-beyond/12-connect-the-colours-part-1.md) added. |
 | November 7, 2025 | [The L-Game: Counting Board States](../22-2025-and-beyond/18-the-l-game-counting-board-states.md) added. |
