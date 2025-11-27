@@ -28,8 +28,6 @@ Conceptually, I create two classes, one for a `SudokuCell` and another for a `Su
 
 <BR>
 
-a
-
 In the interest of code reuse across all Sudoku puzzles, my SudokuSolver will require the following:
 
 1. Unknown cells must use a `.` to indicate an unknown cell. Some puzzles use a `0` which is easy to fix with a call to `str.replace('0', '.')`.
