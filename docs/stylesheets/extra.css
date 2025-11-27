@@ -151,86 +151,60 @@ form[id^="quiz"] {
   font-size: 150%;
 }
 
-
-
 /* ================================
-   UML CLASS DIAGRAM CSS (extra.css)
+   UML CLASS DIAGRAMS
    ================================ */
 
-/* Row container that holds cells and lines */
-
-/* .uml-row {
-  display: flex;
-  align-items: flex-start;    top-align boxes
-  justify-content: center;
-  gap: 0;                     spacing handled by .uml-cell margins
-  margin: 16px 0;
-  flex-wrap: nowrap;
-} */
-
-/* Each cell holds a single class box */
-/* .uml-cell {
-  margin: 0 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
-/* Straight connector between boxes */
-/* .uml-line {
-  height: 2px;
-  background: var(--md-sys-color-outline, #666);
-  align-self: center;
-} */
-
-/* ensure relation lines color in dark mode */
-/* [data-md-color-scheme="slate"] .uml-line {
-  background: var(--md-sys-color-outline, #999);
-} */
-
-
+/* ================================
+   OUTER SCROLLABLE CONTAINER
+   ================================ */
+.uml-row-outer {
+  width: 100%;
+  overflow-x: auto;      /* enable horizontal scroll */
+  padding: 4px 0;        /* top/bottom padding only */
+}
 
 /* ================================
-   NEW Connector Lines
+   ROW
    ================================ */
-
-/* Row container */
 .uml-row {
   display: flex;
-  justify-content: center;
-  align-items: center;   /* vertical center for lines */
-  gap: 0;                /* gap handled by line */
-  margin: 32px 0;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0;                /* gap handled by connector width */
+  margin: 12px auto;     /* auto left/right for centering short rows */
+  width: max-content;    /* shrink to content width */
 }
 
-/* Each cell holds a class box */
+/* ================================
+   CLASS CELLS
+   ================================ */
 .uml-cell {
+  flex: 0 0 auto;        /* fixed-size box, never shrink */
   display: flex;
-  flex-direction: column;
   align-items: center;
-  position: relative;
+  justify-content: center;
 }
 
-/* Connector wrapper */
+/* ================================
+   CONNECTOR LINE
+   ================================ */
 .uml-connector {
+  flex: 0 0 60px;        /* fixed 60px gap */
   display: flex;
   align-items: center;
-  flex-grow: 1;           /* stretch to fill available space */
-  max-width: 120px;       /* limit maximum length */
+  justify-content: center;
 }
 
-/* The line itself */
 .uml-line {
   height: 2px;
-  width: 100%;            /* fills the connector */
+  width: 100%;
   background: var(--md-sys-color-outline, #666);
 }
 
-/* Dark mode */
 [data-md-color-scheme="slate"] .uml-line {
   background: var(--md-sys-color-outline, #999);
 }
-
 
 /* ================================
    CLASS BOX
@@ -241,21 +215,17 @@ form[id^="quiz"] {
   min-width: 180px;
   background: var(--md-sys-color-surface-container, #f5f5f5);
   color: var(--md-sys-color-on-surface, #000);
-  box-shadow: 2px 2px 6px rgba(0,0,0,0.06);
-  margin: 0;
   overflow: hidden;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.06);
 }
 
 /* ================================
-   UML CLASS HEADER COLOR OPTIONS
+   CLASS HEADERS — COLORS
    ================================ */
-
-/* -------------------------
-   Warm Amber
-   ------------------------- */
+/* Warm Amber */
 .uml-header {
-  background: #f1c27d;       /* light warm amber */
-  color: #4a3b06;            /* dark text for contrast */
+  background: #f1c27d;
+  color: #4a3b06;
   font-weight: 700;
   font-size: 0.63rem;
   text-align: center;
@@ -263,19 +233,16 @@ form[id^="quiz"] {
   border-bottom: 2px solid #999;
 }
 
-/* Dark mode for Warm Amber */
 [data-md-color-scheme="slate"] .uml-header {
-  background: #b8844c;       /* darker amber for dark mode */
+  background: #b8844c;
   color: #fff;
   border-bottom-color: rgba(255,255,255,0.08);
 }
 
-/* -------------------------
-   Soft Violet
-   ------------------------- */
+/* Soft Violet */
 .uml-header-violet {
-  background: #b296c7;       /* soft violet */
-  color: #fff;               /* white text */
+  background: #b296c7;
+  color: #fff;
   font-weight: 700;
   font-size: 0.63rem;
   text-align: center;
@@ -283,19 +250,16 @@ form[id^="quiz"] {
   border-bottom: 2px solid #999;
 }
 
-/* Dark mode for Soft Violet */
 [data-md-color-scheme="slate"] .uml-header-violet {
-  background: #8361a9;       /* deeper violet for dark mode */
+  background: #8361a9;
   color: #fff;
   border-bottom-color: rgba(255,255,255,0.08);
 }
 
-/* -------------------------
-   Light Teal
-   ------------------------- */
+/* Light Teal */
 .uml-header-teal {
-  background: #6fc2b0;       /* light teal */
-  color: #0f3e3a;            /* dark text */
+  background: #6fc2b0;
+  color: #0f3e3a;
   font-weight: 700;
   font-size: 0.63rem;
   text-align: center;
@@ -303,19 +267,19 @@ form[id^="quiz"] {
   border-bottom: 2px solid #999;
 }
 
-/* Dark mode for Light Teal */
 [data-md-color-scheme="slate"] .uml-header-teal {
-  background: #36867d;       /* darker teal for dark mode */
+  background: #36867d;
   color: #fff;
   border-bottom-color: rgba(255,255,255,0.08);
 }
 
-
-/* Attribute / Method sections */
+/* ================================
+   ATTRIBUTE / METHOD SECTIONS
+   ================================ */
 .uml-section {
   padding: 8px 10px;
   border-bottom: 2px solid var(--md-sys-color-outline-variant, #e0e0e0);
   font-family: var(--md-code-font, monospace);
-  font-size: 0.51rem;  /* was 0.85rem → reduced to 60% */
+  font-size: 0.51rem;
   white-space: pre-line;
 }

@@ -20,22 +20,19 @@ def define_env(env):
     
 
     @env.macro
-    def classbox(name, attributes="", methods=""):
+    def classbox(name, attributes="", methods="", header_class="uml-header"):
         """
         Returns HTML for a single class box.
-        attributes / methods: newline-separated strings (i.e. "a\nb\nc")
-        """
-        attrs_html = ""
-        if attributes and attributes.strip():
-            attrs_html = "<br>".join(line for line in attributes.strip().splitlines())
 
-        methods_html = ""
-        if methods and methods.strip():
-            methods_html = "<br>".join(line for line in methods.strip().splitlines())
+        header_class: "uml-header" (amber), "uml-header-violet", or "uml-header-teal"
+        attributes / methods: newline-separated strings
+        """
+        attrs_html = "<br>".join(line for line in attributes.strip().splitlines()) if attributes else ""
+        methods_html = "<br>".join(line for line in methods.strip().splitlines()) if methods else ""
 
         html = f"""<div class="uml-box">
-  <div class="uml-header">{name}</div>
-"""
+      <div class="{header_class}">{name}</div>
+    """
         if attrs_html:
             html += f'  <div class="uml-section">{attrs_html}</div>\n'
         if methods_html:
@@ -47,7 +44,8 @@ def define_env(env):
     @env.macro
     def classrow(*boxes_html):
         """
-        Arrange N class boxes with connecting lines that stretch between them.
+        Arrange class boxes horizontally with fixed-width connectors.
+        Outer container scrolls fully on narrow screens, row centers on wider viewports.
         """
         parts = []
         n = len(boxes_html)
@@ -55,26 +53,13 @@ def define_env(env):
             parts.append(f'<div class="uml-cell">{b}</div>')
             if i < n - 1:
                 parts.append('<div class="uml-connector"><div class="uml-line"></div></div>')
-        return '<div class="uml-row">\n' + "\n".join(parts) + '\n</div>'
 
+        row_html = (
+            '<div class="uml-row-outer">\n'
+            '    <div class="uml-row">\n'
+            + "\n".join(parts) +
+            '\n    </div>\n'
+            '</div>'
+        )
+        return row_html
 
-    # @env.macro
-    # def classrow(*boxes_html, line_width=60):
-    #     """
-    #     Arrange one or more already-rendered classbox HTML strings horizontally.
-    #     Example:
-    #         classrow(box1_html, box2_html, box3_html, line_width=80)
-    #     Returns a single HTML string (remember to use | safe when rendering).
-    #     """
-    #     # sanitize/ensure inputs are strings
-    #     parts = []
-    #     n = len(boxes_html)
-    #     for i, b in enumerate(boxes_html):
-    #         # wrap each class in a .uml-cell
-    #         parts.append(f'<div class="uml-cell">{b}</div>')
-    #         # insert a line between cells (N-1 lines for N boxes)
-    #         if i < n - 1:
-    #             parts.append(f'<div class="uml-line" style="width:{int(line_width)}px;"></div>')
-
-    #     row_html = '<div class="uml-row">\n' + "\n".join(parts) + "\n</div>"
-    #     return row_html
