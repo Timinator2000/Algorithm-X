@@ -36,7 +36,21 @@ Going back to [Learn-Sudoku.com](https://learn-sudoku.com), let's add another fa
 
 <BR>
 
-![Sudoku Data Structure](SudokuDataStructure2.png){ class="center-image" }
+<!-- Class diagram with two classes. -->
+
+{% set sudoku_group = classbox(
+    "SudokuGroup",
+    attributes="cells: list[SudokuCell]",
+    methods="reduce_()"
+) %}
+
+{% set sudoku_cell = classbox(
+    "SudokuCell",
+    attributes="candidates: set\ngroups: list[sudokuGroup]",
+    methods="reduce_()"
+) %}
+
+{{ classrow(sudoku_group, sudoku_cell) | safe }}
 
 <BR>
 

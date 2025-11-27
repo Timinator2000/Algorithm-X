@@ -22,7 +22,27 @@ Backtracking involves making a guess and then backing up if that guess leads to 
 
 <BR>
 
-![Killer Sudoku Classes](KillerSudokuClasses.png){ class="center-image" }
+<!-- Class diagram with three classes. -->
+
+{% set sudoku_group = classbox(
+    "SudokuGroup",
+    attributes="cells: list[Cell]",
+    methods="reduce_()"
+) %}
+
+{% set cell = classbox(
+    "Cell",
+    attributes="candidates: set",
+    methods="reduce_()"
+) %}
+
+{% set cage = classbox(
+    "Cage",
+    attributes="cells: list[Cell]",
+    methods="reduce_()"
+) %}
+
+{{ classrow(sudoku_group, cell, cage) | safe }}
 
 <BR>
 

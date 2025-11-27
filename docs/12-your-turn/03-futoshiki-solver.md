@@ -29,9 +29,11 @@ What I am about to say should not be a surprise and I hope I have not made a mis
 
 <BR>
 
+<!-- Class diagram with three classes. -->
+
 {% set sudoku_group = classbox(
     "SudokuGroup",
-    attributes="cells: list",
+    attributes="cells: list[SudokuCell]",
     methods="reduce_()"
 ) %}
 
@@ -47,7 +49,6 @@ What I am about to say should not be a surprise and I hope I have not made a mis
     methods="reduce_()"
 ) %}
 
-<!-- 3 classes, two connecting lines -->
 {{ classrow(sudoku_group, sudoku_cell, inequality) | safe }}
 
 <BR>

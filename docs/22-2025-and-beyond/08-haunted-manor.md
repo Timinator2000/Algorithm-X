@@ -26,7 +26,19 @@ The same model appears to work for Haunted Manor. Let’s call the groups `Sight
 
 <BR>
 
-![Haunted Manor Classes](HauntedManor1.png){ class="center-image" }
+<!-- Class diagram with two classes. -->
+
+{% set sightline = classbox(
+    "Sightline",
+    attributes="monster count: int\ncells: list[Cell]"
+) %}
+
+{% set cell = classbox(
+    "Cell",
+    attributes="row: int\ncol: int\nsightlines: list[Sightline]"
+) %}
+
+{{ classrow(sightline, cell, multiplicities=[("*", "*")]) | safe }}
 
 <BR>
 
@@ -34,7 +46,24 @@ Anytime we encounter a many-to-many relationship, it can be beneficial to step b
 
 <BR>
 
-![Haunted Manor Junction Class](HauntedManor2.png){ class="center-image" }
+<!-- Class diagram with three classes. -->
+
+{% set sightline = classbox(
+    "Sightline",
+    attributes="monster count: int\nvisuals: list[Visual]"
+) %}
+
+{% set visual = classbox(
+    "Visual",
+    attributes="cell: Cell\nsightline: Sightline"
+) %}
+
+{% set cell = classbox(
+    "Cell",
+    attributes="row: int\ncol: int\nvisuals: list[Visual]"
+) %}
+
+{{ classrow(sightline, visual, cell, multiplicities=[("", "*"), ("*", "")]) | safe }}
 
 <BR>
 
@@ -44,7 +73,24 @@ For each `Visual`, it is important to know if that `Visual` exists due to normal
 
 <BR>
 
-![Haunted Manor Final](HauntedManor3.png){ class="center-image" }
+<!-- Class diagram with three classes. -->
+
+{% set sightline = classbox(
+    "Sightline",
+    attributes="monster count: int\nvisuals: list[Visual]"
+) %}
+
+{% set visual = classbox(
+    "Visual",
+    attributes="cell: Cell\nsightline: Sightline\nreflection: boolean"
+) %}
+
+{% set cell = classbox(
+    "Cell",
+    attributes="row: int\ncol: int\nvisuals: list[Visual]"
+) %}
+
+{{ classrow(sightline, visual, cell, multiplicities=[("", "*"), ("*", "")]) | safe }}
 
 <BR>
 

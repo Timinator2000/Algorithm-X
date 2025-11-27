@@ -14,7 +14,24 @@ When [we last discussed There is No Spoon – Episode 2](../10-your-turn/05-no-s
 
 <BR>
 
-![No Spoon 2 - OOD](NoSpoon2ClassesWithLists.png){ class="center-image" }
+<!-- Class diagram with three classes. -->
+
+{% set node = classbox(
+    "Node",
+    attributes="row: int\ncol: int\nlinks needed: int\nchannels: list[Channel]",
+) %}
+
+{% set channel = classbox(
+    "Channel",
+    attributes="capacity: int\nnodes: list[Node]\nintersections: list[Intersection]",
+) %}
+
+{% set intersection = classbox(
+    "Intersection",
+    attributes="row: int\ncol: int\nchannels: list[Channel]",
+) %}
+
+{{ classrow(node, channel, intersection) | safe }}
 
 <BR>
 
@@ -38,7 +55,27 @@ Based on everything said above, the following methods might be useful in each of
 
 <BR>
 
-![No Spoon 2 - Classes with Methods](NoSpoonClassMethods.png){ class="center-image" }
+<!-- Class diagram with three classes. -->
+
+{% set node = classbox(
+    "Node",
+    attributes="row: int\ncol: int\nlinks needed: int\nchannels: list[Channel]",
+    methods="reduce_()\nlower needs(num)"
+) %}
+
+{% set channel = classbox(
+    "Channel",
+    attributes="capacity: int\nnodes: list[Node]\nintersections: list[Intersection]",
+    methods="place links(num)\ndisable()"
+) %}
+
+{% set intersection = classbox(
+    "Intersection",
+    attributes="row: int\ncol: int\nchannels: list[Channel]",
+    methods="make one way()"
+) %}
+
+{{ classrow(node, channel, intersection) | safe }}
 
 <BR>
 

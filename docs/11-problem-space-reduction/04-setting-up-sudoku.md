@@ -6,10 +6,11 @@ Conceptually, I create two classes, one for a `SudokuCell` and another for a `Su
 
 <BR>
 
-<!-- Separate multiple attr/methods with a \ -->
+<!-- Class diagram with two classes. -->
+
 {% set sudoku_group = classbox(
     "SudokuGroup",
-    attributes="cells: list",
+    attributes="cells: list[SudokuCell]",
     methods="reduce_()"
 ) %}
 
@@ -19,12 +20,7 @@ Conceptually, I create two classes, one for a `SudokuCell` and another for a `Su
     methods="reduce_()"
 ) %}
 
-<!-- Simple straight line connecting two classes -->
 {{ classrow(sudoku_group, sudoku_cell) | safe }}
-
-<style>
-/* ![Sudoku Data Structure](SudokuDataStructure.png){ class="center-image" } */
-</style>
 
 <BR>
 

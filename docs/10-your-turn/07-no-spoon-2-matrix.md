@@ -4,7 +4,24 @@ Let's take another look at the Object-Oriented Design model. Everything Algorith
 
 <BR>
 
-![No Spoon 2 - OOD](ClassesWithLists.png){ class="center-image" }
+<!-- Class diagram with three classes. -->
+
+{% set node = classbox(
+    "Node",
+    attributes="row: int\ncol: int\nlinks needed: int\nchannels: list[Channel]",
+) %}
+
+{% set channel = classbox(
+    "Channel",
+    attributes="capacity: int\nnodes: list[Node]\nintersections: list[Intersection]",
+) %}
+
+{% set intersection = classbox(
+    "Intersection",
+    attributes="row: int\ncol: int\nchannels: list[Channel]",
+) %}
+
+{{ classrow(node, channel, intersection) | safe }}
 
 <BR>
 

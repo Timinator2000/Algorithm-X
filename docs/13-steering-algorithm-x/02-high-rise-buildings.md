@@ -68,7 +68,19 @@ I will call each of the `4 * N` viewing positions a `CityView`. If you think abo
 
 <BR>
 
-![High Rise Buildings Classes](HighRiseBuildingsClasses.png){ class="center-image" }
+<!-- Class diagram with two classes. -->
+
+{% set city_view = classbox(
+    "CityView",
+    attributes="can be seen: int\nbuildings: list[Building]"
+) %}
+
+{% set building = classbox(
+    "Building",
+    attributes="candidate heights: set\ncity views: list[CityView]"
+) %}
+
+{{ classrow(city_view, building) | safe }}
 
 <BR>
 

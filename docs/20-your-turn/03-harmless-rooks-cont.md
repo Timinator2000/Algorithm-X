@@ -4,7 +4,21 @@ Harmless Rooks fits the same cells and groups model used on many of the previous
 
 <BR>
 
-![Harmless Rooks Classes](HarmlessRooksClasses.png){ class="center-image" }
+<!-- Class diagram with two classes. -->
+
+{% set attack_line = classbox(
+    "AttackLine",
+    attributes="id: int\nsquares: list[Square]",
+    methods="reduce_()"
+) %}
+
+{% set square = classbox(
+    "Square",
+    attributes="row: int\ncol: int\nattack lines: list[AttackLine]",
+    methods="reduce_()"
+) %}
+
+{{ classrow(attack_line, square) | safe }}
 
 <BR>
 

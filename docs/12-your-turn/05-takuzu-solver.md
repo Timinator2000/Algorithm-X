@@ -63,7 +63,20 @@ To solve all test cases and validators, you will need to do some problem-space r
 
 <BR>
 
-![Takuzu Classes](TakuzuClasses.png){ class="center-image" }
+<!-- Class diagram with two classes. -->
+
+{% set takuzu_group = classbox(
+    "TakuzuGroup",
+    attributes="cells: list[TakuzuCell]",
+    methods="reduce_()"
+) %}
+
+{% set takuzu_cell = classbox(
+    "TakuzuCell",
+    attributes="row: int\ncol: int\nvalue: str"
+) %}
+
+{{ classrow(takuzu_group, takuzu_cell) | safe }}
 
 <BR>
 

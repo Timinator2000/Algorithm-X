@@ -231,6 +231,7 @@ form[id^="quiz"] {
   -webkit-flex: 0 0 60px;
   -ms-flex: 0 0 60px;
   flex: 0 0 60px; /* fixed gap between boxes */
+  position: relative;
 
   display: flex;
   display: -webkit-flex;
@@ -328,4 +329,34 @@ form[id^="quiz"] {
   border-bottom: none;
 }
 
-/* No media queries – works on all sizes/orientations! */
+.uml-multiplicity-left,
+.uml-multiplicity-right {
+  position: absolute;
+  top: -14px;
+  width: 100%;                /* <—— THE FIX */
+  font-size: 0.65rem;
+  font-family: var(--md-code-font, monospace);
+  white-space: nowrap;
+  pointer-events: none;
+  color: var(--md-sys-color-on-surface, #333);
+  line-height: 1;
+}
+
+.uml-multiplicity-left {
+  text-align: left;
+  left: 5px;             /* near left edge */
+}
+
+.uml-multiplicity-right {
+  text-align: right;
+  right: 5px;            /* near right edge */
+}
+
+[data-md-color-scheme="slate"] .uml-multiplicity-left,
+[data-md-color-scheme="slate"] .uml-multiplicity-right {
+  color: rgba(255,255,255,0.75);
+}
+
+/* .uml-connector {
+  position: relative;
+} */

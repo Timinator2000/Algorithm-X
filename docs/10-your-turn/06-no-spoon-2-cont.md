@@ -16,7 +16,13 @@ Before we identify requirements and actions for Algorithm X, let’s take an inv
 
 <BR>
 
-![No Spoon 2 - Classes](Classes.png){ class="center-image" }
+<!-- Class diagram with three classes. -->
+
+{% set node = classbox("Node") %}
+{% set channel = classbox("Channel") %}
+{% set intersection = classbox("Intersection") %}
+
+{{ classrow(node, channel, intersection, connectors=False) | safe }}
 
 <BR>
 
@@ -40,7 +46,24 @@ These observations lead us to create the following object-oriented model of our 
 
 <BR>
 
-![No Spoon 2 - OOA](ClassesWithRelationships.png){ class="center-image" }
+<!-- Class diagram with three classes. -->
+
+{% set node = classbox(
+    "Node",
+    attributes="row: int\ncol: int\nlinks needed: int",
+) %}
+
+{% set channel = classbox(
+    "Channel",
+    attributes="capacity: int",
+) %}
+
+{% set intersection = classbox(
+    "Intersection",
+    attributes="row: int\ncol: int",
+) %}
+
+{{ classrow(node, channel, intersection) | safe }}
 
 <BR>
 
@@ -48,7 +71,24 @@ I am streamlining the process a bit, but if we add a few attributes to the class
 
 <BR>
 
-![No Spoon 2 - OOD](ClassesWithLists.png){ class="center-image" }
+<!-- Class diagram with three classes. -->
+
+{% set node = classbox(
+    "Node",
+    attributes="row: int\ncol: int\nlinks needed: int\nchannels: list[Channel]",
+) %}
+
+{% set channel = classbox(
+    "Channel",
+    attributes="capacity: int\nnodes: list[Node]\nintersections: list[Intersection]",
+) %}
+
+{% set intersection = classbox(
+    "Intersection",
+    attributes="row: int\ncol: int\nchannels: list[Channel]",
+) %}
+
+{{ classrow(node, channel, intersection) | safe }}
 
 <BR>
 

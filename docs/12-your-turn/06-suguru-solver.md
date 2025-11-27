@@ -18,7 +18,21 @@ The cages make Suguru a bit tougher to get organized at first, but a `SuguruCell
 
 <BR>
 
-![Suguru Classes](SuguruClasses.png){ class="center-image" }
+<!-- Class diagram with two classes. -->
+
+{% set suguru_group = classbox(
+    "SuguruGroup",
+    attributes="cells: list[SuguruCell]",
+    methods="reduce_()"
+) %}
+
+{% set suguru_cell = classbox(
+    "SuguruCell",
+    attributes="candidates: set\ncage: SuguruGroup",
+    methods="reduce_()"
+) %}
+
+{{ classrow(suguru_group, suguru_cell) | safe }}
 
 <BR>
 
