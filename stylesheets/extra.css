@@ -152,46 +152,61 @@ form[id^="quiz"] {
 }
 
 /* ================================
-   UML CLASS DIAGRAMS
+   UML CLASS DIAGRAMS – FULLY RESPONSIVE (2025)
    ================================ */
 
-/* ================================
-   OUTER SCROLLABLE CONTAINER
-   ================================ */
+/* OUTER SCROLLABLE CONTAINER */
 .uml-row-outer {
   width: 100%;
-  overflow-x: auto;      /* enable horizontal scroll */
-  padding: 4px 0;        /* top/bottom padding only */
+  overflow-x: auto;
+  padding: 8px 0;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+  scrollbar-width: thin;
 }
 
-/* ================================
-   ROW
-   ================================ */
+/* Optional: nicer scrollbar appearance */
+.uml-row-outer::-webkit-scrollbar {
+  height: 8px;
+}
+.uml-row-outer::-webkit-scrollbar-track {
+  background: transparent;
+}
+.uml-row-outer::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.25);
+  border-radius: 4px;
+}
+.uml-row-outer::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.4);
+}
+
+/* ROW – centers when it fits, scrolls when it doesn’t */
 .uml-row {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 0;                /* gap handled by connector width */
-  margin: 12px auto;     /* auto left/right for centering short rows */
-  justify-content: center;
-  /* width: max-content;    shrink to content width */
+  gap: 0;                    /* gap is handled by .uml-connector */
+  margin: 12px auto;
+  justify-content: center;   /* kept for very wide screens */
+  
+  /* These three lines are the magic for perfect centering on ALL devices */
+  width: fit-content;        /* shrink-to-fit */
+  max-width: 100%;           /* never exceed viewport */
+  min-width: min-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* ================================
-   CLASS CELLS
-   ================================ */
+/* CLASS CELLS */
 .uml-cell {
-  flex: 0 0 auto;        /* fixed-size box, never shrink */
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* ================================
-   CONNECTOR LINE
-   ================================ */
+/* CONNECTOR LINE */
 .uml-connector {
-  flex: 0 0 60px;        /* fixed 60px gap */
+  flex: 0 0 60px;            /* fixed gap between boxes */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -207,9 +222,7 @@ form[id^="quiz"] {
   background: var(--md-sys-color-outline, #999);
 }
 
-/* ================================
-   CLASS BOX
-   ================================ */
+/* CLASS BOX */
 .uml-box {
   border: 2px solid var(--md-sys-color-outline, #666);
   border-radius: 6px;
@@ -220,10 +233,9 @@ form[id^="quiz"] {
   box-shadow: 2px 2px 6px rgba(0,0,0,0.06);
 }
 
-/* ================================
-   CLASS HEADERS — COLORS
-   ================================ */
-/* Warm Amber */
+/* CLASS HEADERS – COLORS */
+
+/* Warm Amber (default) */
 .uml-header {
   background: #f1c27d;
   color: #4a3b06;
@@ -233,7 +245,6 @@ form[id^="quiz"] {
   padding: 8px;
   border-bottom: 2px solid #999;
 }
-
 [data-md-color-scheme="slate"] .uml-header {
   background: #b8844c;
   color: #fff;
@@ -250,7 +261,6 @@ form[id^="quiz"] {
   padding: 8px;
   border-bottom: 2px solid #999;
 }
-
 [data-md-color-scheme="slate"] .uml-header-violet {
   background: #8361a9;
   color: #fff;
@@ -267,29 +277,23 @@ form[id^="quiz"] {
   padding: 8px;
   border-bottom: 2px solid #999;
 }
-
 [data-md-color-scheme="slate"] .uml-header-teal {
   background: #36867d;
   color: #fff;
   border-bottom-color: rgba(255,255,255,0.08);
 }
 
-/* ================================
-   ATTRIBUTE / METHOD SECTIONS
-   ================================ */
+/* ATTRIBUTE / METHOD SECTIONS */
 .uml-section {
   padding: 8px 10px;
   border-bottom: 2px solid var(--md-sys-color-outline-variant, #e0e0e0);
   font-family: var(--md-code-font, monospace);
   font-size: 0.51rem;
+  line-height: 1.4;
   white-space: pre-line;
 }
 
-/* ================================
-   MEDIA QUERY — NARROW SCREENS
-   ================================ */
-@media (max-width: 800px) {
-  .uml-row {
-    justify-content: flex-start;
-  }
+/* Last section has no bottom border */
+.uml-box > .uml-section:last-child {
+  border-bottom: none;
 }
