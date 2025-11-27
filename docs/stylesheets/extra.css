@@ -344,12 +344,12 @@ form[id^="quiz"] {
 
 .uml-multiplicity-left {
   text-align: left;
-  left: 5px;             /* near left edge */
+  left: 3px;             /* near left edge */
 }
 
 .uml-multiplicity-right {
   text-align: right;
-  right: 5px;            /* near right edge */
+  right: 3px;            /* near right edge */
 }
 
 [data-md-color-scheme="slate"] .uml-multiplicity-left,

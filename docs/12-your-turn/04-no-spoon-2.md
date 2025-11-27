@@ -31,7 +31,7 @@ When [we last discussed There is No Spoon – Episode 2](../10-your-turn/05-no-s
     attributes="row: int\ncol: int\nchannels: list[Channel]",
 ) %}
 
-{{ classrow(node, channel, intersection) | safe }}
+{{ classrow(node, channel, intersection, multiplicities=[("2", "1..4"), ("0..2", "*")]) | safe }}
 
 <BR>
 
@@ -75,7 +75,7 @@ Based on everything said above, the following methods might be useful in each of
     methods="make one way()"
 ) %}
 
-{{ classrow(node, channel, intersection) | safe }}
+{{ classrow(node, channel, intersection, multiplicities=[("2", "1..4"), ("0..2", "*")]) | safe }}
 
 <BR>
 

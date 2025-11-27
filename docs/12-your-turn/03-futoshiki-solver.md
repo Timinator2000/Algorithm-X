@@ -49,7 +49,7 @@ What I am about to say should not be a surprise and I hope I have not made a mis
     methods="reduce_()"
 ) %}
 
-{{ classrow(sudoku_group, sudoku_cell, inequality) | safe }}
+{{ classrow(sudoku_group, sudoku_cell, inequality, multiplicities=[("", ""), ("2", "0..4")]) | safe }}
 
 <BR>
 

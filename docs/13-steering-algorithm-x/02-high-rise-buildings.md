@@ -80,7 +80,7 @@ I will call each of the `4 * N` viewing positions a `CityView`. If you think abo
     attributes="candidate heights: set\ncity views: list[CityView]"
 ) %}
 
-{{ classrow(city_view, building) | safe }}
+{{ classrow(city_view, building, multiplicities=[("4", "N")]) | safe }}
 
 <BR>
 
