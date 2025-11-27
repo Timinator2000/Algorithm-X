@@ -63,7 +63,7 @@ These observations lead us to create the following object-oriented model of our 
     attributes="row: int\ncol: int",
 ) %}
 
-{{ classrow(node, channel, intersection) | safe }}
+{{ classrow(node, channel, intersection, multiplicities=[("2", "1..4"), ("0..2", "*")]) | safe }}
 
 <BR>
 
@@ -88,7 +88,7 @@ I am streamlining the process a bit, but if we add a few attributes to the class
     attributes="row: int\ncol: int\nchannels: list[Channel]",
 ) %}
 
-{{ classrow(node, channel, intersection) | safe }}
+{{ classrow(node, channel, intersection, multiplicities=[("2", "1..4"), ("0..2", "*")]) | safe }}
 
 <BR>
 
