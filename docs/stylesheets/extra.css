@@ -155,16 +155,21 @@ form[id^="quiz"] {
    UML CLASS DIAGRAMS – FULLY RESPONSIVE (2025)
    ================================ */
 
+/* ================================
+   UML CLASS DIAGRAMS – MOBILE-PROOF CENTERING (2025)
+   ================================ */
+
 /* OUTER SCROLLABLE CONTAINER */
 .uml-row-outer {
   width: 100%;
   overflow-x: auto;
   padding: 8px 0;
-  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+  -webkit-overflow-scrolling: touch; /* smooth iOS scrolling */
+  scroll-snap-type: x mandatory;     /* optional: snap to boxes on scroll */
   scrollbar-width: thin;
 }
 
-/* Optional: nicer scrollbar appearance */
+/* Optional: Custom scrollbar styling */
 .uml-row-outer::-webkit-scrollbar {
   height: 8px;
 }
@@ -179,21 +184,22 @@ form[id^="quiz"] {
   background: rgba(0,0,0,0.4);
 }
 
-/* ROW – centers when it fits, scrolls when it doesn’t */
+/* ROW – auto-margins for quirk-free centering */
 .uml-row {
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 0;                    /* gap is handled by .uml-connector */
-  margin: 12px auto;
-  justify-content: center;   /* kept for very wide screens */
+  gap: 0;                    /* gap handled by .uml-connector */
   
-  /* These three lines are the magic for perfect centering on ALL devices */
-  width: fit-content;        /* shrink-to-fit */
-  max-width: 100%;           /* never exceed viewport */
-  min-width: min-content;
-  margin-left: auto;
-  margin-right: auto;
+  /* Core centering: auto-margins on first/last children (fixes mobile bug) */
+}
+
+.uml-row > :first-child {
+  margin-left: auto;         /* pushes everything right from left edge */
+}
+
+.uml-row > :last-child {
+  margin-right: auto;        /* pushes everything left from right edge */
 }
 
 /* CLASS CELLS */
@@ -297,3 +303,5 @@ form[id^="quiz"] {
 .uml-box > .uml-section:last-child {
   border-bottom: none;
 }
+
+/* No media queries needed – works everywhere! */
