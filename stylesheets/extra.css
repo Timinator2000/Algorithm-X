@@ -152,11 +152,7 @@ form[id^="quiz"] {
 }
 
 /* ================================
-   UML CLASS DIAGRAMS – FULLY RESPONSIVE (2025)
-   ================================ */
-
-/* ================================
-   UML CLASS DIAGRAMS – MOBILE-PROOF CENTERING (2025)
+   UML CLASS DIAGRAMS – iOS-PROOF CENTERING (2025)
    ================================ */
 
 /* OUTER SCROLLABLE CONTAINER */
@@ -184,37 +180,65 @@ form[id^="quiz"] {
   background: rgba(0,0,0,0.4);
 }
 
-/* ROW – auto-margins for quirk-free centering */
+/* ROW – prefixed flex + safe centering for iOS */
 .uml-row {
+  /* Vendor-prefixed flexbox for iOS compatibility */
   display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox; /* IE10 fallback, if needed */
+
+  -webkit-align-items: center;
+  -ms-flex-align: center;
   align-items: center;
+
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  gap: 0;                    /* gap handled by .uml-connector */
-  
-  /* Core centering: auto-margins on first/last children (fixes mobile bug) */
-}
 
-.uml-row > :first-child {
-  margin-left: auto;         /* pushes everything right from left edge */
-}
+  gap: 0; /* gap handled by .uml-connector */
 
-.uml-row > :last-child {
-  margin-right: auto;        /* pushes everything left from right edge */
+  /* Safe centering: respects scroll boundaries on iOS */
+  -webkit-justify-content: safe center;
+  -ms-flex-pack: center;
+  justify-content: safe center;
+
+  /* Ensure row doesn't shrink below content */
+  min-width: -webkit-min-content;
+  min-width: -moz-min-content;
+  min-width: min-content;
 }
 
 /* CLASS CELLS */
 .uml-cell {
+  /* Prefixed for iOS */
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
   flex: 0 0 auto;
+
   display: flex;
+  display: -webkit-flex;
+
+  -webkit-align-items: center;
   align-items: center;
+
+  -webkit-justify-content: center;
   justify-content: center;
 }
 
 /* CONNECTOR LINE */
 .uml-connector {
-  flex: 0 0 60px;            /* fixed gap between boxes */
+  /* Prefixed for iOS */
+  -webkit-flex: 0 0 60px;
+  -ms-flex: 0 0 60px;
+  flex: 0 0 60px; /* fixed gap between boxes */
+
   display: flex;
+  display: -webkit-flex;
+
+  -webkit-align-items: center;
   align-items: center;
+
+  -webkit-justify-content: center;
   justify-content: center;
 }
 
@@ -304,4 +328,4 @@ form[id^="quiz"] {
   border-bottom: none;
 }
 
-/* No media queries needed – works everywhere! */
+/* No media queries – works on all sizes/orientations! */
