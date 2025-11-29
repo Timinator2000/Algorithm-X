@@ -14,7 +14,17 @@ The next diagram shows the candidates for each cell in row 1.
 
 <BR>
 
-![Sudoku Test Case 1](sudoku04.png){ class="center-image" }
+| Cell (row, col) | Candidate Values |
+|:---------------:|:----------------:|
+| (1, 0) | 5 |
+| (1, 1) | 1, 2, 3, 4, 5, 6, 7, 8, 9 |
+| (1, 2) | 7 |
+| (1, 3) | 9 |
+| (1, 4) | 3 |
+| (1, 5) | 2 |
+| (1, 6) | 1, 2, 3, 4, 5, 6, 7, 8, 9 |
+| (1, 7) | 8 |
+| (1, 8) | 1, 2, 3, 4, 5, 6, 7, 8, 9 |
 
 <BR>
 
@@ -22,7 +32,17 @@ Because numbers cannot be duplicated in a row, the numbers in the known cells ca
 
 <BR>
 
-![Sudoku Test Case 1](sudoku05.png){ class="center-image" }
+| Cell (row, col) | Candidate Values |
+|:---------------:|:----------------:|
+| (1, 0) | 5 |
+| (1, 1) | 1, 4, 6 |
+| (1, 2) | 7 |
+| (1, 3) | 9 |
+| (1, 4) | 3 |
+| (1, 5) | 2 |
+| (1, 6) | 1, 4, 6 |
+| (1, 7) | 8 |
+| (1, 8) | 1, 4, 6 |
 
 <BR>
 
@@ -38,7 +58,11 @@ Based on the known numbers found in the other cells of each of the three columns
 
 <BR>
 
-![Sudoku Test Case 1](sudoku07.png){ class="center-image" }
+| Cell (row, col) | Candidate Values |
+|:---------------:|:----------------:|
+| (1, 1) | 4, 6 |
+| (1, 6) | 1, 6 |
+| (1, 8) | 4, 6 |
 
 <BR>
 
@@ -54,7 +78,11 @@ Box 0 does not help at this time, but box 2 already has a `6` and that `6` can b
 
 <BR>
 
-![Sudoku Test Case 1](sudoku09.png){ class="center-image" }
+| Cell (row, col) | Candidate Values |
+|:---------------:|:----------------:|
+| (1, 1) | 4, 6 |
+| (1, 6) | 1 |
+| (1, 8) | 4 |
 
 <BR>
 
