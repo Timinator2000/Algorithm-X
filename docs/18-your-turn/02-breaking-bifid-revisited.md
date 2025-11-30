@@ -66,7 +66,35 @@ I highly recommend you go down this route on your own. Once you remove all overl
 
     <BR>
 
-    ![One Set of All-or-None Events](BifidAllOrNone.png){ class="center-image" }
+    <div class="grid-center">
+        <div class="grid-5x5">
+            <div class="box">(0,0)</div>
+            <div class="box">(0,1)</div>
+            <div class="box">(0,2)</div>
+            <div class="box highlight">(0,<span class="digit3">3</span>)</div>
+            <div class="box">(0,4)</div>
+            <div class="box">(1,0)</div>
+            <div class="box">(1,1)</div>
+            <div class="box">(1,2)</div>
+            <div class="box highlight">(1,<span class="digit3">3</span>)</div>
+            <div class="box">(1,4)</div>
+            <div class="box">(2,0)</div>
+            <div class="box">(2,1)</div>
+            <div class="box">(2,2)</div>
+            <div class="box highlight">(2,<span class="digit3">3</span>)</div>
+            <div class="box">(2,4)</div>
+            <div class="box highlight">(<span class="digit3">3</span>,0)</div>
+            <div class="box highlight">(<span class="digit3">3</span>,1)</div>
+            <div class="box highlight">(<span class="digit3">3</span>,2)</div>
+            <div class="box highlight">(<span class="digit3">3</span>,<span class="digit3">3</span>)</div>
+            <div class="box highlight">(<span class="digit3">3</span>,4)</div>
+            <div class="box">(4,0)</div>
+            <div class="box">(4,1)</div>
+            <div class="box">(4,2)</div>
+            <div class="box highlight">(4,<span class="digit3">3</span>)</div>
+            <div class="box">(4,4)</div>
+        </div>
+    </div>
 
     <BR>
 

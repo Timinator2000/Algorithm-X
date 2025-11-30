@@ -96,43 +96,4 @@ def define_env(env):
             '\n  </div>\n</div>'
 
         return row_html
-
-
-
-
-
-
-
-
-# The code below works!
-
-
-
-    # @env.macro
-    # def classrow(*boxes_html, connectors=True):
-    #     """
-    #     Arrange class boxes horizontally with fixed-width connectors.
-    #     Outer container scrolls fully on narrow screens, row centers on wider viewports.
-    #     """
-    #     parts = []
-    #     n = len(boxes_html)
-    #     for i, b in enumerate(boxes_html):
-    #         parts.append(f'<div class="uml-cell">{b}</div>')
-    #         if i < n - 1:
-    #             if connectors:
-    #                 parts.append('<div class="uml-connector"><div class="uml-line"></div></div>')
-    #             else:
-    #                 # Keep spacing identical → hide only the line
-    #                 parts.append('<div class="uml-connector"><div class="uml-line" style="background: transparent;"></div></div>')
-
-
-
-    #     row_html = (
-    #         '<div class="uml-row-outer">\n'
-    #         '    <div class="uml-row">\n'
-    #         + "\n".join(parts) +
-    #         '\n    </div>\n'
-    #         '</div>'
-    #     )
-    #     return row_html
-
+    
