@@ -398,24 +398,24 @@ form[id^="quiz"] {
 
 /* Highlight cell background */
 .highlight {
-  background-color: #cfeff1;
-  border-color: #087f8c;
+  background-color: #f5e8e4;      /* light warm auburn */
+  border-color: #b5523b;          /* auburn border */
 }
 
 /* Light-mode text for highlighted cells */
 html:not([data-md-color-scheme="dark"]) .highlight {
-  color: #003033; /* dark teal */
+  color: #7a2f21;                 /* dark auburn text */
 }
 
 /* Dark-mode text for highlighted cells */
 html[data-md-color-scheme="dark"] .highlight {
-  color: #e8ffff; /* bright mint */
+  background-color: #3a1c19;      /* dim auburn tone for dark background */
+  color: #f2c2b8;                 /* warm glowing text */
+  border-color: #c44d32;
 }
 
 /* Digit "3" accent color */
 .digit3 {
-  color: #009688;
+  color: #c44d32;                 /* rich auburn highlight */
   font-weight: 800;
 }
-
-
