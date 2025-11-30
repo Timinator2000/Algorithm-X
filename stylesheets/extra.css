@@ -357,6 +357,65 @@ form[id^="quiz"] {
   color: rgba(255,255,255,0.75);
 }
 
-/* .uml-connector {
-  position: relative;
-} */
+
+
+/* Center the 5×5 grid container */
+.grid-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* The grid itself */
+.grid-5x5 {
+  display: grid;
+  grid-template-columns: repeat(5, 56px);
+  grid-template-rows: repeat(5, 56px);
+  gap: 8px;
+  grid-auto-flow: row;
+  width: max-content;
+  font-weight: 600;
+  justify-items: center;
+  align-items: center;
+}
+
+/* Individual cell */
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--md-divider-border-color, #666);
+  border-radius: 6px;
+  padding: 4px;
+  min-width: 56px;
+  min-height: 56px;
+  background: var(--md-default-bg-color, transparent);
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  font-size: 13px;
+  color: var(--md-default-fg-color, #111);
+}
+
+/* Highlight cell background */
+.highlight {
+  background-color: #cfeff1;
+  border-color: #087f8c;
+}
+
+/* Light-mode text for highlighted cells */
+html:not([data-md-color-scheme="dark"]) .highlight {
+  color: #003033; /* dark teal */
+}
+
+/* Dark-mode text for highlighted cells */
+html[data-md-color-scheme="dark"] .highlight {
+  color: #e8ffff; /* bright mint */
+}
+
+/* Digit "3" accent color */
+.digit3 {
+  color: #009688;
+  font-weight: 800;
+}
+
+

@@ -4210,7 +4210,35 @@
 <p>After reducing the all-or-none sets of events, how many distinct sets remain? For <strong>Test Case 1: Long test</strong>, only 5 sets remain. More importantly, each set has 5 <code>('row', letter)</code> elements and 5 <code>('col', letter)</code> elements. That means the row assignment of 5 letters and the col assignments of 5 letters all need to be the same. And, this is exactly what is expected.</p>
 <p>For a message of reasonable length, all 25 letters are probably part of the key. If that is the case, for each number from 1 to 5, there are exactly 9 letters where either the letter’s row or column or both is equal to that number. In the graphic below, every location where row = 3 or column = 3 has been highlighted.</p>
 <p><BR></p>
-<p><img alt="One Set of All-or-None Events" class="center-image" src="../BifidAllOrNone.png" /></p>
+<p><div class="grid-center">
+    <div class="grid-5x5">
+        <div class="box">(0,0)</div>
+        <div class="box">(0,1)</div>
+        <div class="box">(0,2)</div>
+        <div class="box highlight">(0,<span class="digit3">3</span>)</div>
+        <div class="box">(0,4)</div>
+        <div class="box">(1,0)</div>
+        <div class="box">(1,1)</div>
+        <div class="box">(1,2)</div>
+        <div class="box highlight">(1,<span class="digit3">3</span>)</div>
+        <div class="box">(1,4)</div>
+        <div class="box">(2,0)</div>
+        <div class="box">(2,1)</div>
+        <div class="box">(2,2)</div>
+        <div class="box highlight">(2,<span class="digit3">3</span>)</div>
+        <div class="box">(2,4)</div>
+        <div class="box highlight">(<span class="digit3">3</span>,0)</div>
+        <div class="box highlight">(<span class="digit3">3</span>,1)</div>
+        <div class="box highlight">(<span class="digit3">3</span>,2)</div>
+        <div class="box highlight">(<span class="digit3">3</span>,<span class="digit3">3</span>)</div>
+        <div class="box highlight">(<span class="digit3">3</span>,4)</div>
+        <div class="box">(4,0)</div>
+        <div class="box">(4,1)</div>
+        <div class="box">(4,2)</div>
+        <div class="box highlight">(4,<span class="digit3">3</span>)</div>
+        <div class="box">(4,4)</div>
+    </div>
+</div></p>
 <p><BR></p>
 <p>When this puzzle was originally discussed, I wrote the following:</p>
 <blockquote>
