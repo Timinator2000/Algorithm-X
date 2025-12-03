@@ -16,7 +16,31 @@ An important part to creating an Algorithm X solution for Equation Search is com
 
 <BR>
 
-![Initial Gameboard](Gameboard1.png){ class="center-image" }
+<div class="eq-board-container">
+  <div class="eq-row">
+    <div class="eq-cell operand"></div>
+    <div class="eq-cell operator"></div>
+    <div class="eq-cell operand"></div>
+    <div class="eq-cell equals">=</div>
+    <div class="eq-cell rhs">5</div>
+  </div>
+
+  <div class="eq-row">
+    <div class="eq-cell operand"></div>
+    <div class="eq-cell operator"></div>
+    <div class="eq-cell operand"></div>
+    <div class="eq-cell equals">=</div>
+    <div class="eq-cell rhs">7</div>
+  </div>
+
+  <div class="eq-row">
+    <div class="eq-cell operand"></div>
+    <div class="eq-cell operator"></div>
+    <div class="eq-cell operand"></div>
+    <div class="eq-cell equals">=</div>
+    <div class="eq-cell rhs">10</div>
+  </div>
+</div>
 
 <BR>
 
@@ -26,7 +50,13 @@ Let’s make the gameboard nothing more than a list of right-side values.
 
 <BR>
 
-![Simplified Gameboard](Gameboard2.png){ class="center-image" }
+<div class="right-values-center">
+  <div class="right-values-stack">
+    <div class="right-value-box">5</div>
+    <div class="right-value-box">7</div>
+    <div class="right-value-box">10</div>
+  </div>
+</div>
 
 <BR>
 
@@ -42,11 +72,61 @@ Putting a single equation tile on the gameboard covers one of the right-side num
 ??? question "How many different ways are there to create an equation that equals 10?"
     <div class="quiz" data-id="equation_search_quiz2"></div>
 
-Remember, because of the multiplicity, you can use the first 5, the second 5 or the third 5. The possible equations, depicted as tiles to put on the gameboard, look like this:
+Because of the multiplicity, each 5 can be treated as a distinct instance — the first 5, the second 5, or the third 5. In our diagram below, each game piece represents a possible equation tile, and the columns to the right show exactly which operand instances are used to create that tile. This allows us to visualize how each tile covers specific operands while keeping all pieces visually consistent.
 
 <BR>
 
-![Ways to Make 10](WaysToMake10.png){ class="center-image" }
+<div class="gameboard-diagram">
+  <!-- Column 1: Game pieces -->
+  <div class="gameboard-column">
+    <div class="game-piece">2 * 5 = 10</div>
+    <div class="game-piece">2 * 5 = 10</div>
+    <div class="game-piece">2 * 5 = 10</div>
+    <div class="game-piece">5 + 5 = 10</div>
+    <div class="game-piece">5 + 5 = 10</div>
+    <div class="game-piece">5 + 5 = 10</div>
+  </div>
+
+  <!-- Column 2: Operand instances -->
+  <div class="gameboard-column">
+    <div class="operand-instances">
+      <div class="number used">2</div>
+      <div class="number used">5</div>
+      <div class="number">5</div>
+      <div class="number">5</div>
+    </div>
+    <div class="operand-instances">
+      <div class="number used">2</div>
+      <div class="number">5</div>
+      <div class="number used">5</div>
+      <div class="number">5</div>
+    </div>
+    <div class="operand-instances">
+      <div class="number used">2</div>
+      <div class="number">5</div>
+      <div class="number">5</div>
+      <div class="number used">5</div>
+    </div>
+    <div class="operand-instances">
+      <div class="number">2</div>
+      <div class="number used">5</div>
+      <div class="number used">5</div>
+      <div class="number">5</div>
+    </div>
+    <div class="operand-instances">
+      <div class="number">2</div>
+      <div class="number">5</div>
+      <div class="number used">5</div>
+      <div class="number used">5</div>
+    </div>
+    <div class="operand-instances">
+      <div class="number">2</div>
+      <div class="number used">5</div>
+      <div class="number">5</div>
+      <div class="number used">5</div>
+    </div>
+  </div>
+</div>
 
 <BR>
 
