@@ -4181,12 +4181,44 @@
 <h1 id="strategy">Strategy</h1>
 <p>An important part to creating an Algorithm X solution for Equation Search is coming up with a gameboard/tiles analogy. What does the gameboard look like? It is tempting to make every operand and every operator a tile. The gameboard would be made up of several equations, each equation having 3 spots for 2 operands and 1 operator. Given right sides of 5, 7 and 10, the gameboard might look like:</p>
 <p><BR></p>
-<p><img alt="Initial Gameboard" class="center-image" src="../Gameboard1.png" /></p>
+<div class="eq-board-container">
+  <div class="eq-row">
+    <div class="eq-cell operand"></div>
+    <div class="eq-cell operator"></div>
+    <div class="eq-cell operand"></div>
+    <div class="eq-cell equals">=</div>
+    <div class="eq-cell rhs">5</div>
+  </div>
+
+  <div class="eq-row">
+    <div class="eq-cell operand"></div>
+    <div class="eq-cell operator"></div>
+    <div class="eq-cell operand"></div>
+    <div class="eq-cell equals">=</div>
+    <div class="eq-cell rhs">7</div>
+  </div>
+
+  <div class="eq-row">
+    <div class="eq-cell operand"></div>
+    <div class="eq-cell operator"></div>
+    <div class="eq-cell operand"></div>
+    <div class="eq-cell equals">=</div>
+    <div class="eq-cell rhs">10</div>
+  </div>
+</div>
+
 <p><BR></p>
 <p>As tiles are put on the gameboard, some sort of validation is needed to see if there is a way to put the operands and the operator together to come up with the right-side value. This feels a bit like making tiles in <a href="../../08-your-turn/06-winamax/">Winamax</a> correspond to every cell in the grid. With Winamax, it ultimately was better to build routes and consider each possible route a tile that could be placed on the gameboard as a whole. A similar approach will work better here.</p>
 <p>Let’s make the gameboard nothing more than a list of right-side values.</p>
 <p><BR></p>
-<p><img alt="Simplified Gameboard" class="center-image" src="../Gameboard2.png" /></p>
+<div class="right-values-center">
+  <div class="right-values-stack">
+    <div class="right-value-box">5</div>
+    <div class="right-value-box">7</div>
+    <div class="right-value-box">10</div>
+  </div>
+</div>
+
 <p><BR></p>
 <p>Using the strategy we know worked for Winamax, we can make each tile here a full equation, including the right-side value. The goal becomes to place the appropriate equation tiles on the matching right-side values found on the gameboard.</p>
 <details class="question">
@@ -4199,9 +4231,60 @@
 <summary>How many different ways are there to create an equation that equals 10?</summary>
 <p><div class="quiz" data-id="equation_search_quiz2"></div></p>
 </details>
-<p>Remember, because of the multiplicity, you can use the first 5, the second 5 or the third 5. The possible equations, depicted as tiles to put on the gameboard, look like this:</p>
+<p>Because of the multiplicity, each 5 can be treated as a distinct instance — the first 5, the second 5, or the third 5. In our diagram below, each game piece represents a possible equation tile, and the columns to the right show exactly which operand instances are used to create that tile. This allows us to visualize how each tile covers specific operands while keeping all pieces visually consistent.</p>
 <p><BR></p>
-<p><img alt="Ways to Make 10" class="center-image" src="../WaysToMake10.png" /></p>
+<div class="gameboard-diagram">
+  <!-- Column 1: Game pieces -->
+  <div class="gameboard-column">
+    <div class="game-piece">2 * 5 = 10</div>
+    <div class="game-piece">2 * 5 = 10</div>
+    <div class="game-piece">2 * 5 = 10</div>
+    <div class="game-piece">5 + 5 = 10</div>
+    <div class="game-piece">5 + 5 = 10</div>
+    <div class="game-piece">5 + 5 = 10</div>
+  </div>
+
+  <!-- Column 2: Operand instances -->
+  <div class="gameboard-column">
+    <div class="operand-instances">
+      <div class="number used">2</div>
+      <div class="number used">5</div>
+      <div class="number">5</div>
+      <div class="number">5</div>
+    </div>
+    <div class="operand-instances">
+      <div class="number used">2</div>
+      <div class="number">5</div>
+      <div class="number used">5</div>
+      <div class="number">5</div>
+    </div>
+    <div class="operand-instances">
+      <div class="number used">2</div>
+      <div class="number">5</div>
+      <div class="number">5</div>
+      <div class="number used">5</div>
+    </div>
+    <div class="operand-instances">
+      <div class="number">2</div>
+      <div class="number used">5</div>
+      <div class="number used">5</div>
+      <div class="number">5</div>
+    </div>
+    <div class="operand-instances">
+      <div class="number">2</div>
+      <div class="number">5</div>
+      <div class="number used">5</div>
+      <div class="number used">5</div>
+    </div>
+    <div class="operand-instances">
+      <div class="number">2</div>
+      <div class="number used">5</div>
+      <div class="number">5</div>
+      <div class="number used">5</div>
+    </div>
+  </div>
+</div>
+
 <p><BR></p>
 <p>There is a fair amount of multiplicity in this puzzle and to solve the bigger test cases, you will need to properly use <code>AlgorithmXSolver</code>’s memory. Without proper use of memory, you will generate a lot more solutions than necessary.</p>
 <table>
