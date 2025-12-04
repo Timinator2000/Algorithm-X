@@ -512,14 +512,17 @@ html[data-md-color-scheme="dark"] .highlight {
   color: var(--md-default-fg-color, #111);
 }
 
-/* RHS numbers — plain text, no box */
+/* RHS numbers — plain text, fixed width to align rows */
 .eq-cell.rhs {
   background: none !important;
   border: none !important;
   padding: 0 !important;
   margin: 0;
-  font-weight: 500;  /* same weight as other text */
-  color: inherit;    /* adapts to light/dark mode */
+  font-weight: 500;        /* same weight as other text */
+  color: inherit;          /* respects light/dark mode */
+  width: 32px;             /* fixed width to align with other rows */
+  text-align: center;      /* center the number */
+  box-sizing: content-box; /* avoid padding affecting width */
 }
 
 /* Dark Mode */
