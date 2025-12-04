@@ -420,43 +420,57 @@ html[data-md-color-scheme="dark"] .highlight {
   font-weight: 800;
 }
 
-
-
-
 /* =========================================================
-   Equation Search Playground - Diagram Styles (Final)
-   Using Option A for Diagram 1
+   Equation Search Playground — Full Diagram Styling
+   Teal for Diagram 1 & 2, Violet for Diagram 3
    ========================================================= */
 
 /* =========================================================
-   Global auburn colors (from 5x5 grid)
+   Color Palettes (Matching UML Teal & Violet Themes)
    ========================================================= */
+
 :root {
-  --auburn-bg-light: #f5e8e4;    
-  --auburn-border-light: #b5523b;
-  --auburn-text-light: #7a2f21;
+  /* Teal theme (Diagram 1 & 2) */
+  --teal-bg-light: #6fc2b0;
+  --teal-border-light: #36867d;
+  --teal-text-light: #0f3e3a;
 
-  --auburn-bg-dark: #3a1c19;     
-  --auburn-border-dark: #c44d32;
-  --auburn-text-dark: #f2c2b8;
+  --teal-bg-dark: #36867d;
+  --teal-border-dark: rgba(255,255,255,0.22);
+  --teal-text-dark: #ffffff;
+
+  /* Violet theme (Diagram 3) */
+  --violet-bg-light: #b296c7;
+  --violet-border-light: #8361a9;
+  --violet-text-light: #ffffff;
+
+  --violet-bg-dark: #8361a9;
+  --violet-border-dark: rgba(255,255,255,0.22);
+  --violet-text-dark: #ffffff;
+}
+
+/* Shared font scaling */
+.diagram-text-sm {
+  font-size: 0.85rem;
 }
 
 /* =========================================================
-   Diagram 1: Equation Tiles (3 rows)
+   DIAGRAM 1 — Equation Tiles (Teal)
    ========================================================= */
+
 .eq-board-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: center;
   align-items: center;
-  margin-top: 16px;
+  margin-top: 20px;
 }
 
 .eq-row {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .eq-cell {
@@ -467,100 +481,106 @@ html[data-md-color-scheme="dark"] .highlight {
   box-sizing: border-box;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
   font-weight: normal;
-  font-size: 15px;   /* slightly smaller */
+  font-size: 0.85rem;
 }
 
-/* Operand: big */
+/* Operand tiles */
 .eq-cell.operand {
-  width: 46px;
-  height: 46px;
-  border: 2px solid var(--auburn-border-light);
-  background-color: var(--auburn-bg-light);
-  color: var(--auburn-text-light);
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--teal-border-light);
+  background-color: var(--teal-bg-light);
+  color: var(--teal-text-light);
 }
 
-/* Operator: smaller */
+/* Operator tiles (smaller) */
 .eq-cell.operator {
-  width: 30px;
-  height: 30px;
-  border: 2px solid var(--auburn-border-light);
-  background-color: var(--auburn-bg-light);
-  color: var(--auburn-text-light);
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--teal-border-light);
+  background-color: var(--teal-bg-light);
+  color: var(--teal-text-light);
 }
 
-/* Equal sign */
+/* Equal sign tile */
 .eq-cell.equals {
-  width: 20px;
-  text-align: center;
-  font-size: 16px;
+  width: 22px;
   font-weight: 600;
+  font-size: 0.85rem;
+  background: transparent;
+  border: none;
   color: var(--md-default-fg-color, #111);
 }
 
-/* RHS value */
+/* RHS numbers — plain text, no box */
 .eq-cell.rhs {
-  width: 46px;
-  text-align: center;
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--md-default-fg-color, #111);
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0;
+  font-weight: 500;  /* same weight as other text */
+  color: inherit;    /* adapts to light/dark mode */
 }
 
-/* Dark mode */
-html[data-md-color-scheme="dark"] .eq-cell.operand,
-html[data-md-color-scheme="dark"] .eq-cell.operator {
-  background-color: var(--auburn-bg-dark);
-  border-color: var(--auburn-border-dark);
-  color: var(--auburn-text-dark);
+/* Dark Mode */
+[data-md-color-scheme="slate"] .eq-cell.operand,
+[data-md-color-scheme="slate"] .eq-cell.operator {
+  background-color: var(--teal-bg-dark);
+  border-color: var(--teal-border-dark);
+  color: var(--teal-text-dark);
 }
 
 /* =========================================================
-   Diagram 2: Right-Side Values Stack
+   DIAGRAM 2 — Right-Side Values (Teal)
    ========================================================= */
+
 .right-values-center {
   display: flex;
   justify-content: center;
-  margin-top: 16px;
+  margin-top: 20px;
 }
 
 .right-values-stack {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .right-value-box {
-  width: 230px;  /* slightly narrower */
-  height: 44px;  /* slightly shorter */
+  width: 250px;
+  height: 46px; /* slightly smaller */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+
+  font-family: system-ui, -apple-system;
   font-weight: normal;
-  font-size: 18px;  /* smaller */
+  font-size: 0.95rem;
+
   border-radius: 6px;
-  border: 2px solid var(--auburn-border-light);
-  background-color: var(--auburn-bg-light);
-  color: var(--auburn-text-light);
+  border: 2px solid var(--teal-border-light);
+  background-color: var(--teal-bg-light);
+  color: var(--teal-text-light);
   box-sizing: border-box;
 }
 
-html[data-md-color-scheme="dark"] .right-value-box {
-  background-color: var(--auburn-bg-dark);
-  border-color: var(--auburn-border-dark);
-  color: var(--auburn-text-dark);
+[data-md-color-scheme="slate"] .right-value-box {
+  background-color: var(--teal-bg-dark);
+  border-color: var(--teal-border-dark);
+  color: var(--teal-text-dark);
 }
 
 /* =========================================================
-   Diagram 3: Game Pieces + Operand Instances
+   DIAGRAM 3 — Gameboard Pieces (Violet)
    ========================================================= */
+
 .gameboard-diagram {
   display: flex;
-  gap: 18px; /* narrower gap for phones */
+  gap: 18px; /* slightly tighter for mobile */
   justify-content: center;
   align-items: flex-start;
-  margin: 18px 0;
-  flex-wrap: wrap; /* prevents overflow on small screens */
+  margin: 20px 0;
+  flex-wrap: wrap; /* prevents overflow on phones */
 }
 
 .gameboard-column {
@@ -569,60 +589,67 @@ html[data-md-color-scheme="dark"] .right-value-box {
   gap: 10px;
 }
 
+/* Game Pieces (equation tiles) */
 .game-piece {
-  width: 160px; /* narrower */
-  height: 44px;
+  width: 165px;  /* narrower for phones */
+  height: 44px;  /* slightly shorter */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+
+  font-family: system-ui, -apple-system;
   font-weight: normal;
-  font-size: 18px; /* slightly smaller */
+  font-size: 0.9rem; /* smaller text */
+
   border-radius: 6px;
-  border: 2px solid var(--auburn-border-light);
-  background-color: var(--auburn-bg-light);
-  color: var(--auburn-text-light);
+  border: 2px solid var(--violet-border-light);
+  background-color: var(--violet-bg-light);
+  color: var(--violet-text-light);
   box-sizing: border-box;
 }
 
-html[data-md-color-scheme="dark"] .game-piece {
-  background-color: var(--auburn-bg-dark);
-  border-color: var(--auburn-border-dark);
-  color: var(--auburn-text-dark);
+[data-md-color-scheme="slate"] .game-piece {
+  background-color: var(--violet-bg-dark);
+  border-color: var(--violet-border-dark);
+  color: var(--violet-text-dark);
 }
 
+/* Operand Instances grid */
 .operand-instances {
   display: grid;
   grid-template-columns: repeat(4, 34px); /* tighter */
   justify-items: center;
   align-items: center;
-  gap: 6px; /* slightly closer */
+  gap: 6px;
   min-height: 44px;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-  font-size: 15px;
+
+  font-family: system-ui, -apple-system;
+  font-size: 0.8rem; /* smaller numbers */
   font-weight: 600;
 }
 
-.operand-instances .number {
+.number {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 28px;   /* slightly smaller */
   height: 28px;
-  box-sizing: border-box;
   color: var(--md-default-fg-color, #111);
 }
 
-.operand-instances .number.used {
-  border: 2px solid var(--auburn-border-light);
+.number.used {
+  border: 2px solid var(--violet-border-light);
   border-radius: 50%;
-  background-color: var(--auburn-bg-light);
-  color: var(--auburn-text-light);
+  background-color: var(--violet-bg-light);
+  color: var(--violet-text-light);
 }
 
-html[data-md-color-scheme="dark"] .operand-instances .number.used {
-  background-color: var(--auburn-bg-dark);
-  border-color: var(--auburn-border-dark);
-  color: var(--auburn-text-dark);
+[data-md-color-scheme="slate"] .number.used {
+  background-color: var(--violet-bg-dark);
+  border-color: var(--violet-border-dark);
+  color: var(--violet-text-dark);
 }
+
+
+
 
