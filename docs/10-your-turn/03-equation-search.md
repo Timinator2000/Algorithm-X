@@ -77,7 +77,6 @@ Because of the multiplicity, each 5 can be treated as a distinct instance — th
 <BR>
 
 <div class="gameboard-diagram">
-  <!-- Column 1: Game pieces -->
   <div class="gameboard-column">
     <div class="game-piece">2 * 5 = 10</div>
     <div class="game-piece">2 * 5 = 10</div>
@@ -87,7 +86,6 @@ Because of the multiplicity, each 5 can be treated as a distinct instance — th
     <div class="game-piece">5 + 5 = 10</div>
   </div>
 
-  <!-- Column 2: Operand instances -->
   <div class="gameboard-column">
     <div class="operand-instances">
       <div class="number used">2</div>
