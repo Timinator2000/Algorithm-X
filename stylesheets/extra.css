@@ -423,22 +423,22 @@ html[data-md-color-scheme="dark"] .highlight {
 
 
 
-
 /* =========================================================
-   Equation Search Playground - Diagram Styles
+   Equation Search Playground - Diagram Styles (Final)
+   Using Option A for Diagram 1
    ========================================================= */
 
 /* =========================================================
    Global auburn colors (from 5x5 grid)
    ========================================================= */
 :root {
-  --auburn-bg-light: #f5e8e4;    /* light warm auburn */
-  --auburn-border-light: #b5523b; 
-  --auburn-text-light: #7a2f21; 
+  --auburn-bg-light: #f5e8e4;    
+  --auburn-border-light: #b5523b;
+  --auburn-text-light: #7a2f21;
 
-  --auburn-bg-dark: #3a1c19;     /* dim auburn for dark mode */
+  --auburn-bg-dark: #3a1c19;     
   --auburn-border-dark: #c44d32;
-  --auburn-text-dark: #f2c2b8;   /* warm glowing text */
+  --auburn-text-dark: #f2c2b8;
 }
 
 /* =========================================================
@@ -447,16 +447,16 @@ html[data-md-color-scheme="dark"] .highlight {
 .eq-board-container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .eq-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .eq-cell {
@@ -466,45 +466,47 @@ html[data-md-color-scheme="dark"] .highlight {
   border-radius: 6px;
   box-sizing: border-box;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-  font-weight: normal; /* changed from 700 to normal */
+  font-weight: normal;
+  font-size: 15px;   /* slightly smaller */
 }
 
-/* Operand boxes */
+/* Operand: big */
 .eq-cell.operand {
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   border: 2px solid var(--auburn-border-light);
   background-color: var(--auburn-bg-light);
   color: var(--auburn-text-light);
 }
 
-/* Operator boxes (smaller, centered vertically) */
+/* Operator: smaller */
 .eq-cell.operator {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border: 2px solid var(--auburn-border-light);
   background-color: var(--auburn-bg-light);
   color: var(--auburn-text-light);
 }
 
-/* Equal sign between boxes and RHS */
+/* Equal sign */
 .eq-cell.equals {
-  width: 24px;
+  width: 20px;
   text-align: center;
+  font-size: 16px;
   font-weight: 600;
   color: var(--md-default-fg-color, #111);
 }
 
-/* Right-hand side number */
+/* RHS value */
 .eq-cell.rhs {
-  width: 48px;
+  width: 46px;
   text-align: center;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 18px;
   color: var(--md-default-fg-color, #111);
 }
 
-/* Dark mode overrides */
+/* Dark mode */
 html[data-md-color-scheme="dark"] .eq-cell.operand,
 html[data-md-color-scheme="dark"] .eq-cell.operator {
   background-color: var(--auburn-bg-dark);
@@ -513,29 +515,29 @@ html[data-md-color-scheme="dark"] .eq-cell.operator {
 }
 
 /* =========================================================
-   Diagram 2: Right-side Values Stack
+   Diagram 2: Right-Side Values Stack
    ========================================================= */
 .right-values-center {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .right-values-stack {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .right-value-box {
-  width: 250px;
-  height: 48px;
+  width: 230px;  /* slightly narrower */
+  height: 44px;  /* slightly shorter */
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-  font-weight: normal; /* changed from 700 to normal */
-  font-size: 22px;
+  font-weight: normal;
+  font-size: 18px;  /* smaller */
   border-radius: 6px;
   border: 2px solid var(--auburn-border-light);
   background-color: var(--auburn-bg-light);
@@ -554,27 +556,28 @@ html[data-md-color-scheme="dark"] .right-value-box {
    ========================================================= */
 .gameboard-diagram {
   display: flex;
-  gap: 24px;
+  gap: 18px; /* narrower gap for phones */
   justify-content: center;
   align-items: flex-start;
-  margin: 20px 0;
+  margin: 18px 0;
+  flex-wrap: wrap; /* prevents overflow on small screens */
 }
 
 .gameboard-column {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .game-piece {
-  width: 182px;
-  height: 48px;
+  width: 160px; /* narrower */
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-  font-weight: normal; /* changed from 700 to normal */
-  font-size: 22px;
+  font-weight: normal;
+  font-size: 18px; /* slightly smaller */
   border-radius: 6px;
   border: 2px solid var(--auburn-border-light);
   background-color: var(--auburn-bg-light);
@@ -590,22 +593,22 @@ html[data-md-color-scheme="dark"] .game-piece {
 
 .operand-instances {
   display: grid;
-  grid-template-columns: repeat(4, 40px);
+  grid-template-columns: repeat(4, 34px); /* tighter */
   justify-items: center;
   align-items: center;
-  gap: 8px;
-  min-height: 48px;
+  gap: 6px; /* slightly closer */
+  min-height: 44px;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-  font-size: 18px;
-  font-weight: 600; /* keep numbers slightly bolder */
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .operand-instances .number {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 28px;   /* slightly smaller */
+  height: 28px;
   box-sizing: border-box;
   color: var(--md-default-fg-color, #111);
 }
@@ -622,5 +625,4 @@ html[data-md-color-scheme="dark"] .operand-instances .number.used {
   border-color: var(--auburn-border-dark);
   color: var(--auburn-text-dark);
 }
-
 
