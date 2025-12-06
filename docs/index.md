@@ -106,8 +106,6 @@
 </svg>
 </div>
 
-<BR>
-
 # Background
 
 In August, 2022, I attempted to solve [Constrained Latin Squares](04-your-turn/08-constrained-latin-squares.md), a recently published puzzle by [@darkhorse64](https://www.codingame.com/profile/c9ebe76a83b33730956eda0534d6cad86053292) on [CodinGame](https://www.codingame.com/home). I noticed [@5DN1L]( https://www.codingame.com/profile/bbb8f47ea4601179303c20acdbf5fb6c1904782) had, a week earlier, posted a link to [Puzzles solvable by Algorithm X / Dancing Links](https://www.codingame.com/forum/t/puzzles-solvable-by-algorithm-x-dancing-links/196871), a post where he had compiled a list of puzzles on CodinGame he had solved with Algorithm X. I love processes that are repeatable and the idea of using a single algorithm to solve a long list of medium/hard puzzles intrigued me.
