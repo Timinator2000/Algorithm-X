@@ -4209,16 +4209,11 @@
       font-family: "Fira Mono", monospace;
       font-size: 34px;
       font-weight: 700;
+      fill: currentColor; /* always default color */
       text-anchor: middle;
       dominant-baseline: central;
       opacity: 0;  /* start hidden */
       pointer-events: none;
-    }
-
-    /* Light/Dark mode colors */
-    .algorithm-banner .letter { fill: #555; } /* light mode default */
-    @media (prefers-color-scheme: dark) {
-      .algorithm-banner .letter { fill: #eee; } /* dark mode default */
     }
 
     /* Neon glow animation for boxes */
@@ -4296,16 +4291,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const algorithmXCells = [...document.querySelectorAll("#algorithm-x .cell")];
   const allLetters = [...document.querySelectorAll(".algorithm-banner .letter")];
 
-  // Reveal letters one by one
+  // Reveal all letters one by one
   let delay = 0;
   allLetters.forEach((letter) => {
     setTimeout(() => {
       letter.style.opacity = 1;
     }, delay);
-    delay += 200;
+    delay += 200; 
   });
 
-  // Neon wave for ALGORITHM X boxes left-to-right after letters reveal
+  // Neon wave across ALGORITHM X boxes left-to-right after letters reveal
   setTimeout(() => {
     algorithmXCells.forEach((cell, index) => {
       setTimeout(() => {
