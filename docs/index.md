@@ -108,56 +108,56 @@
   </style>
 
   <!-- =======================
-       ALGORITHM X (horizontal)
+       ALGORITHM X
        ======================= -->
   <g id="algorithm-x">
-    <rect class="cell" x="50"  y="220" width="56" height="56"/><text class="letter" x="78"  y="248">A</text>
-    <rect class="cell" x="110" y="220" width="56" height="56"/><text class="letter" x="138" y="248">L</text>
-    <rect class="cell" x="170" y="220" width="56" height="56"/><text class="letter" x="198" y="248">G</text>
-    <rect class="cell" x="230" y="220" width="56" height="56"/><text class="letter" x="258" y="248">O</text>
-    <rect class="cell" x="290" y="220" width="56" height="56"/><text class="letter" x="318" y="248">R</text>
-    <rect class="cell" x="350" y="220" width="56" height="56"/><text class="letter" x="378" y="248">I</text>
-    <rect class="cell" x="410" y="220" width="56" height="56"/><text class="letter" x="438" y="248">T</text>
-    <rect class="cell" x="470" y="220" width="56" height="56"/><text class="letter" x="498" y="248">H</text>
-    <rect class="cell" x="530" y="220" width="56" height="56"/><text class="letter" x="558" y="248">M</text>
+    <rect class="cell" x="50"  y="220" width="56" height="56"/><text class="letter" x="78"  y="248" style="fill:currentColor;">A</text>
+    <rect class="cell" x="110" y="220" width="56" height="56"/><text class="letter" x="138" y="248" style="fill:currentColor;">L</text>
+    <rect class="cell" x="170" y="220" width="56" height="56"/><text class="letter" x="198" y="248" style="fill:currentColor;">G</text>
+    <rect class="cell" x="230" y="220" width="56" height="56"/><text class="letter" x="258" y="248" style="fill:currentColor;">O</text>
+    <rect class="cell" x="290" y="220" width="56" height="56"/><text class="letter" x="318" y="248" style="fill:currentColor;">R</text>
+    <rect class="cell" x="350" y="220" width="56" height="56"/><text class="letter" x="378" y="248" style="fill:currentColor;">I</text>
+    <rect class="cell" x="410" y="220" width="56" height="56"/><text class="letter" x="438" y="248" style="fill:currentColor;">T</text>
+    <rect class="cell" x="470" y="220" width="56" height="56"/><text class="letter" x="498" y="248" style="fill:currentColor;">H</text>
+    <rect class="cell" x="530" y="220" width="56" height="56"/><text class="letter" x="558" y="248" style="fill:currentColor;">M</text>
     <rect class="cell" x="590" y="220" width="56" height="56"/>
-    <rect class="cell" x="650" y="220" width="56" height="56"/><text class="letter" x="678" y="248">X</text>
+    <rect class="cell" x="650" y="220" width="56" height="56"/><text class="letter" x="678" y="248" style="fill:currentColor;">X</text>
   </g>
 
   <!-- KNUTH (vertical) -->
   <g id="knuth">
-    <rect class="cell" x="410" y="40"  width="56" height="56"/><text class="letter" x="438" y="68">K</text>
-    <rect class="cell" x="410" y="100" width="56" height="56"/><text class="letter" x="438" y="128">N</text>
-    <rect class="cell" x="410" y="160" width="56" height="56"/><text class="letter" x="438" y="188">U</text>
-    <rect class="cell" x="410" y="280" width="56" height="56"/><text class="letter" x="438" y="308">H</text>
+    <rect class="cell" x="410" y="40"  width="56" height="56"/><text class="letter" x="438" y="68" style="fill:currentColor;">K</text>
+    <rect class="cell" x="410" y="100" width="56" height="56"/><text class="letter" x="438" y="128" style="fill:currentColor;">N</text>
+    <rect class="cell" x="410" y="160" width="56" height="56"/><text class="letter" x="438" y="188" style="fill:currentColor;">U</text>
+    <rect class="cell" x="410" y="280" width="56" height="56"/><text class="letter" x="438" y="308" style="fill:currentColor;">H</text>
   </g>
 
   <!-- TIMINATOR (vertical) -->
   <g id="timinator">
-    <rect class="cell" x="530" y="100" width="56" height="56"/><text class="letter" x="558" y="128">T</text>
-    <rect class="cell" x="530" y="160" width="56" height="56"/><text class="letter" x="558" y="188">I</text>
-    <rect class="cell" x="530" y="280" width="56" height="56"/><text class="letter" x="558" y="308">I</text>
-    <rect class="cell" x="530" y="340" width="56" height="56"/><text class="letter" x="558" y="368">N</text>
-    <rect class="cell" x="530" y="400" width="56" height="56"/><text class="letter" x="558" y="428">A</text>
-    <rect class="cell" x="530" y="460" width="56" height="56"/><text class="letter" x="558" y="488">T</text>
-    <rect class="cell" x="530" y="520" width="56" height="56"/><text class="letter" x="558" y="548">O</text>
-    <rect class="cell" x="530" y="580" width="56" height="56"/><text class="letter" x="558" y="608">R</text>
+    <rect class="cell" x="530" y="100" width="56" height="56"/><text class="letter" x="558" y="128" style="fill:currentColor;">T</text>
+    <rect class="cell" x="530" y="160" width="56" height="56"/><text class="letter" x="558" y="188" style="fill:currentColor;">I</text>
+    <rect class="cell" x="530" y="280" width="56" height="56"/><text class="letter" x="558" y="308" style="fill:currentColor;">I</text>
+    <rect class="cell" x="530" y="340" width="56" height="56"/><text class="letter" x="558" y="368" style="fill:currentColor;">N</text>
+    <rect class="cell" x="530" y="400" width="56" height="56"/><text class="letter" x="558" y="428" style="fill:currentColor;">A</text>
+    <rect class="cell" x="530" y="460" width="56" height="56"/><text class="letter" x="558" y="488" style="fill:currentColor;">T</text>
+    <rect class="cell" x="530" y="520" width="56" height="56"/><text class="letter" x="558" y="548" style="fill:currentColor;">O</text>
+    <rect class="cell" x="530" y="580" width="56" height="56"/><text class="letter" x="558" y="608" style="fill:currentColor;">R</text>
   </g>
 
   <!-- EXACT (vertical) -->
   <g id="exact">
-    <rect class="cell" x="650" y="160" width="56" height="56"/><text class="letter" x="678" y="188">E</text>
-    <rect class="cell" x="650" y="280" width="56" height="56"/><text class="letter" x="678" y="308">A</text>
-    <rect class="cell" x="650" y="340" width="56" height="56"/><text class="letter" x="678" y="368">C</text>
-    <rect class="cell" x="650" y="400" width="56" height="56"/><text class="letter" x="678" y="428">T</text>
+    <rect class="cell" x="650" y="160" width="56" height="56"/><text class="letter" x="678" y="188" style="fill:currentColor;">E</text>
+    <rect class="cell" x="650" y="280" width="56" height="56"/><text class="letter" x="678" y="308" style="fill:currentColor;">A</text>
+    <rect class="cell" x="650" y="340" width="56" height="56"/><text class="letter" x="678" y="368" style="fill:currentColor;">C</text>
+    <rect class="cell" x="650" y="400" width="56" height="56"/><text class="letter" x="678" y="428" style="fill:currentColor;">T</text>
   </g>
 
   <!-- COVER (horizontal) -->
   <g id="cover">
-    <rect class="cell" x="710" y="340" width="56" height="56"/><text class="letter" x="738" y="368">O</text>
-    <rect class="cell" x="770" y="340" width="56" height="56"/><text class="letter" x="798" y="368">V</text>
-    <rect class="cell" x="830" y="340" width="56" height="56"/><text class="letter" x="858" y="368">E</text>
-    <rect class="cell" x="890" y="340" width="56" height="56"/><text class="letter" x="918" y="368">R</text>
+    <rect class="cell" x="710" y="340" width="56" height="56"/><text class="letter" x="738" y="368" style="fill:currentColor;">O</text>
+    <rect class="cell" x="770" y="340" width="56" height="56"/><text class="letter" x="798" y="368" style="fill:currentColor;">V</text>
+    <rect class="cell" x="830" y="340" width="56" height="56"/><text class="letter" x="858" y="368" style="fill:currentColor;">E</text>
+    <rect class="cell" x="890" y="340" width="56" height="56"/><text class="letter" x="918" y="368" style="fill:currentColor;">R</text>
   </g>
 
 </svg>
