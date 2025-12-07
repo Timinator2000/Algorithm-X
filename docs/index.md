@@ -21,10 +21,10 @@
       transition: all 0.25s ease;
       filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
       pointer-events: all;
-      vector-effect: non-scaling-stroke; /* keeps rounded corners on mobile */
+      vector-effect: non-scaling-stroke; /* ensures rounded corners and stroke scale on mobile */
     }
 
-    /* Neon glow on hover (desktop only) */
+    /* Neon glow on hover anywhere inside the cell */
     .algorithm-banner .cell:hover {
       stroke: #00ffd5;
       stroke-width: 5;
@@ -55,7 +55,7 @@
 
     @keyframes fadeIn { to { opacity: 1; } }
 
-    /* Sequential fade-in delays */
+    /* Sequential fade-in delays for ALGORITHM X */
     #algorithm-x .letter:nth-of-type(1)  { animation-delay: 0s; }
     #algorithm-x .letter:nth-of-type(2)  { animation-delay: 0.1s; }
     #algorithm-x .letter:nth-of-type(3)  { animation-delay: 0.2s; }
@@ -69,11 +69,13 @@
     #algorithm-x .letter:nth-of-type(11) { animation-delay: 1s; }
     #algorithm-x .letter:nth-of-type(12) { animation-delay: 1.1s; }
 
+    /* KNUTH */
     #knuth .letter:nth-of-type(1) { animation-delay: 1.2s; }
     #knuth .letter:nth-of-type(2) { animation-delay: 1.3s; }
     #knuth .letter:nth-of-type(3) { animation-delay: 1.4s; }
     #knuth .letter:nth-of-type(4) { animation-delay: 1.5s; }
 
+    /* TIMINATOR */
     #timinator .letter:nth-of-type(1) { animation-delay: 1.6s; }
     #timinator .letter:nth-of-type(2) { animation-delay: 1.7s; }
     #timinator .letter:nth-of-type(3) { animation-delay: 1.8s; }
@@ -83,11 +85,13 @@
     #timinator .letter:nth-of-type(7) { animation-delay: 2.2s; }
     #timinator .letter:nth-of-type(8) { animation-delay: 2.3s; }
 
+    /* EXACT */
     #exact .letter:nth-of-type(1) { animation-delay: 2.4s; }
     #exact .letter:nth-of-type(2) { animation-delay: 2.5s; }
     #exact .letter:nth-of-type(3) { animation-delay: 2.6s; }
     #exact .letter:nth-of-type(4) { animation-delay: 2.7s; }
 
+    /* COVER */
     #cover .letter:nth-of-type(1) { animation-delay: 2.8s; }
     #cover .letter:nth-of-type(2) { animation-delay: 2.9s; }
     #cover .letter:nth-of-type(3) { animation-delay: 3s; }
@@ -96,27 +100,15 @@
     /* =======================
        Light/Dark mode text
        ======================= */
-    .algorithm-banner .letter { fill: #555; } /* light mode */
+    .algorithm-banner .letter { fill: #555; } /* default light mode */
     @media (prefers-color-scheme: dark) {
       .algorithm-banner .letter { fill: #eee; } /* dark mode */
     }
 
-    /* =======================
-       Mobile adjustments
-       ======================= */
-    @media (max-width: 600px) {
-      /* Disable neon hover on small screens */
-      .algorithm-banner .cell:hover {
-        stroke: currentColor;
-        stroke-width: 3;
-        filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
-        cursor: default;
-      }
-    }
   </style>
 
   <!-- =======================
-       ALGORITHM X
+       ALGORITHM X (horizontal)
        ======================= -->
   <g id="algorithm-x">
     <rect class="cell" x="50"  y="220" width="56" height="56"/><text class="letter" x="78"  y="248">A</text>
