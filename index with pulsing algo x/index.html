@@ -4154,7 +4154,7 @@
 
 
 
-<div style="width:100%; max-width:900px; margin:auto;">
+<div style="width:100%; max-width:900px; margin:auto; color: inherit;">
 <svg class="algorithm-banner" width="100%" viewBox="0 0 1000 720"
      xmlns="http://www.w3.org/2000/svg" role="img"
      shape-rendering="geometricPrecision">
@@ -4162,7 +4162,7 @@
   <style>
     .algorithm-banner { 
       background: transparent;
-      color: #555;
+      color: inherit; /* letters inherit page text color */
     }
 
     /* =======================
@@ -4195,11 +4195,12 @@
       font-family: "Fira Mono", monospace;
       font-size: 34px;
       font-weight: 700;
-      fill: currentColor;
       text-anchor: middle;
       dominant-baseline: central;
       opacity: 0;  /* start hidden */
       pointer-events: none;
+      transition: fill 0.25s ease;
+      fill: currentColor; /* always match page text */
     }
 
     /* Neon glow animation for boxes */
@@ -4212,13 +4213,7 @@
                                   drop-shadow(0 0 12px #00a7a0); }
     }
     .neon-wave {
-      animation: neonWave 1.5s infinite ease-in-out;
-    }
-
-    /* Light/Dark mode */
-    .algorithm-banner .letter { fill: #555; }
-    @media (prefers-color-scheme: dark) {
-      .algorithm-banner .letter { fill: #eee; }
+      animation: neonWave 7.5s infinite ease-in-out;
     }
   </style>
 
@@ -4289,7 +4284,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       letter.style.opacity = 1;
     }, delay);
-    delay += 400; 
+    delay += 200; 
   });
 
   // Neon wave across ALGORITHM X boxes left-to-right after letters reveal

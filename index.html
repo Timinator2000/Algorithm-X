@@ -4168,7 +4168,7 @@
 
 
 
-<div style="width:100%; max-width:900px; margin:auto; color: inherit;">
+<div style="width:100%; max-width:900px; margin:auto;">
 <svg class="algorithm-banner" width="100%" viewBox="0 0 1000 720"
      xmlns="http://www.w3.org/2000/svg" role="img"
      shape-rendering="geometricPrecision">
@@ -4176,7 +4176,7 @@
   <style>
     .algorithm-banner { 
       background: transparent;
-      color: inherit; /* letters inherit page text color */
+      color: #555;
     }
 
     /* =======================
@@ -4209,12 +4209,11 @@
       font-family: "Fira Mono", monospace;
       font-size: 34px;
       font-weight: 700;
+      fill: currentColor; /* always default color */
       text-anchor: middle;
       dominant-baseline: central;
       opacity: 0;  /* start hidden */
       pointer-events: none;
-      transition: fill 0.25s ease;
-      fill: currentColor; /* always match page text */
     }
 
     /* Neon glow animation for boxes */
@@ -4230,23 +4229,6 @@
       animation: neonWave 7.5s infinite ease-in-out;
     }
   </style>
-
-  <!-- =======================
-       ALGORITHM X
-       ======================= -->
-  <g id="algorithm-x">
-    <rect class="cell" x="50"  y="220" width="56" height="56"/><text class="letter" x="78"  y="248">A</text>
-    <rect class="cell" x="110" y="220" width="56" height="56"/><text class="letter" x="138" y="248">L</text>
-    <rect class="cell" x="170" y="220" width="56" height="56"/><text class="letter" x="198" y="248">G</text>
-    <rect class="cell" x="230" y="220" width="56" height="56"/><text class="letter" x="258" y="248">O</text>
-    <rect class="cell" x="290" y="220" width="56" height="56"/><text class="letter" x="318" y="248">R</text>
-    <rect class="cell" x="350" y="220" width="56" height="56"/><text class="letter" x="378" y="248">I</text>
-    <rect class="cell" x="410" y="220" width="56" height="56"/><text class="letter" x="438" y="248">T</text>
-    <rect class="cell" x="470" y="220" width="56" height="56"/><text class="letter" x="498" y="248">H</text>
-    <rect class="cell" x="530" y="220" width="56" height="56"/><text class="letter" x="558" y="248">M</text>
-    <rect class="cell" x="590" y="220" width="56" height="56"/>
-    <rect class="cell" x="650" y="220" width="56" height="56"/><text class="letter" x="678" y="248">X</text>
-  </g>
 
   <!-- KNUTH -->
   <g id="knuth">
@@ -4284,6 +4266,23 @@
     <rect class="cell" x="890" y="340" width="56" height="56"/><text class="letter" x="918" y="368">R</text>
   </g>
 
+  <!-- =======================
+       ALGORITHM X (on top)
+       ======================= -->
+  <g id="algorithm-x">
+    <rect class="cell" x="50"  y="220" width="56" height="56"/><text class="letter" x="78"  y="248">A</text>
+    <rect class="cell" x="110" y="220" width="56" height="56"/><text class="letter" x="138" y="248">L</text>
+    <rect class="cell" x="170" y="220" width="56" height="56"/><text class="letter" x="198" y="248">G</text>
+    <rect class="cell" x="230" y="220" width="56" height="56"/><text class="letter" x="258" y="248">O</text>
+    <rect class="cell" x="290" y="220" width="56" height="56"/><text class="letter" x="318" y="248">R</text>
+    <rect class="cell" x="350" y="220" width="56" height="56"/><text class="letter" x="378" y="248">I</text>
+    <rect class="cell" x="410" y="220" width="56" height="56"/><text class="letter" x="438" y="248">T</text>
+    <rect class="cell" x="470" y="220" width="56" height="56"/><text class="letter" x="498" y="248">H</text>
+    <rect class="cell" x="530" y="220" width="56" height="56"/><text class="letter" x="558" y="248">M</text>
+    <rect class="cell" x="590" y="220" width="56" height="56"/>
+    <rect class="cell" x="650" y="220" width="56" height="56"/><text class="letter" x="678" y="248">X</text>
+  </g>
+
 </svg>
 </div>
 
@@ -4292,7 +4291,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const algorithmXCells = [...document.querySelectorAll("#algorithm-x .cell")];
   const allLetters = [...document.querySelectorAll(".algorithm-banner .letter")];
 
-  // Reveal letters one by one
+  // Reveal all letters one by one
   let delay = 0;
   allLetters.forEach((letter) => {
     setTimeout(() => {
@@ -4306,7 +4305,7 @@ document.addEventListener("DOMContentLoaded", () => {
     algorithmXCells.forEach((cell, index) => {
       setTimeout(() => {
         cell.classList.add("neon-wave");
-      }, index * 200); // stagger by 200ms per box
+      }, index * 200);
     });
   }, delay + 300);
 });
