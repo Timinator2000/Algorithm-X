@@ -3,108 +3,160 @@
      xmlns="http://www.w3.org/2000/svg" role="img">
 
   <style>
-    .algorithm-banner { background: transparent; }
-    .algorithm-banner .cell {
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 4;
+    .algorithm-banner { 
+      background: transparent;
+      color: #555;
     }
+
+    /* =======================
+       Cells
+       ======================= */
+    .algorithm-banner .cell {
+      fill: rgba(0,0,0,0.03);
+      stroke: currentColor;
+      stroke-width: 3;
+      rx: 12;
+      ry: 12;
+      transition: all 0.25s ease;
+      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
+      pointer-events: all;
+    }
+
+    /* Neon glow on hover anywhere inside the cell */
+    .algorithm-banner .cell:hover {
+      stroke: #00ffd5;
+      stroke-width: 5;
+      filter: drop-shadow(0 0 8px #00ffd5)
+              drop-shadow(0 0 16px #00ffd5)
+              drop-shadow(0 0 24px #00ffd5);
+      cursor: pointer;
+    }
+
+    /* =======================
+       Letters
+       ======================= */
     .algorithm-banner .letter {
-      font-family: "Fira Mono", "Courier New", monospace;
+      font-family: "Fira Mono", monospace;
       font-size: 34px;
       font-weight: 700;
       fill: currentColor;
       text-anchor: middle;
       dominant-baseline: central;
+      opacity: 0;
+      animation: fadeIn 0.5s forwards;
+      pointer-events: none;
+    }
+
+    /* Neon effect on letters when hovered */
+    .algorithm-banner .cell:hover + .letter {
+      text-shadow: 0 0 4px #00ffd5, 0 0 8px #00ffd5;
+    }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    /* Sequential fade-in delays for ALGORITHM X */
+    #algorithm-x .letter:nth-of-type(1)  { animation-delay: 0s; }
+    #algorithm-x .letter:nth-of-type(2)  { animation-delay: 0.1s; }
+    #algorithm-x .letter:nth-of-type(3)  { animation-delay: 0.2s; }
+    #algorithm-x .letter:nth-of-type(4)  { animation-delay: 0.3s; }
+    #algorithm-x .letter:nth-of-type(5)  { animation-delay: 0.4s; }
+    #algorithm-x .letter:nth-of-type(6)  { animation-delay: 0.5s; }
+    #algorithm-x .letter:nth-of-type(7)  { animation-delay: 0.6s; }
+    #algorithm-x .letter:nth-of-type(8)  { animation-delay: 0.7s; }
+    #algorithm-x .letter:nth-of-type(9)  { animation-delay: 0.8s; }
+    #algorithm-x .letter:nth-of-type(10) { animation-delay: 0.9s; }
+    #algorithm-x .letter:nth-of-type(11) { animation-delay: 1s; }
+    #algorithm-x .letter:nth-of-type(12) { animation-delay: 1.1s; }
+
+    /* Sequential fade-in delays for KNUTH */
+    #knuth .letter:nth-of-type(1) { animation-delay: 1.2s; }
+    #knuth .letter:nth-of-type(2) { animation-delay: 1.3s; }
+    #knuth .letter:nth-of-type(3) { animation-delay: 1.4s; }
+    #knuth .letter:nth-of-type(4) { animation-delay: 1.5s; }
+
+    /* TIMINATOR */
+    #timinator .letter:nth-of-type(1) { animation-delay: 1.6s; }
+    #timinator .letter:nth-of-type(2) { animation-delay: 1.7s; }
+    #timinator .letter:nth-of-type(3) { animation-delay: 1.8s; }
+    #timinator .letter:nth-of-type(4) { animation-delay: 1.9s; }
+    #timinator .letter:nth-of-type(5) { animation-delay: 2s; }
+    #timinator .letter:nth-of-type(6) { animation-delay: 2.1s; }
+    #timinator .letter:nth-of-type(7) { animation-delay: 2.2s; }
+    #timinator .letter:nth-of-type(8) { animation-delay: 2.3s; }
+
+    /* EXACT */
+    #exact .letter:nth-of-type(1) { animation-delay: 2.4s; }
+    #exact .letter:nth-of-type(2) { animation-delay: 2.5s; }
+    #exact .letter:nth-of-type(3) { animation-delay: 2.6s; }
+    #exact .letter:nth-of-type(4) { animation-delay: 2.7s; }
+
+    /* COVER */
+    #cover .letter:nth-of-type(1) { animation-delay: 2.8s; }
+    #cover .letter:nth-of-type(2) { animation-delay: 2.9s; }
+    #cover .letter:nth-of-type(3) { animation-delay: 3s; }
+    #cover .letter:nth-of-type(4) { animation-delay: 3.1s; }
+
+    @media (prefers-color-scheme: dark) {
+      .algorithm-banner .letter { fill: #eee; }
     }
   </style>
 
-  <!-- ======================= -->
-  <!--   ALGORITHM X           -->
-  <!-- ======================= -->
+  <!-- =======================
+       ALGORITHM X
+       ======================= -->
   <g id="algorithm-x">
-    <rect class="cell" x="50"  y="220" width="60" height="60"/><text class="letter" x="80"  y="250">A</text>
-    <rect class="cell" x="110" y="220" width="60" height="60"/><text class="letter" x="140" y="250">L</text>
-    <rect class="cell" x="170" y="220" width="60" height="60"/><text class="letter" x="200" y="250">G</text>
-    <rect class="cell" x="230" y="220" width="60" height="60"/><text class="letter" x="260" y="250">O</text>
-    <rect class="cell" x="290" y="220" width="60" height="60"/><text class="letter" x="320" y="250">R</text>
-    <rect class="cell" x="350" y="220" width="60" height="60"/><text class="letter" x="380" y="250">I</text>
-    <rect class="cell" x="410" y="220" width="60" height="60"/><text class="letter" x="440" y="250">T</text>
-    <rect class="cell" x="470" y="220" width="60" height="60"/><text class="letter" x="500" y="250">H</text>
-
-    <!-- SHARED M (with TIMINATOR) -->
-    <rect class="cell" x="530" y="220" width="60" height="60"/>
-    <text class="letter" x="560" y="250">M</text>
-
-    <rect class="cell" x="590" y="220" width="60" height="60"/><!-- space -->
-    
-    <!-- SHARED X (with EXACT) -->
-    <rect class="cell" x="650" y="220" width="60" height="60"/>
-    <text class="letter" x="680" y="250">X</text>
+    <rect class="cell" x="50"  y="220" width="56" height="56"/><text class="letter" x="78"  y="248">A</text>
+    <rect class="cell" x="110" y="220" width="56" height="56"/><text class="letter" x="138" y="248">L</text>
+    <rect class="cell" x="170" y="220" width="56" height="56"/><text class="letter" x="198" y="248">G</text>
+    <rect class="cell" x="230" y="220" width="56" height="56"/><text class="letter" x="258" y="248">O</text>
+    <rect class="cell" x="290" y="220" width="56" height="56"/><text class="letter" x="318" y="248">R</text>
+    <rect class="cell" x="350" y="220" width="56" height="56"/><text class="letter" x="378" y="248">I</text>
+    <rect class="cell" x="410" y="220" width="56" height="56"/><text class="letter" x="438" y="248">T</text>
+    <rect class="cell" x="470" y="220" width="56" height="56"/><text class="letter" x="498" y="248">H</text>
+    <rect class="cell" x="530" y="220" width="56" height="56"/><text class="letter" x="558" y="248">M</text>
+    <rect class="cell" x="590" y="220" width="56" height="56"/>
+    <rect class="cell" x="650" y="220" width="56" height="56"/><text class="letter" x="678" y="248">X</text>
   </g>
 
-  <!-- ======================= -->
-  <!--      KNUTH (vertical)   -->
-  <!-- ======================= -->
+  <!-- KNUTH (vertical) -->
   <g id="knuth">
-    <rect class="cell" x="410" y="40"  width="60" height="60"/><text class="letter" x="440" y="70">K</text>
-    <rect class="cell" x="410" y="100" width="60" height="60"/><text class="letter" x="440" y="130">N</text>
-    <rect class="cell" x="410" y="160" width="60" height="60"/><text class="letter" x="440" y="190">U</text>
-
-    <!-- Shared T -->
-    <!-- <rect class="cell" x="410" y="220" width="60" height="60"/><text class="letter" x="440" y="250">T</text> -->
-    
-    <rect class="cell" x="410" y="280" width="60" height="60"/><text class="letter" x="440" y="310">H</text>
+    <rect class="cell" x="410" y="40"  width="56" height="56"/><text class="letter" x="438" y="68">K</text>
+    <rect class="cell" x="410" y="100" width="56" height="56"/><text class="letter" x="438" y="128">N</text>
+    <rect class="cell" x="410" y="160" width="56" height="56"/><text class="letter" x="438" y="188">U</text>
+    <rect class="cell" x="410" y="280" width="56" height="56"/><text class="letter" x="438" y="308">H</text>
   </g>
 
-  <!-- ======================= -->
-  <!--     TIMINATOR (vert)    -->
-  <!-- ======================= -->
+  <!-- TIMINATOR (vertical) -->
   <g id="timinator">
-    <rect class="cell" x="530" y="100" width="60" height="60"/><text class="letter" x="560" y="130">T</text>
-    <rect class="cell" x="530" y="160" width="60" height="60"/><text class="letter" x="560" y="190">I</text>
-
-    <!-- SHARED M (with ALGORITHM) — do NOT draw duplicate -->
-    <!-- (box+letter already drawn in ALGORITHM X group) -->
-
-    <rect class="cell" x="530" y="280" width="60" height="60"/><text class="letter" x="560" y="310">I</text>
-    <rect class="cell" x="530" y="340" width="60" height="60"/><text class="letter" x="560" y="370">N</text>
-    <rect class="cell" x="530" y="400" width="60" height="60"/><text class="letter" x="560" y="430">A</text>
-    <rect class="cell" x="530" y="460" width="60" height="60"/><text class="letter" x="560" y="490">T</text>
-    <rect class="cell" x="530" y="520" width="60" height="60"/><text class="letter" x="560" y="550">O</text>
-    <rect class="cell" x="530" y="580" width="60" height="60"/><text class="letter" x="560" y="610">R</text>
+    <rect class="cell" x="530" y="100" width="56" height="56"/><text class="letter" x="558" y="128">T</text>
+    <rect class="cell" x="530" y="160" width="56" height="56"/><text class="letter" x="558" y="188">I</text>
+    <rect class="cell" x="530" y="280" width="56" height="56"/><text class="letter" x="558" y="308">I</text>
+    <rect class="cell" x="530" y="340" width="56" height="56"/><text class="letter" x="558" y="368">N</text>
+    <rect class="cell" x="530" y="400" width="56" height="56"/><text class="letter" x="558" y="428">A</text>
+    <rect class="cell" x="530" y="460" width="56" height="56"/><text class="letter" x="558" y="488">T</text>
+    <rect class="cell" x="530" y="520" width="56" height="56"/><text class="letter" x="558" y="548">O</text>
+    <rect class="cell" x="530" y="580" width="56" height="56"/><text class="letter" x="558" y="608">R</text>
   </g>
 
-  <!-- ======================= -->
-  <!--        EXACT (vert)     -->
-  <!-- ======================= -->
+  <!-- EXACT (vertical) -->
   <g id="exact">
-    <rect class="cell" x="650" y="160" width="60" height="60"/><text class="letter" x="680" y="190">E</text>
-
-    <!-- SHARED X (with ALGORITHM X) — box+letter already drawn above -->
-
-    <rect class="cell" x="650" y="280" width="60" height="60"/><text class="letter" x="680" y="310">A</text>
-
-    <!-- SHARED C (with COVER) -->
-    <rect class="cell" x="650" y="340" width="60" height="60"/><text class="letter" x="680" y="370">C</text>
-
-    <rect class="cell" x="650" y="400" width="60" height="60"/><text class="letter" x="680" y="430">T</text>
+    <rect class="cell" x="650" y="160" width="56" height="56"/><text class="letter" x="678" y="188">E</text>
+    <rect class="cell" x="650" y="280" width="56" height="56"/><text class="letter" x="678" y="308">A</text>
+    <rect class="cell" x="650" y="340" width="56" height="56"/><text class="letter" x="678" y="368">C</text>
+    <rect class="cell" x="650" y="400" width="56" height="56"/><text class="letter" x="678" y="428">T</text>
   </g>
 
-  <!-- ======================= -->
-  <!--       COVER (horiz)     -->
-  <!-- ======================= -->
+  <!-- COVER (horizontal) -->
   <g id="cover">
-    <!-- Shared C (already drawn in EXACT) -->
-
-    <rect class="cell" x="710" y="340" width="60" height="60"/><text class="letter" x="740" y="370">O</text>
-    <rect class="cell" x="770" y="340" width="60" height="60"/><text class="letter" x="800" y="370">V</text>
-    <rect class="cell" x="830" y="340" width="60" height="60"/><text class="letter" x="860" y="370">E</text>
-    <rect class="cell" x="890" y="340" width="60" height="60"/><text class="letter" x="920" y="370">R</text>
+    <rect class="cell" x="710" y="340" width="56" height="56"/><text class="letter" x="738" y="368">O</text>
+    <rect class="cell" x="770" y="340" width="56" height="56"/><text class="letter" x="798" y="368">V</text>
+    <rect class="cell" x="830" y="340" width="56" height="56"/><text class="letter" x="858" y="368">E</text>
+    <rect class="cell" x="890" y="340" width="56" height="56"/><text class="letter" x="918" y="368">R</text>
   </g>
 
 </svg>
 </div>
+
 
 # Background
 
