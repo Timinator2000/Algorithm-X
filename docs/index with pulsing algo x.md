@@ -56,7 +56,7 @@
                                   drop-shadow(0 0 12px #00a7a0); }
     }
     .neon-wave {
-      animation: neonWave 7.5s infinite ease-in-out;
+      animation: neonWave 1.5s infinite ease-in-out;
     }
 
     /* Light/Dark mode */
