@@ -12,7 +12,7 @@
        Cells
        ======================= */
     .algorithm-banner .cell {
-      fill: rgba(0,0,0,0.05);
+      fill: rgba(0,0,0,0.03);
       stroke: currentColor;
       stroke-width: 3;
       rx: 12;
@@ -96,13 +96,14 @@
     #cover .letter:nth-of-type(3) { animation-delay: 3s; }
     #cover .letter:nth-of-type(4) { animation-delay: 3.1s; }
 
-    /* Dark mode */
     @media (prefers-color-scheme: dark) {
-      .algorithm-banner { color: #eee; }
+      .algorithm-banner .letter { fill: #eee; }
     }
   </style>
 
-  <!-- ALGORITHM X -->
+  <!-- =======================
+       ALGORITHM X
+       ======================= -->
   <g id="algorithm-x">
     <rect class="cell" x="50"  y="220" width="56" height="56"/><text class="letter" x="78"  y="248">A</text>
     <rect class="cell" x="110" y="220" width="56" height="56"/><text class="letter" x="138" y="248">L</text>
@@ -117,7 +118,7 @@
     <rect class="cell" x="650" y="220" width="56" height="56"/><text class="letter" x="678" y="248">X</text>
   </g>
 
-  <!-- KNUTH -->
+  <!-- KNUTH (vertical) -->
   <g id="knuth">
     <rect class="cell" x="410" y="40"  width="56" height="56"/><text class="letter" x="438" y="68">K</text>
     <rect class="cell" x="410" y="100" width="56" height="56"/><text class="letter" x="438" y="128">N</text>
@@ -125,7 +126,7 @@
     <rect class="cell" x="410" y="280" width="56" height="56"/><text class="letter" x="438" y="308">H</text>
   </g>
 
-  <!-- TIMINATOR -->
+  <!-- TIMINATOR (vertical) -->
   <g id="timinator">
     <rect class="cell" x="530" y="100" width="56" height="56"/><text class="letter" x="558" y="128">T</text>
     <rect class="cell" x="530" y="160" width="56" height="56"/><text class="letter" x="558" y="188">I</text>
@@ -137,7 +138,7 @@
     <rect class="cell" x="530" y="580" width="56" height="56"/><text class="letter" x="558" y="608">R</text>
   </g>
 
-  <!-- EXACT -->
+  <!-- EXACT (vertical) -->
   <g id="exact">
     <rect class="cell" x="650" y="160" width="56" height="56"/><text class="letter" x="678" y="188">E</text>
     <rect class="cell" x="650" y="280" width="56" height="56"/><text class="letter" x="678" y="308">A</text>
@@ -145,7 +146,7 @@
     <rect class="cell" x="650" y="400" width="56" height="56"/><text class="letter" x="678" y="428">T</text>
   </g>
 
-  <!-- COVER -->
+  <!-- COVER (horizontal) -->
   <g id="cover">
     <rect class="cell" x="710" y="340" width="56" height="56"/><text class="letter" x="738" y="368">O</text>
     <rect class="cell" x="770" y="340" width="56" height="56"/><text class="letter" x="798" y="368">V</text>
