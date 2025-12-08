@@ -4174,6 +4174,27 @@
      shape-rendering="geometricPrecision">
 
   <style>
+    /* ← change this to test colors */
+    :root {
+      /* Algorithm X highlight colors */
+      /* --algox-color: #43aa8b; */
+      /* --algox-color: #7bbf6a; */
+      /* --algox-color: #8ac926; */
+      /* --algox-color: #5fa9a3; */
+      /* --algox-color: #6fa8dc; */
+      /* --algox-color: #d5a542; */
+      /* --algox-color: #5f7fae; */
+      /* --algox-color: #ff8c42; */
+      /* --algox-color: #f07f5a; */
+      --algox-color: #9d65c9;
+      /* --algox-color: #2e86ab; */
+      /* --algox-color: #ffca3a; */
+      /* --algox-color: #1982c4; */
+      /* --algox-color: #6a4c93; */
+      /* --algox-color: #f8961e; */
+      /* --algox-color: #90be6d; */
+    }
+
     .algorithm-banner { 
       background: transparent;
       color: #555;
@@ -4183,16 +4204,12 @@
       fill: rgba(0,0,0,0.03);
       stroke: currentColor;
       stroke-width: 3;
-      transition: all 0.25s ease;
-      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
-      pointer-events: all;
+      transition: fill 0.35s ease;
     }
 
-    .algorithm-banner .cell:hover {
-      stroke: currentColor;
-      stroke-width: 3;
-      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
-      cursor: default;
+    /* Highlight for Algorithm X boxes AFTER the animation */
+    .algorithm-banner .algox-highlight {
+      fill: var(--algox-color);
     }
 
     .algorithm-banner .letter {
@@ -4204,65 +4221,78 @@
       dominant-baseline: central;
       opacity: 0;
       pointer-events: none;
-    }
-
-    @keyframes neonWave {
-      0%, 100% { stroke: #00ffd5; filter: drop-shadow(0 0 8px #00ffd5)
-                                  drop-shadow(0 0 16px #00ffd5)
-                                  drop-shadow(0 0 24px #00ffd5); }
-      50%      { stroke: #00a7a0; filter: drop-shadow(0 0 4px #00a7a0)
-                                  drop-shadow(0 0 8px #00a7a0)
-                                  drop-shadow(0 0 12px #00a7a0); }
-    }
-
-    .neon-wave {
-      animation: neonWave 7.5s infinite ease-in-out;
+      transition: opacity 0.3s ease;
     }
   </style>
+
+  <!-- ========================
+       ALGORITHM X  (bottom layer)
+       ======================== -->
+  <g id="algorithm-x">
+    <path class="cell algo-cell" d="M62 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H62a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
+    <text class="letter" x="78" y="248">A</text>
+    <path class="cell algo-cell" d="M122 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H122a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
+    <text class="letter" x="138" y="248">L</text>
+    <path class="cell algo-cell" d="M182 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H182a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
+    <text class="letter" x="198" y="248">G</text>
+    <path class="cell algo-cell" d="M242 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H242a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
+    <text class="letter" x="258" y="248">O</text>
+    <path class="cell algo-cell" d="M302 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H302a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
+    <text class="letter" x="318" y="248">R</text>
+    <path class="cell algo-cell" d="M362 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H362a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
+    <text class="letter" x="378" y="248">I</text>
+    <path class="cell algo-cell" d="M422 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H422a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
+    <text class="letter" x="438" y="248">T</text>
+    <path class="cell algo-cell" d="M482 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H482a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
+    <text class="letter" x="498" y="248">H</text>
+    <path class="cell algo-cell" d="M542 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H542a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
+    <text class="letter" x="558" y="248">M</text>
+    <path class="cell algo-cell" d="M602 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H602a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
+    <!-- space -->
+    <path class="cell algo-cell" d="M662 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H662a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
+    <text class="letter" x="678" y="248">X</text>
+  </g>
 
   <!-- ========================
        KNUTH
        ======================== -->
   <g id="knuth">
-    <path class="cell" d="M422 40h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M422 40h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="438" y="68">K</text>
-
-    <path class="cell" d="M422 100h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M422 100h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="438" y="128">N</text>
-
-    <path class="cell" d="M422 160h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M422 160h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="438" y="188">U</text>
-
-    <path class="cell" d="M422 280h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M422 280h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="438" y="308">H</text>
   </g>
 
   <!-- ========================
-       TIMINATOR
-       ======================== -->
+      TIMINATOR
+      ======================== -->
   <g id="timinator">
-    <path class="cell" d="M542 100h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M542 100h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="558" y="128">T</text>
 
-    <path class="cell" d="M542 160h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M542 160h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="558" y="188">I</text>
 
-    <path class="cell" d="M542 280h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M542 280h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="558" y="308">I</text>
 
-    <path class="cell" d="M542 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M542 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="558" y="368">N</text>
 
-    <path class="cell" d="M542 400h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M542 400h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="558" y="428">A</text>
 
-    <path class="cell" d="M542 460h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M542 460h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="558" y="488">T</text>
 
-    <path class="cell" d="M542 520h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M542 520h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="558" y="548">O</text>
 
-    <path class="cell" d="M542 580h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M542 580h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="558" y="608">R</text>
   </g>
 
@@ -4270,17 +4300,13 @@
        EXACT
        ======================== -->
   <g id="exact">
-
-    <path class="cell" d="M662 160h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M662 160h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="678" y="188">E</text>
-
-    <path class="cell" d="M662 280h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M662 280h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="678" y="308">A</text>
-
-    <path class="cell" d="M662 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M662 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="678" y="368">C</text>
-
-    <path class="cell" d="M662 400h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M662 400h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="678" y="428">T</text>
   </g>
 
@@ -4288,55 +4314,14 @@
        COVER
        ======================== -->
   <g id="cover">
-    <path class="cell" d="M722 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M722 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="738" y="368">O</text>
-
-    <path class="cell" d="M782 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M782 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="798" y="368">V</text>
-
-    <path class="cell" d="M842 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M842 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="858" y="368">E</text>
-
-    <path class="cell" d="M902 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <path class="cell" d="M902 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12Z"/>
     <text class="letter" x="918" y="368">R</text>
-  </g>
-
-  <!-- ========================
-       ALGORITHM X  (on top)
-       ======================== -->
-  <g id="algorithm-x" style="z-index: 999;">
-    <path class="cell" d="M62 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H62a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
-    <text class="letter" x="78" y="248">A</text>
-
-    <path class="cell" d="M122 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H122a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
-    <text class="letter" x="138" y="248">L</text>
-
-    <path class="cell" d="M182 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H182a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
-    <text class="letter" x="198" y="248">G</text>
-
-    <path class="cell" d="M242 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H242a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
-    <text class="letter" x="258" y="248">O</text>
-
-    <path class="cell" d="M302 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H302a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
-    <text class="letter" x="318" y="248">R</text>
-
-    <path class="cell" d="M362 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H362a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
-    <text class="letter" x="378" y="248">I</text>
-
-    <path class="cell" d="M422 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H422a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
-    <text class="letter" x="438" y="248">T</text>
-
-    <path class="cell" d="M482 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H482a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
-    <text class="letter" x="498" y="248">H</text>
-
-    <path class="cell" d="M542 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H542a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
-    <text class="letter" x="558" y="248">M</text>
-
-    <!-- space -->
-    <path class="cell" d="M602 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H602a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
-
-    <path class="cell" d="M662 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H662a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
-    <text class="letter" x="678" y="248">X</text>
   </g>
 
 </svg>
@@ -4345,19 +4330,24 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const algorithmXCells = [...document.querySelectorAll("#algorithm-x .cell")];
+  const algorithmXLetters = [...document.querySelectorAll("#algorithm-x .letter")];
   const allLetters = [...document.querySelectorAll(".algorithm-banner .letter")];
 
+  // Fade all letters in with staggered timing
   let delay = 0;
   allLetters.forEach((letter) => {
     setTimeout(() => { letter.style.opacity = 1; }, delay);
     delay += 200;
   });
 
-  setTimeout(() => {
-    algorithmXCells.forEach((cell, index) => {
-      setTimeout(() => cell.classList.add("neon-wave"), index * 200);
-    });
-  }, delay + 300);
+  // After letters are done, highlight Algorithm X boxes one by one
+  const highlightStart = delay + 400;
+  algorithmXCells.forEach((cell, index) => {
+    setTimeout(() => {
+      cell.classList.add("algox-highlight");          // shade the cell
+      algorithmXLetters[index].style.fill = "white"; // turn the letter white
+    }, highlightStart + index * 200); // stagger left to right
+  });
 });
 </script>
 
