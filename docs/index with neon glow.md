@@ -1,4 +1,4 @@
-<div style="width:100%; max-width:900px; margin:auto; color: inherit;">
+<div style="width:100%; max-width:900px; margin:auto;">
 <svg class="algorithm-banner" width="100%" viewBox="0 0 1000 720"
      xmlns="http://www.w3.org/2000/svg" role="img"
      shape-rendering="geometricPrecision">
@@ -6,25 +6,18 @@
   <style>
     .algorithm-banner { 
       background: transparent;
-      color: inherit; /* letters inherit page text color */
+      color: #555;
     }
 
-    /* =======================
-       Cells
-       ======================= */
     .algorithm-banner .cell {
       fill: rgba(0,0,0,0.03);
       stroke: currentColor;
       stroke-width: 3;
-      rx: 12;
-      ry: 12;
       transition: all 0.25s ease;
       filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
       pointer-events: all;
-      vector-effect: non-scaling-stroke; 
     }
 
-    /* Remove hover neon */
     .algorithm-banner .cell:hover {
       stroke: currentColor;
       stroke-width: 3;
@@ -32,22 +25,17 @@
       cursor: default;
     }
 
-    /* =======================
-       Letters
-       ======================= */
     .algorithm-banner .letter {
       font-family: "Fira Mono", monospace;
       font-size: 34px;
       font-weight: 700;
+      fill: currentColor;
       text-anchor: middle;
       dominant-baseline: central;
-      opacity: 0;  /* start hidden */
+      opacity: 0;
       pointer-events: none;
-      transition: fill 0.25s ease;
-      fill: currentColor; /* always match page text */
     }
 
-    /* Neon glow animation for boxes */
     @keyframes neonWave {
       0%, 100% { stroke: #00ffd5; filter: drop-shadow(0 0 8px #00ffd5)
                                   drop-shadow(0 0 16px #00ffd5)
@@ -56,62 +44,129 @@
                                   drop-shadow(0 0 8px #00a7a0)
                                   drop-shadow(0 0 12px #00a7a0); }
     }
+
     .neon-wave {
       animation: neonWave 7.5s infinite ease-in-out;
     }
   </style>
 
-  <!-- =======================
-       ALGORITHM X
-       ======================= -->
-  <g id="algorithm-x">
-    <rect class="cell" x="50"  y="220" width="56" height="56"/><text class="letter" x="78"  y="248">A</text>
-    <rect class="cell" x="110" y="220" width="56" height="56"/><text class="letter" x="138" y="248">L</text>
-    <rect class="cell" x="170" y="220" width="56" height="56"/><text class="letter" x="198" y="248">G</text>
-    <rect class="cell" x="230" y="220" width="56" height="56"/><text class="letter" x="258" y="248">O</text>
-    <rect class="cell" x="290" y="220" width="56" height="56"/><text class="letter" x="318" y="248">R</text>
-    <rect class="cell" x="350" y="220" width="56" height="56"/><text class="letter" x="378" y="248">I</text>
-    <rect class="cell" x="410" y="220" width="56" height="56"/><text class="letter" x="438" y="248">T</text>
-    <rect class="cell" x="470" y="220" width="56" height="56"/><text class="letter" x="498" y="248">H</text>
-    <rect class="cell" x="530" y="220" width="56" height="56"/><text class="letter" x="558" y="248">M</text>
-    <rect class="cell" x="590" y="220" width="56" height="56"/>
-    <rect class="cell" x="650" y="220" width="56" height="56"/><text class="letter" x="678" y="248">X</text>
-  </g>
-
-  <!-- KNUTH -->
+  <!-- ========================
+       KNUTH
+       ======================== -->
   <g id="knuth">
-    <rect class="cell" x="410" y="40"  width="56" height="56"/><text class="letter" x="438" y="68">K</text>
-    <rect class="cell" x="410" y="100" width="56" height="56"/><text class="letter" x="438" y="128">N</text>
-    <rect class="cell" x="410" y="160" width="56" height="56"/><text class="letter" x="438" y="188">U</text>
-    <rect class="cell" x="410" y="280" width="56" height="56"/><text class="letter" x="438" y="308">H</text>
+    <path class="cell" d="M422 40h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="438" y="68">K</text>
+
+    <path class="cell" d="M422 100h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="438" y="128">N</text>
+
+    <path class="cell" d="M422 160h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="438" y="188">U</text>
+
+    <path class="cell" d="M422 280h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="438" y="308">H</text>
   </g>
 
-  <!-- TIMINATOR -->
+  <!-- ========================
+       TIMINATOR
+       ======================== -->
   <g id="timinator">
-    <rect class="cell" x="530" y="100" width="56" height="56"/><text class="letter" x="558" y="128">T</text>
-    <rect class="cell" x="530" y="160" width="56" height="56"/><text class="letter" x="558" y="188">I</text>
-    <rect class="cell" x="530" y="280" width="56" height="56"/><text class="letter" x="558" y="308">I</text>
-    <rect class="cell" x="530" y="340" width="56" height="56"/><text class="letter" x="558" y="368">N</text>
-    <rect class="cell" x="530" y="400" width="56" height="56"/><text class="letter" x="558" y="428">A</text>
-    <rect class="cell" x="530" y="460" width="56" height="56"/><text class="letter" x="558" y="488">T</text>
-    <rect class="cell" x="530" y="520" width="56" height="56"/><text class="letter" x="558" y="548">O</text>
-    <rect class="cell" x="530" y="580" width="56" height="56"/><text class="letter" x="558" y="608">R</text>
+    <path class="cell" d="M542 100h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="558" y="128">T</text>
+
+    <path class="cell" d="M542 160h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="558" y="188">I</text>
+
+    <path class="cell" d="M542 280h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="558" y="308">I</text>
+
+    <path class="cell" d="M542 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="558" y="368">N</text>
+
+    <path class="cell" d="M542 400h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="558" y="428">A</text>
+
+    <path class="cell" d="M542 460h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="558" y="488">T</text>
+
+    <path class="cell" d="M542 520h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="558" y="548">O</text>
+
+    <path class="cell" d="M542 580h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="558" y="608">R</text>
   </g>
 
-  <!-- EXACT -->
+  <!-- ========================
+       EXACT
+       ======================== -->
   <g id="exact">
-    <rect class="cell" x="650" y="160" width="56" height="56"/><text class="letter" x="678" y="188">E</text>
-    <rect class="cell" x="650" y="280" width="56" height="56"/><text class="letter" x="678" y="308">A</text>
-    <rect class="cell" x="650" y="340" width="56" height="56"/><text class="letter" x="678" y="368">C</text>
-    <rect class="cell" x="650" y="400" width="56" height="56"/><text class="letter" x="678" y="428">T</text>
+
+    <path class="cell" d="M662 160h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="678" y="188">E</text>
+
+    <path class="cell" d="M662 280h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="678" y="308">A</text>
+
+    <path class="cell" d="M662 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="678" y="368">C</text>
+
+    <path class="cell" d="M662 400h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="678" y="428">T</text>
   </g>
 
-  <!-- COVER -->
+  <!-- ========================
+       COVER
+       ======================== -->
   <g id="cover">
-    <rect class="cell" x="710" y="340" width="56" height="56"/><text class="letter" x="738" y="368">O</text>
-    <rect class="cell" x="770" y="340" width="56" height="56"/><text class="letter" x="798" y="368">V</text>
-    <rect class="cell" x="830" y="340" width="56" height="56"/><text class="letter" x="858" y="368">E</text>
-    <rect class="cell" x="890" y="340" width="56" height="56"/><text class="letter" x="918" y="368">R</text>
+    <path class="cell" d="M722 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="738" y="368">O</text>
+
+    <path class="cell" d="M782 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="798" y="368">V</text>
+
+    <path class="cell" d="M842 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="858" y="368">E</text>
+
+    <path class="cell" d="M902 340h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12h-32a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="918" y="368">R</text>
+  </g>
+
+  <!-- ========================
+       ALGORITHM X  (on top)
+       ======================== -->
+  <g id="algorithm-x" style="z-index: 999;">
+    <path class="cell" d="M62 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H62a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="78" y="248">A</text>
+
+    <path class="cell" d="M122 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H122a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="138" y="248">L</text>
+
+    <path class="cell" d="M182 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H182a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="198" y="248">G</text>
+
+    <path class="cell" d="M242 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H242a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="258" y="248">O</text>
+
+    <path class="cell" d="M302 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H302a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="318" y="248">R</text>
+
+    <path class="cell" d="M362 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H362a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="378" y="248">I</text>
+
+    <path class="cell" d="M422 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H422a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="438" y="248">T</text>
+
+    <path class="cell" d="M482 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H482a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="498" y="248">H</text>
+
+    <path class="cell" d="M542 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H542a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="558" y="248">M</text>
+
+    <!-- space -->
+    <path class="cell" d="M602 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H602a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+
+    <path class="cell" d="M662 220h32a12 12 0 0 1 12 12v32a12 12 0 0 1-12 12H662a12 12 0 0 1-12-12v-32a12 12 0 0 1 12-12"/>
+    <text class="letter" x="678" y="248">X</text>
   </g>
 
 </svg>
@@ -122,26 +177,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const algorithmXCells = [...document.querySelectorAll("#algorithm-x .cell")];
   const allLetters = [...document.querySelectorAll(".algorithm-banner .letter")];
 
-  // Reveal letters one by one
   let delay = 0;
   allLetters.forEach((letter) => {
-    setTimeout(() => {
-      letter.style.opacity = 1;
-    }, delay);
-    delay += 200; 
+    setTimeout(() => { letter.style.opacity = 1; }, delay);
+    delay += 200;
   });
 
-  // Neon wave across ALGORITHM X boxes left-to-right after letters reveal
   setTimeout(() => {
     algorithmXCells.forEach((cell, index) => {
-      setTimeout(() => {
-        cell.classList.add("neon-wave");
-      }, index * 200); // stagger by 200ms per box
+      setTimeout(() => cell.classList.add("neon-wave"), index * 200);
     });
   }, delay + 300);
 });
 </script>
-
 
 <BR>
 
