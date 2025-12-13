@@ -4173,7 +4173,7 @@
 <h1 id="connect-the-colours-part-2-cont">Connect the Colours - Part 2 (cont.)</h1>
 <p>The path explosion described on the previous page makes pre-computing all possible actions extremely difficult. With only two seconds to produce your first move — and identical limits across all languages - you might be tempted to use a language faster than Python.</p>
 <p>I did solve this puzzle in Python with <a href="../../05-generating-actions/01-finding-all/">full path enumeration</a>, but the sparse boards are brutal: the number of possible routes becomes enormous. To enumerate all candidate actions for Algorithm X, you must prune aggressively. Any search branch that isolates even a single cell, or any partial path that redundantly covers a region already handled by another candidate, should be terminated immediately.</p>
-<p>If that sounded like Penn Jillette delivering coded hints on <a href="https://www.cwtv.com/shows/penn-teller-fool-us/"><em>Fool Us</em></a>, the spoilers below contain slightly more straight-up versions.</p>
+<p>If that sounded like Penn Jillette delivering coded hints on <a href="https://www.youtube.com/watch?v=fg0CC99hVK8"><em>Fool Us</em></a>, the spoilers below contain slightly more straight-up versions.</p>
 <details class="note">
 <summary>Spoiler Alert: Logic</summary>
 <p>It’s worth remembering that <em>Connect the Colours</em> is fundamentally a logic puzzle. In Part I, we were handed checkpoints: cells that had to be covered by a specific color. Part II provides no explicit checkpoints, but that doesn’t mean the board contains none. Using pure logic, can you identify any cells with only one possible color? If so, you can treat them exactly like the checkpoints you defined in Part I.</p>
