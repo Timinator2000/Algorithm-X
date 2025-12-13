@@ -4,7 +4,7 @@ The path explosion described on the previous page makes pre-computing all possib
 
 I did solve this puzzle in Python with [full path enumeration](../05-generating-actions/01-finding-all.md), but the sparse boards are brutal: the number of possible routes becomes enormous. To enumerate all candidate actions for Algorithm X, you must prune aggressively. Any search branch that isolates even a single cell, or any partial path that redundantly covers a region already handled by another candidate, should be terminated immediately.
 
-If that sounded like Penn Jillette delivering coded hints on [*Fool Us*](https://www.cwtv.com/shows/penn-teller-fool-us/), the spoilers below contain slightly more straight-up versions.
+If that sounded like Penn Jillette delivering coded hints on [*Fool Us*](https://www.youtube.com/watch?v=fg0CC99hVK8), the spoilers below contain slightly more straight-up versions.
 
 ??? note "Spoiler Alert: Logic"
 
