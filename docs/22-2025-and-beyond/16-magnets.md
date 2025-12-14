@@ -1,6 +1,6 @@
 # Magnets
 
-__Puzzle:__ [Magnets - AWAITING APPROVAL](https://www.codingame.com/contribute/community)
+__Puzzle:__ [Magnets](https://www.codingame.com/training/hard/magnets)
 
 __Author:__ [@VizGhar](https://www.codingame.com/profile/c152bee9fe8dc90ac4f6b84505b59ebb9086993)
 
