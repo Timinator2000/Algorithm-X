@@ -262,8 +262,8 @@ __Great Candidates for Algorithm X:__
 <BR>[🎮 Magnets](22-2025-and-beyond/16-magnets.md) (+50 XP)
 <BR>[Nurikabe](22-2025-and-beyond/17-nurikabe.md) (+50 XP)
 <BR>[The L-Game: Counting Board States](22-2025-and-beyond/18-the-l-game-counting-board-states.md) (+50 XP)
-<BR>[🎮 Connect the Colours - Part I](22-2025-and-beyond/12-connect-the-colours-part-1.md) (+50 XP)
-<BR>[🎮 Connect the Colours - Part II](22-2025-and-beyond/13-connect-the-colours-part-2.md) (+50 XP)
+<BR>[🎮 Connect the Colours - Part 1](22-2025-and-beyond/12-connect-the-colours-part-1.md) (+50 XP)
+<BR>[🎮 Connect the Colours - Part 2](22-2025-and-beyond/13-connect-the-colours-part-2.md) (+50 XP)
 
 🎮 = Solo Game with gameboard visualization that nicely demonstrate the exact cover.
 
