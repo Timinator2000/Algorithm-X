@@ -2,13 +2,13 @@
 
 |Date|Details|
 |:--------:|:----------------|
+| January 3, 2026 | `AlgorithmXSolver` ➡️ [C++](../23-solver-translations/05-cpp.md) translation added. |
 | January 3, 2026 | `AlgorithmXSolver` ➡️ [Dart](../23-solver-translations/11-dart.md) translation added. |
 | January 3, 2026 | `AlgorithmXSolver` ➡️ [Ruby](../23-solver-translations/09-ruby.md) translation revised. |
 | January 3, 2026 | `AlgorithmXSolver` ➡️ [Python Version 2](../23-solver-translations/10-python-v2.md) translation added. |
 | January 3, 2026 | `AlgorithmXSolver` ➡️ [JavaScript](../23-solver-translations/08-javascript.md) translation added. |
 | January 3, 2026 | `AlgorithmXSolver` ➡️ [Java](../23-solver-translations/07-java.md) translation added. |
 | January 3, 2026 | `AlgorithmXSolver` ➡️ [C#](../23-solver-translations/06-csharp.md) translation added. |
-| January 3, 2026 | `AlgorithmXSolver` ➡️ [C++](../23-solver-translations/05-cpp.md) translation added. |
 | January 3, 2026 | [Snowflakes](../17-enforcing-sameness/04-test-your-skills.md#practice-makes-perfect) added to practice reducing sets of events. |
 | December 14, 2025 | 🎮 [Magnets](../22-2025-and-beyond/16-magnets.md) added. |
 | November 22, 2025 | 🎮 [Connect the Colours - Part 2](../22-2025-and-beyond/13-connect-the-colours-part-2.md) added. |
