@@ -144,7 +144,13 @@ nav:
     - The L-Game - Counting Board States: 22-2025-and-beyond/18-the-l-game-counting-board-states.md
   - Solver Translations:
     - Translations Overview: 23-solver-translations/01-overview.md
-    - Ruby: 23-solver-translations/02-ruby.md
+    - ✅ C++: 23-solver-translations/05-cpp.md
+    - Python Version 2: 23-solver-translations/10-python-v2.md
+    - C#: 23-solver-translations/06-csharp.md
+    - Java: 23-solver-translations/07-java.md
+    - JavaScript: 23-solver-translations/08-javascript.md
+    - Ruby: 23-solver-translations/09-ruby.md
+    - Dart: 23-solver-translations/11-dart.md
     - Kotlin: 23-solver-translations/03-kotlin.md
     - PHP: 23-solver-translations/04-php.md
   - Odds & Ends:

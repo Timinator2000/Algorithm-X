@@ -214,6 +214,7 @@ __Exact Cover (Algorithm X Candidate) Puzzles Created for this Playground:__
 __Support Puzzles Covered in this Playground__
 <BR>[Shikaku Skill Builder](05-generating-actions/02-shikaku-skill-builder.md) (+50 XP)
 <BR>[Networking](17-enforcing-sameness/04-test-your-skills.md#a-few-xp-for-your-efforts) (+50 XP)
+<BR>[Snowflakes](17-enforcing-sameness/04-test-your-skills.md#practice-makes-perfect) (+50 XP)
 
 __Great Candidates for Algorithm X:__
 <BR>[Sudoku Solver](04-your-turn/02-9x9-sudoku.md) (+50 XP)
@@ -277,7 +278,7 @@ I wholeheartedly believe that working through this playground and the accompanyi
 * You will experience the compelling nature of reusable software architectures.
 * You will find every puzzle listed above significantly easier than it would have been otherwise. I’m not saying they’ll all be easy, but they will indeed be easier.
 * You will have a lot of fun.
-* You will earn up to __3150 [CodinGame](https://www.codingame.com) XP!__
+* You will earn up to __3200 [CodinGame](https://www.codingame.com) XP!__
 
 ---
 

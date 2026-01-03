@@ -1,6 +1,16 @@
 # Solver Translations
 
-On the following pages are various language translations of the provided [`AlgorithmXSolver`](../03-AlgorithmXSolver/01-the-AlgorithmXSolver.md#using-the-algorithmxsolver-class). I am not the author of any of these translations. CodinGamers with significantly more language expertise than me have taken on the task of writing these translations and sharing their code. I owe each of them a debt of gratitude.
+On the following pages are various language translations of the provided [`AlgorithmXSolver`](../03-AlgorithmXSolver/01-the-AlgorithmXSolver.md#using-the-algorithmxsolver-class). In several cases, CodinGamers with significantly more language expertise than me have taken on the task of writing a translations and sharing their code. I owe each of them a debt of gratitude.
+
+---
+
+# Contributor Note — Future Translations
+
+If you are planning to translate `AlgorithmXSolver` to another language, it is recommended that you review and base your work on the [C++](../23-solver-translations/05-cpp.md) implementation rather than the original Python version.
+
+The Python solver makes use of several Python-specific language features and reflects an earlier stage of the design. The C++ translation is more explicit about ownership, lifetimes, constraints, and performance considerations, and generally provides a clearer picture of the intended architecture.
+
+For these reasons, the C++ version is a better reference when designing future translations.
 
 ---
 
@@ -16,7 +26,19 @@ __If you run into issues with any of these translations, post a note in the [Cod
 
 Click the links below for each translation. If you do not see your preferred language, please consider writing a translation and allowing me to share it here with the community.
 
-[Ruby](../23-solver-translations/02-ruby.md)
+✅ [C++](../23-solver-translations/05-cpp.md)
+
+[Python Version 2](../23-solver-translations/10-python-v2.md)
+
+[C#](../23-solver-translations/06-csharp.md)
+
+[Java](../23-solver-translations/07-java.md)
+
+[JavaScript](../23-solver-translations/08-javascript.md)
+
+[Ruby](../23-solver-translations/09-ruby.md)
+
+[Dart](../23-solver-translations/11-dart.md)
 
 [Kotlin](../23-solver-translations/03-kotlin.md)
 

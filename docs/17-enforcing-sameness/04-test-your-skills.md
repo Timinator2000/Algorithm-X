@@ -23,7 +23,7 @@ In the realm of sameness, there are two fundamental building blocks. The first i
 
     until no more sets can be combined
     ```
-
+S
 <BR>
 
 This is a *naive repeated overlap-merge*: after each merge, the algorithm restarts scanning from the beginning until no overlaps remain. While simple to understand, it can be slow because every set is compared against every other set, and merges can trigger many repeated passes. In worst-case scenarios with heavily overlapping sets, the total work can grow to **O(n³)**.
@@ -95,5 +95,21 @@ __Puzzle:__ [Networking](https://www.codingame.com/training/medium/networking)
 __Author:__ [@Gladwell](https://www.codingame.com/profile/4862914f30331ebb394c6539dc1b4bde5659885)
 
 __Published Difficulty:__ Medium
+
+---
+
+# Practice Makes Perfect
+
+__Puzzle:__ [Snowflakes](https://www.codingame.com/training/medium/snowflakes)
+
+__Author:__ [@Harry.B.](https://www.codingame.com/profile/d926a93cb394ded661b204822965c5fa7122915)
+
+__Published Difficulty:__ Medium
+
+This puzzle is a slightly tougher test of your new skills. You’re given a 2D grid photo where each cell is either snow (`*`) or empty sky (`.`). Any two snow cells that touch vertically or horizontally belong to the same snowflake.  
+
+Your first step is to find all the snowflakes in the picture. There are more efficient ways to conquer this puzzle, but practicing the approach outlined above will serve you well if you later tackle [Nurikabe](../22-2025-and-beyond/17-nurikabe.md). Notice the similarity between “building” snowflakes here and “building” islands in Nurikabe.  
+
+Start by treating each snow cell as its own snowflake. Then reduce the list using the algorithm above. The only difference is that snowflakes combine not by *overlap*, but by being **adjacent**. At the end, your list will contain only the complete snowflakes.
 
 <BR>
