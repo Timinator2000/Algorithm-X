@@ -4330,8 +4330,7 @@ repeat
 until no more sets can be combined
 </code></pre></div>
 </div>
-<p>S
-<BR></p>
+<p><BR></p>
 <p>This is a <em>naive repeated overlap-merge</em>: after each merge, the algorithm restarts scanning from the beginning until no overlaps remain. While simple to understand, it can be slow because every set is compared against every other set, and merges can trigger many repeated passes. In worst-case scenarios with heavily overlapping sets, the total work can grow to <strong>O(n³)</strong>.</p>
 <p>For the playground applications, this algorithm works wonderfully. For larger applications, however, it’s worth exploring more efficient approaches such as <strong>Union–Find (Disjoint Set Union)</strong>, <strong>graph-based connected-component labeling</strong>, or <strong>interval/segment merging techniques</strong> that avoid repeated global rescans.</p>
 <hr />
