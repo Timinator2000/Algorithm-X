@@ -23,7 +23,7 @@ In the realm of sameness, there are two fundamental building blocks. The first i
 
     until no more sets can be combined
     ```
-S
+
 <BR>
 
 This is a *naive repeated overlap-merge*: after each merge, the algorithm restarts scanning from the beginning until no overlaps remain. While simple to understand, it can be slow because every set is compared against every other set, and merges can trigger many repeated passes. In worst-case scenarios with heavily overlapping sets, the total work can grow to **O(n³)**.

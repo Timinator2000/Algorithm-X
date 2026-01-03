@@ -1,6 +1,6 @@
 # Solver Translations
 
-On the following pages are various language translations of the provided [`AlgorithmXSolver`](../03-AlgorithmXSolver/01-the-AlgorithmXSolver.md#using-the-algorithmxsolver-class). In several cases, CodinGamers with significantly more language expertise than me have taken on the task of writing a translations and sharing their code. I owe each of them a debt of gratitude.
+On the following pages are various language translations of the provided [`AlgorithmXSolver`](../03-AlgorithmXSolver/01-the-AlgorithmXSolver.md#using-the-algorithmxsolver-class). In several cases, CodinGamers with significantly more language expertise than me have taken on the task of writing a translation and sharing their code. I owe each of them a debt of gratitude.
 
 ---
 
@@ -8,7 +8,7 @@ On the following pages are various language translations of the provided [`Algor
 
 If you are planning to translate `AlgorithmXSolver` to another language, it is recommended that you review and base your work on the [C++](../23-solver-translations/05-cpp.md) implementation rather than the original Python version.
 
-The Python solver makes use of several Python-specific language features and reflects an earlier stage of the design. The C++ translation is more explicit about ownership, lifetimes, constraints, and performance considerations, and generally provides a clearer picture of the intended architecture.
+The original Python solver makes use of several Python-specific language features and reflects an earlier stage of the design. The C++ translation is more explicit about ownership, lifetimes, constraints, and performance considerations, and generally provides a clearer picture of the intended architecture.
 
 For these reasons, the C++ version is a better reference when designing future translations.
 
