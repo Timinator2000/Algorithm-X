@@ -3953,12 +3953,150 @@
   
   
     <li class="md-nav__item">
-      <a href="../../23-solver-translations/02-ruby/" class="md-nav__link">
+      <a href="../../23-solver-translations/05-cpp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ✅ C++
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23-solver-translations/10-python-v2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python Version 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23-solver-translations/06-csharp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C#
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23-solver-translations/07-java/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Java
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23-solver-translations/08-javascript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23-solver-translations/09-ruby/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     Ruby
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../23-solver-translations/11-dart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dart
     
   </span>
   
@@ -4192,7 +4330,8 @@ repeat
 until no more sets can be combined
 </code></pre></div>
 </div>
-<p><BR></p>
+<p>S
+<BR></p>
 <p>This is a <em>naive repeated overlap-merge</em>: after each merge, the algorithm restarts scanning from the beginning until no overlaps remain. While simple to understand, it can be slow because every set is compared against every other set, and merges can trigger many repeated passes. In worst-case scenarios with heavily overlapping sets, the total work can grow to <strong>O(n³)</strong>.</p>
 <p>For the playground applications, this algorithm works wonderfully. For larger applications, however, it’s worth exploring more efficient approaches such as <strong>Union–Find (Disjoint Set Union)</strong>, <strong>graph-based connected-component labeling</strong>, or <strong>interval/segment merging techniques</strong> that avoid repeated global rescans.</p>
 <hr />
@@ -4246,6 +4385,14 @@ until no more sets can be combined
 <p><strong>Puzzle:</strong> <a href="https://www.codingame.com/training/medium/networking">Networking</a></p>
 <p><strong>Author:</strong> <a href="https://www.codingame.com/profile/4862914f30331ebb394c6539dc1b4bde5659885">@Gladwell</a></p>
 <p><strong>Published Difficulty:</strong> Medium</p>
+<hr />
+<h1 id="practice-makes-perfect">Practice Makes Perfect</h1>
+<p><strong>Puzzle:</strong> <a href="https://www.codingame.com/training/medium/snowflakes">Snowflakes</a></p>
+<p><strong>Author:</strong> <a href="https://www.codingame.com/profile/d926a93cb394ded661b204822965c5fa7122915">@Harry.B.</a></p>
+<p><strong>Published Difficulty:</strong> Medium</p>
+<p>This puzzle is a slightly tougher test of your new skills. You’re given a 2D grid photo where each cell is either snow (<code>*</code>) or empty sky (<code>.</code>). Any two snow cells that touch vertically or horizontally belong to the same snowflake.  </p>
+<p>Your first step is to find all the snowflakes in the picture. There are more efficient ways to conquer this puzzle, but practicing the approach outlined above will serve you well if you later tackle <a href="../../22-2025-and-beyond/17-nurikabe/">Nurikabe</a>. Notice the similarity between “building” snowflakes here and “building” islands in Nurikabe.  </p>
+<p>Start by treating each snow cell as its own snowflake. Then reduce the list using the algorithm above. The only difference is that snowflakes combine not by <em>overlap</em>, but by being <strong>adjacent</strong>. At the end, your list will contain only the complete snowflakes.</p>
 <p><BR></p>
 
 

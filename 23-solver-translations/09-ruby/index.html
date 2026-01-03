@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://www.algorithm-x.com/23-solver-translations/02-ruby/">
+        <link rel="canonical" href="https://www.algorithm-x.com/23-solver-translations/09-ruby/">
       
       
-        <link rel="prev" href="../01-overview/">
+        <link rel="prev" href="../08-javascript/">
       
       
-        <link rel="next" href="../03-kotlin/">
+        <link rel="next" href="../11-dart/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -3940,6 +3940,121 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-cpp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ✅ C++
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-python-v2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python Version 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-csharp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    C#
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-java/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Java
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-javascript/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JavaScript
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -3964,6 +4079,29 @@
 
       </a>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-dart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dart
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -4171,78 +4309,228 @@
 
 
 <h1 id="ruby">Ruby</h1>
-<p><strong>Translation Author:</strong> <a href="https://www.codingame.com/profile/68977779383d7e4ea558c7a5446487f40556084">@Rafarafa</a></p>
-<p>Ruby is a high-level, dynamically typed programming language known for its readability and ease of use. Ruby shares many similarities with Python, such as automatic memory management and object-oriented principles.</p>
-<p>@Rafarafa has provided a word for word translation, even preserving the comments found in the provided Python code. Using the Ruby solver below is extremely similar to the Python examples found in the playground.</p>
+<p>The following Ruby translation of <code>AlgorithmXSolver</code> is derived from the C++ version, which serves as the recommended reference for its structure, algorithms, and overall design.</p>
+<p>Detailed explanations have been omitted, as they align closely with the discussion in the <a href="../05-cpp/">C++ version</a>.</p>
 <hr />
-<h1 id="key-difference">Key Difference</h1>
-<p>My Python <a href="../../03-AlgorithmXSolver/01-the-AlgorithmXSolver/#using-the-algorithmxsolver-class"><code>AlgorithmXSolver</code></a> makes extensive use of <code>tuple</code>s. Because Ruby does not have <code>tuple</code>s, you will use <code>array</code>s for requirements and actions. These <code>array</code>s will be used as keys in a <code>hash</code>, so take appropriate care to ensure the <code>array</code> elements never change.</p>
-<p>Be sure to scan through @Rafarafa's other comments for information regarding other minor differences.</p>
+<h1 id="problem-specific-requirements">Problem-Specific Requirements</h1>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">CellCovered</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">Requirement</span>
+<span class="w">  </span><span class="kp">attr_reader</span><span class="w"> </span><span class="ss">:row</span><span class="p">,</span><span class="w"> </span><span class="ss">:col</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">make_key</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span>
+<span class="w">    </span><span class="s2">&quot;cell covered </span><span class="si">#{</span><span class="n">r</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">)</span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">make_key</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">))</span>
+<span class="w">    </span><span class="vi">@row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span>
+<span class="w">    </span><span class="vi">@col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ValInRow</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">Requirement</span>
+<span class="w">  </span><span class="kp">attr_reader</span><span class="w"> </span><span class="ss">:row</span><span class="p">,</span><span class="w"> </span><span class="ss">:val</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">make_key</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
+<span class="w">    </span><span class="s2">&quot;val in row </span><span class="si">#{</span><span class="n">r</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">make_key</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">))</span>
+<span class="w">    </span><span class="vi">@row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span>
+<span class="w">    </span><span class="vi">@val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ValInCol</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">Requirement</span>
+<span class="w">  </span><span class="kp">attr_reader</span><span class="w"> </span><span class="ss">:col</span><span class="p">,</span><span class="w"> </span><span class="ss">:val</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">make_key</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
+<span class="w">    </span><span class="s2">&quot;val in col </span><span class="si">#{</span><span class="n">c</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">make_key</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">))</span>
+<span class="w">    </span><span class="vi">@col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span>
+<span class="w">    </span><span class="vi">@val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ValInBox</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">Requirement</span>
+<span class="w">  </span><span class="kp">attr_reader</span><span class="w"> </span><span class="ss">:box</span><span class="p">,</span><span class="w"> </span><span class="ss">:val</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">make_key</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
+<span class="w">    </span><span class="s2">&quot;val in box </span><span class="si">#{</span><span class="n">b</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">make_key</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">))</span>
+<span class="w">    </span><span class="vi">@box</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span>
+<span class="w">    </span><span class="vi">@val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<hr />
+<h1 id="problem-specific-actions">Problem-Specific Actions</h1>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PlaceValue</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">Action</span>
+<span class="w">  </span><span class="kp">attr_reader</span><span class="w"> </span><span class="ss">:row</span><span class="p">,</span><span class="w"> </span><span class="ss">:col</span><span class="p">,</span><span class="w"> </span><span class="ss">:val</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">make_key</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
+<span class="w">    </span><span class="s2">&quot;place value </span><span class="si">#{</span><span class="n">r</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">c</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">make_key</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">))</span>
+<span class="w">    </span><span class="vi">@row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span>
+<span class="w">    </span><span class="vi">@col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span>
+<span class="w">    </span><span class="vi">@val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
 <hr />
 <h1 id="example-9x9-sudoku">Example - 9x9 Sudoku</h1>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SudokuSolver</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">AlgorithmXSolver</span>
 
 <span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="p">)</span>
+<span class="w">    </span><span class="k">super</span><span class="p">()</span>
+<span class="w">    </span><span class="vi">@grid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grid</span>
 
-<span class="w">    </span><span class="c1"># Build requirements and actions.</span>
+<span class="w">    </span><span class="c1"># Build the requirements - for instance:</span>
 
-<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="n">requirements</span><span class="p">,</span><span class="w"> </span><span class="n">actions</span><span class="p">)</span>
+<span class="w">    </span><span class="c1"># The cell at (0, 0) must be covered:</span>
+<span class="w">    </span><span class="n">add_requirement</span><span class="p">(</span><span class="no">CellCovered</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c1"># There must be a &#39;3&#39; in the first row, the first col and the first box:</span>
+<span class="w">    </span><span class="n">add_requirement</span><span class="p">(</span><span class="no">ValInRow</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="p">))</span>
+<span class="w">    </span><span class="n">add_requirement</span><span class="p">(</span><span class="no">ValInCol</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="p">))</span>
+<span class="w">    </span><span class="n">add_requirement</span><span class="p">(</span><span class="no">ValInBox</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;3&#39;</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c1"># Build the actions and attach the covered requirements.</span>
+
+<span class="w">    </span><span class="c1"># Consider the single action of putting a &#39;6&#39; at location (2, 2):</span>
+<span class="w">    </span><span class="n">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">add_action</span><span class="p">(</span><span class="no">PlaceValue</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;6&#39;</span><span class="p">))</span>
+
+<span class="w">    </span><span class="n">attach_requirement</span><span class="p">(</span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="no">CellCovered</span><span class="o">.</span><span class="n">make_key</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span>
+<span class="w">    </span><span class="n">attach_requirement</span><span class="p">(</span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="no">ValInRow</span><span class="o">.</span><span class="n">make_key</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;6&#39;</span><span class="p">))</span>
+<span class="w">    </span><span class="n">attach_requirement</span><span class="p">(</span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="no">ValInCol</span><span class="o">.</span><span class="n">make_key</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;6&#39;</span><span class="p">))</span>
+<span class="w">    </span><span class="n">attach_requirement</span><span class="p">(</span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="no">ValInBox</span><span class="o">.</span><span class="n">make_key</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;6&#39;</span><span class="p">))</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">process_solution</span>
+<span class="w">    </span><span class="vi">@solution</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">action</span><span class="o">|</span>
+
+<span class="w">      </span><span class="c1"># Use the attributes of the action to build the solution:</span>
+<span class="w">      </span><span class="c1">#      action.row</span>
+<span class="w">      </span><span class="c1">#      action.col</span>
+<span class="w">      </span><span class="c1">#      action.val</span>
+
+<span class="w">    </span><span class="k">end</span>
 <span class="w">  </span><span class="k">end</span>
 <span class="k">end</span>
 
-<span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span>
-<span class="n">grid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nb">gets</span><span class="o">.</span><span class="n">chomp</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
-<span class="n">solver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">SudokuSolver</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span><span class="w"> </span><span class="o">[*</span><span class="s2">&quot;1&quot;</span><span class="o">..</span><span class="n">n</span><span class="o">.</span><span class="n">to_s</span><span class="o">].</span><span class="n">take</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">)</span>
-<span class="n">solution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
 
-<span class="n">solution</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">_</span><span class="p">,</span><span class="w"> </span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="o">|</span>
-<span class="w">  </span><span class="n">grid</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span>
-<span class="k">end</span>
+<span class="sr">//</span><span class="w"> </span><span class="n">read</span><span class="w"> </span><span class="n">input</span>
+
+<span class="n">solver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">SudokuSolver</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span><span class="w"> </span><span class="no">ALL_VALUES</span><span class="p">)</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="n">grid</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">|</span><span class="n">row</span><span class="o">|</span><span class="w"> </span><span class="nb">puts</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 <hr />
+<h1 id="mutual-exclusivity">Mutual Exclusivity</h1>
+<p>MERequirement Definition:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">LoudInstrument</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">MERequirement</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">make_key</span><span class="p">(</span><span class="n">day</span><span class="p">,</span><span class="w"> </span><span class="n">hour</span><span class="p">)</span>
+<span class="w">    </span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">day</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">hour</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">day</span><span class="p">,</span><span class="w"> </span><span class="n">hour1</span><span class="p">,</span><span class="w"> </span><span class="n">hour2</span><span class="p">)</span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">make_key</span><span class="p">(</span><span class="n">day</span><span class="p">,</span><span class="w"> </span><span class="n">hour1</span><span class="p">),</span>
+<span class="w">          </span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">make_key</span><span class="p">(</span><span class="n">day</span><span class="p">,</span><span class="w"> </span><span class="n">hour2</span><span class="p">))</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Registration:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="n">add_me_requirement</span><span class="p">(</span><span class="no">LoudInstrument</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">));</span>
+<span class="w">    </span><span class="n">add_me_requirement</span><span class="p">(</span><span class="no">LoudInstrument</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">));</span>
+<span class="w">    </span><span class="n">add_me_requirement</span><span class="p">(</span><span class="no">LoudInstrument</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">));</span>
+</code></pre></div>
+<p>Usage:</p>
+<div class="highlight"><pre><span></span><code><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="no">LOUD_INSTRUMENTS</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="n">student</span><span class="o">.</span><span class="n">instrument</span><span class="p">)</span>
+<span class="w">      </span><span class="n">attach_me_requirements</span><span class="p">(</span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="no">LoudInstrument</span><span class="o">.</span><span class="n">make_key</span><span class="p">(</span><span class="n">day</span><span class="p">,</span><span class="w"> </span><span class="n">hour</span><span class="p">))</span>
+<span class="w">    </span><span class="k">end</span>
+</code></pre></div>
+<hr />
+<h1 id="multiplicity">Multiplicity</h1>
+<p>Add <code>@to_remember</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PlaceStudent</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">Action</span>
+<span class="w">  </span><span class="kp">attr_reader</span><span class="w"> </span><span class="c1"># create public getter methods for instance variables</span>
+<span class="w">  </span><span class="kp">attr_reader</span><span class="w"> </span><span class="ss">:to_remember</span><span class="w"> </span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">make_key</span><span class="p">()</span>
+<span class="w">    </span><span class="s2">&quot; ... &quot;</span><span class="w"> </span><span class="c1"># unique string key for the action</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">make_key</span><span class="p">())</span>
+<span class="w">    </span><span class="c1"># initialize other attributes ...</span>
+
+<span class="w">    </span><span class="c1"># Build a string that identifies what should be remembered about this action.</span>
+<span class="w">    </span><span class="vi">@to_remember</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">student</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">day</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">hour</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<p>Override <code>proces_row_selection</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">process_row_selection</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+<span class="w">    </span><span class="n">remember</span><span class="p">(</span><span class="n">action</span><span class="o">.</span><span class="n">to_remember</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end</span>
+</code></pre></div>
+<hr />
+<h1 id="debug-print-helpers">Debug Print Helpers</h1>
+<ul>
+<li><code>print_requirements(n = 1000000)</code></li>
+<li><code>print_optional_requirements(n = 1000000)</code></li>
+<li><code>print_me_requirements(n = 1000000)</code></li>
+<li><code>print_actions(n = 1000000, include_covered_requirements = false)</code></li>
+</ul>
+<hr />
 <h1 id="the-solver-code">The Solver Code</h1>
-<div class="highlight"><pre><span></span><code><span class="c1"># Last edit: 2025-01-15 by @Rafarafa</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># -------------------------------------------------------------</span>
 <span class="c1">#</span>
-<span class="c1"># Port to ruby of @Timinator&#39;s python implementation:</span>
-<span class="c1"># https://www.algorithm-x.com/03-AlgorithmXSolver/01-the-AlgorithmXSolver/</span>
-<span class="c1">#</span>
-<span class="c1"># The comments have been preserved verbatim, except for the necessary</span>
-<span class="c1"># changes to match ruby&#39;s conventions (__init__ &gt; initialize etc.)</span>
-
-<span class="c1">################################################</span>
-<span class="c1">################################################</span>
-
-<span class="nb">require</span><span class="w"> </span><span class="s1">&#39;set&#39;</span>
-
 <span class="c1">#  This solution uses Knuth&#39;s Algorithm X and his Dancing Links (DLX):</span>
-<span class="c1">#  (DLX-Based Algorithm X Solver Last Revised 01 December 2024)</span>
+<span class="c1">#  Last Updated: 01 January 2026 by @Timinator</span>
 <span class="c1">#</span>
-<span class="c1">#  For a detailed explanation and tutorial, please visit:</span>
+<span class="c1">#  For a detailed explanation and tutorial on this Algorithm X Solver,</span>
+<span class="c1">#  please visit:</span>
 <span class="c1">#</span>
 <span class="c1">#  https://www.algorithm-x.com</span>
 <span class="c1">#</span>
+<span class="c1"># -------------------------------------------------------------</span>
 
+<span class="nb">require</span><span class="w"> </span><span class="s1">&#39;set&#39;</span>
+
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1">#</span>
 <span class="c1">#  DLXCell is one cell in the Algorithm X matrix. This implementation was mostly</span>
 <span class="c1">#  copied from @RoboStac&#39;s solution to Constrained Latin Squares on www.codingame.com.</span>
 <span class="c1">#</span>
 <span class="c1">#  https://www.codingame.com/training/medium/constrained-latin-squares</span>
 <span class="c1">#</span>
+<span class="c1"># -------------------------------------------------------------</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">DLXCell</span>
-<span class="w">  </span><span class="kp">attr_accessor</span><span class="w"> </span><span class="ss">:prev_x</span><span class="p">,</span><span class="w"> </span><span class="ss">:next_x</span><span class="p">,</span><span class="w"> </span><span class="ss">:prev_y</span><span class="p">,</span><span class="w"> </span><span class="ss">:next_y</span><span class="p">,</span><span class="w"> </span><span class="ss">:col_header</span><span class="p">,</span><span class="w"> </span><span class="ss">:row_header</span><span class="p">,</span><span class="w"> </span><span class="ss">:title</span><span class="p">,</span><span class="w"> </span><span class="ss">:size</span>
+<span class="w">  </span><span class="kp">attr_accessor</span><span class="w"> </span><span class="ss">:prev_x</span><span class="p">,</span><span class="w"> </span><span class="ss">:next_x</span><span class="p">,</span><span class="w"> </span><span class="ss">:prev_y</span><span class="p">,</span><span class="w"> </span><span class="ss">:next_y</span>
+<span class="w">  </span><span class="kp">attr_accessor</span><span class="w"> </span><span class="ss">:col_header</span><span class="p">,</span><span class="w"> </span><span class="ss">:row_header</span>
+<span class="w">  </span><span class="kp">attr_accessor</span><span class="w"> </span><span class="ss">:requirement</span><span class="p">,</span><span class="w"> </span><span class="ss">:action</span>
+<span class="w">  </span><span class="kp">attr_accessor</span><span class="w"> </span><span class="ss">:size</span>
 
-<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">nil</span><span class="p">)</span>
-<span class="w">    </span><span class="vi">@prev_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">self</span>
-<span class="w">    </span><span class="vi">@next_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">self</span>
-<span class="w">    </span><span class="vi">@prev_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">self</span>
-<span class="w">    </span><span class="vi">@next_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">self</span>
-
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span>
+<span class="w">    </span><span class="vi">@prev_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">@next_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">self</span>
+<span class="w">    </span><span class="vi">@prev_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">@next_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">self</span>
 <span class="w">    </span><span class="vi">@col_header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">nil</span>
 <span class="w">    </span><span class="vi">@row_header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">nil</span>
+<span class="w">    </span><span class="vi">@requirement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">nil</span>
+<span class="w">    </span><span class="vi">@action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">nil</span>
 
-<span class="w">    </span><span class="c1"># Only used for column and row headers</span>
-<span class="w">    </span><span class="vi">@title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">title</span>
-
-<span class="w">    </span><span class="c1"># Size quickly identifies how many rows are in any particular column</span>
+<span class="w">    </span><span class="c1"># Size quickly identifies how many rows are in any particular column.</span>
 <span class="w">    </span><span class="vi">@size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 <span class="w">  </span><span class="k">end</span>
 
@@ -4340,149 +4628,261 @@
 <span class="w">  </span><span class="k">end</span>
 <span class="k">end</span>
 
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># Requirement &amp; MERequirement Base Classes</span>
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Requirement</span>
+<span class="w">  </span><span class="kp">attr_accessor</span><span class="w"> </span><span class="ss">:key</span><span class="p">,</span><span class="w"> </span><span class="ss">:is_optional</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="w">    </span><span class="vi">@key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">key</span>
+<span class="w">    </span><span class="vi">@is_optional</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">false</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MERequirement</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="no">Requirement</span>
+<span class="w">  </span><span class="kp">attr_reader</span><span class="w"> </span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="ss">:b</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nc">self</span><span class="o">.</span><span class="nf">make_me_key</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2"> -me- </span><span class="si">#{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">#{</span><span class="n">y</span><span class="si">}</span><span class="s2"> -me- </span><span class="si">#{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">aa</span><span class="p">,</span><span class="w"> </span><span class="n">bb</span><span class="p">)</span>
+<span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">class</span><span class="o">.</span><span class="n">make_me_key</span><span class="p">(</span><span class="n">aa</span><span class="p">,</span><span class="w"> </span><span class="n">bb</span><span class="p">))</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">aa</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">bb</span>
+<span class="w">      </span><span class="vi">@a</span><span class="p">,</span><span class="w"> </span><span class="vi">@b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aa</span><span class="p">,</span><span class="w"> </span><span class="n">bb</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="vi">@a</span><span class="p">,</span><span class="w"> </span><span class="vi">@b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bb</span><span class="p">,</span><span class="w"> </span><span class="n">aa</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="vi">@is_optional</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">true</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># Action Base Class</span>
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Action</span>
+<span class="w">  </span><span class="kp">attr_reader</span><span class="w"> </span><span class="ss">:key</span><span class="p">,</span><span class="w"> </span><span class="ss">:covered_requirements</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="w">    </span><span class="vi">@key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">key</span>
+<span class="w">    </span><span class="vi">@covered_requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+<span class="w">  </span><span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="c1"># AlgorithmXSolver Base Class with DLX engine</span>
+<span class="c1"># -------------------------------------------------------------</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">AlgorithmXSolver</span>
-<span class="w">  </span><span class="kp">attr_accessor</span><span class="w"> </span><span class="ss">:solution</span><span class="p">,</span><span class="w"> </span><span class="ss">:solution_count</span><span class="p">,</span><span class="w"> </span><span class="ss">:history</span><span class="p">,</span><span class="w"> </span><span class="ss">:solution_is_valid</span>
+<span class="w">  </span><span class="kp">attr_reader</span><span class="w"> </span><span class="ss">:solution_count</span>
 
-<span class="w">  </span><span class="c1"># R - an array of requirements. The initialize() method converts R to a hash, but R must</span>
-<span class="w">  </span><span class="c1">#     originally be passed in as a simple array of requirements. Each requirement is an array</span>
-<span class="w">  </span><span class="c1">#     of values that uniquely identify that requirement from all other requirements.</span>
-<span class="w">  </span><span class="c1">#</span>
-<span class="w">  </span><span class="c1"># A - must be passed in as a hash - keys are actions, values are arrays of covered requirements</span>
-<span class="w">  </span><span class="c1">#</span>
-<span class="w">  </span><span class="c1"># O - array of optional requirements. They can be covered, but they never cause failure.</span>
-<span class="w">  </span><span class="c1">#     Optional requirements are important because if they get covered, no other action can</span>
-<span class="w">  </span><span class="c1">#     also cover that same requirement. Also referred to as &quot;at-most-one-time constraints&quot;.</span>
-<span class="w">  </span><span class="c1">#</span>
-<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span><span class="p">(</span><span class="n">requirements</span><span class="p">,</span><span class="w"> </span><span class="n">actions</span><span class="p">,</span><span class="w"> </span><span class="n">optional</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span><span class="p">)</span>
-<span class="w">    </span><span class="vi">@A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">actions</span>
-<span class="w">    </span><span class="vi">@R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">requirements</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">optional</span>
-<span class="w">    </span><span class="vi">@O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">optional</span><span class="o">.</span><span class="n">to_set</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">initialize</span>
+<span class="w">    </span><span class="vi">@construct_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Time</span><span class="o">.</span><span class="n">now</span>
 
-<span class="w">    </span><span class="c1"># The array of actions (rows) that produce the current path through the matrix.</span>
+<span class="w">    </span><span class="c1"># Requirement/Action containers</span>
+<span class="w">    </span><span class="vi">@requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+<span class="w">    </span><span class="vi">@optional_requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+<span class="w">    </span><span class="vi">@me_requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+<span class="w">    </span><span class="vi">@actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+
+<span class="w">    </span><span class="c1"># Lookup tables mapping requirement keys (strings) to requirement pointers.</span>
+<span class="w">    </span><span class="vi">@requirements_lookup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="vi">@me_lookup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="vi">@me_lists</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Hash</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">|</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="o">|</span><span class="w"> </span><span class="n">h</span><span class="o">[</span><span class="n">k</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">#  DLX structures</span>
+<span class="w">    </span><span class="vi">@matrix_root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">DLXCell</span><span class="o">.</span><span class="n">new</span>
+<span class="w">    </span><span class="vi">@col_headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="vi">@row_headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<span class="w">    </span><span class="vi">@dlx_cells</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
+
+<span class="w">    </span><span class="c1"># The list of actions (rows) that produce the current path through the matrix.</span>
 <span class="w">    </span><span class="vi">@solution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
-<span class="w">    </span><span class="vi">@solution_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
 
-<span class="w">    </span><span class="c1"># A history can be added to a subclass to allow Algorithm X to handle &quot;multiplicity&quot;.</span>
-<span class="w">    </span><span class="c1"># In the basic Solver, nothing is ever put into the history. A subclass can override</span>
-<span class="w">    </span><span class="c1"># the _process_row_selection() method to add history in cases of multiplicity.</span>
-<span class="w">    </span><span class="vi">@history</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="no">Set</span><span class="o">.</span><span class="n">new</span><span class="o">]</span>
+<span class="w">    </span><span class="c1"># When stop_search is true, the search method knows a solution has been found and</span>
+<span class="w">    </span><span class="c1"># the depth-first search is quickly unwound and the search method is exited.</span>
+<span class="w">    </span><span class="vi">@stop_search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">false</span>
 
 <span class="w">    </span><span class="c1"># For the basic Algorithm X Solver, all solutions are always valid. However, a subclass</span>
 <span class="w">    </span><span class="c1"># can add functionality to check solutions as they are being built to steer away from</span>
 <span class="w">    </span><span class="c1"># invalid solutions. The basic Algorithm X Solver never modifies this attribute.</span>
 <span class="w">    </span><span class="vi">@solution_is_valid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">true</span>
 
-<span class="w">    </span><span class="c1"># Create a column in the matrix for every requirement.</span>
-<span class="w">    </span><span class="vi">@matrix_root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">DLXCell</span><span class="o">.</span><span class="n">new</span>
-<span class="w">    </span><span class="vi">@matrix_root</span><span class="o">.</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10_000_000</span>
-<span class="w">    </span><span class="vi">@matrix_root</span><span class="o">.</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;root&#39;</span>
+<span class="w">    </span><span class="c1"># A history can be added to a subclass to allow Algorithm X to handle &quot;multiplicity&quot;.</span>
+<span class="w">    </span><span class="c1"># In the basic Solver, nothing is ever put into the history. A subclass can override</span>
+<span class="w">    </span><span class="c1"># the process_row_selection() method to add history in cases of multiplicity. </span>
+<span class="w">    </span><span class="vi">@history</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="no">Set</span><span class="o">.</span><span class="n">new</span><span class="o">]</span>
 
-<span class="w">    </span><span class="vi">@col_headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">@R</span><span class="o">.</span><span class="n">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">|</span><span class="n">requirement</span><span class="o">|</span><span class="w"> </span><span class="no">DLXCell</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">requirement</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="vi">@solution_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="k">end</span>
 
-<span class="w">    </span><span class="c1"># Row headers are never attached to the rest of the DLX matrix. They are only used</span>
-<span class="w">    </span><span class="c1"># currently to keep track of the action associated with each row.</span>
-<span class="w">    </span><span class="vi">@row_headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Hash</span><span class="o">[</span><span class="vi">@A</span><span class="o">.</span><span class="n">keys</span><span class="o">.</span><span class="n">map</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">|</span><span class="n">action</span><span class="o">|</span><span class="w"> </span><span class="o">[</span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="no">DLXCell</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">action</span><span class="p">)</span><span class="o">]</span><span class="w"> </span><span class="p">}</span><span class="o">]</span>
+<span class="w">  </span><span class="c1"># ------------------------------------------------------------------</span>
+<span class="w">  </span><span class="c1"># Requirement/Action helpers</span>
+<span class="w">  </span><span class="c1"># ------------------------------------------------------------------</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">add_requirement</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<span class="w">    </span><span class="vi">@requirements_lookup</span><span class="o">[</span><span class="n">req</span><span class="o">.</span><span class="n">key</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">req</span>
+<span class="w">    </span><span class="vi">@requirements</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">req</span>
+<span class="w">  </span><span class="k">end</span>
 
-<span class="w">    </span><span class="vi">@R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Hash</span><span class="o">[</span><span class="vi">@R</span><span class="o">.</span><span class="n">zip</span><span class="p">(</span><span class="vi">@col_headers</span><span class="p">)</span><span class="o">]</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">add_optional_requirement</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<span class="w">    </span><span class="n">req</span><span class="o">.</span><span class="n">is_optional</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">true</span>
+<span class="w">    </span><span class="vi">@requirements_lookup</span><span class="o">[</span><span class="n">req</span><span class="o">.</span><span class="n">key</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">req</span>
+<span class="w">    </span><span class="vi">@optional_requirements</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">req</span>
+<span class="w">  </span><span class="k">end</span>
 
-<span class="w">    </span><span class="vi">@col_headers</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">|</span><span class="n">col_header</span><span class="o">|</span><span class="w"> </span><span class="vi">@matrix_root</span><span class="o">.</span><span class="n">attach_horiz</span><span class="p">(</span><span class="n">col_header</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">add_me_requirement</span><span class="p">(</span><span class="n">req</span><span class="p">)</span>
+<span class="w">    </span><span class="c1"># Check for duplicate MERequirement</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="vi">@me_lookup</span><span class="o">.</span><span class="n">key?</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+
+<span class="w">    </span><span class="vi">@me_requirements</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">req</span>
+<span class="w">    </span><span class="vi">@me_lookup</span><span class="o">[</span><span class="n">req</span><span class="o">.</span><span class="n">key</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">req</span>
+<span class="w">    </span><span class="vi">@me_lists</span><span class="o">[</span><span class="n">req</span><span class="o">.</span><span class="n">a</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">req</span>
+<span class="w">    </span><span class="vi">@me_lists</span><span class="o">[</span><span class="n">req</span><span class="o">.</span><span class="n">b</span><span class="o">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">req</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">add_action</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+<span class="w">    </span><span class="vi">@actions</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">action</span>
+<span class="w">    </span><span class="n">action</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">attach_requirement</span><span class="p">(</span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">)</span>
+<span class="w">    </span><span class="n">req</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">@requirements_lookup</span><span class="o">[</span><span class="n">key</span><span class="o">]</span>
+<span class="w">    </span><span class="k">raise</span><span class="w"> </span><span class="s2">&quot;Requirement not found: </span><span class="si">#{</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">unless</span><span class="w"> </span><span class="n">req</span>
+<span class="w">    </span><span class="n">action</span><span class="o">.</span><span class="n">covered_requirements</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">req</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">attach_me_requirements</span><span class="p">(</span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">)</span>
+<span class="w">    </span><span class="vi">@me_lists</span><span class="o">[</span><span class="n">key</span><span class="o">].</span><span class="n">each</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span><span class="w"> </span><span class="n">action</span><span class="o">.</span><span class="n">covered_requirements</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="c1"># ------------------------------------------------------------------</span>
+<span class="w">  </span><span class="c1"># DLX matrix builder (called automatically in solve)</span>
+<span class="w">  </span><span class="c1"># ------------------------------------------------------------------</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">build_matrix</span>
+<span class="w">    </span><span class="k">raise</span><span class="w"> </span><span class="s2">&quot;build_matrix called twice&quot;</span><span class="w"> </span><span class="k">unless</span><span class="w"> </span><span class="vi">@col_headers</span><span class="o">.</span><span class="n">empty?</span>
+
+<span class="w">    </span><span class="c1"># Merge all requirements into one list: required → optional → me.</span>
+<span class="w">    </span><span class="c1"># Required requirements must precede optional requirements in header order.</span>
+<span class="w">    </span><span class="c1"># Search stops scanning columns when first optional requirement is encountered.</span>
+<span class="w">    </span><span class="n">all_requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">@requirements</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="vi">@optional_requirements</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="vi">@me_requirements</span>
+
+<span class="w">    </span><span class="c1"># Create column headers</span>
+<span class="w">    </span><span class="n">all_requirements</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span>
+<span class="w">      </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">DLXCell</span><span class="o">.</span><span class="n">new</span>
+<span class="w">      </span><span class="n">node</span><span class="o">.</span><span class="n">requirement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span>
+<span class="w">      </span><span class="vi">@col_headers</span><span class="o">[</span><span class="n">r</span><span class="o">.</span><span class="n">key</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="c1"># Horizontally link columns to root</span>
+<span class="w">    </span><span class="vi">@matrix_root</span><span class="o">.</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Float</span><span class="o">::</span><span class="no">INFINITY</span>
+<span class="w">    </span><span class="n">all_requirements</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span>
+<span class="w">      </span><span class="vi">@matrix_root</span><span class="o">.</span><span class="n">attach_horiz</span><span class="p">(</span><span class="vi">@col_headers</span><span class="o">[</span><span class="n">r</span><span class="o">.</span><span class="n">key</span><span class="o">]</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end</span>
 
 <span class="w">    </span><span class="c1"># Create a row in the matrix for every action.</span>
-<span class="w">    </span><span class="vi">@A</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="n">covered_requirements</span><span class="o">|</span>
-<span class="w">      </span><span class="n">previous_cell</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">nil</span>
+<span class="w">    </span><span class="vi">@actions</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">action</span><span class="o">|</span>
+<span class="w">      </span><span class="n">row_node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">DLXCell</span><span class="o">.</span><span class="n">new</span>
+<span class="w">      </span><span class="n">row_node</span><span class="o">.</span><span class="n">action</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">action</span>
+<span class="w">      </span><span class="vi">@row_headers</span><span class="o">[</span><span class="n">action</span><span class="o">.</span><span class="n">key</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row_node</span>
 
-<span class="w">      </span><span class="n">covered_requirements</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">requirement</span><span class="o">|</span>
-<span class="w">        </span><span class="n">next_cell</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">DLXCell</span><span class="o">.</span><span class="n">new</span>
-<span class="w">        </span><span class="n">next_cell</span><span class="o">.</span><span class="n">col_header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">@R</span><span class="o">[</span><span class="n">requirement</span><span class="o">]</span>
-<span class="w">        </span><span class="n">next_cell</span><span class="o">.</span><span class="n">row_header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">@row_headers</span><span class="o">[</span><span class="n">action</span><span class="o">]</span>
-<span class="w">        </span><span class="n">next_cell</span><span class="o">.</span><span class="n">col_header</span><span class="o">.</span><span class="n">attach_vert</span><span class="p">(</span><span class="n">next_cell</span><span class="p">)</span>
-<span class="w">        </span><span class="n">next_cell</span><span class="o">.</span><span class="n">col_header</span><span class="o">.</span><span class="n">size</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">nil</span>
+<span class="w">      </span><span class="n">action</span><span class="o">.</span><span class="n">covered_requirements</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span>
+<span class="w">        </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">@col_headers</span><span class="o">[</span><span class="n">r</span><span class="o">.</span><span class="n">key</span><span class="o">]</span>
+<span class="w">        </span><span class="n">cell</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">DLXCell</span><span class="o">.</span><span class="n">new</span>
+<span class="w">        </span><span class="n">cell</span><span class="o">.</span><span class="n">col_header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col</span>
+<span class="w">        </span><span class="n">cell</span><span class="o">.</span><span class="n">row_header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">row_node</span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">previous_cell</span>
-<span class="w">          </span><span class="n">previous_cell</span><span class="o">.</span><span class="n">attach_horiz</span><span class="p">(</span><span class="n">next_cell</span><span class="p">)</span>
-<span class="w">        </span><span class="k">else</span>
-<span class="w">          </span><span class="n">previous_cell</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next_cell</span>
-<span class="w">        </span><span class="k">end</span>
+<span class="w">        </span><span class="n">col</span><span class="o">.</span><span class="n">attach_vert</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
+<span class="w">        </span><span class="n">col</span><span class="o">.</span><span class="n">size</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="n">prev</span><span class="o">.</span><span class="n">attach_horiz</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">prev</span>
+<span class="w">        </span><span class="n">prev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cell</span>
+
+<span class="w">        </span><span class="vi">@dlx_cells</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cell</span>
 <span class="w">      </span><span class="k">end</span>
 <span class="w">    </span><span class="k">end</span>
 <span class="w">  </span><span class="k">end</span>
 
-<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">solve</span>
-<span class="w">    </span><span class="c1"># Proxy to emulate Python yield semantics.</span>
-<span class="w">    </span><span class="c1">#</span>
-<span class="w">    </span><span class="c1"># If only a set amount of solutions is required, this should be called</span>
-<span class="w">    </span><span class="c1"># together with the `take` method. Note that if we `take` n elements, it </span>
-<span class="w">    </span><span class="c1"># forces an early exit as soon as we reach those n elements, resulting</span>
-<span class="w">    </span><span class="c1"># in a performance increase.</span>
-<span class="w">    </span><span class="c1">#</span>
-<span class="w">    </span><span class="c1"># That is, if you only want the first solution do:</span>
-<span class="w">    </span><span class="c1"># &gt;&gt;&gt; solution = solver.solve.take(1).first</span>
-<span class="w">    </span><span class="c1"># </span>
-<span class="w">    </span><span class="c1"># Instead of:</span>
-<span class="w">    </span><span class="c1"># &gt;&gt;&gt; solution = solver.solve.next</span>
-<span class="w">    </span><span class="c1">#</span>
-<span class="w">    </span><span class="c1"># Since this last one will still explore after finding the first solution.</span>
-<span class="w">    </span><span class="c1"># Note that this can cause &quot;stack level too deep (SystemStackError)&quot; on</span>
-<span class="w">    </span><span class="c1"># very demanding puzzles such as 25x25 Sudoku.</span>
-<span class="w">    </span><span class="no">Enumerator</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">|</span><span class="n">yielder</span><span class="o">|</span><span class="w"> </span><span class="n">solve_go</span><span class="p">(</span><span class="n">yielder</span><span class="p">)</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="n">find_all_solutions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">false</span><span class="p">,</span><span class="w"> </span><span class="n">show_timing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">false</span><span class="p">)</span>
+<span class="w">    </span><span class="n">solve_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Time</span><span class="o">.</span><span class="n">now</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">show_timing</span>
+<span class="w">      </span><span class="n">init_ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">solve_start</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="vi">@construct_time</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">to_i</span>
+<span class="w">      </span><span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s2">&quot;[Timing] Build Requirements &amp; Actions: </span><span class="si">#{</span><span class="n">init_ms</span><span class="si">}</span><span class="s2"> ms&quot;</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="n">build_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Time</span><span class="o">.</span><span class="n">now</span>
+<span class="w">    </span><span class="n">build_matrix</span>
+<span class="w">    </span><span class="n">build_end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Time</span><span class="o">.</span><span class="n">now</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">show_timing</span>
+<span class="w">      </span><span class="n">build_ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">build_end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">build_start</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">to_i</span>
+<span class="w">      </span><span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s2">&quot;[Timing] DLX Matrix Build: </span><span class="si">#{</span><span class="n">build_ms</span><span class="si">}</span><span class="s2"> ms&quot;</span>
+<span class="w">    </span><span class="k">end</span>
+
+<span class="w">    </span><span class="n">search_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Time</span><span class="o">.</span><span class="n">now</span>
+<span class="w">    </span><span class="n">search</span><span class="p">(</span><span class="n">find_all_solutions</span><span class="p">)</span>
+<span class="w">    </span><span class="n">search_end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Time</span><span class="o">.</span><span class="n">now</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">show_timing</span>
+<span class="w">      </span><span class="n">search_ms</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">search_end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">search_start</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">to_i</span>
+<span class="w">      </span><span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s2">&quot;[Timing] Search: </span><span class="si">#{</span><span class="n">search_ms</span><span class="si">}</span><span class="s2"> ms&quot;</span>
+<span class="w">      </span><span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span>
+<span class="w">    </span><span class="k">end</span>
 <span class="w">  </span><span class="k">end</span>
 
-<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">solve_go</span><span class="p">(</span><span class="n">yielder</span><span class="p">)</span>
-<span class="w">    </span><span class="c1"># Algorithm X Step 1:</span>
+<span class="w">  </span><span class="kp">protected</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="n">find_all_solutions</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="vi">@stop_search</span>
+
+<span class="w">    </span><span class="c1"># Algorithm X: Choose a Column</span>
 <span class="w">    </span><span class="c1">#</span>
 <span class="w">    </span><span class="c1"># Choose the column (requirement) with the best value for &quot;sort criteria&quot;. For</span>
 <span class="w">    </span><span class="c1"># the basic implementation of sort criteria, Algorithm X always chooses the column</span>
-<span class="w">    </span><span class="c1"># covered by the fewest number of actions. Optional requirements are not eligible</span>
+<span class="w">    </span><span class="c1"># covered by the fewest number of actions. Optional requirements are not eligible </span>
 <span class="w">    </span><span class="c1"># for this step.</span>
-<span class="w">    </span><span class="n">best_column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">@matrix_root</span>
-<span class="w">    </span><span class="n">best_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;root&#39;</span>
+<span class="w">    </span><span class="n">best_col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">@matrix_root</span>
+<span class="w">    </span><span class="n">best_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Float</span><span class="o">::</span><span class="no">INFINITY</span>
 
 <span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">@matrix_root</span><span class="o">.</span><span class="n">next_x</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="vi">@matrix_root</span>
-<span class="w">      </span><span class="c1"># Optional requirements (at-most-one-time constraints) are never chosen as best.</span>
-<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="o">!</span><span class="vi">@O</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
-<span class="w">        </span><span class="c1"># Get the sort criteria for this requirement (column).</span>
-<span class="w">        </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_requirement_sort_criteria</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">best_column</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="vi">@matrix_root</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">best_value</span>
-<span class="w">          </span><span class="n">best_column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span>
-<span class="w">          </span><span class="n">best_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span>
-<span class="w">        </span><span class="k">end</span>
-<span class="w">        </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">.</span><span class="n">next_x</span>
-<span class="w">      </span><span class="k">else</span>
-<span class="w">        </span><span class="c1"># Optional requirements stop the search for the best column.</span>
-<span class="w">        </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">@matrix_root</span>
+
+<span class="w">      </span><span class="c1"># Optional requirements stop the search for the best column.</span>
+<span class="w">      </span><span class="k">break</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">node</span><span class="o">.</span><span class="n">requirement</span><span class="o">.</span><span class="n">is_optional</span>
+
+<span class="w">      </span><span class="c1"># Get the sort criteria for this requirement (column).</span>
+<span class="w">      </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">requirement_sort_criteria</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">best_value</span>
+<span class="w">        </span><span class="n">best_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span>
+<span class="w">        </span><span class="n">best_col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span>
 <span class="w">      </span><span class="k">end</span>
+<span class="w">      </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">.</span><span class="n">next_x</span>
 <span class="w">    </span><span class="k">end</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">best_column</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="vi">@matrix_root</span>
-<span class="w">      </span><span class="n">_process_solution</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">best_col</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="vi">@matrix_root</span>
+<span class="w">      </span><span class="n">process_solution</span>
 <span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="vi">@solution_is_valid</span>
 <span class="w">        </span><span class="vi">@solution_count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">        </span><span class="n">yielder</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="vi">@solution</span><span class="o">.</span><span class="n">dup</span>
+<span class="w">        </span><span class="vi">@stop_search</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">true</span><span class="w"> </span><span class="k">unless</span><span class="w"> </span><span class="n">find_all_solutions</span>
 <span class="w">      </span><span class="k">end</span>
 <span class="w">      </span><span class="k">return</span>
 <span class="w">    </span><span class="k">end</span>
 
-<span class="w">    </span><span class="c1"># Build an array of all actions (rows) that cover the chosen requirement (column).</span>
-<span class="w">    </span><span class="n">actions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[]</span>
-<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">best_column</span><span class="o">.</span><span class="n">next_y</span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">best_column</span>
-<span class="w">      </span><span class="n">actions</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">node</span>
-<span class="w">      </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">.</span><span class="n">next_y</span>
-<span class="w">    </span><span class="k">end</span>
-
+<span class="w">    </span><span class="c1"># Algorithm X: Choose a Row</span>
+<span class="w">    </span><span class="c1">#</span>
 <span class="w">    </span><span class="c1"># The next step is to loop through all possible actions. To prepare for this,</span>
 <span class="w">    </span><span class="c1"># a new level of history is created. The history for this new level starts out</span>
 <span class="w">    </span><span class="c1"># as a complete copy of the most recent history.</span>
-<span class="w">    </span><span class="vi">@history</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="vi">@history</span><span class="o">.</span><span class="n">last</span><span class="o">.</span><span class="n">dup</span><span class="p">)</span>
+<span class="w">    </span><span class="vi">@history</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="vi">@history</span><span class="o">.</span><span class="n">last</span><span class="o">.</span><span class="n">dup</span>
 
-<span class="w">    </span><span class="c1"># Loop through the possible actions sorted by the given sort criteria. A basic</span>
-<span class="w">    </span><span class="c1"># Algorithm X implementation does not provide sort criteria. Actions are tried</span>
-<span class="w">    </span><span class="c1"># in the order they happen to occur in the matrix.</span>
-<span class="w">    </span><span class="n">actions</span><span class="o">.</span><span class="n">sort_by</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">|</span><span class="n">n</span><span class="o">|</span><span class="w"> </span><span class="n">_action_sort_criteria</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">row_header</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">node</span><span class="o">|</span>
-<span class="w">      </span><span class="nb">select</span><span class="p">(</span><span class="ss">node</span><span class="p">:</span><span class="w"> </span><span class="n">node</span><span class="p">)</span>
-<span class="w">      </span><span class="n">solve_go</span><span class="p">(</span><span class="n">yielder</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="vi">@solution_is_valid</span>
-<span class="w">      </span><span class="n">deselect</span><span class="p">(</span><span class="ss">node</span><span class="p">:</span><span class="w"> </span><span class="n">node</span><span class="p">)</span>
+<span class="w">    </span><span class="c1"># Loop through all possible actions in the order they were provided when identified.</span>
+<span class="w">    </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">best_col</span><span class="o">.</span><span class="n">next_y</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">best_col</span>
+<span class="w">      </span><span class="k">break</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="vi">@stop_search</span>
+<span class="w">      </span><span class="nb">select</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="w">      </span><span class="n">search</span><span class="p">(</span><span class="n">find_all_solutions</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="vi">@solution_is_valid</span>
+<span class="w">      </span><span class="n">deselect</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="w">      </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">.</span><span class="n">next_y</span>
 
 <span class="w">      </span><span class="c1"># All backtracking results in going back to a solution that is valid.</span>
 <span class="w">      </span><span class="vi">@solution_is_valid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">true</span>
@@ -4491,81 +4891,113 @@
 <span class="w">    </span><span class="vi">@history</span><span class="o">.</span><span class="n">pop</span>
 <span class="w">  </span><span class="k">end</span>
 
-<span class="w">  </span><span class="c1"># Algorithm X Step 4 - Details:</span>
+<span class="w">  </span><span class="c1"># Algorithm X: Shrink Matrix Due to Row Selection</span>
 <span class="w">  </span><span class="c1">#</span>
 <span class="w">  </span><span class="c1"># The select method updates the matrix when a row is selected as part of a solution.</span>
 <span class="w">  </span><span class="c1"># Other rows that satisfy overlapping requirements need to be deleted and in the end,</span>
 <span class="w">  </span><span class="c1"># all columns satisfied by the selected row get removed from the matrix.</span>
-<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="ss">node</span><span class="p">:)</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 <span class="w">    </span><span class="n">node</span><span class="o">.</span><span class="n">select</span>
-<span class="w">    </span><span class="vi">@solution</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">node</span><span class="o">.</span><span class="n">row_header</span><span class="o">.</span><span class="n">title</span>
-<span class="w">    </span><span class="n">_process_row_selection</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">row_header</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+<span class="w">    </span><span class="vi">@solution</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">node</span><span class="o">.</span><span class="n">row_header</span><span class="o">.</span><span class="n">action</span>
+<span class="w">    </span><span class="n">process_row_selection</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">row_header</span><span class="o">.</span><span class="n">action</span><span class="p">)</span>
 <span class="w">  </span><span class="k">end</span>
 
-<span class="w">  </span><span class="c1"># Algorithm X Step 4 - Clean Up:</span>
+<span class="w">  </span><span class="c1"># Algorithm X: Rebuild Matrix Due to Row Deselection</span>
 <span class="w">  </span><span class="c1">#</span>
 <span class="w">  </span><span class="c1"># The select() method selects a row as part of the solution being explored. Eventually that</span>
 <span class="w">  </span><span class="c1"># exploration ends and it is time to move on to the next row (action). Before moving on,</span>
 <span class="w">  </span><span class="c1"># the matrix and the partial solution need to be restored to their prior states.</span>
-<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">deselect</span><span class="p">(</span><span class="ss">node</span><span class="p">:)</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">deselect</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 <span class="w">    </span><span class="n">node</span><span class="o">.</span><span class="n">unselect</span>
 <span class="w">    </span><span class="vi">@solution</span><span class="o">.</span><span class="n">pop</span>
-<span class="w">    </span><span class="n">_process_row_deselection</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">row_header</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+<span class="w">    </span><span class="n">process_row_deselection</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">row_header</span><span class="o">.</span><span class="n">action</span><span class="p">)</span>
 <span class="w">  </span><span class="k">end</span>
 
 <span class="w">  </span><span class="c1"># In cases of multiplicity, this method can be used to ask Algorithm X to remember that</span>
 <span class="w">  </span><span class="c1"># it has already tried certain things. For instance, if Emma wants two music lessons per</span>
 <span class="w">  </span><span class="c1"># week, trying to put her first lesson on Monday at 8am is no different than trying to put</span>
-<span class="w">  </span><span class="c1"># her second lesson on Monday at 8am. See the Algorithm X Playground for more details,</span>
+<span class="w">  </span><span class="c1"># her second lesson on Monday at 8am. See the Algorithm X Playground for more details, </span>
 <span class="w">  </span><span class="c1"># specifically Mrs. Knuth - Part III.</span>
-<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="n">_remember</span><span class="p">(</span><span class="n">item_to_remember</span><span class="p">)</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="vi">@history</span><span class="o">.</span><span class="n">last</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="n">item_to_remember</span><span class="p">)</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">remember</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="w">    </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="vi">@history</span><span class="o">.</span><span class="n">last</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">current</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 <span class="w">      </span><span class="vi">@solution_is_valid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">false</span>
 <span class="w">    </span><span class="k">else</span>
-<span class="w">      </span><span class="vi">@history</span><span class="o">.</span><span class="n">last</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item_to_remember</span><span class="p">)</span>
+<span class="w">      </span><span class="n">current</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 <span class="w">    </span><span class="k">end</span>
-<span class="w">  </span><span class="k">end</span>
-
-<span class="w">  </span><span class="c1"># In some cases it may be beneficial to have Algorithm X try certain paths through the matrix.</span>
-<span class="w">  </span><span class="c1"># This can be the case when there is reason to believe certain actions have a better chance than</span>
-<span class="w">  </span><span class="c1"># other actions at producing complete paths through the matrix. The method included here does</span>
-<span class="w">  </span><span class="c1"># nothing, but can be overridden to influence the order in which Algorithm X tries rows (actions)</span>
-<span class="w">  </span><span class="c1"># that cover some particular column.</span>
-<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="n">_action_sort_criteria</span><span class="p">(</span><span class="n">_row_header</span><span class="p">)</span>
-<span class="w">    </span><span class="mi">0</span>
 <span class="w">  </span><span class="k">end</span>
 
 <span class="w">  </span><span class="c1"># In some cases it may be beneficial to have Algorithm X try covering certain requirements</span>
 <span class="w">  </span><span class="c1"># before others as it looks for paths through the matrix. The default is to sort the requirements</span>
-<span class="w">  </span><span class="c1"># by how many actions cover each requirement, but in some cases there might be several</span>
+<span class="w">  </span><span class="c1"># by how many actions cover each requirement, but in some cases there might be several </span>
 <span class="w">  </span><span class="c1"># requirements covered by the same number of actions. By overriding this method, the</span>
 <span class="w">  </span><span class="c1"># Algorithm X Solver can be directed to break ties a certain way or consider another way</span>
 <span class="w">  </span><span class="c1"># of prioritizing the requirements.</span>
-<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="n">_requirement_sort_criteria</span><span class="p">(</span><span class="n">col_header</span><span class="p">)</span>
-<span class="w">    </span><span class="n">col_header</span><span class="o">.</span><span class="n">size</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">requirement_sort_criteria</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+<span class="w">    </span><span class="n">col</span><span class="o">.</span><span class="n">size</span>
 <span class="w">  </span><span class="k">end</span>
 
 <span class="w">  </span><span class="c1"># The following method can be overridden by a subclass to add logic to perform more detailed solution</span>
 <span class="w">  </span><span class="c1"># checking if invalid paths are possible through the matrix. Some problems have requirements that</span>
-<span class="w">  </span><span class="c1"># cannot be captured in the basic requirements array passed into the initialize() method. For instance,</span>
-<span class="w">  </span><span class="c1"># a solution might only be valid if it fits certain parameters that can only be checked at intermediate</span>
-<span class="w">  </span><span class="c1"># steps. In a case like that, this method can be overridden to add the functionality necessary to</span>
-<span class="w">  </span><span class="c1"># check the solution.</span>
+<span class="w">  </span><span class="c1"># cannot be captured in the basic requirements. For instance, a solution might only be valid if it </span>
+<span class="w">  </span><span class="c1"># fits certain parameters that can only be checked at intermediate steps. In a case like that, this </span>
+<span class="w">  </span><span class="c1"># method can be overridden to add the functionality necessary to check the solution.</span>
 <span class="w">  </span><span class="c1">#</span>
 <span class="w">  </span><span class="c1"># If the subclass logic results in an invalid solution, the &#39;solution_is_valid&#39; attribute should be set</span>
-<span class="w">  </span><span class="c1"># to False instructing Algorithm X to stop progressing down this path in the matrix.</span>
-<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="n">_process_row_selection</span><span class="p">(</span><span class="n">row</span><span class="p">);</span><span class="w"> </span><span class="k">end</span>
+<span class="w">  </span><span class="c1"># to false instructing Algorithm X to stop progressing down this path in the matrix.</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">process_row_selection</span><span class="p">(</span><span class="n">_action</span><span class="p">);</span><span class="w"> </span><span class="k">end</span>
 
 <span class="w">  </span><span class="c1"># This method can be overridden by a subclass to add logic to perform more detailed solution</span>
 <span class="w">  </span><span class="c1"># checking if invalid paths are possible through the matrix. This method goes hand-in-hand with the</span>
-<span class="w">  </span><span class="c1"># _process_row_selection() method above to &quot;undo&quot; what was done above.</span>
-<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="n">_process_row_deselection</span><span class="p">(</span><span class="n">row</span><span class="p">);</span><span class="w"> </span><span class="k">end</span>
+<span class="w">  </span><span class="c1"># process_row_selection() method above to &quot;undo&quot; what was done above.</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">process_row_deselection</span><span class="p">(</span><span class="n">_action</span><span class="p">);</span><span class="w"> </span><span class="k">end</span>
 
-<span class="w">  </span><span class="c1"># This method can be overridden to instruct Algorithm X to do something every time a solution is found.</span>
+<span class="w">  </span><span class="c1"># This method MUST be overridden to process a solution when it is found. If many possible solutions exist,</span>
+<span class="w">  </span><span class="c1"># this method can be overridden to instruct Algorithm X to do something every time a solution is found.</span>
 <span class="w">  </span><span class="c1"># For instance, Algorithm X might be looking for the best solution or maybe each solution must be</span>
-<span class="w">  </span><span class="c1"># validated in some way. In either case, the solution_is_valid attribute can be set to False</span>
+<span class="w">  </span><span class="c1"># validated in some way. In either case, the solution_is_valid attribute can be set to false</span>
 <span class="w">  </span><span class="c1"># if the current solution should not be considered valid and should not be generated.</span>
-<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="n">_process_solution</span><span class="p">;</span><span class="w"> </span><span class="k">end</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">process_solution</span><span class="p">;</span><span class="w"> </span><span class="k">end</span>
+
+<span class="w">  </span><span class="c1"># ------------------------------------------------------------------</span>
+<span class="w">  </span><span class="c1"># Debug print helpers</span>
+<span class="w">  </span><span class="c1"># ------------------------------------------------------------------</span>
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">print_requirements</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000000</span><span class="p">)</span>
+<span class="w">    </span><span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s2">&quot;Required Requirements (</span><span class="si">#{</span><span class="vi">@requirements</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2">):&quot;</span>
+<span class="w">    </span><span class="vi">@requirements</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span>
+<span class="w">      </span><span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s2">&quot;    </span><span class="si">#{</span><span class="n">r</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">print_optional_requirements</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000000</span><span class="p">)</span>
+<span class="w">    </span><span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s2">&quot;Optional Requirements (</span><span class="si">#{</span><span class="vi">@optional_requirements</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2">):&quot;</span>
+<span class="w">    </span><span class="vi">@optional_requirements</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span>
+<span class="w">      </span><span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s2">&quot;    </span><span class="si">#{</span><span class="n">r</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">print_me_requirements</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000000</span><span class="p">)</span>
+<span class="w">    </span><span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s2">&quot;ME Requirements (</span><span class="si">#{</span><span class="vi">@me_requirements</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2">):&quot;</span>
+<span class="w">    </span><span class="vi">@me_requirements</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span>
+<span class="w">      </span><span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s2">&quot;    </span><span class="si">#{</span><span class="n">r</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span>
+<span class="w">  </span><span class="k">end</span>
+
+<span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">print_actions</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span><span class="w"> </span><span class="n">include_covered_requirements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kp">false</span><span class="p">)</span>
+<span class="w">    </span><span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s2">&quot;Actions (</span><span class="si">#{</span><span class="vi">@actions</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2">):&quot;</span>
+<span class="w">    </span><span class="vi">@actions</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">a</span><span class="o">|</span>
+<span class="w">      </span><span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s2">&quot;    </span><span class="si">#{</span><span class="n">a</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="n">include_covered_requirements</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">a</span><span class="o">.</span><span class="n">covered_requirements</span><span class="o">.</span><span class="n">empty?</span>
+<span class="w">        </span><span class="n">a</span><span class="o">.</span><span class="n">covered_requirements</span><span class="o">.</span><span class="n">each</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">r</span><span class="o">|</span>
+<span class="w">          </span><span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span><span class="w"> </span><span class="s2">&quot;        </span><span class="si">#{</span><span class="n">r</span><span class="o">.</span><span class="n">key</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">      </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="no">STDERR</span><span class="o">.</span><span class="n">puts</span>
+<span class="w">  </span><span class="k">end</span>
 <span class="k">end</span>
 </code></pre></div>
 <p><BR></p>
@@ -4598,7 +5030,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../01-overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Translations Overview">
+          <a href="../08-javascript/" class="md-footer__link md-footer__link--prev" aria-label="Previous: JavaScript">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -4608,20 +5040,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Translations Overview
+                JavaScript
               </div>
             </div>
           </a>
         
         
           
-          <a href="../03-kotlin/" class="md-footer__link md-footer__link--next" aria-label="Next: Kotlin">
+          <a href="../11-dart/" class="md-footer__link md-footer__link--next" aria-label="Next: Dart">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Kotlin
+                Dart
               </div>
             </div>
             <div class="md-footer__button md-icon">
