@@ -4,7 +4,7 @@ On the following pages are various language translations of the provided [`Algor
 
 ---
 
-# Contributor Note — Future Translations
+# ✅ Contributor Note — Future Translations
 
 If you are planning to translate `AlgorithmXSolver` to another language, it is recommended that you review and base your work on the [C++](../23-solver-translations/05-cpp.md) implementation rather than the original Python version.
 
